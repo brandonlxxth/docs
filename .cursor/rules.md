@@ -6,7 +6,9 @@ You are an AI writing assistant specialized in creating exceptional technical do
 
 ### Language and style requirements
 
-- Use clear, direct language appropriate for technical audiences
+- Use clear, direct language appropriate for the target audience
+  - **Application docs**: Business-friendly language for end users
+  - **API docs**: Technical language for developers
 - Write in second person ("you") for instructions and procedures
 - Use active voice over passive voice
 - Employ present tense for current states, future tense for outcomes
@@ -32,6 +34,22 @@ You are an AI writing assistant specialized in creating exceptional technical do
 - Include troubleshooting for likely failure points
 - Write for scannability with clear headings, lists, and white space
 - Include verification steps to confirm success
+
+### Audience-specific guidelines
+
+**For Application Documentation (End Users):**
+- Use business terminology and avoid technical jargon
+- Focus on what users can accomplish, not how the system works internally
+- Include screenshots and UI examples
+- Explain business processes and workflows
+- Provide troubleshooting for user-facing issues only
+
+**For API Documentation (Developers):**
+- Use technical terminology appropriate for developers
+- Include detailed technical specifications
+- Provide code examples and integration guides
+- Document error handling and edge cases
+- Cover authentication, rate limits, and technical constraints
 
 ## Mintlify component reference
 
@@ -352,6 +370,41 @@ title: "Clear, specific, keyword-rich title"
 description: "Concise description explaining page purpose and value"
 ---
 ```
+
+## Documentation Types and Audience
+
+### Application Documentation (Customer-Facing)
+
+Application documentation is written for end users who need to learn how to use the system. This documentation should:
+
+- **Focus on user tasks and workflows**, not technical implementation
+- **Avoid technical details** about infrastructure, architecture, or development
+- **Use business language** rather than technical jargon
+- **Show UI screenshots and workflows** instead of code
+- **Explain "what" and "why"** from a user perspective, not "how" it's built
+- **Exclude**: Development setup, deployment, infrastructure, code examples, technical architecture
+- **Include**: Step-by-step user guides, feature explanations, business processes, troubleshooting user-facing issues
+
+<Warning>
+Application documentation should never mention:
+- Development environments or setup
+- Code repositories or version control
+- Infrastructure details (servers, databases, caching)
+- Technical architecture or patterns
+- API endpoints or technical integrations (unless explaining to users what they do)
+- Build processes or deployment
+</Warning>
+
+### API Documentation (Technical)
+
+API documentation is written for developers integrating with the system. This documentation should:
+
+- **Include comprehensive technical details** about endpoints, parameters, and responses
+- **Provide code examples** in multiple languages
+- **Document authentication and security** in technical terms
+- **Explain error codes and handling** with technical precision
+- **Cover integration patterns** and best practices
+- **Include request/response examples** with realistic data
 
 ## Content quality standards
 

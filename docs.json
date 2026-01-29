@@ -44,6 +44,46 @@
               "ai-tools/claude-code",
               "ai-tools/windsurf"
             ]
+          },
+          {
+            "group": "Management Portal",
+            "pages": [
+              "enterprise/overview",
+              "enterprise/getting-started",
+              "enterprise/authentication",
+              "enterprise/navigation"
+            ]
+          },
+          {
+            "group": "Management Portal Pages",
+            "pages": [
+              "enterprise/pages/analytics",
+              "enterprise/pages/configuration",
+              "enterprise/pages/stock",
+              "enterprise/pages/ordering",
+              "enterprise/pages/cash-management",
+              "enterprise/pages/parent-pay",
+              "enterprise/pages/fiscal"
+            ]
+          },
+          {
+            "group": "Member Management",
+            "pages": [
+              "enterprise/pages/member/account",
+              "enterprise/pages/member/member-import",
+              "enterprise/pages/member/member",
+              "enterprise/pages/member/member-group",
+              "enterprise/pages/member/member-group-management",
+              "enterprise/pages/member/cost-centre"
+            ]
+          },
+          {
+            "group": "Management Portal Features",
+            "pages": [
+              "enterprise/features/stock-management",
+              "enterprise/features/product-management",
+              "enterprise/features/site-management"
+            ]
           }
         ]
       },

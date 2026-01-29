@@ -1,0 +1,175 @@
+---
+title: "Account"
+description: "Manage member accounts, balances, and transactions in the Management Portal"
+---
+
+## Overview
+
+The Account page allows you to create and manage account types that can be assigned to member groups. When a member is assigned to a member group that has an account, the member gains access to account features including top-ups and refunds.
+
+<Info>
+**Note**: The Account page is not available for organizations using Portugal fiscal features. If you're in Portugal, you'll use the Member page instead for account management.
+</Info>
+
+<Info>
+**Account Features**: Top-ups and refunds are available to members when they are assigned to a member group that has an account associated with it. The Account page is where you create and configure these account types.
+</Info>
+
+## Viewing Accounts
+
+When you open the Account page, you'll see a list of all member accounts in your system. The list shows:
+
+- Account name
+- Account type
+- Associated member
+- Current balance
+- Account status
+
+Use the search and filter options to find specific accounts.
+
+## Creating an Account
+
+<Steps>
+<Step title="Open the Account page">
+  Navigate to **Configuration > Member > Account** in the navigation menu.
+</Step>
+
+<Step title="Create new account">
+  Click the "New Account" or "Add Account" button to create a new account.
+</Step>
+
+<Step title="Enter account details">
+  Fill in the account information:
+  - **Account Name**: A descriptive name for the account
+  - **Account Type**: Select the type of account (e.g., Prepaid, Credit)
+  - **Member**: Select the member who will own this account
+  - **Initial Balance**: Set the starting balance (if applicable)
+  - **Account Image**: Upload an image for the account (optional)
+</Step>
+
+<Step title="Save the account">
+  Review all information and click "Save" to create the account.
+</Step>
+</Steps>
+
+## Editing an Account
+
+To edit an existing account:
+
+1. Find the account in the list
+2. Click on the account or use the "Edit" action
+3. Modify the account details as needed
+4. Click "Save" to update the account
+
+## Copying an Account
+
+You can create a copy of an existing account to use as a template:
+
+1. Find the account you want to copy
+2. Click the "Copy" action
+3. A new account form will open with the same details
+4. Modify the name and any other details as needed
+5. Click "Save" to create the new account
+
+## How Accounts Work with Member Groups
+
+Accounts are associated with member groups, not individual members. Here's how it works:
+
+1. **Create an Account**: Use this page to create account types (e.g., "Prepaid Account", "Credit Account")
+2. **Assign to Member Group**: Assign the account to a member group (see [Member Group](/enterprise/pages/member/member-group) documentation)
+3. **Assign Members to Group**: Add members to the group (see [Member Group Management](/enterprise/pages/member/member-group-management) documentation)
+4. **Members Gain Access**: Once a member is in a group with an account, they can:
+   - Use the account for purchases
+   - Have their account topped up
+   - Receive refunds to their account
+
+<Info>
+To manage individual member account balances, top-ups, and refunds, you'll work with the member's account through the Member page or the member's account interface, not through this Account configuration page.
+</Info>
+
+## Viewing Account Images
+
+Accounts can have associated images. To view an account image:
+
+1. The image will display in the account list if one is uploaded
+2. Click on the account to see the full image in the account details
+
+## Deleting an Account
+
+<Warning>
+Deleting an account is permanent and cannot be undone. Ensure the account has no active transactions or outstanding balances before deleting.
+</Warning>
+
+To delete an account:
+
+1. Find the account in the list
+2. Click the "Delete" action
+3. Confirm the deletion
+4. The account will be removed from the system
+
+## Account Types
+
+Different account types may be available depending on your configuration:
+
+- **Prepaid Accounts**: Members add funds in advance
+- **Credit Accounts**: Members can make purchases on credit
+- **Loyalty Accounts**: Accounts tied to loyalty programs
+
+<Info>
+The specific account types available depend on your organization's configuration. Contact your administrator if you need additional account types.
+</Info>
+
+## Best Practices
+
+- **Clear Naming**: Use descriptive names for account types so it's clear what they're for
+- **Plan Group Structure**: Consider which member groups should have accounts before creating accounts
+- **Document Purpose**: Use descriptions to explain what each account type is for
+- **Review Regularly**: Periodically review which groups have accounts to ensure the setup is still appropriate
+
+## Troubleshooting
+
+<AccordionGroup>
+<Accordion title="Account balance doesn't match expected amount">
+  If an account balance seems incorrect:
+  - Check the transaction history for the account
+  - Verify all top-ups and refunds have been processed correctly
+  - Use the Refresh function to synchronize with the source system
+  - Contact support if discrepancies persist
+</Accordion>
+
+<Accordion title="Can't find an account">
+  If you can't find a specific account:
+  - Use the search function to search by account name or member name
+  - Check filters to ensure they're not hiding the account
+  - Verify you have permission to view the account
+  - Contact your administrator if the account should be visible
+</Accordion>
+
+<Accordion title="Members can't access account features">
+  If members can't use account features:
+  - Verify the member is assigned to a member group that has an account
+  - Check that the account is active and properly configured
+  - Ensure the member group has the account correctly assigned
+  - Contact your administrator if the setup appears correct but features aren't available
+</Accordion>
+</AccordionGroup>
+
+## Related Documentation
+
+<CardGroup cols={2}>
+<Card title="Member Group" icon="users" href="/enterprise/pages/member/member-group">
+  Learn how to assign accounts to member groups.
+</Card>
+
+<Card title="Member Group Management" icon="user-group" href="/enterprise/pages/member/member-group-management">
+  Learn how to add members to groups with accounts.
+</Card>
+
+<Card title="Member" icon="user" href="/enterprise/pages/member/member">
+  Learn about managing individual members and their accounts.
+</Card>
+
+<Card title="Configuration" icon="cog" href="/enterprise/pages/configuration">
+  Return to the Configuration section overview.
+</Card>
+</CardGroup>

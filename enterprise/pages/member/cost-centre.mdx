@@ -1,0 +1,228 @@
+---
+title: "Cost Centre"
+description: "Configure cost centres for financial tracking and reporting in the Management Portal"
+---
+
+## Overview
+
+The Cost Centre page allows you to create and manage cost centres. Cost centres are used for financial tracking, reporting, and organizing expenses and revenue by department, location, or other business units.
+
+## Viewing Cost Centres
+
+When you open the Cost Centre page, you'll see a list of all cost centres in your system. The list shows:
+
+- Cost centre name
+- Code or identifier
+- Description
+- Status
+- Associated locations or departments
+
+## Creating a Cost Centre
+
+<Steps>
+<Step title="Open the Cost Centre page">
+  Navigate to **Configuration > Member > Cost Centre** in the navigation menu.
+</Step>
+
+<Step title="Create new cost centre">
+  Click the "New Cost Centre" or "Add Cost Centre" button to create a new cost centre.
+</Step>
+
+<Step title="Enter cost centre information">
+  Fill in the cost centre details:
+  - **Name**: A descriptive name for the cost centre (e.g., "Kitchen", "Bar", "Front of House")
+  - **Code**: A unique code or identifier for the cost centre
+  - **Description**: Optional description of the cost centre's purpose
+  - **Status**: Set whether the cost centre is active
+</Step>
+
+<Step title="Save the cost centre">
+  Review all information and click "Save" to create the cost centre.
+</Step>
+</Steps>
+
+## Editing a Cost Centre
+
+To edit an existing cost centre:
+
+1. Find the cost centre in the list
+2. Click on the cost centre or use the "Edit" action
+3. Modify the cost centre details as needed
+4. Click "Save" to update the cost centre
+
+## Copying a Cost Centre
+
+You can create a copy of an existing cost centre:
+
+1. Find the cost centre you want to copy
+2. Click the "Copy" action
+3. A new cost centre form will open with the same details
+4. Modify the name and code (these must be unique)
+5. Update any other details as needed
+6. Click "Save" to create the new cost centre
+
+## Using Cost Centres
+
+Cost centres are used throughout the system for:
+
+### Financial Reporting
+
+- Track revenue by cost centre
+- Analyze expenses by department
+- Generate cost centre-specific reports
+- Compare performance across cost centres
+
+### Transaction Tracking
+
+- Assign transactions to cost centres
+- Track sales by cost centre
+- Monitor costs by department
+- Analyze profitability by area
+
+### Budget Management
+
+- Set budgets by cost centre
+- Track budget vs. actual performance
+- Monitor spending by department
+- Plan future allocations
+
+## Common Cost Centre Examples
+
+### By Department
+
+- Kitchen
+- Bar
+- Front of House
+- Management
+- Maintenance
+
+### By Location
+
+- Site A
+- Site B
+- Central Office
+- Warehouse
+
+### By Function
+
+- Sales
+- Operations
+- Marketing
+- Administration
+
+## Importing Cost Centres
+
+You can import cost centres from a file:
+
+<Steps>
+<Step title="Open import options">
+  Click the "Import" button or option on the Cost Centre page.
+</Step>
+
+<Step title="Choose import type">
+  Select the type of import:
+  - **Create**: Import new cost centres
+  - **Update**: Update existing cost centres
+  - **Delete**: Delete cost centres from file
+</Step>
+
+<Step title="Upload file">
+  Upload your cost centre data file (CSV format recommended).
+</Step>
+
+<Step title="Review and import">
+  Review the import preview and click "Import" to complete the process.
+</Step>
+</Steps>
+
+### Import File Format
+
+Your import file should include:
+
+- Cost centre name
+- Code or identifier
+- Description (optional)
+- Status (optional)
+
+<Info>
+Contact your administrator for a template file showing the exact format required for cost centre imports.
+</Info>
+
+## Exporting Cost Centres
+
+To export your cost centres to a file:
+
+1. Click the "Export" button on the Cost Centre page
+2. The system will generate a CSV file with all cost centres
+3. Download the file to your computer
+4. Use the file for backup, reporting, or importing into other systems
+
+## Deleting a Cost Centre
+
+<Warning>
+Deleting a cost centre may affect historical reports and transactions that reference it. Ensure the cost centre is not in use before deleting.
+</Warning>
+
+To delete a cost centre:
+
+1. Find the cost centre in the list
+2. Click the "Delete" action
+3. Confirm the deletion
+4. The cost centre will be removed from the system
+
+## Best Practices
+
+- **Use clear naming**: Choose descriptive names that clearly indicate the cost centre's purpose
+- **Establish codes**: Use consistent coding schemes for easy identification
+- **Document purpose**: Use descriptions to explain what each cost centre represents
+- **Review regularly**: Periodically review cost centres to ensure they're still relevant
+- **Avoid duplication**: Don't create duplicate cost centres for the same purpose
+- **Plan structure**: Plan your cost centre structure before creating many centres
+
+## Troubleshooting
+
+<AccordionGroup>
+<Accordion title="Can't create cost centre with same code">
+  If you get a duplicate code error:
+  - Cost centre codes must be unique
+  - Check if a cost centre with that code already exists
+  - Use a different code or update the existing cost centre
+</Accordion>
+
+<Accordion title="Cost centre appears in reports incorrectly">
+  If cost centre data in reports seems wrong:
+  - Verify the cost centre is correctly assigned to transactions
+  - Check that the cost centre is active
+  - Review report date ranges and filters
+  - Contact support if data appears incorrect
+</Accordion>
+
+<Accordion title="Import fails">
+  If cost centre import fails:
+  - Verify the file format matches the required template
+  - Check that codes are unique (if creating new centres)
+  - Ensure required fields are present
+  - Review error messages for specific issues
+  - Try importing a smaller batch first
+</Accordion>
+
+<Accordion title="Can't delete cost centre">
+  If you can't delete a cost centre:
+  - Verify the cost centre isn't referenced in active transactions
+  - Check if it's assigned to locations or departments
+  - Ensure you have permission to delete cost centres
+  - Contact your administrator if deletion is blocked
+</Accordion>
+</AccordionGroup>
+
+## Related Documentation
+
+<CardGroup cols={2}>
+<Card title="Analytics" icon="chart-line" href="/enterprise/pages/analytics">
+  View reports filtered by cost centre.
+</Card>
+
+<Card title="Configuration" icon="cog" href="/enterprise/pages/configuration">
+  Return to the Configuration section overview.
+</Card>
+</CardGroup>

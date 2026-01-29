@@ -1,0 +1,260 @@
+---
+title: "Site & Outlet Management"
+description: "How to configure and manage sites, outlets, outlet types, and preparation points in the Management Portal"
+---
+
+## Overview
+
+The Site Management section allows you to configure and manage your organizational structure, including sites, outlets, outlet types, and preparation points. This hierarchical structure supports multi-location operations with centralized management.
+
+## Understanding Your Organization Structure
+
+Your organization follows this hierarchy:
+
+```
+Organization
+  └── Sites
+      └── Outlets
+          └── Preparation Points
+```
+
+<Info>
+This structure allows you to manage operations at different levels, from organization-wide settings to outlet-specific configurations.
+</Info>
+
+## Key Features
+
+<CardGroup cols={2}>
+<Card title="Site Management" icon="building">
+  Create and configure sites with location and operational settings.
+</Card>
+
+<Card title="Outlet Management" icon="store">
+  Manage outlets within sites with specific configurations and settings.
+</Card>
+
+<Card title="Outlet Types" icon="tags">
+  Define outlet types to standardize configurations across similar outlets.
+</Card>
+
+<Card title="Preparation Points" icon="utensils">
+  Configure preparation points for food service operations within outlets.
+</Card>
+
+<Card title="Regional Management" icon="map">
+  Organize sites into regions for regional reporting and management.
+</Card>
+
+<Card title="Hierarchy View" icon="sitemap">
+  View and navigate your complete organizational structure in one place.
+</Card>
+</CardGroup>
+
+## Managing Sites
+
+### Creating a Site
+
+<Steps>
+<Step title="Navigate to Sites">
+  Click "Sites" in the main navigation menu to access site management.
+</Step>
+
+<Step title="Create New Site">
+  Click "New Site" or "Add Site" to create a new site.
+</Step>
+
+<Step title="Enter Site Information">
+  Fill in the site details:
+  - Site name
+  - Site code (unique identifier)
+  - Address and location
+  - Contact information
+  - Regional assignment (if using regions)
+</Step>
+
+<Step title="Configure Site Settings">
+  Set up site-level operational settings:
+  - Default pricing rules
+  - Stock management settings
+  - Operational hours
+  - Site-specific preferences
+</Step>
+
+<Step title="Save Site">
+  Review all information and save the site. You can now add outlets to this site.
+</Step>
+</Steps>
+
+### Viewing Site Information
+
+To view site details:
+
+1. Go to the Sites list
+2. Click on any site name
+3. You'll see:
+   - Site information and settings
+   - List of outlets at this site
+   - Site-level reports and analytics
+   - Recent activity
+
+## Managing Outlets
+
+Outlets are the individual locations where you conduct business within a site.
+
+### Creating an Outlet
+
+<Steps>
+<Step title="Select a Site">
+  Navigate to the site where you want to create an outlet, or go to Outlets and select the parent site.
+</Step>
+
+<Step title="Create New Outlet">
+  Click "New Outlet" or "Add Outlet" within the site.
+</Step>
+
+<Step title="Enter Outlet Information">
+  Provide outlet details:
+  - Outlet name
+  - Outlet code
+  - Outlet type (select from existing types or create new)
+  - Location within the site
+  - Contact information
+</Step>
+
+<Step title="Configure Outlet Settings">
+  Set outlet-specific configurations:
+  - Operating hours
+  - Pricing overrides (if different from site default)
+  - Stock management settings
+  - Terminal assignments
+</Step>
+
+<Step title="Set Up Preparation Points">
+  Add preparation points for this outlet (kitchen stations, bar areas, etc.).
+</Step>
+
+<Step title="Save Outlet">
+  Review and save the outlet. It will appear in your site's outlet list.
+</Step>
+</Steps>
+
+## Outlet Types
+
+Outlet types provide templates for common outlet configurations, making it faster to set up similar outlets.
+
+### Common Outlet Types
+
+- **Quick Service**: Fast-service outlets with streamlined operations
+- **Full Service**: Table service restaurants with full menu service
+- **Kiosk**: Self-service kiosks for customer ordering
+- **Drive-Through**: Drive-through operations
+- **Bar**: Beverage-focused outlets
+
+### Using Outlet Types
+
+When you create an outlet and assign it a type:
+
+- Default settings are automatically applied
+- Standard configurations are pre-filled
+- You can still customize individual outlet settings as needed
+
+<Tip>
+Using outlet types saves time when setting up multiple similar outlets and ensures consistency across your organization.
+</Tip>
+
+## Preparation Points
+
+Preparation points represent specific areas within an outlet where food or beverages are prepared.
+
+### Types of Preparation Points
+
+- **Kitchen Stations**: Different cooking stations (grill, fryer, etc.)
+- **Bar Areas**: Beverage preparation areas
+- **Assembly Points**: Final assembly locations
+- **Dessert Stations**: Specialized dessert preparation areas
+
+### Creating Preparation Points
+
+<Steps>
+<Step title="Select an Outlet">
+  Navigate to the outlet where you want to create a preparation point.
+</Step>
+
+<Step title="Go to Preparation Points">
+  Click "Preparation Points" in the outlet menu.
+</Step>
+
+<Step title="Create New Preparation Point">
+  Click "New Preparation Point" and enter:
+  - Preparation point name
+  - Type of preparation point
+  - Location within the outlet
+</Step>
+
+<Step title="Assign Products">
+  Select which products are prepared at this preparation point.
+</Step>
+
+<Step title="Configure Settings">
+  Set up preparation point-specific settings:
+  - Stock levels for this point
+  - Operator assignments
+  - Performance targets
+</Step>
+
+<Step title="Save Preparation Point">
+  Save the preparation point. It will appear in your outlet's preparation point list.
+</Step>
+</Steps>
+
+### Preparation Point Dashboards
+
+Each preparation point can have its own dashboard showing:
+
+- Current stock levels
+- Assigned products
+- Performance metrics
+- Recent activity
+
+## Regional Management
+
+If your organization spans multiple regions, you can organize sites into regions:
+
+### Benefits of Regional Organization
+
+- **Regional Reporting**: Generate reports by region
+- **Regional Management**: Assign regional managers
+- **Regional Pricing**: Set pricing strategies by region
+- **Regional Stock Management**: Manage stock at the regional level
+
+### Assigning Sites to Regions
+
+1. Go to Sites
+2. Edit the site you want to assign
+3. Select the region from the dropdown
+4. Save the changes
+
+## Viewing Your Organization Hierarchy
+
+The Hierarchy view shows your complete organizational structure:
+
+1. Navigate to Sites
+2. Click "Hierarchy View" or "Organization Structure"
+3. You'll see a tree view showing:
+   - All sites
+   - Outlets within each site
+   - Preparation points within each outlet
+
+This view helps you understand your organization's structure and navigate between different levels.
+
+## Related Documentation
+
+<CardGroup cols={2}>
+<Card title="Stock Management" icon="boxes" href="/enterprise/features/stock-management">
+  Learn how stock is managed across sites and outlets.
+</Card>
+
+<Card title="Product Management" icon="shopping-bag" href="/enterprise/features/product-management">
+  Understand product configuration and management.
+</Card>
+</CardGroup>

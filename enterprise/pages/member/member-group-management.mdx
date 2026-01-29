@@ -1,0 +1,202 @@
+---
+title: "Member Group Management"
+description: "Add and remove members from member groups in the Management Portal"
+---
+
+## Overview
+
+The Member Group Management page allows you to manage which members belong to which groups. This is where you add members to groups, remove them from groups, and view the membership of each group.
+
+<Info>
+**Difference from Member Group**: The Member Group page is for creating and configuring groups themselves. The Member Group Management page is for managing which members are in each group.
+</Info>
+
+## Viewing Group Memberships
+
+When you open the Member Group Management page, you'll see:
+
+- A list of all member groups
+- For each group, you can view which members belong to it
+- Member information including name, email, and member number
+
+## Adding Members to a Group
+
+<Steps>
+<Step title="Open Member Group Management">
+  Navigate to **Configuration > Member > Member Group Management** in the navigation menu.
+</Step>
+
+<Step title="Select a group">
+  Click on the member group you want to manage. The member list will load showing current members in that group.
+</Step>
+
+<Step title="Add members">
+  To add members to the group:
+  - Use the search or filter to find members
+  - Check the box next to each member you want to add
+  - Or use "Select All" to add all visible members
+  - The changes are saved automatically when you check/uncheck boxes
+</Step>
+</Steps>
+
+## Removing Members from a Group
+
+To remove members from a group:
+
+1. Open the Member Group Management page
+2. Select the group you want to manage
+3. Find the members you want to remove
+4. Uncheck the box next to each member
+5. Changes are saved automatically
+
+<Info>
+Removing a member from a group does not delete the member. The member remains in the system but is no longer part of that group.
+</Info>
+
+## Viewing All Members
+
+The page shows all members in your system, with indicators showing which groups each member belongs to:
+
+- **Checked**: Member is in the selected group
+- **Unchecked**: Member is not in the selected group
+- You can see membership across multiple groups
+
+## Searching and Filtering
+
+Use the search and filter options to:
+
+- **Search by name**: Find members by typing their name
+- **Search by email**: Find members by email address
+- **Search by member number**: Find members by their member number
+- **Filter by status**: Show only active, inactive, or all members
+- **Filter by other groups**: See members who are in other specific groups
+
+## Bulk Operations
+
+You can perform bulk operations on members:
+
+### Add Multiple Members
+
+1. Use filters to narrow down the member list
+2. Check "Select All" to select all visible members
+3. All selected members will be added to the group
+
+### Remove Multiple Members
+
+1. Select the group
+2. Use filters if needed to find specific members
+3. Uncheck "Select All" or individually uncheck members
+4. All unchecked members will be removed from the group
+
+## Understanding Group Membership
+
+### Multiple Group Membership
+
+Members can belong to multiple groups simultaneously. For example, a member might be in:
+- "VIP Members" group
+- "Frequent Customers" group
+- "Email Subscribers" group
+
+### Group Benefits
+
+When a member is in a group, they:
+- Receive vouchers assigned to that group
+- Are included in campaigns targeting that group
+- May have access to group-specific features or pricing
+- Can be included in group-based reporting
+
+## Best Practices
+
+- **Review memberships regularly**: Periodically review group memberships to ensure they're accurate
+- **Use filters effectively**: Use search and filters to find specific members quickly
+- **Document changes**: Note when members are added or removed from important groups
+- **Verify before bulk operations**: Double-check filters before using "Select All" to avoid unintended changes
+- **Keep groups focused**: Ensure members in a group actually meet the group's criteria
+
+## Common Workflows
+
+### Adding New Members to a Group
+
+When new members join:
+
+1. Open Member Group Management
+2. Select the appropriate group (e.g., "New Members")
+3. Search for the new members
+4. Check the boxes to add them to the group
+
+### Moving Members Between Groups
+
+To move members from one group to another:
+
+1. Select the source group
+2. Find and note which members need to move
+3. Uncheck them from the source group
+4. Select the destination group
+5. Find the same members and check them
+
+### Cleaning Up Inactive Members
+
+To remove inactive members from a group:
+
+1. Filter members by status (inactive)
+2. Select the group
+3. Uncheck all inactive members
+4. They'll be removed from the group but remain in the system
+
+## Troubleshooting
+
+<AccordionGroup>
+<Accordion title="Member doesn't appear in group list">
+  If a member should be in a group but isn't showing:
+  - Verify the member exists in the system (check the Member page)
+  - Ensure you're looking at the correct group
+  - Check if filters are hiding the member
+  - Try searching for the member by name or email
+</Accordion>
+
+<Accordion title="Can't add member to group">
+  If you can't add a member:
+  - Verify you have permission to manage group memberships
+  - Check that the member exists and is active
+  - Ensure the group exists
+  - Try refreshing the page
+  - Contact your administrator if the issue persists
+</Accordion>
+
+<Accordion title="Changes aren't saving">
+  If changes don't seem to save:
+  - Changes should save automatically when you check/uncheck boxes
+  - Refresh the page to see current status
+  - Check your internet connection
+  - Try making the change again
+  - Contact support if automatic saving isn't working
+</Accordion>
+
+<Accordion title="Too many members to manage">
+  If a group has too many members to manage easily:
+  - Use filters to narrow down the list
+  - Use search to find specific members
+  - Consider using Member Import with group assignments
+  - Break large groups into smaller, more specific groups
+</Accordion>
+</AccordionGroup>
+
+## Related Documentation
+
+<CardGroup cols={2}>
+<Card title="Member Group" icon="users" href="/enterprise/pages/member/member-group">
+  Learn about creating and configuring member groups.
+</Card>
+
+<Card title="Member" icon="user" href="/enterprise/pages/member/member">
+  Learn about managing individual members.
+</Card>
+
+<Card title="Member Import" icon="upload" href="/enterprise/pages/member/member-import">
+  Import members and assign them to groups.
+</Card>
+
+<Card title="Configuration" icon="cog" href="/enterprise/pages/configuration">
+  Return to the Configuration section overview.
+</Card>
+</CardGroup>

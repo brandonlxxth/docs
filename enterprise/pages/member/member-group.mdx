@@ -1,0 +1,182 @@
+---
+title: "Member Group"
+description: "Organize members into groups for targeted campaigns and management in the Management Portal"
+---
+
+## Overview
+
+The Member Group page allows you to create and manage groups of members. Member groups are useful for organizing members by characteristics, targeting specific campaigns, applying group-wide settings, and managing members more efficiently.
+
+## Viewing Member Groups
+
+When you open the Member Group page, you'll see a list of all member groups in your system. The list shows:
+
+- Group name
+- Description
+- Number of members (if displayed)
+- Associated vouchers or promotions
+- Group status
+
+## Creating a Member Group
+
+<Steps>
+<Step title="Open the Member Group page">
+  Navigate to **Configuration > Member > Member Group** in the navigation menu.
+</Step>
+
+<Step title="Create new group">
+  Click the "New Group" or "Add Group" button to create a new member group.
+</Step>
+
+<Step title="Enter group information">
+  Fill in the group details:
+  - **Group Name**: A descriptive name for the group
+  - **Description**: Optional description of the group's purpose
+  - **Vouchers**: Select vouchers or promotions to associate with this group (optional)
+</Step>
+
+<Step title="Save the group">
+  Review all information and click "Save" to create the group.
+</Step>
+</Steps>
+
+## Editing a Member Group
+
+To edit an existing member group:
+
+1. Find the group in the list
+2. Click on the group or use the "Edit" action
+3. Modify the group details as needed:
+   - Update the name or description
+   - Add or remove associated vouchers
+   - Change other group settings
+4. Click "Save" to update the group
+
+## Assigning Vouchers to Groups
+
+Member groups can be associated with specific vouchers or promotions:
+
+<Steps>
+<Step title="Open group details">
+  Create a new group or edit an existing one.
+</Step>
+
+<Step title="Select vouchers">
+  In the group form, find the "Vouchers" section and:
+  - Browse available vouchers
+  - Select vouchers to associate with this group
+  - Selected vouchers will be available to all members in this group
+</Step>
+
+<Step title="Save the group">
+  Click "Save" to associate the vouchers with the group.
+</Step>
+</Steps>
+
+<Info>
+Vouchers assigned to a member group become available to all members in that group. This is useful for targeted promotions or group-specific offers.
+</Info>
+
+## Common Use Cases for Member Groups
+
+### By Demographics
+
+- Age groups (e.g., "Seniors", "Students")
+- Location-based groups
+- Customer type (e.g., "VIP Members", "Regular Customers")
+
+### By Behavior
+
+- Frequent customers
+- High-value customers
+- Inactive members
+- New members
+
+### By Preferences
+
+- Dietary preferences
+- Product preferences
+- Communication preferences
+
+### By Campaigns
+
+- Specific promotion recipients
+- Event attendees
+- Seasonal campaign groups
+
+## Managing Members in Groups
+
+<Info>
+To add or remove individual members from groups, use the **Member Group Management** page. The Member Group page is for creating and configuring the groups themselves.
+</Info>
+
+See the [Member Group Management](/enterprise/pages/member/member-group-management) documentation for details on managing which members belong to which groups.
+
+## Deleting a Member Group
+
+<Warning>
+Deleting a member group does not delete the members themselves. However, members will lose their association with the group, and any group-specific vouchers or settings will no longer apply.
+</Warning>
+
+To delete a member group:
+
+1. Find the group in the list
+2. Click the "Delete" action
+3. Confirm the deletion
+4. The group will be removed, but members remain in the system
+
+## Best Practices
+
+- **Use descriptive names**: Choose clear, descriptive names that indicate the group's purpose
+- **Document group purpose**: Use the description field to note why the group exists
+- **Review groups regularly**: Periodically review groups to ensure they're still relevant
+- **Limit group count**: Avoid creating too many groups, as this can become difficult to manage
+- **Use for campaigns**: Create temporary groups for specific campaigns, then archive or delete them when done
+
+## Troubleshooting
+
+<AccordionGroup>
+<Accordion title="Can't assign vouchers to a group">
+  If you can't assign vouchers:
+  - Verify you have permission to manage vouchers
+  - Check that vouchers exist in the system
+  - Ensure the group is saved before assigning vouchers
+  - Contact your administrator if vouchers aren't available
+</Accordion>
+
+<Accordion title="Group members aren't receiving vouchers">
+  If group members aren't getting vouchers:
+  - Verify vouchers are correctly assigned to the group
+  - Check that members are actually in the group (use Member Group Management)
+  - Ensure vouchers are active and valid
+  - Verify member contact information is correct
+</Accordion>
+
+<Accordion title="Can't find a member group">
+  If you can't find a group:
+  - Use the search function to search by group name
+  - Check if filters are applied
+  - Verify the group wasn't deleted
+  - Contact your administrator if the group should exist
+</Accordion>
+</AccordionGroup>
+
+## Related Documentation
+
+<CardGroup cols={2}>
+<Card title="Member Group Management" icon="user-group" href="/enterprise/pages/member/member-group-management">
+  Learn how to add and remove members from groups.
+</Card>
+
+<Card title="Member" icon="user" href="/enterprise/pages/member/member">
+  Learn about managing individual members.
+</Card>
+
+<Card title="Voucher" icon="ticket" href="/enterprise/pages/incentives/voucher">
+  Learn about creating and managing vouchers.
+</Card>
+
+<Card title="Configuration" icon="cog" href="/enterprise/pages/configuration">
+  Return to the Configuration section overview.
+</Card>
+</CardGroup>

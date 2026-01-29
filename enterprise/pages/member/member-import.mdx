@@ -1,0 +1,213 @@
+---
+title: "Member Import"
+description: "Import members from CSV or other file formats into the Management Portal"
+---
+
+## Overview
+
+The Member Import page allows you to import multiple members into the system at once from a file. This is useful for bulk member creation, updating existing members, or migrating member data from another system.
+
+## Preparing Your Import File
+
+Before importing, prepare your member data file:
+
+### Supported File Formats
+
+- **CSV (Comma-Separated Values)**: Most common format
+- **Excel files**: May be converted to CSV first
+
+### Required Information
+
+Your import file should include member information such as:
+
+- Member name
+- Email address
+- Phone number
+- Member number or ID
+- Other member details as configured
+
+<Info>
+The exact columns required depend on your organization's member configuration. Contact your administrator for a template file showing the required format.
+</Info>
+
+### File Format Tips
+
+- Use a header row with column names
+- Ensure data is properly formatted (dates, numbers, etc.)
+- Remove any special characters that might cause issues
+- Check for duplicate email addresses or member numbers
+
+## Importing Members
+
+<Steps>
+<Step title="Open Member Import">
+  Navigate to **Configuration > Member > Member Import** in the navigation menu.
+</Step>
+
+<Step title="Upload your file">
+  Click "Choose File" or "Upload" and select your member data file from your computer.
+</Step>
+
+<Step title="Parse the file">
+  After uploading, click "Parse File" or similar to analyze the file structure. The system will:
+  - Identify columns in your file
+  - Map columns to member fields
+  - Show a preview of the data
+  - Highlight any potential issues
+</Step>
+
+<Step title="Review parse results">
+  Review the parse results to ensure:
+  - All columns are correctly mapped
+  - Data looks correct in the preview
+  - No critical errors are shown
+  - Warnings are acceptable
+</Step>
+
+<Step title="Import the members">
+  If everything looks correct, click "Import" or "Import Members" to begin the import process.
+</Step>
+
+<Step title="Review import results">
+  After import completes, review the results:
+  - **Successfully imported**: Members that were created or updated
+  - **Failed imports**: Members that couldn't be imported with error messages
+  - **Summary**: Total counts of successful and failed imports
+</Step>
+</Steps>
+
+## Understanding Parse Results
+
+When you parse a file, the system shows:
+
+### Column Mapping
+
+The system attempts to automatically map your file columns to member fields. You may need to:
+
+- Confirm automatic mappings are correct
+- Manually map columns that weren't recognized
+- Skip columns that aren't needed
+
+### Data Preview
+
+A preview shows how your data will be imported:
+
+- First few rows of data
+- How fields will be populated
+- Any formatting that will be applied
+
+### Validation Warnings
+
+The system may show warnings for:
+
+- Duplicate email addresses
+- Invalid data formats
+- Missing required fields
+- Potential data issues
+
+<Warning>
+Review all warnings before importing. Some warnings may prevent members from being imported correctly.
+</Warning>
+
+## Import Options
+
+Depending on your configuration, you may have options for:
+
+### Create New Members
+
+Import will create new member records for all rows in the file.
+
+### Update Existing Members
+
+Import will update existing members based on matching criteria (e.g., email or member number).
+
+### Create or Update
+
+Import will create new members if they don't exist, or update existing members if they do.
+
+<Info>
+The available import options depend on your organization's configuration. Contact your administrator for details about your import settings.
+</Info>
+
+## Handling Import Errors
+
+If some members fail to import:
+
+### Common Error Reasons
+
+- **Duplicate email**: Email address already exists in the system
+- **Invalid format**: Data doesn't match required format (e.g., invalid date)
+- **Missing required field**: Required information is missing
+- **Invalid member number**: Member number format is incorrect or already in use
+
+### Resolving Errors
+
+1. Review the error messages for each failed import
+2. Correct the data in your source file
+3. Re-import only the corrected rows, or
+4. Fix the issues and re-import the entire file
+
+### Exporting Error Details
+
+You may be able to export a list of failed imports to help identify and fix issues.
+
+## Best Practices
+
+- **Test with small files first**: Import a few members first to verify the format
+- **Backup existing data**: Ensure you have backups before bulk imports
+- **Validate data beforehand**: Check your file for errors before importing
+- **Use templates**: Request a template file from your administrator to ensure correct format
+- **Review results carefully**: Always review import results to catch any issues early
+- **Import during off-peak hours**: Large imports may take time; schedule during low-usage periods
+
+## Troubleshooting
+
+<AccordionGroup>
+<Accordion title="File won't upload">
+  If your file won't upload:
+  - Check the file size (there may be size limits)
+  - Verify the file format is supported
+  - Ensure the file isn't corrupted
+  - Try saving the file in a different format (e.g., CSV instead of Excel)
+</Accordion>
+
+<Accordion title="Columns aren't mapping correctly">
+  If columns aren't mapping:
+  - Ensure your file has a header row with clear column names
+  - Check that column names match expected field names
+  - Manually map columns if automatic mapping fails
+  - Contact your administrator for the correct column names
+</Accordion>
+
+<Accordion title="Many members failed to import">
+  If many imports fail:
+  - Review the error messages to identify common issues
+  - Check if there's a pattern (e.g., all have the same missing field)
+  - Fix the source data and re-import
+  - Consider importing in smaller batches to isolate issues
+</Accordion>
+
+<Accordion title="Import is very slow">
+  If import takes a long time:
+  - Large files may take several minutes to process
+  - Avoid importing during peak usage times
+  - Consider splitting very large files into smaller batches
+  - Contact support if imports consistently take too long
+</Accordion>
+</AccordionGroup>
+
+## Related Documentation
+
+<CardGroup cols={2}>
+<Card title="Member" icon="user" href="/enterprise/pages/member/member">
+  Learn about managing individual members.
+</Card>
+
+<Card title="Member Group" icon="users" href="/enterprise/pages/member/member-group">
+  Organize members into groups.
+</Card>
+
+<Card title="Configuration" icon="cog" href="/enterprise/pages/configuration">
+  Return to the Configuration section overview.
+</Card>
+</CardGroup>
