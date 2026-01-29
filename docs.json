@@ -150,5 +150,8 @@
       "github": "https://github.com/mintlify",
       "linkedin": "https://linkedin.com/company/mintlify"
     }
+  },
+  "assistant": {
+    "enabled": true
   }
 }
