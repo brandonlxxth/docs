@@ -84,6 +84,21 @@
               "enterprise/features/product-management",
               "enterprise/features/site-management"
             ]
+          },
+          {
+            "group": "Break & Run",
+            "pages": [
+              "break-and-run/overview",
+              "break-and-run/installation",
+              "break-and-run/usage"
+            ]
+          },
+          {
+            "group": "Game modes",
+            "pages": [
+              "break-and-run/game-modes/standard-modes",
+              "break-and-run/game-modes/killer"
+            ]
           }
         ]
       },

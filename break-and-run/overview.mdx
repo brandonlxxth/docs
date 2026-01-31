@@ -1,0 +1,66 @@
+---
+title: Overview
+description: A simple and intuitive scoreboard app for tracking pool games
+---
+
+Break & Run is a scoreboard application designed for tracking pool games across multiple game modes. The app supports both Android and web platforms, providing players with comprehensive game tracking, statistics, and history.
+
+## Key features
+
+- **Multiple game modes**: Race to, Sets of, Best of, Free play, and Killer
+- **Player statistics**: Track wins, losses, and draws between player pairs
+- **Dish tracking**: Record break dishes and reverse dishes
+- **Game history**: View detailed frame-by-frame and set-by-set breakdowns
+- **Resume games**: Continue games if the app is closed accidentally
+- **Landscape support**: Works in both portrait and landscape orientations
+- **Dark & light themes**: Automatically adapts to your system theme
+- **Cloud sync**: Save and sync games across devices (web version)
+
+## Platforms
+
+### Android
+Native Android application built with Kotlin and Jetpack Compose. Supports Android devices with USB debugging enabled for sideloading.
+
+### Web
+Progressive web application built with React and TypeScript. Accessible via web browser with optional Supabase backend for cloud storage and authentication.
+
+## Game modes
+
+<CardGroup cols={2}>
+  <Card title="Race to" icon="flag-checkered">
+    First player to reach the target score wins
+  </Card>
+  <Card title="Sets of" icon="layer-group">
+    Play multiple sets, each to a target score
+  </Card>
+  <Card title="Best of" icon="trophy">
+    First to win the majority of sets wins the match
+  </Card>
+  <Card title="Free play" icon="infinity">
+    Practice mode with no win conditions
+  </Card>
+  <Card title="Killer" icon="skull">
+    Multi-player elimination mode with lives system
+  </Card>
+</CardGroup>
+
+## Recent updates
+
+### Killer game mode (December 2025)
+Added a new multi-player Killer game mode supporting:
+- Multiple players with individual lives tracking
+- Trickshot black ball rule option
+- Animated player selection
+- Final standings display
+- Complete game state persistence
+
+### State management improvements (December 2025)
+- Removed sessionStorage dependency
+- Enhanced game state handling with React state and refs
+- Improved active game saving logic
+- Better error handling and debugging
+
+### Bug fixes (December 2025)
+- Fixed killer mode winner handling and display logic
+- Improved player standings capture at game end
+- Enhanced compatibility with older saved games
