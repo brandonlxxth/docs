@@ -1,0 +1,25 @@
+---
+title: Management Portal 2025.33
+---
+
+This release introduces a new "Recently Used" landing page that improves user experience by providing quick access to frequently used features. It also adds Fiscal Cloud API configuration fields for Portugal terminals and optimises user record saving performance. Bug fixes address Member token validation, Meal Deal Voucher product display with special characters, Stock Movement URL validation, Voucher availability permissions, and Terminal Yoyo discount product configuration.
+
+
+## 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869b4auzd | Added new "Recently Used" landing page as the default landing page, showing recently accessed features and popular features for quick access |
+| 869b9mrch | Added Fiscal Cloud API configuration fields (URL, Login ID, Access Token) to Terminal Fiscalisation tab for Portugal terminals |
+| 869b9jkdv | Optimised user record saving to significantly reduce execution time when saving users and user profiles  |
+
+## 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869b1g2w9 | Fixed issue where Member form would show an endless loading spinner when submitting with a duplicate token without leaving the field |
+| 869b4kmdd | Fixed issue where products with special characters (such as apostrophes) would not display correctly when loading Meal Deal Vouchers |
+| 869b8y2aq | Added validation to prevent access to blank Stock Alert pages when entering invalid IDs in the URL |
+| 869b4av69 | Fixed issue where altering Voucher availability with restricted Outlet Permissions would incorrectly remove availability for outlets the user cannot see |
+| 869b8bj4c | Added missing Discount Product field to Terminal Yoyo account options configuration |
+

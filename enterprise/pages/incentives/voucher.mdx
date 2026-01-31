@@ -1,0 +1,125 @@
+---
+title: "Voucher"
+description: "Create and manage vouchers and promotional offers in the Management Portal"
+---
+
+## Overview
+
+The Voucher page lets you create and manage vouchers and promotional offers. Voucher types are Allowance, Discount, BOGOF, BOGOD, Meal Deal, and Voucher Priceband Switch—each has different capabilities (see below). You can assign vouchers to **individual members** (that person only) or to **member groups** (all members in the group have access).
+
+## Voucher Types
+
+When you click the **+** icon to create a voucher, you choose one of these types (shown as cards). Each type has different capabilities:
+
+- **Allowance**: A set value that can be used to pay for or subsidise an order. It can be used once or restored after a given period (e.g. a daily allowance, Monday to Friday). Not shown for organisations using Portugal fiscal features.
+
+- **Discount**: Applies a discount to the order total—either as a percentage of the total or as a fixed value (e.g. 10% off coffee, or £1 off).
+
+- **BOGOF (Buy one get one free)**: You set the quantities: for example buy 1 get 1 free, buy 2 get 1 free, or buy 1 get 5 free. When they buy the required number of qualifying items, they get the free items.
+
+- **BOGOD (Buy one get one discounted)**: You set the quantities: for example buy 1 get 1 discounted, buy 2 get 1 discounted, or buy 1 get 5 discounted. When they buy the required number of qualifying items, they get the discounted items (e.g. 50% off the second item).
+
+- **Meal Deal**: You define a bundle (e.g. main + drink + side) at a set price.
+
+- **Voucher Priceband Switch**: Product prices automatically switch to a different price band (e.g. a student or staff price band) when the voucher is used.
+
+## Viewing Vouchers
+
+When you open the Voucher page, you'll see a **search box at the top**. Type your search (e.g., voucher name) and results will load in a modal below. Each result shows voucher name, type, and status.
+
+## Creating a Voucher
+
+<Steps>
+<Step title="Open the Voucher page">
+  Navigate to **Configuration > Incentives > Voucher** in the navigation menu.
+</Step>
+
+<Step title="Start a new voucher">
+  Click the **+** icon to create a new voucher.
+</Step>
+
+<Step title="Select voucher type">
+  On the **Select Voucher Type** screen, click the card for the type you want: Allowance, Discount, BOGOF, BOGOD, Meal Deal, or Voucher Priceband Switch. You are then taken to the form for that type.
+</Step>
+
+<Step title="Complete the voucher form">
+  Fill in the form for the type you chose. Each type uses a stepper:
+  - **Step 1** (type name): Name, description, and the type-specific settings (e.g. value for Allowance, discount for Discount, buy/get quantities for BOGOF or BOGOD, bundle for Meal Deal, price band for Voucher Priceband Switch)
+  - **Step 2**: When the voucher applies—date range, time of day, days of the week, and sessions
+  - **Step 3**: Where it applies—which terminals (outlets)
+  - **Step 4**: Which products or product groups it applies to (include or exclude)
+  - **Step 5**: Optional terms and conditions
+
+  Click **Save** when you have finished.
+</Step>
+</Steps>
+
+## Editing a Voucher
+
+To edit an existing voucher:
+
+1. Use the search box to find the voucher, then select it from the results
+2. Click on the voucher or use the "Edit" action
+3. Update the details as needed
+4. Click "Save" to apply changes
+
+## Assigning Vouchers to Members or Member Groups
+
+Vouchers can be assigned to individual members or to member groups.
+
+### Assigning to an individual member
+
+1. Open the [Member](/enterprise/pages/member/member) page
+2. Use the search box to find the member, then open their details
+3. In the member form, find the **Vouchers** section and select the voucher(s) to assign to that member
+4. Save the member
+
+That member will then have access to the selected vouchers.
+
+### Assigning to a member group
+
+1. Open the [Member Group](/enterprise/pages/member/member-group) page
+2. Create a new group or edit an existing one
+3. In the group form, find the **Vouchers** section and select the voucher(s) to associate with the group
+4. Save the group
+
+All members in that group will then have access to the selected vouchers (e.g., for use at the till or in ordering).
+
+## Birthday and Registration Vouchers
+
+Member groups can be configured with:
+
+- **Birthday voucher**: A voucher awarded to the member on their birthday
+- **Registration loyalty**: A loyalty program assigned when a member registers in that group
+
+These are set on the Member Group when editing the group, not on the Voucher page itself.
+
+## Best Practices
+
+- **Clear naming**: Use descriptive names so staff and members can identify vouchers easily
+- **Review validity**: Set or review validity dates so expired promotions don’t appear
+- **Members or groups**: Assign vouchers to individual members for one-off access, or to member groups for targeted campaigns
+
+## Related Documentation
+
+<CardGroup cols={2}>
+<Card title="Member" icon="user" href="/enterprise/pages/member/member">
+  Assign vouchers to individual members.
+</Card>
+
+<Card title="Member Group" icon="users" href="/enterprise/pages/member/member-group">
+  Assign vouchers to member groups.
+</Card>
+
+<Card title="Loyalty" icon="star" href="/enterprise/pages/incentives/loyalty">
+  Configure loyalty programs (assignable to members or member groups).
+</Card>
+
+<Card title="Incentives" icon="ticket" href="/enterprise/pages/incentives/overview">
+  Return to the Incentives overview.
+</Card>
+
+<Card title="Configuration" icon="cog" href="/enterprise/pages/configuration">
+  Return to the Configuration section overview.
+</Card>
+</CardGroup>

@@ -1,0 +1,106 @@
+---
+title: "Client Devices"
+description: "Manage client device registrations and access in the Management Portal"
+---
+
+## Overview
+
+The Client Devices page lets you manage **client devices**—devices or applications that are registered to access your organisation’s systems (e.g. APIs, mobile apps, or other integrations). You can add devices, generate or manage API keys, and control which devices are allowed to connect.
+
+## Accessing the Client Devices Page
+
+Navigate to **Configuration > Admin > Client Devices** in the navigation menu.
+
+## Viewing Client Devices
+
+Use the search box at the top to find client devices; results load in a modal showing device or application name, identifier or type, status, last used or created date, and API key status.
+
+## Adding a Client Device
+
+<Steps>
+<Step title="Open the Client Devices page">
+  Navigate to **Configuration > Admin > Client Devices**.
+</Step>
+
+<Step title="Create new device">
+  Click the **+** icon to add a client device.
+</Step>
+
+<Step title="Enter device details">
+  Fill in:
+  - **Name**: A clear name for the device or application (e.g. "Warehouse app", "Reporting service")
+  - **Description** or **Identifier**: Optional; helps identify the device later
+  - Any other required fields shown in your system
+</Step>
+
+<Step title="Save the device">
+  Click Save to register the device.
+</Step>
+
+<Step title="Generate API key (if required)">
+  If the device uses an API key to authenticate, use the "Generate API Key" action. Copy and store the key securely; it is shown only once.
+</Step>
+</Steps>
+
+## API Keys
+
+Many client devices authenticate using an **API key**:
+
+- **Generate API Key**: Creates a new key for the device. Store it securely; it might not be shown again in full
+- **Regenerate**: If supported, regenerating a key invalidates the old one. Update the key in the device or application immediately
+- **Revoke / delete**: Removing or revoking a key stops that device from connecting until a new key is issued
+
+<Warning>
+Treat API keys like passwords. Do not share them or commit them to code repositories. Rotate keys if they may have been exposed.
+</Warning>
+
+## Editing a Client Device
+
+To edit an existing device:
+
+1. Search for the device and select it from the results in the modal
+2. Click **Edit**
+3. Update the name, description, or other fields
+4. Click Save
+
+## Checking Device Usage
+
+Before deleting a device, check if it is in use:
+
+1. Open the device and use the Usage or Get Usage action
+2. Review where or how the device is referenced (e.g. integrations, logs)
+3. If it is in use, plan to update or replace those references before deleting
+
+## Deleting a Client Device
+
+<Warning>
+Deleting a client device will revoke its access. Any application or integration using that device or its API key will stop working until reconfigured with a new device or key.
+</Warning>
+
+1. Ensure nothing critical still depends on this device (check usage)
+2. Search for the device and select it from the results in the modal
+3. Click **Delete**
+4. Confirm the deletion
+
+## Best Practices
+
+- **Descriptive names**: Use names that identify the app or use (e.g. "POS Backup Service", "Mobile App – Production")
+- **One device per purpose**: Register separate devices for different applications or environments so you can revoke access per app
+- **Rotate keys**: Periodically regenerate API keys and update the client application
+- **Audit**: Use the [Audit](/enterprise/pages/admin/audit) page to review activity related to client devices
+
+## Related Documentation
+
+<CardGroup cols={2}>
+<Card title="Audit" icon="clipboard-list" href="/enterprise/pages/admin/audit">
+  View audit logs including client device activity.
+</Card>
+
+<Card title="Users" icon="user" href="/enterprise/pages/admin/users">
+  Manage user accounts and permissions.
+</Card>
+
+<Card title="Configuration" icon="cog" href="/enterprise/pages/configuration">
+  Return to the Configuration section overview.
+</Card>
+</CardGroup>

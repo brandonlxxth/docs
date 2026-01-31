@@ -1,0 +1,34 @@
+---
+title: Management Portal 2025.20
+---
+
+This release adds Price Band scheduling, improves pricing import/export with product references and barcodes, and delivers key bug fixes including French language voucher issues, stock reports, and receipt explorer times.
+
+
+## ✨ Features
+
+| Internal Ticket ID | Description |
+|:-------------------|:----------------------------------------------|
+| 869a1f98z | Added support for managing Price Band scheduling (requires upcoming terminal release) |
+
+## 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869a1tpda | Added Product Reference to the Pricing import to allow easy exports and imports |
+| 869a4rrny | Include Product Reference and Barcode on the Stock Verification screen |
+
+
+## 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869aak3h1 | Vouchers created while using French language mode would prevent vouchers executing on Terminals |
+| 869aakaym | Standardised separators for price import/export while in French language mode |
+| 869a59ra4 | Existing product depletion rules blocked decimal entry into the value |
+| 869aa1p9y | Removed the QR code tab from the "Everyone" member |
+| 869a9y09b | Empty External Reference's 3/4 would prevent the Member Import processing |
+| 869a753p6 | Stock to Cash reports would not include excel formulas for calculations |
+| 869a970f0 | Table open date time is not shown in local time on the Receipt Explorer |
+
+---

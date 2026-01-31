@@ -1,0 +1,11 @@
+---
+title: Terminal 1.10.7.30
+---
+
+Small bug fix for Ohaus weighing scale driver
+
+## 🐞 Bug Fixes
+
+| Internal Ticket ID | Issue | Resolution 
+|:------------|:-----------------------------|:------------------------------|
+| 8698ef34p | For Ohaus scales, if the tare weight for a product was more than the actual weight, we would attempt to calculate a negative value causing an exceptionally large product price  | We now handle this scenario with an error showing 'Scale is empty or item weight too low'

@@ -1,0 +1,155 @@
+---
+title: "Users"
+description: "Manage user accounts, roles, and outlet override permissions in the Management Portal"
+---
+
+## Overview
+
+The Users page lets you manage who can log in to the Management Portal. You create users, assign them a [role](/enterprise/pages/admin/user-roles), and can optionally override their outlet access and [restrictions](/enterprise/pages/admin/restriction) per user so they only see and do what they need.
+
+## Accessing the Users Page
+
+Navigate to **Configuration > Admin > Users** in the navigation menu.
+
+## Viewing Users
+
+Use the search box at the top to find users; results load in a modal showing user name, email, role, status, and other key details.
+
+## Creating a User
+
+<Steps>
+<Step title="Open the Users page">
+  Navigate to **Configuration > Admin > Users**.
+</Step>
+
+<Step title="Create new user">
+  Click the **+** icon to create a new user.
+</Step>
+
+<Step title="Enter user details">
+  On the **User** tab, fill in:
+  - **Name**: Full name of the user
+  - **Email**: Email address (used to log in)
+  - **Password**: Initial password (for new users)
+  - **Phone number**: Optional
+  - **Reference**: Optional reference or ID
+  - **User role**: Select the role that defines this user's permissions
+  - **Time zone**: Select the user's time zone
+  - **Landing page**: Choose which page the user sees after login
+</Step>
+
+<Step title="Set outlet permissions (optional)">
+  Go to the **User Outlet Permissions** tab if you want to limit this user to specific outlets (see [User outlet override permissions](#user-outlet-override-permissions) below).
+</Step>
+
+<Step title="Set restriction overrides (optional)">
+  Go to the **User Restriction** tab if you want to add extra restrictions for this user (see [User restriction override](#user-restriction-override) below).
+</Step>
+
+<Step title="Save the user">
+  Click Save to create the user.
+</Step>
+</Steps>
+
+## Editing a User
+
+To edit an existing user:
+
+1. Search for the user and select them from the results in the modal
+2. Click **Edit**
+3. Update details on the User tab (name, email, role, time zone, landing page, etc.)
+4. Adjust **User Outlet Permissions** or **User Restriction** as required
+5. Click Save
+
+## User Outlet Override Permissions
+
+By default, a user can access all outlets that their **user role** is allowed to access. You can override this so a user only has access to certain outlets.
+
+### How It Works
+
+1. **User role** defines which outlets the role can access (configured in [User Roles](/enterprise/pages/admin/user-roles) under the Outlets tab).
+2. **User outlet override** limits this specific user to a subset of those outlets.
+
+### Setting Outlet Overrides for a User
+
+1. Edit the user and go to the **User Outlet Permissions** tab
+2. Check **Override user outlet roles** to enable outlet overrides for this user
+3. In the outlet selector, select only the outlets this user should be able to access
+4. Save the user
+
+<Info>
+If you do not check "Override user outlet roles", the user will have access to all outlets allowed by their role. Once you override, they will only see and work with the outlets you select.
+</Info>
+
+<Warning>
+You can only select outlets that the user's role is allowed to access. You cannot grant access to outlets the role does not have.
+</Warning>
+
+### When to Use Outlet Overrides
+
+- **Regional staff**: Limit a user to outlets in their region
+- **Single-site users**: Restrict to one or a few outlets
+- **Temporary access**: Limit new or temporary users to specific locations
+- **Compliance**: Ensure users only see data they are authorised to see
+
+## User Restriction Override
+
+In addition to their role, you can apply extra **restrictions** to a user. Restrictions are defined by name on the [Restriction](/enterprise/pages/admin/restriction) page. When a user has a restriction, the system **hides all entities** (e.g. products, outlets) that have that same restriction assigned—so the user cannot see or access those entities.
+
+### Setting Restriction Overrides for a User
+
+1. Edit the user and go to the **User Restriction** tab
+2. Check **Override user restriction** to enable restriction overrides for this user
+3. Select the restrictions that apply to this user (entities with these restrictions will be hidden from this user)
+4. Save the user
+
+<Info>
+If you do not override, the user is subject only to the restrictions assigned to their role. When you override, you choose exactly which restrictions apply to this user; entities with those restrictions will be hidden from them.
+</Info>
+
+## Other User Options
+
+- **Invite user**: When creating a user, you can send an invite instead of setting a password
+- **Landing page**: Control which page the user sees first after login (e.g. Dashboard, Stock, Recent activity)
+- **Time zone**: Ensures dates and times display correctly for the user
+- **Change password**: Use the Change Password button when editing a user to set a new password
+- **Terminal alerts**: When the Terminal Alerts tab is shown, configure terminal alerts for this user
+- **Reports**: When the Reports tab is shown, configure which reports this user can access
+
+## Deleting a User
+
+<Warning>
+Deleting a user is permanent. The user will no longer be able to log in. Ensure the user is no longer required before deleting.
+</Warning>
+
+1. Search for the user and select them from the results in the modal
+2. Click **Delete**
+3. Confirm the deletion
+
+## Best Practices
+
+- **Principle of least privilege**: Give users the minimum role and outlet access they need
+- **Use outlet overrides**: Use User Outlet Permissions for users who should only see certain locations
+- **Use restriction overrides**: Use User Restriction when a user needs tighter limits than their role
+- **Review regularly**: Periodically review user access to remove or update old accounts
+- **Strong passwords**: Encourage users to set strong passwords and use Change Password when resetting
+
+## Related Documentation
+
+<CardGroup cols={2}>
+<Card title="User Roles" icon="users" href="/enterprise/pages/admin/user-roles">
+  Configure roles and role outlet access.
+</Card>
+
+<Card title="Restriction" icon="lock" href="/enterprise/pages/admin/restriction">
+  Define restrictions you can assign to users and roles.
+</Card>
+
+<Card title="Audit" icon="clipboard-list" href="/enterprise/pages/admin/audit">
+  View audit logs of user activity.
+</Card>
+
+<Card title="Configuration" icon="cog" href="/enterprise/pages/configuration">
+  Return to the Configuration section overview.
+</Card>
+</CardGroup>

@@ -1,0 +1,34 @@
+---
+title: Terminal 1.10.7.27
+---
+
+Pay at Table support, Kiosk info & sub menu re-designed, Freedompay FCC integration now includes card scheme reporting & small bug fixes.
+
+## ✨ New Features
+#### 8694r1rjd -  Customers can now pay bills quickly & easy at their seats with our new Pay at Table interface 🍴
+Using a smartphone, the customer will scan a QR code to locate their bill, check it and pay using a credit card. Compatible with network selling master terminals, also includes new alerts & support information for Pay at Table features. 
+
+## 🚀 Enhancements
+#### 86972k2ha - A sleek & intuitive re-design for picking sub products or viewing information on Kiosks 🍔
+- New popup menu design to improve user journey when adding sub products, CLOSE button replaced with SKIP (select nothing) OR CONTINUE (added 1+ items), basket total & count always visible when menu is active, information buttons now displayed for sub product options
+
+![Kiosk Sub Product Selection](/release-notes/terminal-assets/1.10.7.27-KioskProductSubMenu.png)
+- New product information screen with a much cleaner look, popup is now white box with back border, descriptions show a 100 character limit preview with a more button to display full description, allergen icons are now shown in a smaller list, nutrition now displays energy first with 4 additional traffic light icons & qualifiers.
+
+![Kiosk Product Information](/release-notes/terminal-assets/1.10.7.27-KioskProductInfo.png)
+
+| Internal Ticket ID | Description |
+|:------------|:-----------------------------|
+| 86982cyuj | FreedomPay EFT for K2 & Windows now reports card scheme data (Visa, Mastercard, AMEX etc.)
+| 8695hcr2g | K2 now supports Datalogic Quickscan 2430 barcode scanner
+| 86972g6p3 | New developer options to override automated task manager restart in Windows devices
+| 869656wdu | New developer tools for sync testing
+---
+
+## 🐞 Bug Fixes
+
+| Internal Ticket ID | Issue | Resolution
+|:------------|:-----------------------------|:-----------------------------|
+| 86987eax5 | K2/Windows RFideas readers were misreading generic HID Prox cards as iClass and read different card tokens compared to previous versions | When no HID card profiles are configured for iClass we revert to generic prox reading.
+| 8696c8bau | K2 Fortress account interface would show an account payment error on the first tender selection after reboot | API registration is now handled correctly when the Fortress API is first used after rebooting the K2
+---

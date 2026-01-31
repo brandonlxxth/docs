@@ -1,0 +1,44 @@
+---
+title: Terminal 1.10.8.9
+---
+
+FreedomPay, Self Checkout, KMS, Clover REST Pay and Stock Transfer improvements, plus minor bug fixes.
+
+
+## 🚀 Enhancements
+
+| Internal Ticket ID | Feature | Description |
+|-------------------|--------|-------------|
+| 8698f5qt4 | FreedomPay EFT configuration enhancements | FreedomPay EFT interfaces now include new configuration options to control AFCC/FCC behavior. Logging during driver loading has also been improved. Users can now control more store-and-forward (offline) configuration. |
+| 869a6u6yd | Clover REST Pay EFT OAuth authentication update | The interface now manages access tokens automatically to align with updated Clover OAuth security standards. |
+| 869b7h07t | Honeywell Gen7 Mini DB scanner support | K2 HID drivers now support the Honeywell Gen7 Mini DB barcode scanner. |
+| 869ajeazz | KMS order action buttons repositioned | KMS orders now display print and action buttons at the top of the ticket when selected. Operator experience is improved. Legacy bottom button placement remains available via configuration. |
+| 8699yrcg3 | Pay at Table improvements | General fixes and improvements applied to the Pay at Table system. |
+| 8699nc912 | SCO Kappture Accounts and Allowance Vouchers support | Self Checkouts now support Kappture Accounts and Allowance Vouchers, including full and partial payments. Includes an optional setting to display member account balances during transactions and settle outstanding balance |
+| 86998dykz | Self-Checkout NFC and QR member identification | Self Checkouts now support scanning NFC and Kappture QR codes for member identification. |
+| 8699zyeub | EFT-only Self-Checkout mode | Self Checkouts now support a mode for EFT payments only, without prompting for member identification. Not enabled by default. Member Identification Type must be set to **None**. |
+| 8699yrcg3 | Operator key barcode scanning for Self-Checkout | Self Checkouts now support scanning operator key barcodes for manage order and home screen access. This speeds up the elevation process. The standard logon UI does not support barcode scanning. |
+| 8699nu93f | Restricted stock transfer destinations | K-Stock Transfer now supports restricting allowed destination outlets. By default, all outlets are shown. |
+
+## 🐞 Bug Fixes
+
+| Internal Ticket ID | Issue | Resolution |
+|-------------------|------|------------|
+| 86991yz8q | FreedomPay Android EFT Update PED dialog display issues | The Update PED dialog now formats text correctly and displays accurate installed package information. |
+| 869aeexf4 | Kiosk out-of-stock items re-enabled after idle timeout | Improved out-of-stock handling to prevent product buttons from being re-enabled after idle timeout on the Kiosk UI. |
+| 869bacmpa | Missing French language translations | Updated UI with the latest French translations and text wrap fixes to resolve display issues. |
+| 869bau3bn | Text and button truncation in portrait UI | Optimized wait dialogs, support, advanced support, and selected Kiosk UI pages to prevent text being cut off or overlapping buttons. |
+| 8699g4nrw | Self-Checkout assistance light always green when session closed | Assistance light now correctly shows red when no session is open |
+| 8696caq16 | France Fiscalisation receipt header text too small | Fiscal receipt headers now display with a larger text size. |
+| 8696carya | France Fiscalisation totals included discounts | Document summary totals now exclude discounts. |
+| 8696caq16 | Missing version data on France fiscalisation receipt footer | Fiscal receipt footers now include management portal version information. |
+| 869a6u6yd | Clover REST Pay EFT transaction failures after database clearing | Payment request data format updated to prevent duplicate request errors after terminal database clearing. |
+| 869bhp3pa | Clover REST Pay network retry UI fails despite successful PED request | EFT dialog now correctly handles retry scenarios when the PED connection succeeds on a subsequent attempt. |
+
+#### Versioning Information
+
+| Library | Version |
+|:--------|:--------|
+| Terminal Host EPOS | 1.10.8.9 |
+| Terminal Logic | 1.10.8.0 |
+| Terminal EFT | 10.0.0.49 |

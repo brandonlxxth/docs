@@ -1,0 +1,38 @@
+---
+title: Terminal 1.10.7.50
+---
+
+Various EFT enhancements & fixes. Cash drawer printer pass-through support for K2s. System keyboard updates for various locales. 
+
+## ⚠️ Breaking Changes
+
+| Internal Ticket ID | Change | Mitigation Action(s) 
+|:------------|:-----------------------------|:------------------------------|
+| 8694mfbqp | Payworks Android builds now require devices running Android 7.1 or higher. Payworks Miura mode has been removed | PAX A920 devices limited to Android 5 firmware & any Miura devices must be replaced.
+
+## 🚀 Enhancements
+
+| Internal Ticket ID | Enhancement | Description
+|:------------|:-----------------------------|:--------------------|
+| 8694mfbqp | Payworks PAX EFT interface upgraded to Paybutton 2.100.0 | Payworks Android distribution updated to include newer Payworks functionalities, including PAX A920 Pro support!
+| 8699t7zd6 | K2 printer drivers now support cash drawers | Enabling cash drawer printer mode will send all cash drawer events to the printers cash drawer port instead of the PoS port. This should only be utilized as a backup if the K2/K2C terminal's cash drawer port cannot be used.
+| 8698gp616 | FreedomPay K2 interface now supports PT (Portugal) region | PT mode will set expected Portugal configuration in the FCC configuration & push PT specific PAL files to Lane 3600 device only. 
+| 8698gp616 | Minor improvements to K2 FCC interface | Support UI configuration now shows more information + support for enabling Debug4 level logging in FCC client logging.
+| 8698ut959 | System keyboard now supports Portugal specific characters | Using Portugal locale will display additional Portuguese characters when using the system keyboard
+| 8699rqqxu | Added Customer Data UI function for PT fiscalisation only | Not enabled in non PT modes, included for future Fiscalisation work
+
+
+## 🐞 Bug Fixes
+
+| Internal Ticket ID | Issue | Resolution 
+|:------------|:-----------------------------|:------------------------------|
+| 8698ajeg6 | FreedomPay EFT transactions completed on a network selling peer would create an incorrect invoice number | NS peers will now always use the correct Kappture external order-id as the FreedomPay invoice number. All platforms (both FCC & AFCC based) are now fixed.
+| 8699wu5hm | French system keyboard fixes | The French locale system keyboard was missing some global symbols & French-exclusive characters. The orange/blue shift buttons were also placed incorrectly compared to other locale modes.
+
+
+#### Versioning Information ⚙️
+| Library | Version 
+|:------------|:----------------|
+| Terminal Host EPOS | 1.10.7.50
+| Terminal Logic | 1.10.1.19
+| Terminal EFT | 10.0.0.42

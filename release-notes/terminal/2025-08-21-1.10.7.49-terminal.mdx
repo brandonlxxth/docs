@@ -1,0 +1,25 @@
+---
+title: Terminal 1.10.7.49
+---
+
+Kappture's Fortress account integration now supports E-cash wallet payments!
+
+## 🚀 Enhancements
+
+| Internal Ticket ID | Enhancement | Description
+|:------------|:-----------------------------|:--------------------|
+| 869745max | Fortress account interface updated to support E-cash debits/refunds | New mode for E-cash payments to allow customers to pay using their Fortress E-cash balance. Post Transaction Only and Member Identification modes are still supported & configured using  the management portal.
+
+## 🐞 Bug Fixes
+
+| Internal Ticket ID | Issue | Resolution 
+|:------------|:-----------------------------|:------------------------------|
+| 8698b21mk | Fixed issue where Fortress pass scans were ignored after registration | If registration was done during the account transaction process, the first VTAP/barcode scan would be ignored. Operators no longer have to cancel and re-select the tender to scan correctly.
+
+
+#### Versioning Information ⚙️
+| Library | Version 
+|:------------|:----------------|
+| Terminal Host EPOS | 1.10.7.49
+| Terminal Logic | 1.10.1.19
+| Terminal EFT | 10.0.0.41

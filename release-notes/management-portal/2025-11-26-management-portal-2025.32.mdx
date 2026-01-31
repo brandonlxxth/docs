@@ -1,0 +1,29 @@
+---
+title: Management Portal 2025.32
+---
+
+This release introduces Order to Par Level functionality for efficient stock ordering and restores "All" and "None" buttons for outlet selection in Report Options. Bug fixes address product reference searching in Stock Orders, Revenue Event outlet permissions, Stock Validator help text, Count Sheet information display, Account Top Up duplicate submissions, receipt signature lines, Pay at Table QR code validation, and Stock Movement maximum quantity enforcement.
+
+
+## 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869azvym1 | Added "Order to Par Level" functionality to automatically pre-fill order quantities based on Min, Standard, or Max par levels for selected location and supplier |
+| 869atnrtg | Restored "All" and "None" buttons for outlet selection in Report Options to reduce clicks when selecting multiple outlets |
+| 869b85knx | Corrected button order in Product Challenge configuration (Add and Copy buttons) |
+
+## 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869axvyz0 | Product Reference field is now included when searching for products to add to Stock Orders |
+| 869b4gf0p | Revenue Event outlet selection now correctly respects user outlet permissions and no longer modifies outlets the user cannot access |
+| 869b7kh57 | Stock Validator help text for "Has Price" and "Has Stock" columns has been restored |
+| 869b44eby | Added information modal to Count Sheet configuration pages that displays which periods the count sheet is assigned to |
+| 869azupz1 | Account Top Up save button is now disabled after clicking to prevent duplicate top-ups from multiple clicks |
+| 869axkx9k | Empty signature lines in Receipt editor no longer create blank signature lines on receipts |
+| 869b8d8gx | Stock Opening, Stock Requisition, and Stock Close screens now enforce maximum product line quantity of 1,000,000 to prevent invalid data entry |
+
+---
+

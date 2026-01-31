@@ -1,0 +1,25 @@
+---
+title: Terminal 1.10.8.2
+---
+
+Support for new K2C cashdrawer driver & small hotfixes.
+
+## 🚀 Enhancements
+
+| Internal Ticket ID | Feature | Description 
+|:------------|:-----------------------------|:------------------------------|
+| 8699wcx97 | Added new cashdrawer serial driver for K2C 24VRJ11 variant  | A new configuration option is available to utilize newer cashdrawer ports on K2Cs. **K2 terminals must be upgraded to OS 1.0.29 to use this feature**
+
+## 🐞 Bug Fixes
+
+| Internal Ticket ID | Issue | Resolution 
+|:------------|:-----------------------------|:------------------------------|
+| 869b2may0 | Syncing the date & time on a K2 could sometimes fail when recieving date/time from the network time server | Date parsing fixed when manually syncing OS clock
+| 869b23r7u | Terminals could crash during re-identification when remotely drop synced after authorising EFT transactions | EFT suspect transaction checking now handles re-identification process correctly.
+
+#### Versioning Information ⚙️
+| Library | Version 
+|:------------|:----------------|
+| Terminal Host EPOS | 1.10.8.2
+| Terminal Logic | 1.10.8.0
+| Terminal EFT | 10.0.0.43

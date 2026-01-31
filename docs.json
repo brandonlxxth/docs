@@ -1,11 +1,21 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Kappture Customer Documentation",
+  "name": "Kappture",
   "colors": {
-    "primary": "#18233f",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#e62177",
+    "light": "#f073a3",
+    "dark": "#b81d5f"
+  },
+  "styling": {
+    "appearance": {
+      "background": {
+        "color": {
+          "light": "#ffffff",
+          "dark": "#15171C"
+        }
+      }
+    }
   },
   "favicon": "/favicon.svg",
   "navigation": {
@@ -14,35 +24,9 @@
         "tab": "Guides",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Overview",
             "pages": [
-              "index",
-              "quickstart",
-              "development"
-            ]
-          },
-          {
-            "group": "Customization",
-            "pages": [
-              "essentials/settings",
-              "essentials/navigation"
-            ]
-          },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "index"
             ]
           },
           {
@@ -51,53 +35,39 @@
               "enterprise/overview",
               "enterprise/getting-started",
               "enterprise/authentication",
-              "enterprise/navigation"
-            ]
-          },
-          {
-            "group": "Management Portal Pages",
-            "pages": [
-              "enterprise/pages/analytics",
-              "enterprise/pages/configuration",
-              "enterprise/pages/stock",
-              "enterprise/pages/ordering",
-              "enterprise/pages/cash-management",
-              "enterprise/pages/parent-pay",
-              "enterprise/pages/fiscal"
-            ]
-          },
-          {
-            "group": "Member Management",
-            "pages": [
-              "enterprise/pages/member/account",
-              "enterprise/pages/member/member-import",
-              "enterprise/pages/member/member",
-              "enterprise/pages/member/member-group",
-              "enterprise/pages/member/member-group-management",
-              "enterprise/pages/member/cost-centre"
-            ]
-          },
-          {
-            "group": "Management Portal Features",
-            "pages": [
-              "enterprise/features/stock-management",
-              "enterprise/features/product-management",
-              "enterprise/features/site-management"
-            ]
-          },
-          {
-            "group": "Break & Run",
-            "pages": [
-              "break-and-run/overview",
-              "break-and-run/installation",
-              "break-and-run/usage"
-            ]
-          },
-          {
-            "group": "Game modes",
-            "pages": [
-              "break-and-run/game-modes/standard-modes",
-              "break-and-run/game-modes/killer"
+              "enterprise/navigation",
+              {
+                "group": "Admin",
+                "pages": [
+                  "enterprise/pages/admin/audit",
+                  "enterprise/pages/admin/users",
+                  "enterprise/pages/admin/user-roles",
+                  "enterprise/pages/admin/restriction",
+                  "enterprise/pages/admin/connected-account",
+                  "enterprise/pages/admin/client-devices"
+                ]
+              },
+              {
+                "group": "Incentives",
+                "pages": [
+                  "enterprise/pages/incentives/overview",
+                  "enterprise/pages/incentives/voucher",
+                  "enterprise/pages/incentives/loyalty",
+                  "enterprise/pages/incentives/reward",
+                  "enterprise/pages/incentives/game"
+                ]
+              },
+              {
+                "group": "Member Management",
+                "pages": [
+                  "enterprise/pages/member/account",
+                  "enterprise/pages/member/member-import",
+                  "enterprise/pages/member/member",
+                  "enterprise/pages/member/member-group",
+                  "enterprise/pages/member/member-group-management",
+                  "enterprise/pages/member/cost-centre"
+                ]
+              }
             ]
           }
         ]
@@ -110,6 +80,20 @@
             "group": "API documentation",
             "pages": [
               "api-reference/introduction"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Release notes",
+        "groups": [
+          {
+            "group": "Release notes",
+            "pages": [
+              "release-notes/index",
+              "release-notes/management-portal",
+              "release-notes/api",
+              "release-notes/terminal"
             ]
           }
         ]
@@ -132,7 +116,8 @@
   },
   "logo": {
     "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "dark": "/logo/dark.svg",
+    "href": "/"
   },
   "navbar": {
     "links": [

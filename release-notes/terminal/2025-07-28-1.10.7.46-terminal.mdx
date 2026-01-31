@@ -1,0 +1,41 @@
+---
+title: Terminal 1.10.7.46
+---
+
+Our new self-checkout software is here! It's fast, easy to use, and built for a smoother retail experience.
+
+This release also includes translation updates, FreedomPay additions & small bug fixes.
+
+
+## 🚀 Enhancements
+
+| Internal Ticket ID | Enhancement | Description
+|:------------|:-----------------------------|:--------------------|
+| 86983avnr | Support for new retail targeted self checkout UI for Kappture K2 terminals. | New UI type (host=till-sco) targeting retail grade self checkout <ul><li> Supports EFT payments only</li><li> Scanning or selecting products via layouts or searching</li><li>Assistance calls/operator login functions to handle issues</li><li>Selecting bags using UI</li><li>RPC network messaging to standard terminals for remote assistance & remote age approvals</li><li>Discount UIs to show customer savings during payment process</li><li>Integration with external member identification, Boxtec assistance light bulb & Boxtec customer facing camera.</li></ul>|
+| 8698gp3wy | Support for Portuguese language (locale=pt_PT) | All text strings currently translated as of the PREVIOUS release, any new features, including the Self Checkout software are not yet translated. 
+| 86991gkgy | Support for Eagle Eye account integration for external member lookup | Communicates with internal API with defined customer configurations 
+| 8698jqfmn | Updated FreedomPay K2 integration to support Lane 3000 UPP devices | Packages compataible with older and newer signed Lane 3000 devices.
+| 8698pfnrk | PoS terminals now support remote assistance & product approval type alerts | Using local network link, terminals can recieve alerts and remotely approve product challenge (age verification) requests. Sales screens can now display Assistance Required for operator visibility | 
+| 8698rrmt8 | Support for Honeywell 7990G scanner |
+| 8698v1fdj | Support for Boxtec assistance light driver using USB connection | Support screen includes test tool for checking light connection, checking firmware and colour states.
+| 8698v1fjx | Support for Boxtech secondary display camera | Camera stream will play during transactions for SCO type terminals only, using Boxtech second display. Camera is for display only, video is not recorded or stored! Requires K2 OS 1.0.26
+| 8698gp3wy | Updated French & Swedish translations | All text strings currently translated as of the PREVIOUS release, any new features, including the Self Checkout software are not yet translated.
+| | Support for checking K2 secure boot status
+
+## 🐞 Bug Fixes
+
+| Internal Ticket ID | Issue | Resolution 
+|:------------|:-----------------------------|:------------------------------|
+| 8698t44yv | Fixed issue in legacy SCO software (till-self) where image data would not load correctly | UI will now pull down S3 optimized images and display them in menus.
+| 8698nd2kn | Removed warnings in Pay at Table which could display if a local order cannot be found when checking for active orders | Warnings no longer displayed as they served no purpose to the operator. The system log will still include these errors, if present.
+| 8699acrb4 | Issue where the Pay at Table server would still perform some operations even if Pay at Table was not enabled | All functions should now read Pay at Table configuration parameters as expected. 
+| 86999ajvh | Resolved issue with K2 printer drivers where Epson M30III would report false driver errors despite being all ok | Printer status checking modified to accomodate slower response in print jobs
+| 86984fahv | Resolved issue with QSR interface where table check updates inconsistent when updated by network selling peers | All QSR updates will use the correct QSR check data from the master terminal.
+| 8698qh9re | Fixes for K2C integrated NFC reading
+
+#### Versioning Information ⚙️
+| Library | Version 
+|:------------|:----------------|
+| Terminal Host EPOS | 1.10.7.46
+| Terminal Logic | 1.10.1.19
+| Terminal EFT | 10.0.0.41

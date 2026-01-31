@@ -1,0 +1,57 @@
+---
+title: "Restriction"
+description: "Manage system restrictions and access controls in the Management Portal"
+---
+
+## Overview
+
+Restrictions are labels you create here by **name** only. You assign them to [User Roles](/enterprise/pages/admin/user-roles) (User Role Restriction tab) or override them per [User](/enterprise/pages/admin/users) (User Restriction tab). They work by **hiding entities** that have the matching restriction: when a user has a restriction, they cannot see any entity (e.g. product, outlet, site) that has that same restriction assigned. For example, a product tagged "Confidential" is only visible to users who do *not* have the "Confidential" restriction.
+
+Navigate to **Configuration > Admin > Restriction** in the navigation menu.
+
+## Viewing Restrictions
+
+Use the search box at the top to find restrictions; results load in a modal showing name and whether each restriction is in use.
+
+## Creating a Restriction
+
+1. Click the **+** icon to create a new restriction.
+2. Enter a **name** (e.g. "Confidential", "Regional only"). Use a name that makes it clear what the restriction is for.
+3. Click **Save**.
+
+## Assigning to Roles and Users
+
+- **To a role**: [User Roles](/enterprise/pages/admin/user-roles) → edit the role → **User Role Restriction** tab → select the restrictions.
+- **To a user**: [Users](/enterprise/pages/admin/users) → edit the user → **User Restriction** tab → check **Override user restriction** → select the restrictions.
+
+Entities with those restrictions will be hidden from users who have them (via role or user override).
+
+## Editing and Deleting
+
+- **Edit**: Search for the restriction and select it from the results in the modal, click **Edit**, change the **name**, then Save. Changes affect all roles, users, and entities using it.
+- **Delete**: Use **Usage** / **Get Usage** to see where the restriction is used. Remove it from all roles, users, and entities first. Search for the restriction, select it from the results, then click **Delete**.
+
+<Warning>
+Do not delete a restriction that is still assigned to any role, user, or entity. Remove it from all of those first.
+</Warning>
+
+## Best Practices
+
+- Use clear, descriptive names so it's obvious what each restriction is for.
+- Review usage periodically; avoid creating duplicate restrictions for the same rule.
+
+## Related Documentation
+
+<CardGroup cols={2}>
+<Card title="User Roles" icon="users" href="/enterprise/pages/admin/user-roles">
+  Assign restrictions to roles (User Role Restriction tab).
+</Card>
+
+<Card title="Users" icon="user" href="/enterprise/pages/admin/users">
+  Override restrictions per user (User Restriction tab).
+</Card>
+
+<Card title="Configuration" icon="cog" href="/enterprise/pages/configuration">
+  Return to the Configuration section overview.
+</Card>
+</CardGroup>

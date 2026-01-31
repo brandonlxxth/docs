@@ -1,0 +1,108 @@
+---
+title: "User Roles"
+description: "Configure user roles, permissions, and outlet access in the Management Portal"
+---
+
+## Overview
+
+User roles define what users can see and do in the Management Portal. Each role has a set of **permissions** (e.g. manage products, view reports, manage stock) and can be scoped to specific **outlets**. Users are assigned one role; you can then override outlet access and restrictions for individual users on the [Users](/enterprise/pages/admin/users) page.
+
+Navigate to **Configuration > Admin > User Roles** in the navigation menu.
+
+## Viewing User Roles
+
+Use the search box at the top to find roles; results load in a modal showing role name and whether the role is in use.
+
+## Creating a Role
+
+<Steps>
+<Step title="Create new role">
+  Click the **+** icon to create a new role.
+</Step>
+
+<Step title="Enter role name">
+  Enter a clear name for the role (e.g. "Site Manager", "Stock Controller", "View Only").
+</Step>
+
+<Step title="Set permissions by tab">
+  Use the tabs to grant permissions. Each tab groups related permissions:
+  - **Configuration**: Members, cost centres, incentives, campaigns, management (products, layouts, operators, etc.), vision, terminals, mobile app
+  - **Analytics**: Dashboard, reports, activity, events, heatmaps
+  - **Stock Control**: Stock alerts, administration, stock take, dashboard, orders, deliveries, returns, transfers, adjustments, requisitions (if Stock module is enabled)
+  - **Online Ordering**: Events, dashboards, self-service, product stock (if Ordering/Click & Collect is enabled)
+  - **Cash Management**: Revenue and cash-related permissions (if Revenue module is enabled)
+  - **Vision**: Display and vision configuration
+  - **Engineer App**: Engineer app and terminal-related permissions
+  - **Outlets**: Which outlets this role can access (see [Outlets tab](#outlets-tab) below)
+  - **User Role Restriction**: Which restrictions apply to this role (see [User Role Restriction tab](#user-role-restriction-tab) below)
+  - **Fiscal** / **Parent Pay**: Additional tabs if those modules are enabled
+</Step>
+
+<Step title="Set outlet access">
+  Open the **Outlets** tab and select the outlets for this role (see [Outlets tab](#outlets-tab) below).
+</Step>
+
+<Step title="Set restrictions for the role">
+  Open the **User Role Restriction** tab and select any restrictions that apply to everyone with this role.
+</Step>
+
+<Step title="Save the role">
+  Click **Save** to create the role.
+</Step>
+</Steps>
+
+## Outlets Tab
+
+The **Outlets** tab is where you define which outlets a role can access. The outlet selector shows your site/outlet hierarchy. Select each outlet (or parent) that this role should work with; leave outlets unchecked if the role should not see or use them. Users assigned this role will, by default, have access to all selected outlets. Individual users can be restricted to a subset of these outlets via [User outlet override permissions](/enterprise/pages/admin/users#user-outlet-override-permissions) on the Users page.
+
+<Warning>
+You must select at least one outlet (or the equivalent in your hierarchy) for the role; otherwise users with this role may have no outlet access.
+</Warning>
+
+Examples: **Head office role** — select all outlets. **Site manager role** — select only the outlets for that site. **Single-outlet role** — select one outlet for staff who work in one location only.
+
+## User Role Restriction Tab
+
+The **User Role Restriction** tab lets you attach [restrictions](/enterprise/pages/admin/restriction) to the role. Restrictions work by **hiding entities** that have the matching restriction assigned: when a user has a restriction (via their role or user override), they cannot see any entity (e.g. product, outlet) that has that same restriction. Select the restrictions that should apply to everyone with this role. Users can have additional restrictions applied via [User restriction override](/enterprise/pages/admin/users#user-restriction-override) on the Users page.
+
+## Editing a User Role
+
+To edit an existing role: search for the role, select it from the results in the modal, then click **Edit**. Change the name and/or permissions on the relevant tabs, update the **Outlets** or **User Role Restriction** tabs as required, then click **Save**.
+
+<Info>
+If a role is in use, you can still edit it. Changes apply to all users with that role. Consider impact before changing permissions or outlet access.
+</Info>
+
+## Checking Role Usage
+
+Before deleting a role, check how many users use it: edit the role and click **Usage** or **Get Usage** to see which users or other references use it. If the role is in use, reassign those users to another role before deleting.
+
+## Deleting a User Role
+
+<Warning>
+You can only delete a role that is not in use. Delete or reassign all users with this role first.
+</Warning>
+
+Ensure no users are assigned to the role (check usage), search for the role and select it from the results, click **Delete**, and confirm.
+
+## Best Practices
+
+- **Meaningful names**: Use role names that reflect the job (e.g. "Site Manager", "Stock Clerk").
+- **Least privilege**: Grant only the permissions and outlets the role needs.
+- **Document roles**: Keep a short note or policy of what each role is for and who should have it.
+
+## Related Documentation
+
+<CardGroup cols={2}>
+<Card title="Users" icon="user" href="/enterprise/pages/admin/users">
+  Assign roles and set user outlet override permissions.
+</Card>
+
+<Card title="Restriction" icon="lock" href="/enterprise/pages/admin/restriction">
+  Define restrictions used in roles and user overrides.
+</Card>
+
+<Card title="Configuration" icon="cog" href="/enterprise/pages/configuration">
+  Return to the Configuration section overview.
+</Card>
+</CardGroup>

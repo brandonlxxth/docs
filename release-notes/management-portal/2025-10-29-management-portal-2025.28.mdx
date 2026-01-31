@@ -1,0 +1,25 @@
+---
+title: Management Portal 2025.28
+---
+
+This release improves outlet saving functionality and fixes Stock Take report filtering. Bug fixes address Receipt Explorer overpayment display, voucher product references, delivery report formatting, user permissions, and product creation issues.
+
+
+## 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869awkmbf | Fixed outlet saving functionality to prevent failures when saving immediately |
+| 869ahckhk | Fixed Stock Take reports to properly filter to specific count sheet after reset |
+
+## 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869ay3d08 | Resolved a security exploit that allowed unauthorized terminal configuration changes. This fix prevents terminals from being forced into unintended states such as network selling, remote printing, or RPC mode |
+| 869axkapd | Receipt Explorer now properly displays overpayment information on printed receipts |
+| 869apzhmv | Product references are now visible for products already in vouchers in the new management portal |
+| 869auhv1p | Delivery report headings no longer show data in wrong places when reference is empty |
+| 869amxwa5 | User override permissions no longer default to 'all' when changing language preferences |
+| 869axupdx | Product creation no longer fails when form lines exceed 2048 lines |
+| 869axvp3y | Product creation no longer fails when reporting name exceeds 50 characters |

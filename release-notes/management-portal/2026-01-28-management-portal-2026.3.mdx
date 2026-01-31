@@ -1,0 +1,21 @@
+---
+title: Management Portal 2026.3
+---
+
+This release improves navigation and user experience with sidebar menu loading fixes, Kiosk Menu Group reorganization, and enhanced Kiosk Menu configuration options. It also adds performance optimizations for enterprise applications, new Self Checkout terminal options, and disables the BRISK tab to prevent accidental configuration changes. Bug fixes address Account Flash Report conversion calculations for doubles and 2-pint servings.
+
+
+## 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869bxt0nm | Fixed sidebar navigation flash that occurred on page load by rendering menu state server-side instead of relying on JavaScript |
+| 869bxenx5 | Improved www-enterprise application performance and authentication with Redis/Valkey optimizations, increased thread pool capacity, consolidated connections, and enhanced security measures |
+| 869bwjbrr | Enhanced Kiosk Menu page with improved modal display, scrollable content, and added minimum/maximum limits (9999) for product options |
+| 869buk38q | Moved Kiosk Menu Group from Configuration > Management to Self Service Ordering navbar and renamed Menus to Kiosk Menus for improved navigation consistency |
+| 869bmd6bn | Implemented Kiosk Menu Group functionality without requiring new sync tables, allowing menu groups to be assigned to products and processed during kiosk menu saves |
+| 869brfkxc | Disabled BRISK tab on web portal terminal page to prevent accidental configuration changes that could impact BRISK functionality |
+| 869bu0jjt | Added "Show Account Balance" option to Self Checkout (SCO) terminal configuration to support terminal version 1.10.8.9 |
+
+
+---

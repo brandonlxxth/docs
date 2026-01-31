@@ -1,0 +1,16 @@
+---
+title: Terminal 1.10.7.23
+---
+
+Bug fixes for identified customer issues with K-stock & weighing scales. 
+
+## 🐞 Bug Fixes
+
+| Internal Ticket ID | Issue | Resolution 
+|:------------|:-----------------------------|:------------------------------|
+| 8697xz4wu | Ohaus weight scale driver maximum weight errors would break communications with the PoS even after the error was cleared. | Communications will no longer break. We now display a 'Scale is overloaded' warning if the error occurs during weighing. Any weighing result which returns 0.00 as the calculated price is now ignored during weighing.
+| 869846ndw | In K-stock, deleting a product on the count sheet while counting/requesting stock would cause a sync services error preventing data from posting. | Deleted product lines are now ignored and all data will post as expected.
+| 869849a26 | In the K-stock Manager UI type, sync changes could cause the stock count list to reset while scrolling or searching for products. | K-stock manager UI now enforces critical state checks to prevent changes while UI is active. 
+| 86984fbr2 | K-stock outlet to outlet transfers wouldn't post the correct product data when confirming transfer. | Transfer data is now posted correctly
+| 86985qwgh | If the operator gets warned trying to close a K-stock period with outstanding transfers, going to accept a transfer could get the transfer stuck in the list. | Critical state check is now cleared correctly when moving directly from stock close to the stock accept screen.
+---

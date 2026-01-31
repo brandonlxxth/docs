@@ -1,0 +1,50 @@
+---
+title: Terminal 1.10.8.0
+---
+
+Configure dynamic pricing with new price band scheduling functionality! New configuration options for tenders. Various smaller enhancements and fixes. Terminal services will now default to new production environment.
+
+## ⚠️ Breaking Changes
+
+| Internal Ticket ID | Change | Mitigation Action(s) 
+|:------------|:-----------------------------|:------------------------------|
+| 869av12zm | Terminal builds will now default to the new production services environment. Legacy services can still be manually set via the identification screen as a backup | Customer networks must permit the latest requirements outlined in our networking configuration document.
+
+## 🚀 Enhancements
+
+| Internal Ticket ID | Enhancement | Description
+|:------------|:-----------------------------|:--------------------|
+| 8698urxzr | Support for price band scheduling | We now support configuring time-based schedules to change pricing for terminals of your choice. We allow a flexible range of schedule types including date ranges, time ranges or specific days of week (Monday, Tuesday etc.)
+| 8698urxzr | Support for terminal price band overrides | It's now possible to set a price band override on the terminal, this makes it much easier to control a terminal's pricing without changing session configurations
+| 8698urypv | Support for overpayment type configuration on tenders | Tenders now support the ability to control overpayments with a selection of modes: <ul><li> **Not Allowed** will stop operators with an error message when attempting to over-pay </li><li> **Forfeit** will include overpayment values in data but not process them as change or gratuity</li><li>**Gratuity** will now show a value confirmation to the operator when attempting to overpay to prevent potential mistakes</li><li>**Change** remains the same and is only configurable on Cash/Cash Foreign Currency tender types</li></ul>
+| 8699e26a4 | SCO terminals now support pre-emptive notification of product approvals | When a restricted product is added to the basket, an Approval Needed message will be shown on the UI, the assistance light will change to an orange colour to notify staff
+| 8699c9h6g | Added a backspace button to the SCO product search keypad | Clear button is now replaced by holding down the backspace button
+| 869a8391e | K-stock outlet-to-outlet transfers will now include a completion message | When the transfer is completed, a dialog will appear showing **Stock transfer sent** 
+| 8699fr7t | Improved SCO remote assistance alerts on standard terminals | The **Assistance Required** banner will now take the operator to the home screen when pressed, the banner now flashes with a blinking animation
+| 869a4qgm9 | Eagle Eye & Kappture API account interface improvements | Both account UIs now include a **Processing** dialog, selecting the Cancel button will now ignore late/out-of-sequence API requests, network errors will now display a unique message instead of a generic API error
+
+## 🐞 Bug Fixes
+
+| Internal Ticket ID | Issue | Resolution 
+|:------------|:-----------------------------|:------------------------------|
+| 8699dznee | If a terminal failed to send a SCO product approval confirmation, the error dialog text wasn't correct | Warning adjusted to display appropriate context
+| 8699eqgud | The Kiosk UI was inconsistent when accepting/not accepting product barcode scans | Product barcode scans will only be accepted on the Kiosk Sales & Checkout screens. All previous UI states will ignore barcode scans
+| 8699jgaq9 | Removed paperless receipt button from the SCO orders UI | Feature is not implemented for SCO so button has been removed
+| 8699vn2nn | The second screen display UI would sometimes become broken when operators closed the Orders UI | Second screen UI will now always close the paperless UI correctly when needed
+| 869af4z0z | Refunding an order while the paperless UI is active could break the second screen display UI | Refunding an order will now display appropriate second screen contents regardless of its state
+| 8699pumbx | Operator promotion dialogs could become broken and inaccessible if logon code or PIN length was excessively long | All operator logon dialogs now enforce a 10 digit maximum input length for logon code and PIN entry 
+| 8699y69kn | Menu configuration like name, image product or maximum selections would not update unless the parent sales layout was updated | All menu sync changes will now sync down correctly without the need for primary layout changes or database reload
+| 8699q7maz | K2 magstripe readers would not read magnetic cards with values greater than 6 digits | K2 magstripe readers can now read up to 12-digit values on Track2 data. If Track2 is not found then Track1 data will be returned instead
+| 8699knb25 | SCO UI would allow customers to select to pay with 0.00 total | The pay button will now be disabled if the total is 0 or less
+| 8699mw85r | The Manage Order UI on the SCO would reset scroll position when the operator modified a product line | Scroll position is now maintained so the operator is not disrupted when modifying products in the current order
+| 869a4ajv3 | Voucher reporting products could unexpectedly target the wrong product line if an operator did a part payment & added more discounted products to the order | Voucher reporting lines will now always report correctly if discounted products are added after partial tender lines 
+| 869aa2jcz | In Portrait view, the order list became narrower than expected, reducing the space available to display previous orders. | Column width issue corrected to show the expected dimensions for Portrait devices
+| 86955v3mw | When a terminal configuration change occurred, the terminal would unexpectedly display the home screen | Sync changes for terminal data will no longer disrupt the terminals current UI state
+| 8699mba0p | The terminal support screen would display the Assistance Light option when the assistance light wasn't configured | The option will only display if the assistance light is configured. 
+
+#### Versioning Information ⚙️
+| Library | Version 
+|:------------|:----------------|
+| Terminal Host EPOS | 1.10.8.0
+| Terminal Logic | 1.10.8.0
+| Terminal EFT | 10.0.0.43

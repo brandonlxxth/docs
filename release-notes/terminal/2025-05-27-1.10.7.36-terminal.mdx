@@ -1,0 +1,41 @@
+---
+title: Terminal 1.10.7.36
+---
+
+Castles EFT device integrations, general EFT enhancements & fixes + Android 14 compatability. Fix issue releasing refund orders.
+
+## 🚀 Enhancements
+
+| Internal Ticket ID | Enhancement | Description
+|:------------|:-----------------------------|:--------------------|
+| 8697xme4k | Updated Adyen EFT interface to support Android Castles Saturn 1000 (S1F2) all in one device | Supported on Adyen specific Android S1F2 only
+| 86963vdfq | Support for FreedomPay Castles Android EFT interface | Supports Castles Saturn 1000 (S1F2 & S1F4) using AFCC 1.54.0
+| 8698wrc30 | Implemented EFT Printer Manager for Castles Saturn device printing using Adyen or FreedomPay | Supports printing Kappture receipts, bills, eft receipts & test prints. Receipt logo, report & cash slip printing are not supported on these devices.
+| 8694xjbpy | EFT payment tenders are now added to orders as soon as possible | Orders made using EFT interfaces are now completed immedietly after authorisation has been acquired. We no longer wait for the operator to select Close on the EFT success dialog screen and commit the tender payment behind the dialog. This change is the default behaviour but has NOT been applied to the following interfaces: Global Payments, Bank of Ireland, Windcave & Sixpay MPD.
+| 8694xjbpy | Support for reporting suspect EFT transactions | This will log a terminal event record for any EFT transactions which resulted in outcomes of failure, uncertain or authorisations being completed without a tender line added. Each record will include order transaction data to allow easier investigation & tracking of potential EFT discrepancies and failures. 
+| 8694kpk3w | Support for Android 14 | Android 14 is now supported by Kappture Android apps. 
+| 8698azeqn | EFT interface updates to support card last four data (PAN) | Support added for the following interfaces: Swedbank, FreedomPay (K1), Clover RESTPay & Nepting (K1).
+| 8698da4n6 | Small Adyen EFT improvements | Enabled Adyen EFT driver for K1 platform, added operator friendly error messages for min/max value responses, make card scheme data logging standard
+| 86957j02b | K2 Freedompay updates for Republic of Ireland region | Added support for Ingenico Lane 3600/3600TS PAL packages. Will be loaded when configured with region ROI & device type Lane 3600 UPP.
+| 8697yg7rw | Android build upgrades & improvements
+| 8696acnkf | Terminal logic testing tools
+| 86963vdfq | FreedomPay AFCC updated from 1.50.0 to 1.54.0 for K1 platform
+
+## 🐞 Bug Fixes
+
+| Internal Ticket ID | Issue | Resolution 
+|:------------|:-----------------------------|:------------------------------|
+| 8698b1gkd | Fixed issue where starting a refund order & releasing without paying it off would break the active bar order | Order data is stored correctly, refund orders can no longer break and cause issues closing session
+| 8695ggj33 | K2/Windows Freedompay EFT would always display & map card transaction failed for expected refusal outcomes from FCC (for example a cancel or decline) | All responses with decision code R (refusal) are mapped to cancelled. Card transaction failed is no longer displayed unless decision code F (failure) is given.
+| 8697dqm1b | Logging out the guest operator on Kiosk or Quickserve could cause issues placing transactions on the next order | The guest op will now correctly log back in if an operator attempted to sign out the guest op. 
+| 8698b0c8r | Kiosk product info & sub product menus had several alignment issues | All product info & sub product menu UI properties are now correctly aligned
+| 869656wdu | Sync load test tool issue | Resolved mismatched dialogs
+| 8698by4tn | Sync load test tab was displayed in the advanced support screen by default despite being un-usable for non developers | Tab is now hidden correctly when developer mode is not enabled
+| 8697v9cbt | Lots of small fixes & code improvements |
+
+#### Versioning Information ⚙️
+| Library | Version 
+|:------------|:----------------|
+| Terminal Host EPOS | 1.10.7.36
+| Terminal Logic | 1.10.1.16
+| Terminal EFT | 10.0.0.38

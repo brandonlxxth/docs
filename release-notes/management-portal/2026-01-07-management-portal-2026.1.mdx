@@ -1,0 +1,24 @@
+---
+title: Management Portal 2026.1
+---
+
+This release enhances reporting capabilities with Product Configuration Report improvements, adds QR Ordering data to Event Site Summary reports, and expands Accounts Flash Report functionality. Bug fixes address Layout Designer background image display, product report CSV export handling for products with commas, and depletion rule quantity validation.
+
+
+## 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869bkr3m8 | Enhanced Product Configuration Report to include Tax Band Group Override field and separated multiple barcodes into individual columns (Barcode 1, Barcode 2, etc.) |
+| 8698z63ab | Added QR Ordering data to Event Site Summary report to provide comprehensive event overview |
+| 8698z60dg | Enhanced Accounts Flash Report with additional tabs and integrated QR Report data |
+
+## 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869bm8yc1 | Fixed Layout Designer to display background images on 720x1400 large button layouts, improving visibility of interface elements in light mode |
+| 869bcdpek | Fixed product reports with "Download Data Only" option to correctly handle products containing commas in CSV exports, preventing data from being split across multiple cells |
+| 869bgqk47 | Added quantity validation to depletion rule configuration with minimum 0.0001 and maximum 1,000,000.999999 limits, and disabled information display when no product is set |
+
+---

@@ -1,0 +1,100 @@
+---
+title: "Loyalty"
+description: "Configure loyalty point strategies and programs in the Management Portal"
+---
+
+## Overview
+
+The Loyalty page lets you configure loyalty point strategies. Members earn points on qualifying orders; when their points reach the threshold you set, their account is credited. Loyalty programs can be assigned to **individual members** or to **member groups**—for example on registration or on purchases—so members in that group earn points and can redeem them.
+
+<Info>
+You can set a default loyalty and **Registration Loyalty** (with **Registration Points** for points on registration) per **member group**. See [Member](/enterprise/pages/member/member) and [Member Group](/enterprise/pages/member/member-group) for assigning to members and groups.
+</Info>
+
+## Viewing Loyalty Programs
+
+When you open the Loyalty page, you'll see a **search box at the top**. Type your search (e.g., loyalty program name) and results will load in a modal below. Each result shows the program name and key settings.
+
+## Creating a Loyalty Program
+
+<Steps>
+<Step title="Open the Loyalty page">
+  Navigate to **Configuration > Incentives > Loyalty** in the navigation menu.
+</Step>
+
+<Step title="Create new loyalty program">
+  Click the **+** icon to create a new loyalty program.
+</Step>
+
+<Step title="Enter program details">
+  Fill in the loyalty program in the stepper. Each step covers:
+  - **Step 1 (Loyalty)**: Name, Description, Currency, Award Account, Earn Conversion Rate (e.g. 1 point per £0.50 spent), Award Threshold, Award Conversion Rate (e.g. £0.01 per point). Presets appear in the dropdowns.
+  - **Step 2**: When the program applies—date range, time of day, days of the week, and sessions
+  - **Step 3**: Where it applies—which terminals (outlets)
+  - **Step 4**: Which products or product groups count toward earning points (include or exclude)
+  - **Step 5**: Optional Terms & Conditions
+</Step>
+
+<Step title="Save the program">
+  Review the details and click "Save" to create the loyalty program.
+</Step>
+</Steps>
+
+## Editing a Loyalty Program
+
+To edit an existing loyalty program:
+
+1. Use the search box to find the program, then select it from the results
+2. Click on the program or use the "Edit" action
+3. Update the settings as needed
+4. Click "Save" to apply changes
+
+## Assigning Loyalty to Members or Member Groups
+
+Loyalty programs can be assigned to individual members or to member groups.
+
+### Assigning to an individual member
+
+1. Open the [Member](/enterprise/pages/member/member) page
+2. Use the search box to find the member, then open their details
+3. In the member form, find the **Loyalty** section and select the loyalty program(s) to assign to that member
+4. Save the member
+
+That member will then be enrolled in the selected loyalty program(s).
+
+### Assigning to a member group
+
+To assign a loyalty program to a member group (e.g., so members earn points when they register):
+
+1. Open the [Member Group](/enterprise/pages/member/member-group) page
+2. Create a new group or edit an existing one
+3. In the group form, open the **Configuration** tab for **Registration Loyalty** and **Registration Points** (points on registration), or the **Loyalty** tab to assign which loyalty programs apply to the group
+4. Select the registration loyalty program and set **Registration Points** (number of points on registration) if needed
+5. Save the group
+
+Members who register in that group will then receive the configured loyalty and registration points.
+
+## Best Practices
+
+- **Clear rules**: Document how points are earned and redeemed for staff and members
+- **Review regularly**: Periodically review point balances and expiry rules
+
+## Related Documentation
+
+<CardGroup cols={2}>
+<Card title="Member" icon="user" href="/enterprise/pages/member/member">
+  Assign loyalty programs to individual members.
+</Card>
+
+<Card title="Member Group" icon="users" href="/enterprise/pages/member/member-group">
+  Assign loyalty programs to member groups.
+</Card>
+
+<Card title="Voucher" icon="ticket" href="/enterprise/pages/incentives/voucher">
+  Create vouchers that can be used with loyalty.
+</Card>
+
+<Card title="Incentives" icon="star" href="/enterprise/pages/incentives/overview">
+  Return to the Incentives overview.
+</Card>
+</CardGroup>

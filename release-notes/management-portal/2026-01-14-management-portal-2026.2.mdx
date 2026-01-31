@@ -1,0 +1,18 @@
+---
+title: Management Portal 2026.2
+---
+
+This release fixes several reporting issues including Site Voucher Usage report grouping, quantity decimal precision in exports, Tender Tax Summary calculations for orders with multiple card transactions, Outlet Product Sales export column alignment, and Stock Adjustment report created date display.
+
+
+## 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869ay20rn | Fixed Site Voucher Usage report to correctly group vouchers by Site instead of by Outlet, displaying one voucher record per Site |
+| 869bc4rgn | Fixed report exports to display quantity values with consistent decimal precision (2 decimal places) matching the on-screen report display, preventing rounding discrepancies in split transactions |
+| 869axgjfd | Fixed Tender Tax Summary reports to correctly handle orders with multiple rows per tender type, preventing tax amounts from being multiplied incorrectly |
+| 869bp5uj3 | Fixed Outlet Product Sales report exports to prevent pricing columns from shifting when products have values in the Product Param column |
+| 869bntwep | Fixed Stock Adjustment report to correctly display the created date for adjustments instead of showing 01/01/0001 00:00 |
+
+---

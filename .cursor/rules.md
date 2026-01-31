@@ -227,8 +227,8 @@ Example of accordion groups:
 
 Example of cards and card groups:
 
-<Card title="Getting started guide" icon="rocket" href="/quickstart">
-Complete walkthrough from installation to your first API call in under 10 minutes.
+<Card title="Management Portal" icon="building" href="/enterprise/overview">
+Guides for the Management Portal.
 </Card>
 
 <CardGroup cols={2}>

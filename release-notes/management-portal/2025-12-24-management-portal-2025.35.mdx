@@ -1,0 +1,25 @@
+---
+title: Management Portal 2025.35
+---
+
+This release introduces KapptureFlow with initial stock management functionality including Stock, Products, Outlets pages, and Transfers. It also adds new payment processing APIs for Clover RestPay access token generation and additional FreedomPay terminal parameters. Bug fixes address Member Account Balance report execution with Member Groups and Audit logging for first-time user logins.
+
+
+## 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869auykzq | Added new REST API for Clover RestPay access token generation with OAuth support |
+| 869bf4gt8 | Added "Days to Keep Offline Transactions" parameter to FreedomPay terminal payment options |
+| 869bcf0gb | Added Order Button Location parameter field for KMS terminal types to configure button position |
+| 869bhvn81 | Introduced KapptureFlow with initial implementation including Stock Page, Products Page, Outlets Page, Transfers, and Stock Takes |
+| 869a5qt4e | Improved Transfer creation usability by repositioning Create and Cancel buttons for better accessibility |
+
+## 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869behcjh | Fixed Member Account Balance report to correctly execute when a Member Group is selected by correcting parameter name in stored procedure |
+| 869b0edfn | Fixed Audit logging to record Log On events when users accept terms and conditions on their first login |
+
+---

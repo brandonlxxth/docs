@@ -1,0 +1,26 @@
+---
+title: Management Portal 2025.31
+---
+
+This release adds a date range picker to the Audit feature and fixes export functionality to return all pages. Bug fixes address Preparation Point Stock configuration validation, Site Voucher Usage report grouping, Event Tender report filtering, Operator PIN requirements, Operator Role deletion handling, and Pay at Table QR code generation.
+
+
+## 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869b4y0ak | Added date range picker to the Audit feature and fixed export to return all pages instead of only the currently viewed page |
+
+## 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869au60yn | Preparation Point Stock configuration now prevents adding duplicate products to the same configuration |
+| 869ay20rn | Site Voucher Usage report now correctly groups vouchers by Site instead of by Outlet |
+| 869b5505x | Tender filter now works correctly on Event Site Tenders, Event Outlet Tenders, Event Terminal Tenders, and Event Outlet Type Tenders reports |
+| 869b5er4w | Operator PIN field is no longer required when security type is set to None |
+| 862jtmzrn | Operator Role deletion now prevents deletion when operators are assigned to the role, preventing data corruption and Operator Configuration report errors |
+| 869b5xu57 | Pay at Table QR code generator now enforces minimum 1 and maximum 9999 table validations, fixes search box typing issues, and improves URL preview field functionality |
+
+---
+

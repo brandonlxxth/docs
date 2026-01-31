@@ -1,0 +1,81 @@
+---
+title: "Connected Account"
+description: "Manage connected accounts for integrations in the Management Portal"
+---
+
+## Overview
+
+The Connected Account page lets you manage **connected accounts**—integrations with external services or platforms that your organisation uses with the Management Portal. You can add, configure, and access these connections from one place.
+
+## Accessing the Connected Account Page
+
+Navigate to **Configuration > Admin > Connected Account** in the navigation menu.
+
+## Viewing Connected Accounts
+
+Use the search box at the top to find connected accounts; results load in a modal showing account or integration name, service type, status, and last used or linked date.
+
+## Adding a Connected Account
+
+<Steps>
+<Step title="Open the Connected Account page">
+  Navigate to **Configuration > Admin > Connected Account**.
+</Step>
+
+<Step title="Create new connection">
+  Click the **+** icon to add a connected account.
+</Step>
+
+<Step title="Choose account type">
+  Select the type of account or service you want to connect (e.g. payment provider, accounting software, CRM).
+</Step>
+
+<Step title="Enter connection details">
+  Fill in any required details (name, identifiers, or options) as shown in the form.
+</Step>
+
+<Step title="Save or start setup">
+  Click Save or the button that starts the connection process.
+</Step>
+
+<Step title="Complete setup (if redirected)">
+  If you are sent to the external service (e.g. to log in or authorise), complete the steps there. When finished, you are returned to the Management Portal and the account will show as connected.
+</Step>
+</Steps>
+
+## Setup and Dashboard Links
+
+- **Setup**: For some account types, use the "Setup" action to start or complete the connection (e.g. OAuth or login with the external service)
+- **Dashboard**: For some integrations, use the "Dashboard" action to open the external service’s dashboard or admin page
+
+<Info>
+The exact steps and options depend on which integration or service you are connecting. Follow the on-screen instructions for each account type.
+</Info>
+
+## Editing or Disconnecting
+
+- If the page allows editing, open the connected account and change details as needed, then Save
+- To disconnect or remove a connection, use the delete or disconnect option and confirm
+
+<Warning>
+Disconnecting or deleting a connected account can affect any features that rely on it (e.g. payments, sync). Confirm impact before disconnecting.
+</Warning>
+
+## Best Practices
+
+- **Document purpose**: Note which connected accounts are used for (e.g. "Live payments", "Accounting export")
+- **Secure access**: Only allow trusted staff to add or change connected accounts
+- **Review regularly**: Periodically review connected accounts and remove unused or obsolete connections
+- **Follow provider docs**: Use the external service’s documentation for setup and security (e.g. API keys, OAuth)
+
+## Related Documentation
+
+<CardGroup cols={2}>
+<Card title="Users" icon="user" href="/enterprise/pages/admin/users">
+  Manage who can access the Management Portal.
+</Card>
+
+<Card title="Configuration" icon="cog" href="/enterprise/pages/configuration">
+  Return to the Configuration section overview.
+</Card>
+</CardGroup>

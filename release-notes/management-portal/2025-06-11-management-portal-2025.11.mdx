@@ -1,0 +1,38 @@
+---
+title: Management Portal 2025.11
+---
+
+This release improves audit logs, includes sale/refund cancellations in journals, adds client device support, and updates the default product type settings for stock management. It also fixes issues with Biometric scanning, stock period assignments, user permissions, product imports, and reward configurations.
+
+
+## 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869959gzt | Improved Audit log when changing the default label measurements |
+| 8698ndexj | Include Sale/Refund cancels in the Journal |
+| 8699b0fjh | Client Device Support |
+| 8699a8d6a | Updated Default Product Type when Stock Management is enabled |
+
+## 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 8699dhjgx | Users were unable to scan new biometrics for members |
+| 8699cayr6 | Copying an Operator Role would modify the original record |
+| 8698v96pc | Stock take periods would be closed when assigning a new period to an outlet |
+| 86997ua46 | Incorrect user permission against Product Labels |
+| 86999apy7 | Incorrect user permission against Operator |
+| 86998e62e | Stock Delivery report incorrectly showing Filter and Favourite buttons |
+| 8698zyubk | Large Adjustments fail with a network error |
+| 8699a5hgd | Hidden UI Issue caused by low resoltion in Incentive configuration |
+| 8699913t6 | Operator availability would override all outlets, including ones the user couldn't see |
+| 86995f1kf | Receipt Explorer not displaying Products with specific configurations |
+| 86999jat8 | Receipt Explorer Minimum/Maximum filters not working as expected |
+| 869992wgt/8699ar69n/86994y4zb | Product import not saving all required data for Stock Availability, Product Groups and Product Challenge |
+| 86992gutc/869949krc  | Reporting date range calculation updates |
+| 86995921g/869959gr2 | Product Label Requests UI issues |
+| 869357fxk | Stock Orders not being moved to partially delivered status when a line is delivered with 0 quantity |
+| 86996vjjb | Include/Exclude Product configuration not saving on Rewards |
+
+---

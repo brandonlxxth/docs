@@ -1,0 +1,26 @@
+---
+title: Terminal 1.10.8.3
+---
+
+Hotfixes for account interfaces & FreedomPay EFT upgrades.
+
+## 🚀 Enhancements
+
+| Internal Ticket ID | Feature | Description 
+|:------------|:-----------------------------|:------------------------------|
+| 869atjke5 | FreedomPay AFCC libraries upgraded to 1.60.0  | Updated libraries for K1 and Android Castles platforms.
+
+## 🐞 Bug Fixes
+
+| Internal Ticket ID | Issue | Resolution 
+|:------------|:-----------------------------|:------------------------------|
+| 869b1jh7z | Fixed an issue in the Eagle Eye and KapptureAPI account interfaces where member scans were being processed at incorrect times, resulting in order discrepancies | Both interfaces now require account tenders to be selected before member scans are detected. All account drivers have been refactored to ensure peripheral events are handled only in the expected UI states |
+| 8696tpe3b | Savvy account interface UI was broken when selected | Savvy driver UI now fixed
+| 869av365c | Resolved various log warnings and errors for the Self Checkout UI | All errors and warnings addressed
+
+#### Versioning Information ⚙️
+| Library | Version 
+|:------------|:----------------|
+| Terminal Host EPOS | 1.10.8.3
+| Terminal Logic | 1.10.8.0
+| Terminal EFT | 10.0.0.44

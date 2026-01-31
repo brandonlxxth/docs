@@ -5,7 +5,7 @@ description: "Import members from CSV or other file formats into the Management 
 
 ## Overview
 
-The Member Import page allows you to import multiple members into the system at once from a file. This is useful for bulk member creation, updating existing members, or migrating member data from another system.
+The Member Import page lets you import multiple members into the system at once from a file. This is useful for bulk member creation, updating existing members, or migrating member data from another system.
 
 ## Preparing Your Import File
 
@@ -14,7 +14,7 @@ Before importing, prepare your member data file:
 ### Supported File Formats
 
 - **CSV (Comma-Separated Values)**: Most common format
-- **Excel files**: May be converted to CSV first
+- **Excel files**: Convert to CSV before importing
 
 ### Required Information
 
@@ -24,10 +24,10 @@ Your import file should include member information such as:
 - Email address
 - Phone number
 - Member number or ID
-- Other member details as configured
+- Other member fields as required for your setup
 
 <Info>
-The exact columns required depend on your organization's member configuration. Contact your administrator for a template file showing the required format.
+Contact your administrator for a template file showing the required column format.
 </Info>
 
 ### File Format Tips
@@ -49,7 +49,7 @@ The exact columns required depend on your organization's member configuration. C
 </Step>
 
 <Step title="Parse the file">
-  After uploading, click "Parse File" or similar to analyze the file structure. The system will:
+  After uploading, click "Parse File" to analyze the file structure. The system will:
   - Identify columns in your file
   - Map columns to member fields
   - Show a preview of the data
@@ -82,7 +82,7 @@ When you parse a file, the system shows:
 
 ### Column Mapping
 
-The system attempts to automatically map your file columns to member fields. You may need to:
+The system maps your file columns to member fields. You can:
 
 - Confirm automatic mappings are correct
 - Manually map columns that weren't recognized
@@ -98,35 +98,35 @@ A preview shows how your data will be imported:
 
 ### Validation Warnings
 
-The system may show warnings for:
+The system shows warnings for:
 
 - Duplicate email addresses
 - Invalid data formats
 - Missing required fields
-- Potential data issues
+- Other data issues
 
 <Warning>
-Review all warnings before importing. Some warnings may prevent members from being imported correctly.
+Review all warnings before importing. Warnings can prevent members from being imported correctly.
 </Warning>
 
 ## Import Options
 
-Depending on your configuration, you may have options for:
+The Import page offers options such as:
 
 ### Create New Members
 
-Import will create new member records for all rows in the file.
+Import creates new member records for all rows in the file.
 
 ### Update Existing Members
 
-Import will update existing members based on matching criteria (e.g., email or member number).
+Import updates existing members based on matching criteria (email or member number).
 
 ### Create or Update
 
-Import will create new members if they don't exist, or update existing members if they do.
+Import creates new members when they don't exist, and updates existing members when they do.
 
 <Info>
-The available import options depend on your organization's configuration. Contact your administrator for details about your import settings.
+Contact your administrator for details about import settings and which options are enabled.
 </Info>
 
 ## Handling Import Errors
@@ -149,7 +149,7 @@ If some members fail to import:
 
 ### Exporting Error Details
 
-You may be able to export a list of failed imports to help identify and fix issues.
+Use the Export option to download failed import details and fix issues.
 
 ## Best Practices
 
@@ -165,7 +165,7 @@ You may be able to export a list of failed imports to help identify and fix issu
 <AccordionGroup>
 <Accordion title="File won't upload">
   If your file won't upload:
-  - Check the file size (there may be size limits)
+  - Check the file size and any size limits shown on the page
   - Verify the file format is supported
   - Ensure the file isn't corrupted
   - Try saving the file in a different format (e.g., CSV instead of Excel)

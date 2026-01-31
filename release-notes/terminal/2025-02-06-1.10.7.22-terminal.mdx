@@ -1,0 +1,30 @@
+---
+title: Terminal 1.10.7.22
+---
+
+New permissions, improved Kiosk payments, better receipts, system environment support & small bug fixes. 
+
+## ✨ Features
+
+| Internal Ticket ID | Description |
+|:------------|:-----------------------------|
+| 8695y780v | Terminals now support environment & region selection. This can only be modified on the identification screen. Changing environment/region will drop all database files. Default configuration is Legacy > Europe.
+| 8692yckg0 | Added operator permissions to enable/disable the product search function on the sales UI (default behaviour is enabled if the permission is not configured)
+| 8696ncxhg | Added terminal configuration to enable/disable printing bills automatically when an order is split (default behaviour is enabled if the permission is not configured)
+| 8696eu650 | When a receipt is re-printed the title will include COPY to distinguish reprints. The X & Z report summary section now includes a reprint counter to track re-printed SALE orders
+| 8696eu66x | Swedbank EFT payments now support storing customer card receipt data merged in the SALE/REFUND receipt. The full merchant + customer print data will now be visible in the management portal receipt explorer 
+| 8696h6g6d | Customers can now part pay outstanding balance to EFT after scanning/tapping their Kappture member. Kiosk payment journey has been updated to show more information and better icons.
+| 8696h6dhx | Kiosk now supports external member identification using the Fortress account interface
+| 8696eu67z | Receipt header re-organized to show more information and fix issues where longer text would cut off easily
+
+## 🐞 Bug Fixes
+
+| Internal Ticket ID | Issue | Resolution
+|:------------|:-----------------------------|:-----------------------------|
+| 8697283wf | When a customer taps repeatedly on a Kiosk sub menu product the button could become unselectable. | Sub menu product buttons will now behave correctly.
+| 869743vqx | When a customer taps repeatedly on a Quickserve sub menu product the button could become unselectable. | Sub menu product buttons will now behave correctly.
+| 8697n2nrd | Printing a bill for an open order would display a close date/time line. | This line should never be displayed on a bill and has been removed. Normal table sale/refund includes the close date/time as expected.
+| 8697mf54v | K-stock product count sheet menus (verify, close, requisition, transfer) would reset scroll/search position to default if a relevant sync change applied to the terminal. | Stock menus with product count sheet functions now enforce critical state checks to postpone sync changes applying until ready.
+| 869712hbp | Various fixes and improvements to Swedbank EFT interface for Android
+| 8697hxyta | If a previously completed EFT order was refunded (& the EFT interface supports merged EFT receipts), we would include duplicate EFT receipt data in the completed refund receipt. | Refund EFT order will no longer include duplicate print data.
+---

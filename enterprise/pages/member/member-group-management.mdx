@@ -5,19 +5,15 @@ description: "Add and remove members from member groups in the Management Portal
 
 ## Overview
 
-The Member Group Management page allows you to manage which members belong to which groups. This is where you add members to groups, remove them from groups, and view the membership of each group.
+The Member Group Management page lets you manage which members belong to which groups. This is where you add members to groups, remove them from groups, and view the membership of each group.
 
 <Info>
-**Difference from Member Group**: The Member Group page is for creating and configuring groups themselves. The Member Group Management page is for managing which members are in each group.
+**Difference from Member Group**: The [Member Group](/enterprise/pages/member/member-group) page is for creating and configuring groups themselves. The Member Group Management page is for managing which members are in each group.
 </Info>
 
 ## Viewing Group Memberships
 
-When you open the Member Group Management page, you'll see:
-
-- A list of all member groups
-- For each group, you can view which members belong to it
-- Member information including name, email, and member number
+When you open the Member Group Management page, you'll see a **search box at the top**. Search for a member group by name; when you select a group, the members in that group load in a modal below. You can view which members belong to each group and see member name, email, and member number.
 
 ## Adding Members to a Group
 
@@ -27,14 +23,14 @@ When you open the Member Group Management page, you'll see:
 </Step>
 
 <Step title="Select a group">
-  Click on the member group you want to manage. The member list will load showing current members in that group.
+  Use the search box to find the member group you want to manage, then select it. The members in that group will load in the modal below.
 </Step>
 
 <Step title="Add members">
   To add members to the group:
-  - Use the search or filter to find members
+  - Use the search box to find members (by name, email, or member number)
   - Check the box next to each member you want to add
-  - Or use "Select All" to add all visible members
+  - Or use "Select All" to add all visible members in the results
   - The changes are saved automatically when you check/uncheck boxes
 </Step>
 </Steps>
@@ -61,15 +57,9 @@ The page shows all members in your system, with indicators showing which groups 
 - **Unchecked**: Member is not in the selected group
 - You can see membership across multiple groups
 
-## Searching and Filtering
+## Searching for Members
 
-Use the search and filter options to:
-
-- **Search by name**: Find members by typing their name
-- **Search by email**: Find members by email address
-- **Search by member number**: Find members by their member number
-- **Filter by status**: Show only active, inactive, or all members
-- **Filter by other groups**: See members who are in other specific groups
+Use the **search box at the top** to find members by name, email, or member number. Results load in the modal below. You can then add or remove members from the selected group by checking or unchecking the boxes.
 
 ## Bulk Operations
 
@@ -77,14 +67,14 @@ You can perform bulk operations on members:
 
 ### Add Multiple Members
 
-1. Use filters to narrow down the member list
-2. Check "Select All" to select all visible members
+1. Use the search box to narrow results
+2. Check "Select All" to select all visible members in the results
 3. All selected members will be added to the group
 
 ### Remove Multiple Members
 
 1. Select the group
-2. Use filters if needed to find specific members
+2. Use the search box to find specific members
 3. Uncheck "Select All" or individually uncheck members
 4. All unchecked members will be removed from the group
 
@@ -102,15 +92,15 @@ Members can belong to multiple groups simultaneously. For example, a member migh
 When a member is in a group, they:
 - Receive vouchers assigned to that group
 - Are included in campaigns targeting that group
-- May have access to group-specific features or pricing
+- Have access to group-specific features or pricing
 - Can be included in group-based reporting
 
 ## Best Practices
 
 - **Review memberships regularly**: Periodically review group memberships to ensure they're accurate
-- **Use filters effectively**: Use search and filters to find specific members quickly
+- **Use search effectively**: Use the search box to find specific members quickly
 - **Document changes**: Note when members are added or removed from important groups
-- **Verify before bulk operations**: Double-check filters before using "Select All" to avoid unintended changes
+- **Verify before bulk operations**: Double-check the results before using "Select All" to avoid unintended changes
 - **Keep groups focused**: Ensure members in a group actually meet the group's criteria
 
 ## Common Workflows
@@ -138,20 +128,18 @@ To move members from one group to another:
 
 To remove inactive members from a group:
 
-1. Filter members by status (inactive)
-2. Select the group
-3. Uncheck all inactive members
-4. They'll be removed from the group but remain in the system
+1. Select the group and use the search box to find inactive members
+2. Uncheck all inactive members in the results
+3. They'll be removed from the group but remain in the system
 
 ## Troubleshooting
 
 <AccordionGroup>
-<Accordion title="Member doesn't appear in group list">
+<Accordion title="Member doesn't appear in group results">
   If a member should be in a group but isn't showing:
   - Verify the member exists in the system (check the Member page)
   - Ensure you're looking at the correct group
-  - Check if filters are hiding the member
-  - Try searching for the member by name or email
+  - Try searching for the member by name or email in the search box
 </Accordion>
 
 <Accordion title="Can't add member to group">
@@ -174,8 +162,7 @@ To remove inactive members from a group:
 
 <Accordion title="Too many members to manage">
   If a group has too many members to manage easily:
-  - Use filters to narrow down the list
-  - Use search to find specific members
+  - Use the search box to narrow down results and find specific members
   - Consider using Member Import with group assignments
   - Break large groups into smaller, more specific groups
 </Accordion>
