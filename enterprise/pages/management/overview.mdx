@@ -1,0 +1,191 @@
+---
+title: "Management"
+description: "Configuration for day-to-day operations: layouts, products, pricing, sessions, operators, tenders, receipts, and how they link together"
+---
+
+## Overview
+
+The **Management** subsection (under **Configuration > Management**) is where you configure everything that drives day-to-day operations at your sites and outlets: what products are sold, how they are priced, how the till screen looks, who can operate the till, how customers pay, and how receipts and menus behave. These settings are used by **terminals** (point-of-sale devices) and, where applicable, by **self-service kiosks** and **ordering** flows.
+
+Because Management touches so many areas, it helps to understand how the main pieces link together before diving into individual pages. The sections below explain those links, then list every Management menu item and where it fits.
+
+## How Management pieces link together
+
+### Organisation: Sites, outlets, and outlet types
+
+Your organisation is structured as **Sites** containing **Outlets**. Each outlet has an **Outlet Type** (e.g. counter, drive-through, table service). Outlet Type is configured under **Configuration > Management > Outlet Type** and is used to standardise how outlets of the same type behave. When you create or edit an outlet (under **Configuration** or site/outlet management), you assign it a site and an outlet type. Outlets also hold the links to **sessions**, **layouts**, **vision**, and **pricing** described below.
+
+<Card title="Site Management" icon="store" href="/enterprise/features/site-management">
+  How to configure sites, outlets, outlet types, and preparation points.
+</Card>
+
+### Sessions: When the till is “open” and which price band and layout apply
+
+**Sessions** define named operational periods (e.g. “Breakfast”, “Lunch”, “Evening”). Each session has a **Price Band** assigned to it. When a terminal at an outlet is running “in” a session, the outlet uses that session’s price band for product prices and can use different **layouts** for that session.
+
+- **Sessions** — **Configuration > Management > Sessions**. Create sessions and assign each one a **Price Band**. Sessions are then linked to outlets: each outlet has a list of **outlet sessions**, and for each session you choose which **Layouts** the outlet uses (sales layout and, for table service, table layouts).
+- **Price Band** — Determines which set of product prices the customer pays. So: **Session → Price Band**; when the till is in that session, it uses that price band. Product prices are set **per outlet and per price band** (see Products and pricing below).
+- **Layouts** — The arrangement of buttons and content on the terminal screen. Layouts are **not** assigned to the outlet alone; they are assigned **per outlet and per session**. So the same outlet can show a “Breakfast” layout in the morning session and a “Lunch” layout in the afternoon session. You configure **Layouts** and **Table Layout** under Management; then on the **Outlet** form you configure **Outlet Sessions** and, for each session, choose the Sales layout and (if applicable) Table layouts.
+
+So the chain is: **Outlet** → has **Outlet Sessions** (each session has a **Price Band** and **Layouts**) → when the terminal is in that session, it uses that session’s **Price Band** for pricing and those **Layouts** for the screen.
+
+### Products and pricing: What you sell and what it costs per outlet and price band
+
+**Products** are your sellable items. **Product Prices** define how much each product costs — and prices are set **per outlet and per price band**. So the same product can have one price at Outlet A for “Standard” price band and a different price at Outlet B or for “Happy Hour” price band.
+
+- **Products** — **Configuration > Management > Products**. Create and maintain your product catalogue. Products can belong to **Product Groups**, have **Product Label** settings, **Allergen** information, **Product Tags**, and **Waste Reason** codes. **Product Challenge** (product restrictions) controls age verification or other checks when selling.
+- **Product Prices** — **Configuration > Management > Product Prices**. Set prices per product, per **Outlet**, and per **Price Band**. When editing prices for an outlet, you can filter the product list by **Product Groups** and **Product Tags** to view and edit a subset of products. Product price import is by company, site, or outlet and file—it does not filter by product group or tag. Because sessions use a price band, the active session at an outlet determines which of these prices the customer pays.
+- **Price Bands** — **Configuration > Management > Price Bands**. Define the bands (e.g. Standard, Member, Happy Hour). Each **Session** uses one price band; product prices are stored per price band per outlet.
+- **Price Band Groups** — **Configuration > Management > Price Band Groups**. Group price bands (e.g. for reporting or for voucher rules that apply to a whole group).
+- **Price Band Scheduler** — **Configuration > Management > Price Band Scheduler**. Schedule when a different price band applies (e.g. “Happy Hour” 4–6 pm). This works with sessions and outlets so that at the scheduled time the system can switch which price band (and thus which prices) are in effect.
+- **Product Groups** — **Configuration > Management > Product Groups**. Organise products into groups; used in product prices (filter the outlet price grid when editing prices for an outlet), menus, and reporting. Not used when importing product prices.
+- **Product Label** — **Configuration > Management > Product Label**. Configure how product names and labels appear on terminals.
+- **Product Challenge** — **Configuration > Management > Product Challenge**. Product restrictions and age verification requirements.
+- **Allergens**, **Course**, **Product Tags**, **Waste Reason** — Under **Configuration > Management**: configure allergens (attached to products), courses (used to group products in an order—terminals mark courses done, KMS shows courses in tabs at the top), tags for categorisation (attached to products), and waste reason codes for tracking waste. Used in terminals, reporting, and (where applicable) ordering and stock.
+
+<Card title="Product Management" icon="shopping-bag" href="/enterprise/features/product-management">
+  Product catalog, pricing, product groups, and product restrictions in detail.
+</Card>
+
+### Terminals: Where layouts, receipts, operators, and tenders come together
+
+**Terminals** are the physical (or virtual) point-of-sale devices. Each terminal belongs to an **Outlet**. The terminal uses:
+
+- **Layout** — Not set on the terminal itself; the outlet’s **Outlet Sessions** define which layout is used for each session (see Sessions above). So the terminal shows the layout for the session it is currently in.
+- **Receipt** — **Configuration > Management > Receipts**. Each terminal has a **Receipt type** (Print) assigned; receipts define the receipt template and printing behaviour.
+- **Resources** — **Configuration > Management > Resources**. Terminals can use a **Background image** (resource) for the till screen; the terminal configuration references the chosen resource.
+- **Operators** — Staff who log in at the terminal. **Operators** and **Operator Roles** are configured under **Configuration > Management > Operators** and **Operator Roles**. When an operator logs in at a terminal, their **Operator Role** determines what they can do. Orders and terminal session cash are tied to the operator who served.
+- **Tenders** — **Configuration > Management > Tenders**. Payment types (cash, card, etc.) used when taking payment at the terminal.
+- **Menus** — **Configuration > Management > Menus** (sale popup menus). Popup menus that appear on the terminal during sale (e.g. “Would you like a drink?”). **Self Service Menu** (Management) configures menus for **legacy self-service terminals**; for kiosk and self-service ordering menus, see **Configuration > Ordering > Self Service Ordering** (Kiosk Menu, Kiosk Menu Group).
+
+So: **Terminal** → belongs to **Outlet** → outlet has **Outlet Sessions** (each with **Layouts** and **Price Band**) → terminal uses **Receipt**, **Resource**, and **Tenders**; **Operators** log in and use **Operator Roles**; **Menus** define popups on the terminal.
+
+### Supporting configuration: Receipts, resources, checklist, messaging
+
+- **Receipts** — Receipt templates and print settings. Assigned per terminal (Receipt type). See Terminals above.
+- **Resources** — Images and assets (e.g. terminal background). Used by terminals and other areas that reference resources.
+- **Allergens** — Used by products; displayed where allergen information is shown (e.g. terminals, ordering).
+- **Course** — Course configuration for grouping products in an order; terminals mark courses as done; KMS shows courses in the tabs at the top.
+- **Product Tags** — Used for filtering and categorisation (e.g. in Product Prices, reporting).
+- **Waste Reason** — Reason codes when recording product waste (e.g. in stock or outlet waste).
+- **Outlet Type** — Assigned to outlets; standardises behaviour by type. See Organisation above.
+- **Checklist** — **Configuration > Management > Checklist**. Operational checklists (configuration and dashboard). Checklist events can be tied to operators and terminals.
+- **Messaging** (under Management) — **Send Message Templates**, **Terminal Message Templates**, **Send Message to POS**, **Message History**. Server and terminal message templates and sending messages to terminals in real time. Separate from **Configuration > Campaign** (member messaging and notification templates).
+- **Pay at Table** — **Configuration > Management > Pay at Table > QR Code Generator**. Generates QR codes for pay-at-table; requires the Pay at Table module.
+- **Receipt Portal** — **Configuration > Management > Receipt Portal > QR Code Generator**. Generates QR codes for receipt portal access; requires the Receipt Portal module.
+
+## Management menu reference
+
+Navigate to **Configuration > Management** in the navigation menu. The following list matches the order and grouping of the Management submenu and shows how each item fits into the picture above.
+
+### Layouts and menus
+
+| Page | What it does | Links to |
+|------|----------------|----------|
+| **Layouts** | Configure terminal layouts (button layout, content). | Assigned per **Outlet** per **Session** (Outlet form → Outlet Sessions → Sales layout / Table layouts). |
+| **Table Layout** | Table-based layouts for table service. | Assigned per outlet per session (Table layouts 1–3). |
+| **Menus** | Sale popup menus on terminals (e.g. “Add a drink?”). | Used by terminals during sale. |
+| **Self Service Menu** | Menus for **legacy self-service terminals**. For kiosk ordering, see **Ordering > Self Service Ordering** (Kiosk Menu). | Used by legacy terminals. |
+
+### Tenders and sessions
+
+| Page | What it does | Links to |
+|------|----------------|----------|
+| **Tenders** | Payment types (cash, card, etc.). | Used by terminals when taking payment. |
+| **Sessions** | Operational periods; each session has a Price Band. | Outlets have outlet sessions; each outlet session uses a session and assigns Layouts. When the till is in a session, it uses that session’s price band. |
+
+### Products and pricing
+
+| Page | What it does | Links to |
+|------|----------------|----------|
+| **Products** | Product catalogue. | Product Prices (per outlet, price band); Product Groups; Allergen; Tags; Waste Reason; Product Challenge; Product Label. |
+| **Product Label** | How product names/labels appear on terminals. | Products. |
+| **Product Prices** | Prices per product, outlet, and price band. | Products; Price Bands; Outlets; Sessions (session → price band). |
+| **Price Bands** | Price band definitions. | Sessions (one price band per session); Product Prices; Price Band Scheduler; Price Band Groups. |
+| **Price Band Scheduler** | Schedule when a price band applies (e.g. time-based). | Price Bands; Sessions; Outlets. |
+| **Price Band Groups** | Group price bands. | Price Bands; used in reporting and voucher/price band rules. |
+| **Product Groups** | Group products. | Products; Product Prices (filter outlet price grid when editing); menus; reporting. |
+| **Product Challenge** | Product restrictions and age verification. | Products; terminals. |
+
+### Operations and outlet setup
+
+| Page | What it does | Links to |
+|------|----------------|----------|
+| **Outlet Type** | Types of outlet (e.g. counter, drive-through). | Assigned to each Outlet (Site/Outlet configuration). |
+| **Operators** | Operator accounts (staff who log in at the till). | Operator Roles; terminals (operator logs in); orders (operator id). |
+| **Operator Roles** | Permissions and capabilities for operators. | Operators; terminals. |
+
+### Receipts and resources
+
+| Page | What it does | Links to |
+|------|----------------|----------|
+| **Receipts** | Receipt templates and print settings. | Assigned per Terminal (Receipt type). |
+| **Resources** | System resources (e.g. images). | Terminals (e.g. background image); other areas that reference resources. |
+
+### Product and operational metadata
+
+| Page | What it does | Links to |
+|------|----------------|----------|
+| **Allergens** | Allergen definitions for products. | Products. |
+| **Course** | Course configuration for order grouping; terminals mark courses done; KMS shows courses in tabs. | Orders; Terminals; KMS. |
+| **Product Tags** | Tags for categorisation. | Products; Product Prices (filtering). |
+| **Waste Reason** | Reason codes for waste. | Products; waste recording. |
+
+### Pay at Table and Receipt Portal
+
+| Page | What it does | Links to |
+|------|----------------|----------|
+| **Pay at Table > QR Code Generator** | QR codes for pay-at-table. | Requires Pay at Table module. |
+| **Receipt Portal > QR Code Generator** | QR codes for receipt portal. | Requires Receipt Portal module. |
+
+### Checklist and messaging
+
+| Page | What it does | Links to |
+|------|----------------|----------|
+| **Checklist > Configuration** | Checklist definitions. | Checklist Dashboard; terminals; operators. |
+| **Checklist > Dashboard** | Checklist completion and metrics. | Checklist Configuration. |
+| **Messaging > Send Message Templates** | Server message templates. | Terminal messaging. |
+| **Messaging > Terminal Message Templates** | Terminal message templates. | Send Message to POS. |
+| **Messaging > Send Message to POS** | Send messages to terminals. | Terminal Message Templates; Message History. |
+| **Messaging > Message History** | History of messages sent to terminals. | Send Message to POS. |
+
+## Management pages (documentation)
+
+Each Management menu item has its own documentation page:
+
+**Layouts and menus:** [Layouts](/enterprise/pages/management/layouts) · [Table Layout](/enterprise/pages/management/table-layout) · [Menus](/enterprise/pages/management/menus) · [Self Service Menu](/enterprise/pages/management/self-service-menu) (legacy terminals; for kiosk menus see [Ordering](/enterprise/pages/ordering))
+
+**Tenders and sessions:** [Tenders](/enterprise/pages/management/tenders) · [Sessions](/enterprise/pages/management/sessions)
+
+**Products and pricing:** [Products](/enterprise/pages/management/products) · [Product Label](/enterprise/pages/management/product-label) · [Product Prices](/enterprise/pages/management/product-prices) · [Price Bands](/enterprise/pages/management/price-bands) · [Price Band Scheduler](/enterprise/pages/management/price-band-scheduler) · [Price Band Groups](/enterprise/pages/management/price-band-groups) · [Product Groups](/enterprise/pages/management/product-groups) · [Product Challenge](/enterprise/pages/management/product-challenge)
+
+**Operations and outlet:** [Outlet Type](/enterprise/pages/management/outlet-type) · [Operators](/enterprise/pages/management/operators) · [Operator Roles](/enterprise/pages/management/operator-roles)
+
+**Receipts and resources:** [Receipts](/enterprise/pages/management/receipts) · [Resources](/enterprise/pages/management/resources)
+
+**Product metadata:** [Allergens](/enterprise/pages/management/allergens) · [Course](/enterprise/pages/management/course) · [Product Tags](/enterprise/pages/management/product-tags) · [Waste Reason](/enterprise/pages/management/waste-reason)
+
+**Pay at Table and Receipt Portal:** [Pay at Table](/enterprise/pages/management/pay-at-table) · [Receipt Portal](/enterprise/pages/management/receipt-portal)
+
+**Checklist and messaging:** [Checklist](/enterprise/pages/management/checklist) · [Messaging (Management)](/enterprise/pages/management/messaging)
+
+## Best practices
+
+- **Set outlet type first**: When adding outlets, assign an Outlet Type so behaviour is consistent across similar outlets.
+- **Sessions before layouts**: Create Sessions and assign each a Price Band; then on each Outlet configure Outlet Sessions and choose the Layouts (and table layouts if needed) for each session. Terminals then use the right layout and price band when they are in that session.
+- **Price bands and product prices**: Define Price Bands, then set Product Prices per outlet and per price band. Use Price Band Scheduler if you need time-based price changes. Sessions determine which price band is active at the till.
+- **Reuse layouts and resources**: Create layouts and resources once and assign them to multiple outlet/session combinations or terminals where appropriate.
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Configuration" icon="cog" href="/enterprise/pages/configuration">
+    Return to the Configuration overview (Member, Incentives, Campaign, Management, Vision, Terminal, Admin).
+  </Card>
+  <Card title="Product Management" icon="shopping-bag" href="/enterprise/features/product-management">
+    Product catalog, pricing, and product configuration in detail.
+  </Card>
+  <Card title="Site Management" icon="store" href="/enterprise/features/site-management">
+    Sites, outlets, outlet types, and preparation points.
+  </Card>
+</CardGroup>

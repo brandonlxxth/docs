@@ -1,0 +1,74 @@
+---
+title: "Product Challenge"
+description: "Configure operator verification prompts (e.g. Challenge 25) for products in the Management Portal"
+---
+
+## Overview
+
+Product Challenge is a way for **operators to verify different things** when selling a product (e.g. age 25, ID check, consent).
+
+**At the till:** When a product with a challenge configured is clicked, a **popup** appears with the **lines as button options** and the **relevant description** (caption and body). The operator selects an option to confirm or complete the verification (e.g. "Challenge 25" for age).
+
+**Not restrictions:** Product challenges are **not** related to user or operator restrictions (Configuration > Admin > Restriction). They are prompts that ask the operator to verify something at the point of sale.
+
+**How it works:** You create a challenge (name, caption, reference, body, and **lines**). Attach it to **Products** on the Product form. When an operator taps a product that has this challenge, the popup shows your **lines as buttons** and the **description** (caption/body). The operator taps a line (e.g. "Verified", "Declined") to continue.
+
+**Permissions:** You need the **Product Restriction** permission to access this page.
+
+## Using Product Challenge
+
+### Accessing Product Challenge
+
+Navigate to **Configuration > Management > Product Challenge** in the navigation menu.
+
+### Viewing product restrictions
+
+When you open the Product Challenge page, you see a list of product challenges. Each has a **Name** and configuration (caption, body, lines). Choose a challenge from the list; its details load in the content area below so you can view or edit it.
+
+### Creating a product restriction
+
+1. On the Product Challenge page, click the **+** icon.
+2. Enter a **Name** (e.g. "Challenge 25", "ID verification"). Optionally set **Caption**, **Reference**, and **Body** (these form the description shown in the popup).
+3. Add **Lines**: each line becomes a **button option** in the popup. Set the **Name** for each line (e.g. "Verified", "Declined") and whether the product is **Allowed** for that line.
+4. Click Save.
+
+### Editing a product restriction
+
+1. Open the Product Challenge page and select the restriction from the list.
+2. Change **Name**, **Caption**, **Reference**, **Body**, or **Lines** as needed.
+3. Click Save.
+
+You can use **Usage** to see which products use this challenge before deleting. Challenges that are in use cannot be deleted until they are removed from those products.
+
+## Product challenge fields reference
+
+| Field | What it does |
+|-------|----------------|
+| **Name** | Display name of the challenge (e.g. Challenge 25, ID verification). |
+| **Caption** | Optional caption shown in the popup (part of the description). |
+| **Reference** | Optional reference for the challenge. |
+| **Body** | Optional body text shown in the popup with the description (max 500 characters). |
+| **Lines** | Each line becomes a **button** in the popup. Set **Name** (button label, e.g. "Verified", "Declined") and **Allowed** (whether the product is allowed when that option is chosen). Add, edit, or remove lines as needed. |
+
+## How product challenge links
+
+- **Products**: On the **Product** form, you assign a **Product Challenge** to products that require operator verification (e.g. age 25, ID check). When an operator taps that product at the till, the popup appears with the lines as button options and the description; the operator selects an option to continue.
+
+Product challenges are **not** the same as user or operator restrictions (Configuration > Admin > Restriction). They are prompts that ask the operator to verify something at the point of sale.
+
+## Best practices
+
+- Use clear names (e.g. "Challenge 25", "ID verification") so staff can assign the right challenge to products.
+- Set **Caption** and **Body** so the popup clearly explains what the operator should verify.
+- Define **Lines** as the choices the operator can make (e.g. "Verified", "Declined"); each line appears as a button in the popup.
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Management" icon="diagram-project" href="/enterprise/pages/management/overview">
+    How product challenge fits with products and terminals.
+  </Card>
+  <Card title="Products" icon="shopping-bag" href="/enterprise/pages/management/products">
+    Assign a product challenge to products that need operator verification.
+  </Card>
+</CardGroup>

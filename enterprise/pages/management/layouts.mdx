@@ -1,0 +1,100 @@
+---
+title: "Layouts"
+description: "Configure terminal layouts for point-of-sale displays in the Management Portal"
+---
+
+## Overview
+
+Layouts define how the till screen looks on terminals: the arrangement of buttons (products, menus, tenders, courses), the background image, and the screen resolution.
+
+**Assignment:** Layouts are **not** assigned directly to a terminal; they are assigned **per outlet and per session**. When a terminal at an outlet is running in a given session, it shows the layout you assigned for that outlet and session (Sales layout or, for table service, Table layouts).
+
+**Permissions:** You need the **Layout** permission to access Layouts and Table Layout.
+
+## Using Layouts
+
+### Accessing Layouts
+
+Navigate to **Configuration > Management > Layouts** in the navigation menu.
+
+### Viewing layouts
+
+When you open the Layouts page, you see a **selector at the top** and a **+** icon. Choose a layout from the list; its details load in the content area below so you can view or edit it.
+
+### Creating a layout
+
+1. On the Layouts page, click the **+** icon.
+2. **Details** tab: Enter a **Name**. Choose **Layout resolution** (screen resolution; cannot be changed after save). Optionally set **Layout background image** (from **Resources**), **Service charge** (a product used as service charge), and **Restriction** (if the layout is restricted to certain users or outlets).
+3. **Price Band / Price Band Group** tab: Optionally restrict which price bands or price band groups can use this layout.
+4. **Self Service Images** and **Kiosk Options** tabs: Used when the layout is for self-service or kiosk.
+5. Click Save. After saving, the **Designer** tab appears so you can add tiles (menus, product shortcuts, tenders, courses, etc.) and arrange the layout.
+6. In the **Designer** tab, add and position tiles as needed, then Save.
+
+### Editing a layout
+
+1. Open the Layouts page and select the layout from the list.
+2. Change **Name**, **Layout background image**, **Service charge**, **Restriction**, or any tab settings as needed.
+3. In the **Designer** tab, add, remove, or rearrange tiles.
+4. Click Save.
+
+### Modifying the tender layout screen
+
+The **tender layout screen** is the grey panel on the left of the layout in the Designer—it controls which payment buttons (tenders) appear and in what order when operators take payment on the till. It has a fixed grid of **15 positions** (3 columns × 5 rows).
+
+To change it:
+
+1. Open the Layouts page and select the layout.
+2. Open the **Designer** tab.
+3. Click the **grey box on the left** (the tender area). It may show “Add Tender” or a summary of the current tender keys. A window opens with the **tender layout screen** editor.
+4. In the editor:
+   - **Add a tender**: Click **+** (Add Tile) in an empty slot, then choose the tender (e.g. Cash, Card) from the list. The tender is added at that position.
+   - **Remove a tender**: Click the delete (trash) icon on the tender key you want to remove.
+   - **Reorder tenders**: Drag a tender key to a different slot to change the order.
+5. Close the window when you're done. The layout still needs to be **Saved** (click Save on the layout) for changes to apply.
+
+Tenders available in the list are those you have created under **Configuration > Management > Tenders**. Each tender can have a **Layout tile colour** set on the Tenders page so it appears in the colour you want on the till.
+
+<Warning>
+Changing a layout affects every outlet and session that uses it. Confirm impact before saving.
+</Warning>
+
+## Layout fields reference
+
+| Field | Tab | What it does |
+|-------|-----|----------------|
+| **Name** | Details | Display name of the layout (e.g. Breakfast sales, Table service 1). |
+| **Layout resolution** | Details | Screen resolution; set at creation and cannot be changed. |
+| **Layout background image** | Details | Image from **Resources** used as the till background. |
+| **Service charge** | Details | Product used as service charge when applied. |
+| **Restriction** | Details | When set, only users/outlets without this restriction see the layout. |
+| **Price Band / Price Band Group** | Price Band tab | Restricts which price bands or price band groups can use this layout. |
+| **Self Service Images** | Self Service Images | Used when the layout is for self-service or kiosk. |
+| **Kiosk Options** | Kiosk Options | Used when the layout is for kiosk. |
+| **Designer** | Designer | Add, remove, and arrange tiles (menus, product shortcuts, tenders, course). Tender layout (grey box on the left) has 15 positions (3×5). |
+
+## How layouts link
+
+- **Outlet sessions**: When you configure an **Outlet** (Site/Outlet configuration), you set **Outlet Sessions**. For each session you choose a **Sales layout** (and, for table service, **Table layout 1**, **Table layout 2**, **Table layout 3**). The terminal at that outlet uses the layout for the session it is currently in.
+- **Resources**: Layout background image comes from **Configuration > Management > Resources**.
+- **Price bands**: Layouts can be restricted to certain price bands or price band groups.
+- **Products, Menus, Tenders, Course**: In the Designer you add tiles that reference **Menus** (sale popup), **Product shortcuts** (product groups), **Tenders**, and **Course**.
+
+## Best practices
+
+- **Name clearly**: Use names that indicate when or where the layout is used (e.g. "Breakfast sales", "Table service 1").
+- **Set resolution once**: Resolution is set at creation and cannot be changed; choose the resolution that matches your terminal screens.
+- **Reuse layouts**: Assign the same layout to multiple outlet/session combinations where the screen should look the same.
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Management" icon="diagram-project" href="/enterprise/pages/management/overview">
+    How Management pieces link together (sessions, outlets, layouts, pricing).
+  </Card>
+  <Card title="Table Layout" icon="table-cells" href="/enterprise/pages/management/table-layout">
+    Table-based layouts for table service.
+  </Card>
+  <Card title="Resources" icon="image" href="/enterprise/pages/management/resources">
+    Manage images used as layout backgrounds.
+  </Card>
+</CardGroup>

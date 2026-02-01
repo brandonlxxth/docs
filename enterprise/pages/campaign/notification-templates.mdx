@@ -1,0 +1,99 @@
+---
+title: "Notification templates"
+description: "Create and manage reusable notification templates for email and push in the Management Portal"
+---
+
+## Overview
+
+Notification templates define reusable content for automated notifications—email and push—that the system sends to members in specific situations: **receipt emails** (for orders), **voucher entitlement and redeem messages**, **welcome or registration messages when a member joins**, and **verification emails** (e.g. when verifying an email address).
+
+You create and edit templates here; then you assign a template in the place that uses it (Site, Voucher, etc.). Each template has a **name**, **notification source** (used as subject/from in email), **subject**, **email body** (HTML), and optionally **push notification text**. You can also choose **Use email only** so the template sends email only and does not require push text.
+
+You need the **Notification templates** permission (maintain notification templates) in your user role to access this page.
+
+## Using notification templates
+
+### Accessing notification templates
+
+Navigate to **Configuration > Campaign > Notification templates** in the navigation menu.
+
+### Viewing notification templates
+
+When you open the Notification templates page, you’ll see a **search/selector at the top** and a **+** icon to create a new template. Choose a template from the list; its details load in the content area below so you can view or edit it.
+
+### Creating a notification template
+
+<Steps>
+<Step title="Open the Notification templates page">
+  Navigate to **Configuration > Campaign > Notification templates**.
+</Step>
+
+<Step title="Create a new template">
+  Click the **+** icon to create a new notification template.
+</Step>
+
+<Step title="Enter template details">
+  Fill in the form:
+  - **Name** — A name for the template (e.g. "Email receipt", "Voucher entitlement"). Used when selecting the template in Site, Voucher, or other configuration.
+  - **Notification source** — Identifies the source of the notification (used as subject/from in email).
+  - **Subject** — Email subject line (optional depending on usage).
+  - **Email body (HTML)** — The email content. Required. Use the rich editor for formatting (headings, bold, lists, links). Supports placeholders where the system supports them (e.g. for order or member details).
+  - **Use email only** — If checked, the template is email-only and push text is not used or required. If unchecked, you must enter **Push notification text**.
+  - **Push notification text** — Short text for push notifications. Required unless **Use email only** is checked. Keep it brief (150 characters or less) for best results on devices.
+</Step>
+
+<Step title="Save">
+  Click Save. The template is saved and can be selected in Site (email receipt), Voucher (entitlement/redeem), member registration, or other places that use notification templates.
+</Step>
+</Steps>
+
+<Info>
+**Email body** is always required. **Push notification text** is required unless **Use email only** is checked. This ensures every template is valid for the channels you intend to use.
+</Info>
+
+### Editing a notification template
+
+1. Open **Configuration > Campaign > Notification templates**.
+2. Select the template from the list at the top. The form loads below with the template’s current values.
+3. Change **Name**, **Notification source**, **Subject**, **Email body**, **Use email only**, or **Push notification text** as needed.
+4. Click Save.
+
+<Warning>
+Changing a template affects every place that uses it (all sites using it for email receipt, all vouchers using it for entitlement, etc.). Confirm impact before saving changes.
+</Warning>
+
+## Where notification templates are used
+
+These systems use notification templates:
+
+- **Receipt emails** — Email receipts for orders. When you configure a site, you choose which template to use for receipt emails sent to members.
+- **Vouchers** — Entitlement and redeem messages. When you set up a voucher (or reward), you choose templates for the message sent when a member is entitled to it and when they redeem it.
+- **Member registration** — Welcome or registration messages. When a new member is registered, the system sends a notification using the template configured for the site.
+- **Verification emails** — When the system sends verification messages (e.g. to verify a member’s email address), it uses the template assigned for verification.
+
+When you configure a site, voucher, or other feature that sends these messages, you choose which notification template to use from the list you create here.
+
+## Notification template fields reference
+
+| Field | What it does |
+|-------|----------------|
+| **Name** | Name for the template (e.g. Email receipt, Voucher entitlement). Used when selecting the template in Site, Voucher, or other configuration. |
+| **Notification source** | Identifies the source; used as subject/from in email. |
+| **Subject** | Email subject line. |
+| **Email body (HTML)** | The email content. Required. Rich editor; supports placeholders where the system supports them. |
+| **Use email only** | If checked, template is email-only; push text is not used or required. If unchecked, **Push notification text** is required. |
+| **Push notification text** | Short text for push notifications. Required unless **Use email only** is checked. Max 150 characters. |
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Messaging" icon="comments" href="/enterprise/pages/campaign/messaging">
+    Send one-off messages to members or member groups (ad-hoc campaigns).
+  </Card>
+  <Card title="Member" icon="user" href="/enterprise/pages/member/member">
+    Manage members; member registration uses a notification template.
+  </Card>
+  <Card title="Voucher" icon="ticket" href="/enterprise/pages/incentives/voucher">
+    Vouchers use notification templates for entitlement and redeem messages.
+  </Card>
+</CardGroup>

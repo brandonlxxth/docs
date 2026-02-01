@@ -9,11 +9,13 @@ User roles define what users can see and do in the Management Portal. Each role 
 
 Navigate to **Configuration > Admin > User Roles** in the navigation menu.
 
-## Viewing User Roles
+## Using User Roles
 
-Use the search box at the top to find roles; results load in a modal showing role name and whether the role is in use.
+### Viewing user roles
 
-## Creating a Role
+Use the search box at the top to find roles; results appear below, showing role name and whether the role is in use.
+
+### Creating a role
 
 <Steps>
 <Step title="Create new role">
@@ -51,7 +53,7 @@ Use the search box at the top to find roles; results load in a modal showing rol
 </Step>
 </Steps>
 
-## Outlets Tab
+### Outlets tab
 
 The **Outlets** tab is where you define which outlets a role can access. The outlet selector shows your site/outlet hierarchy. Select each outlet (or parent) that this role should work with; leave outlets unchecked if the role should not see or use them. Users assigned this role will, by default, have access to all selected outlets. Individual users can be restricted to a subset of these outlets via [User outlet override permissions](/enterprise/pages/admin/users#user-outlet-override-permissions) on the Users page.
 
@@ -61,29 +63,38 @@ You must select at least one outlet (or the equivalent in your hierarchy) for th
 
 Examples: **Head office role** — select all outlets. **Site manager role** — select only the outlets for that site. **Single-outlet role** — select one outlet for staff who work in one location only.
 
-## User Role Restriction Tab
+### User Role Restriction tab
 
 The **User Role Restriction** tab lets you attach [restrictions](/enterprise/pages/admin/restriction) to the role. Restrictions work by **hiding entities** that have the matching restriction assigned: when a user has a restriction (via their role or user override), they cannot see any entity (e.g. product, outlet) that has that same restriction. Select the restrictions that should apply to everyone with this role. Users can have additional restrictions applied via [User restriction override](/enterprise/pages/admin/users#user-restriction-override) on the Users page.
 
-## Editing a User Role
+### Editing a user role
 
-To edit an existing role: search for the role, select it from the results in the modal, then click **Edit**. Change the name and/or permissions on the relevant tabs, update the **Outlets** or **User Role Restriction** tabs as required, then click **Save**.
+To edit an existing role: search for the role, select it from the results below, then click **Edit**. Change the name and/or permissions on the relevant tabs, update the **Outlets** or **User Role Restriction** tabs as required, then click **Save**.
 
 <Info>
 If a role is in use, you can still edit it. Changes apply to all users with that role. Consider impact before changing permissions or outlet access.
 </Info>
 
-## Checking Role Usage
+### Checking role usage
 
 Before deleting a role, check how many users use it: edit the role and click **Usage** or **Get Usage** to see which users or other references use it. If the role is in use, reassign those users to another role before deleting.
 
-## Deleting a User Role
+### Deleting a user role
 
 <Warning>
 You can only delete a role that is not in use. Delete or reassign all users with this role first.
 </Warning>
 
 Ensure no users are assigned to the role (check usage), search for the role and select it from the results, click **Delete**, and confirm.
+
+## User role fields reference
+
+| Field | Tab | What it does |
+|-------|-----|----------------|
+| **Name** | Details | Display name of the role (e.g. Site Manager, Stock Controller, View Only). |
+| **Permissions** | Configuration, Analytics, Stock Control, etc. | Checkboxes per tab for what the role can do (e.g. manage products, view reports, manage stock); each tab groups related permissions. |
+| **Outlets** | Outlets | Which outlets this role can access; at least one required. |
+| **User Role Restriction** | User Role Restriction | Restrictions that apply to everyone with this role; entities with those restrictions are hidden from them. |
 
 ## Best Practices
 

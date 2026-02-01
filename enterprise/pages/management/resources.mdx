@@ -1,0 +1,71 @@
+---
+title: "Resources"
+description: "Manage system resources and assets in the Management Portal"
+---
+
+## Overview
+
+Resources are **images and assets** used across the system: layout background images, receipt logos, and other images referenced by **Layouts**, **Table Layout**, **Terminals**, and **Receipts**.
+
+**How it works:** You upload or create resources here, then select them when configuring a layout (background image), terminal (background image), or receipt (logo).
+
+**Permissions:** You need the **Resource** permission to access this page.
+
+## Using Resources
+
+### Accessing Resources
+
+Navigate to **Configuration > Management > Resources** in the navigation menu.
+
+### Viewing resources
+
+When you open the Resources page, you see a **selector at the top** and a **+** icon. Choose a resource from the list; its details (name, type, image) load in the content area below so you can view or edit it.
+
+### Creating a resource
+
+1. On the Resources page, click the **+** icon.
+2. Enter a **Name**. Select **Type** (e.g. layout background, receipt logo, other) as shown. Type cannot be changed after save.
+3. Upload or set the **Image** (file) for this resource.
+4. Click Save.
+
+### Editing a resource
+
+1. Open the Resources page and select the resource from the list.
+2. Change **Name** or replace the **Image** as needed. **Type** cannot be changed after creation.
+3. Click Save.
+
+You can use **Usage** to see where the resource is used (layouts, terminals, receipts, etc.) before deleting. Resources that are in use cannot be deleted until they are removed from those areas.
+
+## Resource fields reference
+
+| Field | What it does |
+|-------|----------------|
+| **Name** | Display name of the resource (e.g. Layout background main, Receipt logo). |
+| **Type** | Type of resource (e.g. layout background, receipt logo); set at creation and cannot be changed. |
+| **Image** | The image file; used by layouts, terminals, or receipts depending on type. |
+
+## How resources link
+
+- **Layouts**: **Layouts** and **Table Layout** can have a **Layout background image** (or **Background resource**) selected from Resources.
+- **Terminals**: **Terminals** can have a **Background image** (resource) for the till screen.
+- **Receipts**: **Receipts** (Print) can have a **Logo** (resource).
+
+## Best practices
+
+- Use clear resource names (e.g. "Layout background main", "Receipt logo") so staff can find them when configuring layouts, terminals, and receipts.
+- Choose the correct **Type** at creation; it cannot be changed later.
+- Use **Usage** before deleting a resource.
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Management" icon="diagram-project" href="/enterprise/pages/management/overview">
+    How resources fit with layouts, terminals, and receipts.
+  </Card>
+  <Card title="Layouts" icon="th-large" href="/enterprise/pages/management/layouts">
+    Set layout background image from Resources.
+  </Card>
+  <Card title="Receipts" icon="receipt" href="/enterprise/pages/management/receipts">
+    Set receipt logo from Resources.
+  </Card>
+</CardGroup>

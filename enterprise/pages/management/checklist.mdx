@@ -1,0 +1,74 @@
+---
+title: "Checklist"
+description: "Set up checklist configurations and view checklist dashboard in the Management Portal"
+---
+
+## Overview
+
+Checklist lets you **define operational checklists** (e.g. opening procedures, closing procedures, cleaning tasks) and view a **Checklist Dashboard** with completion status and metrics.
+
+**How it works:** You create checklists and add **lines** (tasks) here. Operators complete checklist items at the terminal; the dashboard shows which checklists have been completed, by whom, and when.
+
+**Permissions:** You need the **Checklist** permission to access this page.
+
+## Using Checklist
+
+### Accessing Checklist
+
+Navigate to **Configuration > Management > Checklist** in the navigation menu. The submenu has:
+
+- **Checklist > Configuration** — Create and edit checklists and their lines (tasks).
+- **Checklist > Dashboard** — View checklist completion status and metrics.
+
+### Checklist Configuration
+
+#### Viewing checklists
+
+When you open **Configuration > Management > Checklist > Configuration**, you see a **selector at the top** and a **+** icon. Choose a checklist from the list; its details and **lines** (tasks) load in the content area below so you can view or edit it.
+
+#### Creating a checklist
+
+1. On the Checklist Configuration page, click the **+** icon.
+2. Enter a **Name** (e.g. "Opening procedures", "Closing checklist").
+3. Add **lines** (tasks): click **Add line** (or equivalent) and enter each task description. Set order as needed.
+4. Click Save.
+
+#### Editing a checklist
+
+1. Open the Checklist Configuration page and select the checklist from the list.
+2. Change **Name** or add, remove, or reorder **lines** (tasks) as needed.
+3. Click Save.
+
+Checklist events (completions) are tied to **Operators** and **Terminals**; the dashboard shows who completed what and when.
+
+### Checklist Dashboard
+
+When you open **Configuration > Management > Checklist > Dashboard**, you see a dashboard with checklist completion status: which checklists have been completed, by which operator, at which terminal, and when. Use it to monitor compliance and completion rates.
+
+## Checklist fields reference
+
+| Field | What it does |
+|-------|----------------|
+| **Name** | Display name of the checklist (e.g. Opening procedures, Closing checklist). |
+| **Lines** (tasks) | Each line is a task; add, remove, and reorder. Operators see and complete these at the till. |
+
+## How checklist links
+
+- **Operators**: Checklist completions are recorded with the **Operator** who completed them (operator logs in at the terminal and completes the checklist).
+- **Terminals**: Checklists are completed at **Terminals**; the dashboard can show completion by terminal.
+
+## Best practices
+
+- Use clear checklist names (e.g. "Opening", "Closing", "Cleaning") and clear task descriptions so operators know what to do.
+- Review the Checklist Dashboard regularly to ensure checklists are being completed.
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Management" icon="diagram-project" href="/enterprise/pages/management/overview">
+    How checklist fits with operators and terminals.
+  </Card>
+  <Card title="Operators" icon="user" href="/enterprise/pages/management/operators">
+    Operators complete checklists at the till.
+  </Card>
+</CardGroup>

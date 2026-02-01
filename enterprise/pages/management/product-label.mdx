@@ -1,0 +1,71 @@
+---
+title: "Product Label"
+description: "Print barcode labels for shelves in the Management Portal"
+---
+
+## Overview
+
+Product Label is for **printing barcode labels** to put on shelves (e.g. on product displays or stock). You choose a **Price Band** and **Outlet**, add products (with a label count), and print. Each product must have a **valid price** for the selected outlet and price band, and at least one **barcode**—if a product has multiple barcodes, the **first** is used. Label dimensions (width, height, margins) can be customised; the **base measurement** (default dimensions) is stored at the **top level of hierarchy** (company level) and can be updated from this page using **Save Default Measurements**.
+
+You need the **Product** permission to access this page.
+
+## Using Product Label
+
+### Accessing Product Label
+
+Navigate to **Configuration > Management > Product Label** in the navigation menu.
+
+### Printing labels
+
+1. Select **Price Band** and **Outlet** so prices are correct for that combination.
+2. Optionally adjust **label dimensions** (width, height, margins in mm). Click **Save Default Measurements** to store these as the base configuration at the top level of hierarchy.
+3. Select a **Product** and enter **Label count**. The product must have a valid price for the selected outlet and price band, and at least one barcode (the first barcode is used if there are multiple).
+4. Add the label to the print list and print when ready.
+
+The **Request** tab shows label requests sent from **handheld terminals (HHTs)**; each request contains the labels that were requested from the HHT. You can view or reprint these requests from here.
+
+### Base measurement (top level of hierarchy)
+
+The default label dimensions (width, height, top/bottom/left/right margins in mm) are stored at the **top level of hierarchy** (company level). When you open the Product Label page, those values are loaded. Changing the dimensions and clicking **Save Default Measurements** updates that base configuration so it applies for future label prints.
+
+## Product label fields reference
+
+| Field | Where | What it does |
+|-------|--------|----------------|
+| **Label width (mm)** | Editor | Width of the printed label in millimetres (base measurement; stored at top level of hierarchy when you save default). |
+| **Label height (mm)** | Editor | Height of the printed label in millimetres (base measurement; stored at top level of hierarchy when you save default). |
+| **Top margin (mm)** | Editor | Top margin for label content. |
+| **Bottom margin (mm)** | Editor | Bottom margin for label content. |
+| **Left margin (mm)** | Editor | Left margin for label content. |
+| **Right margin (mm)** | Editor | Right margin for label content. |
+| **Save Default Measurements** | Editor | Saves the current dimensions as the base configuration at the top level of hierarchy. |
+| **Price Band** | Editor | Price band used to look up product prices; products must have a valid price for this band and the selected outlet. |
+| **Outlet** | Editor | Outlet used for product prices; products must have a valid price for this outlet and the selected price band. |
+| **Product** | Editor | Product to print labels for; must have at least one barcode (first is used if multiple) and a valid price for the selected outlet and price band. |
+| **Label count** | Editor | Number of identical labels to add for the selected product. |
+
+## How product label links
+
+- **Products**: Each product must have a **valid price** for the selected **Outlet** and **Price Band**, and at least one **barcode** (the first barcode is used if there are multiple). Configure products and prices under **Configuration > Management > Products** and **Product Prices**.
+- **Price Bands**, **Outlets**: You choose one price band and one outlet when printing; the system uses that combination to get the product price shown on the label.
+- **Top level of hierarchy**: The base measurement (default label dimensions) is stored at the top level of hierarchy (company level) and is loaded when you open the Product Label page; **Save Default Measurements** updates it.
+
+## Best practices
+
+- Ensure products have **prices set** for the outlet and price band you use when printing labels.
+- Ensure products have at least one **barcode**; if you use multiple barcodes, the first is used for the label.
+- Set the **base dimensions** (via Save Default Measurements) to match your physical label stock so prints are consistent.
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Management" icon="diagram-project" href="/enterprise/pages/management/overview">
+    How product label fits with products and pricing.
+  </Card>
+  <Card title="Products" icon="shopping-bag" href="/enterprise/pages/management/products">
+    Product catalog (barcodes and details).
+  </Card>
+  <Card title="Product Prices" icon="tags" href="/enterprise/pages/management/product-prices">
+    Set prices per outlet and price band (required for labels).
+  </Card>
+</CardGroup>

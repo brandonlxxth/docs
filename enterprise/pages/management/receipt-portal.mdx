@@ -1,0 +1,58 @@
+---
+title: "Receipt Portal"
+description: "Generate QR codes for receipt portal access in the Management Portal"
+---
+
+## Overview
+
+Receipt Portal lets you **generate QR codes** that customers can scan to view digital receipts (e.g. in a browser or app). The page lists QR code configurations you can create and edit. Each configuration typically has a **Name**, **Type** (e.g. receipt portal), and settings that determine the QR code content (e.g. link to receipt portal). Customers scan the QR code to open the receipt portal and view their receipt.
+
+<Warning>
+**Requires Receipt Portal Module**: This feature requires the Receipt Portal module, which is charged separately. If you don't see this section in your navigation, contact your administrator or Kappture support to enable the Receipt Portal module.
+</Warning>
+
+You need the **Receipt Portal QR Code Generator** permission to access this page.
+
+## Using Receipt Portal
+
+### Accessing Receipt Portal
+
+Navigate to **Configuration > Management > Receipt Portal > QR Code Generator** in the navigation menu.
+
+### Viewing and creating QR codes
+
+When you open the Receipt Portal page, you see a list of QR code configurations. Click the **+** icon to create a new QR code. Enter a **Name** and configure the **Type** and any settings (e.g. outlet, resource) as shown on the form. Save to generate the QR code. You can then print or display the QR code so customers can scan and view their receipt in the receipt portal.
+
+### Editing and deleting
+
+Select a QR code from the list to view or edit it. Change **Name**, **Type**, or other settings as needed and Save. You can delete a QR code when it is no longer in use.
+
+## Receipt Portal QR code fields reference
+
+| Field | What it does |
+|-------|----------------|
+| **Name** | Display name for the QR code (e.g. Main counter, Drive-through). |
+| **Type** | Type of QR code (e.g. receipt portal); determines the receipt portal flow when the customer scans. |
+| **Outlet** | Optional outlet so the receipt portal can show receipts for that location. |
+| **Resource** | Optional image or display resource. |
+
+## How Receipt Portal links
+
+- **Outlets**: QR codes may be tied to an outlet so the receipt portal shows receipts for that outlet or location.
+- **Resources**: Some QR code types may use a **Resource** (image) or display settings from Configuration > Management > Resources.
+
+## Best practices
+
+- Use clear names (e.g. "Main counter", "Drive-through") so staff can identify which QR code to display where.
+- Display QR codes where customers can easily scan them after a purchase to view their receipt.
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Management" icon="diagram-project" href="/enterprise/pages/management/overview">
+    How Receipt Portal fits with receipts and outlets.
+  </Card>
+  <Card title="Receipts" icon="receipt" href="/enterprise/pages/management/receipts">
+    Receipt templates (printed receipts; receipt portal shows digital receipts).
+  </Card>
+</CardGroup>

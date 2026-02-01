@@ -1,0 +1,75 @@
+---
+title: "Sessions"
+description: "Manage operational sessions and session settings in the Management Portal"
+---
+
+## Overview
+
+Sessions define **operational periods** (e.g. Breakfast, Lunch, Evening). Each session has a **Price Band** assigned to it. When a terminal at an outlet is running in a session, the outlet uses that session’s price band for product prices and uses the **layouts** assigned for that session (Sales layout and, for table service, Table layouts). Outlets are configured with **Outlet Sessions**: for each session you choose which layouts the outlet uses.
+
+You need the **Session** permission to access this page.
+
+## Using Sessions
+
+### Accessing Sessions
+
+Navigate to **Configuration > Management > Sessions** in the navigation menu.
+
+### Viewing sessions
+
+When you open the Sessions page, you see a **selector at the top** and a **+** icon. Choose a session from the list; its details load in the content area below so you can view or edit it.
+
+### Creating a session
+
+1. On the Sessions page, click the **+** icon.
+2. **Details** tab: Enter a **Name**. Select the **Price Band** for this session (this determines which product prices the till uses when in this session). Optionally enter **External reference** fields.
+3. **Self Checkout Availability** tab: Optionally enable **Availability** and set which **days of the week** the session is available, **Start time** and **End time**, **First order time** and **Last order time**, **Slot interval**, **Delay minutes**, and **Timeslot maximum order count**. Tick **Show times in ordering** if you want ordering to show these times.
+4. Click Save.
+
+### Editing a session
+
+1. Open the Sessions page and select the session from the list.
+2. Change **Name**, **Price Band**, external references, or **Self Checkout Availability** settings as needed.
+3. Click Save.
+
+You can use the **Usage** button to see where the session is used before deleting. Sessions that are in use cannot be deleted until they are removed from outlet configuration.
+
+## Session fields reference
+
+| Field | Tab | What it does |
+|-------|-----|----------------|
+| **Name** | Details | Display name of the session (e.g. Breakfast, Lunch, Evening). |
+| **Price Band** | Details | Price band for this session; the till uses this price band’s product prices when in this session. |
+| **External reference** | Details | — |
+| **Availability** | Self Checkout Availability | — |
+| **Days of the week** | Self Checkout Availability | Which days the session is available for self-checkout/ordering. |
+| **Start time**, **End time** | Self Checkout Availability | When the session is available. |
+| **First order time**, **Last order time** | Self Checkout Availability | — |
+| **Slot interval**, **Delay minutes**, **Timeslot maximum order count** | Self Checkout Availability | — |
+| **Show times in ordering** | Self Checkout Availability | When ticked, ordering shows these times. |
+
+## How sessions link
+
+- **Price Band**: Each session has one **Price Band**. Product prices are set per outlet and per price band; when the till is in this session, it uses this price band’s prices.
+- **Outlet sessions**: On the **Outlet** form (Site/Outlet configuration), you configure **Outlet Sessions**. For each session you assign **Sales layout** and (if applicable) **Table layout 1**, **Table layout 2**, **Table layout 3**. The terminal at that outlet uses those layouts when it is in that session.
+- **Ordering**: Session availability (days, times, first/last order time) is used by ordering and self-service when sessions are used to control when orders can be placed.
+
+## Best practices
+
+- Create sessions and assign a price band before configuring outlet sessions and layouts.
+- Use clear session names (e.g. "Breakfast", "Lunch", "Evening") so staff can match them to outlet sessions and layouts.
+- Use **Usage** before deleting to confirm no outlets or other features depend on the session.
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Management" icon="diagram-project" href="/enterprise/pages/management/overview">
+    How sessions, price bands, layouts, and outlets link together.
+  </Card>
+  <Card title="Price Bands" icon="tags" href="/enterprise/pages/management/price-bands">
+    Define the price bands assigned to sessions.
+  </Card>
+  <Card title="Layouts" icon="th-large" href="/enterprise/pages/management/layouts">
+    Layouts assigned per outlet per session.
+  </Card>
+</CardGroup>

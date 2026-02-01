@@ -1,0 +1,68 @@
+---
+title: "Product Tags"
+description: "Manage product tags for categorization and organization in the Management Portal"
+---
+
+## Overview
+
+Product Tags let you **tag products** for categorisation (e.g. "Vegetarian", "Spicy", "Promo").
+
+**Where tags are used:** Tags are used in **Product Prices** (filter the outlet price grid when editing prices for an outlet—import does not filter by tag), on **Products** (assign tags to products on the Product form), and in reporting.
+
+**Permissions:** You need the **Product Tag** permission to access this page.
+
+## Using Product Tags
+
+### Accessing Product Tags
+
+Navigate to **Configuration > Management > Product Tags** in the navigation menu.
+
+### Viewing product tags
+
+When you open the Product Tags page, you see a **selector at the top** and a **+** icon. Choose a tag from the list; its details load in the content area below so you can view or edit it.
+
+### Creating a product tag
+
+1. On the Product Tags page, click the **+** icon.
+2. Enter a **Name** (e.g. "Vegetarian", "Spicy", "Promo", "New").
+3. Click Save.
+
+### Editing a product tag
+
+1. Open the Product Tags page and select the tag from the list.
+2. Change the **Name** as needed.
+3. Click Save.
+
+You can use **Usage** to see where the tag is used (products, product prices, etc.) before deleting. Tags that are in use cannot be deleted until they are removed from those areas.
+
+## Product tag fields reference
+
+| Field | What it does |
+|-------|----------------|
+| **Name** | Display name of the tag (e.g. Vegetarian, Spicy, Promo, New). |
+
+## How product tags link
+
+- **Products**: On the **Product** form (Configuration > Management > Products), you can assign one or more **Product Tags** to a product.
+- **Product Prices**: On **Product Prices**, when editing prices for an outlet, you can filter the product list by **Product Tags** to view and edit prices for products with a given tag. Product price import does not filter by tag.
+- **Reporting**: In **Analytics > Reports**, some reports include **Product Tag** as a filter option (alongside other filters such as **Product Group**, outlet, date range). For example, **Outlet Product Sales** and **Product Mix Report** offer filter options that can include Product Tag—use the Product Tag filter to limit results to products that have a selected tag (e.g. "Promo", "Vegetarian"). Check each report’s filters in Analytics > Reports for the full list.
+
+## Best practices
+
+- Use clear tag names (e.g. "Vegetarian", "Spicy", "Promo") so staff can filter and report consistently.
+- Assign tags to products so you can use tag-based filtering in Product Prices and reporting.
+- Check **Usage** before deleting a product tag.
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Management" icon="diagram-project" href="/enterprise/pages/management/overview">
+    How product tags fit with products and product prices.
+  </Card>
+  <Card title="Products" icon="shopping-bag" href="/enterprise/pages/management/products">
+    Assign product tags to products.
+  </Card>
+  <Card title="Product Prices" icon="dollar-sign" href="/enterprise/pages/management/product-prices">
+    Filter the outlet price grid by product tag when editing prices (import does not use tag).
+  </Card>
+</CardGroup>

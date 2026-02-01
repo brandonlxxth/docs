@@ -1,0 +1,61 @@
+---
+title: "Allergens"
+description: "Configure allergen information for products in the Management Portal"
+---
+
+## Overview
+
+Allergens let you **define allergen types** (e.g. Gluten, Nuts, Dairy) that can be attached to **Products**.
+
+**How it works:** You add allergen definitions via **Import** (bulk create or update from a file), then assign them to products on the **Product** form (Allergens tab). You can **Export** the list (e.g. as a template or backup), and **Edit** or **Delete** individual allergens on the page. When products have allergens assigned, the till and ordering can show allergen information to operators and customers.
+
+**Permissions:** You need the **Allergen** permission to access this page.
+
+## Using Allergens
+
+### Accessing Allergens
+
+Navigate to **Configuration > Management > Allergens** in the navigation menu.
+
+### Viewing allergens
+
+When you open the Allergens page, you see a list of allergens. Each has a **Name** (and optionally **Description**). You can **Import** to add or update allergens in bulk, **Export** to download the list (e.g. as a template or backup), and **Edit** or **Delete** individual allergens (delete only when the allergen is not in use). Import and export require the relevant permissions.
+
+### Import and export
+
+- **Export**: Download the current allergens (e.g. CSV) to use as a template, backup, or to edit offline. The exported columns match the allergen fields (**Name**, **Description**).
+- **Import**: Upload a file (e.g. CSV) to create new allergens or update existing ones in bulk. Use an exported file or a template from your administrator so the format and columns match what the system expects. Review the import result for any rows that failed (e.g. validation errors).
+
+### Editing an allergen
+
+1. Open the Allergens page and click the allergen you want to edit (or use the edit action).
+2. Change the **Name** or **Description** as needed.
+3. Click Save.
+
+## Allergen fields reference
+
+| Field | What it does |
+|-------|----------------|
+| **Name** | Display name of the allergen (e.g. Gluten, Nuts, Dairy, Soy). |
+| **Description** | Optional description of the allergen (max 500 characters). |
+
+## How allergens link
+
+- **Products**: On the **Product** form (Configuration > Management > Products), open the **Allergens** tab and assign one or more allergens to the product. Terminals and ordering then use this information to display allergen info where supported.
+
+## Best practices
+
+- Use standard allergen names (e.g. "Gluten", "Nuts", "Dairy") so they are recognisable to staff and customers.
+- Use **Export** to get a template or backup before **Import** so your file format and columns match.
+- Assign allergens to all products that contain them so the till and ordering can show accurate information.
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Management" icon="diagram-project" href="/enterprise/pages/management/overview">
+    How allergens fit with products.
+  </Card>
+  <Card title="Products" icon="shopping-bag" href="/enterprise/pages/management/products">
+    Assign allergens to products (Allergens tab).
+  </Card>
+</CardGroup>

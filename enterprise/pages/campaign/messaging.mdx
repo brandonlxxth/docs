@@ -1,0 +1,82 @@
+---
+title: "Messaging"
+description: "Send messages to members or member groups via push notification and email in the Management Portal"
+---
+
+## Overview
+
+The Messaging page (Campaign) lets you send one-off messages to members’ smartphones and/or email. You can target a **single member** or **everyone in a member group**. Messages can be sent as push notification, email, or both. This is useful for announcements, reminders, or ad-hoc communication.
+
+You need the **Campaign** permission (maintain campaign) in your user role to access this page.
+
+## Using Messaging
+
+### Accessing Messaging
+
+Navigate to **Configuration > Campaign > Messaging** in the navigation menu.
+
+### Sending a Message
+
+<Steps>
+<Step title="Open the Messaging page">
+  Navigate to **Configuration > Campaign > Messaging**.
+</Step>
+
+<Step title="Choose who receives the message">
+  Use the toggle to choose:
+  - **Member** — send to one member (use the search/select to find and choose the member).
+  - **Member Group** — send to everyone in a member group (select the group from the dropdown).
+</Step>
+
+<Step title="Enter the message content">
+  You must provide at least one of:
+  - **Subject** — used for email (optional if you only send push).
+  - **Push notification** — short text sent to members’ devices (e.g. app).
+  - **Email body (HTML)** — rich email content using the editor (headers, bold, lists, etc.).
+</Step>
+
+<Step title="Send">
+  Click the save/submit button. Your messages are sent to the chosen member(s). A confirmation message confirms that the messages have been sent.
+</Step>
+</Steps>
+
+<Info>
+You must enter content in at least one of **Push notification** or **Email body**. If you only want push, leave the email body empty; if you only want email, leave push empty. You can also send both.
+</Info>
+
+### Message Types
+
+- **Push notification** — Short text that appears on the member’s device (e.g. in the Kappture app). Keep it brief for best results.
+- **Email** — Full HTML email with subject. Use the rich editor to format the email body (headings, bold, lists, links, etc.).
+
+### After Sending
+
+- The system records that the campaign was sent (for audit).
+- Members in the chosen member group (or the single member) receive the message according to their notification preferences and how your organisation has configured delivery (e.g. via app, email provider).
+
+<Warning>
+Sending to a large member group can generate many push and/or email messages. Confirm the member group and content before sending.
+</Warning>
+
+## Messaging fields reference
+
+| Field | What it does |
+|-------|----------------|
+| **Member / Member Group** | Toggle: send to one **Member** (search and select) or to everyone in a **Member Group** (select group). |
+| **Subject** | Email subject line (optional if only sending push). |
+| **Push notification** | Short text sent to members’ devices (e.g. app). |
+| **Email body (HTML)** | Rich email content; use the editor. At least one of Push or Email body is required. |
+
+## Related Documentation
+
+<CardGroup cols={2}>
+  <Card title="Member" icon="user" href="/enterprise/pages/member/member">
+    Manage individual members (search and select a member for messaging).
+  </Card>
+  <Card title="Member Group" icon="users" href="/enterprise/pages/member/member-group">
+    Manage member groups (select a group for messaging).
+  </Card>
+  <Card title="Notification templates" icon="bell" href="/enterprise/pages/campaign/notification-templates">
+    Reusable templates for automated notifications (e.g. receipts, voucher entitlement).
+  </Card>
+</CardGroup>

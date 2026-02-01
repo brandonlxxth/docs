@@ -1,0 +1,66 @@
+---
+title: "Table Layout"
+description: "Configure table-based layouts for table service operations in the Management Portal"
+---
+
+## Overview
+
+Table Layout is the tool for putting **floor plans visually on screen**. You design a layout that shows the tables (or zones) on the till so operators see a visual map of the floor. When they tap a table on that screen, they can open a tab for that table, add orders, split bills, merge tabs, and manage table service from one place.
+
+**Assignment:** Like standard Layouts, table layouts are assigned **per outlet and per session**. On the **Outlet** form, under **Outlet Sessions**, you can assign **Table layout 1**, **Table layout 2**, and **Table layout 3** for each session (in addition to the Sales layout).
+
+**Permissions:** You need the **Layout** permission to access Table Layout.
+
+## Using Table Layout
+
+### Accessing Table Layout
+
+Navigate to **Configuration > Management > Table Layout** in the navigation menu.
+
+### Viewing table layouts
+
+When you open the Table Layout page, you see a **selector at the top**, a **+** icon, and a **Copy** button. Choose a table layout from the list; its details load in the content area below so you can view or edit it.
+
+### Creating a table layout
+
+1. On the Table Layout page, click the **+** icon.
+2. **Details** tab: Enter a **Name**. Choose **Layout resolution** (cannot be changed after save). Optionally set **Layout background image** (from **Resources**) and **Restriction**.
+3. Click Save. After saving, the **Designer** tab appears so you can add and arrange table elements.
+4. In the **Designer** tab, configure the table layout as needed, then Save.
+
+### Editing and copying
+
+- **Edit**: Select the table layout from the list and change **Name**, **Layout background image**, **Restriction**, or Designer content, then Save.
+- **Copy**: Click the **Copy** button, choose a source table layout from the list that opens, and save to create a new table layout based on it.
+
+## Table layout fields reference
+
+| Field | Tab | What it does |
+|-------|-----|----------------|
+| **Name** | Details | Display name of the table layout (e.g. Table service main, Table service 2). |
+| **Layout resolution** | Details | Screen resolution; set at creation and cannot be changed. |
+| **Layout background image** | Details | Image from **Resources** used as the background. |
+| **Restriction** | Details | When set, only users/outlets without this restriction see the layout. |
+| **Designer** | Designer | Add and arrange table elements (tables/zones) on the floor plan. |
+
+## How table layout links
+
+- **Outlet sessions**: When you configure an **Outlet**, under **Outlet Sessions** for each session you can set **Table layout 1**, **Table layout 2**, and **Table layout 3**. Terminals at that outlet use these when in table-service mode for that session.
+- **Resources**: Background image comes from **Configuration > Management > Resources**.
+
+## Best practices
+
+- Use clear names (e.g. "Table service main", "Table service 2") so staff can identify them when assigning to outlet sessions.
+- Set resolution at creation to match your terminal screens; it cannot be changed later.
+- Use **Copy** to create variations from an existing table layout.
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Management" icon="diagram-project" href="/enterprise/pages/management/overview">
+    How Management pieces link together (sessions, outlets, layouts).
+  </Card>
+  <Card title="Layouts" icon="th-large" href="/enterprise/pages/management/layouts">
+    Standard (sales) terminal layouts.
+  </Card>
+</CardGroup>

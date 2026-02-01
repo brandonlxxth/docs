@@ -1,0 +1,83 @@
+---
+title: "Product Prices"
+description: "Set and manage product pricing across outlets and price bands in the Management Portal"
+---
+
+## Overview
+
+Product Prices let you set **how much each product costs** at each **Outlet** and for each **Price Band**.
+
+**How prices are used:** **Sessions** use a **Price Band**. When a terminal at an outlet is running in a session, it uses that session’s price band—so the prices you set here (per outlet and per price band) are what the customer pays.
+
+**Editing outlet prices:** When editing prices for an outlet, you can filter the product list by **Product Groups** and **Product Tags** to view and edit a subset of products. The grid shows products and their prices per price band for that outlet. You can also update **individual product prices** on the **Product** page by searching for the desired product and editing its prices there.
+
+**Import:** Product price import is by company, site, or outlet and file. Import does **not** filter by product group or tag; use it for bulk updates across many products, outlets, and price bands.
+
+**Permissions:** You need the **Product Price Outlet** permission to access this page. Import/export may require **Product Price Import Export**.
+
+## Using Product Prices
+
+### Accessing Product Prices
+
+Navigate to **Configuration > Management > Product Prices** in the navigation menu.
+
+### Viewing product prices
+
+When you open the Product Prices page:
+
+- Choose an **Outlet** (and optionally filter by **Product Groups** and **Product Tags**).
+- The page shows a grid or list of products and their prices **per Price Band** for that outlet.
+- You can search and sort to find products and edit prices.
+
+### Setting prices
+
+1. On the Product Prices page, select the **Outlet** you want to set prices for.
+2. Optionally filter by **Product Groups** and **Product Tags** to limit the list to a subset of products.
+3. For each product and each **Price Band**, enter or change the price (and any other price fields, e.g. cost, tax).
+4. Click Save (or save per row/section as the UI allows).
+
+You can also update prices for a **single product** on the **Product** page (**Configuration > Management > Products**): search for the product, open it, and edit its prices there.
+
+**Import and export:** You can **Import** prices (e.g. from a file) and **Export** when your role has the relevant permissions. Import lets you update prices for many products, outlets, and price bands in one go.
+
+## Product price fields reference
+
+| Field | Where | What it does |
+|-------|--------|----------------|
+| **Outlet** | Page selector | The outlet whose prices you are viewing or editing. |
+| **Product Groups** | Filter | Limits the product list to products in the selected groups (outlet price grid only; not used in import). |
+| **Product Tags** | Filter | Limits the product list to products with the selected tags (outlet price grid only; not used in import). |
+| **Price Band** | Grid | Each column (or band) represents a price band; the till uses the band assigned to the current session. |
+| **Price** | Grid | Selling price for the product in this price band at this outlet. |
+| **Cost** | Grid | — |
+| **Tax** | Grid | Tax rate applied to the product price. |
+
+## How product prices link
+
+- **Sessions:** Each **Session** has a **Price Band**. When the till is in that session, it uses that price band’s prices for the current outlet.
+- **Outlets:** Prices are stored per outlet; each outlet can have different prices for the same product and price band.
+- **Price Bands:** You define price bands under **Configuration > Management > Price Bands**. Product prices are stored per price band per outlet.
+- **Products, Product Groups, Product Tags:** When editing outlet prices, you filter the product list by product group and tag to view and edit a subset. Products and groups are configured under **Products** and **Product Groups**. Import does not use product group or tag filters.
+
+## Best practices
+
+- Set **Price Bands** and **Sessions** first, then set product prices per outlet and price band.
+- Use **Product Groups** and **Product Tags** to filter the outlet price grid when editing prices for a subset of products (e.g. all drinks, all member prices).
+- Use **Import** for large price updates (by company, site, or outlet and file); check the import result before committing.
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Management" icon="diagram-project" href="/enterprise/pages/management/overview">
+    How product prices link to sessions, price bands, and outlets.
+  </Card>
+  <Card title="Sessions" icon="clock" href="/enterprise/pages/management/sessions">
+    Sessions use a price band; the till uses that band’s prices when in that session.
+  </Card>
+  <Card title="Price Bands" icon="tags" href="/enterprise/pages/management/price-bands">
+    Define the price bands used in sessions and product prices.
+  </Card>
+  <Card title="Products" icon="shopping-bag" href="/enterprise/pages/management/products">
+    Product catalog (products you set prices for).
+  </Card>
+</CardGroup>

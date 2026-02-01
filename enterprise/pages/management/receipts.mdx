@@ -1,0 +1,65 @@
+---
+title: "Receipts"
+description: "Configure receipt templates, printing settings, and receipt formatting in the Management Portal"
+---
+
+## Overview
+
+Receipts (Print) let you **configure receipt templates** used when printing receipts at the till.
+
+**How it works:** Each receipt has a **Name**, **Header text**, **Footer text**, up to five **Bill signature lines**, and a **Logo**. Each **Terminal** has a **Receipt type** (Print) assigned to it; when the terminal prints a receipt, it uses that receipt template.
+
+**Permissions:** You need the **Receipt** permission to access this page.
+
+## Using Receipts
+
+### Accessing Receipts
+
+Navigate to **Configuration > Management > Receipts** in the navigation menu.
+
+### Viewing receipts
+
+When you open the Receipts page, you see a **selector at the top** and a **+** icon. Choose a receipt from the list; its details (name, header text, footer text, bill signature lines, logo) load in the content area below so you can view or edit it.
+
+### Creating a receipt
+
+1. On the Receipts page, click the **+** icon.
+2. **Details** tab: Enter a **Name**. Set **Header text** and **Footer text** (text that appears at the top and bottom of the receipt). Optionally set **Bill signature lines** (up to five lines for customer signatures).
+3. **Logo** tab: Optionally upload or set a **Logo** image for the receipt (accepted format, max file size, and dimensions are shown on the tab).
+4. Click Save.
+
+### Editing a receipt
+
+1. Open the Receipts page and select the receipt from the list.
+2. Change **Name**, **Header text**, **Footer text**, **Bill signature lines**, or **Logo** as needed.
+3. Click Save.
+
+You can use **Usage** to see which terminals use this receipt before deleting. Receipts that are in use cannot be deleted until terminals are reassigned to another receipt.
+
+## Receipt fields reference
+
+| Field | Tab | What it does |
+|-------|-----|----------------|
+| **Name** | Details | Display name of the receipt template (e.g. Standard receipt, Drive-through receipt). |
+| **Header text** | Details | Text at the top of the receipt (e.g. business name, address). |
+| **Footer text** | Details | Text at the bottom of the receipt (e.g. legal, promotional). |
+| **Bill signature lines** | Details | Up to five lines for customer signatures on the bill. |
+| **Logo** | Logo | Image shown on the receipt (from **Resources** or upload). Accepted parameters (e.g. format, max file size, dimensions) are shown on the Logo tab in the Management Portal. |
+
+## How receipts link
+
+- **Terminals**: Each **Terminal** has a **Receipt type** (Print) assigned to it (terminal configuration). When the terminal prints a receipt (e.g. after a sale), it uses that receipt template (header text, footer text, bill signature lines, logo).
+
+## Best practices
+
+- Use clear receipt names (e.g. "Standard receipt", "Drive-through receipt") so staff can assign the right receipt to terminals.
+- Set **Header text** and **Footer text** with your business name, address, and any required legal or promotional text.
+- Use **Usage** before deleting a receipt.
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Management" icon="diagram-project" href="/enterprise/pages/management/overview">
+    How receipts fit with terminals.
+  </Card>
+</CardGroup>

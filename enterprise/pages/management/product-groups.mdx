@@ -1,0 +1,78 @@
+---
+title: "Product Groups"
+description: "Organize products into groups for easier management in the Management Portal"
+---
+
+## Overview
+
+Product Groups let you **organise products into groups** (e.g. Drinks, Food, Sides). You assign products to groups when editing a **Product** (Configuration > Management > Products).
+
+**Where groups are used:** Groups are used in **Product Prices** (filter the outlet price grid when editing prices for an outlet—import does not use product group filters), in **Layouts** (product shortcut tiles can show a product group), in **Menus** (menu content can be built from product groups), and in reporting.
+
+**Permissions:** You need the **Product Group** permission to access this page.
+
+## Using Product Groups
+
+### Accessing Product Groups
+
+Navigate to **Configuration > Management > Product Groups** in the navigation menu.
+
+### Viewing product groups
+
+When you open the Product Groups page, you see a **selector at the top** and a **+** icon. Choose a product group from the list; its details load in the content area below so you can view or edit it.
+
+### Creating a product group
+
+1. On the Product Groups page, click the **+** icon.
+2. Enter a **Name** (e.g. "Drinks", "Food", "Sides"). Optionally set **Parent group**, **Layout tile colour**, **External reference 1**, **External reference 2**, and **External reference 3**.
+3. Click Save.
+
+### Editing a product group
+
+1. Open the Product Groups page and select the product group from the list.
+2. Change **Name**, **Parent group**, **Layout tile colour**, **External references**, or other settings as needed.
+3. Click Save.
+
+You can use **Usage** to see where the group is used (layouts, menus, product prices, etc.) before deleting. Groups that are in use cannot be deleted until they are removed from those areas.
+
+## Product group fields reference
+
+| Field | What it does |
+|-------|----------------|
+| **Name** | Display name of the product group (e.g. Drinks, Food, Sides). |
+| **Parent group** | Optional parent product group for hierarchy (e.g. "Drinks" under "Beverages"); choose **Top level** for no parent. |
+| **Layout tile colour** | Fill colour of the product group tile when shown on a layout (e.g. till screen). |
+| **Layout tile text colour** | Text colour of the product group tile when shown on a layout. |
+| **External reference 1** | Optional reference for integration or reporting. |
+| **External reference 2** | Optional reference for integration or reporting. |
+| **External reference 3** | Optional reference for integration or reporting. |
+
+## How product groups link
+
+- **Products**: Each product can belong to one or more **Product Groups** (or groups reference products). Products are configured under **Configuration > Management > Products**.
+- **Product Prices**: On **Product Prices**, when editing prices for an outlet, you can filter the product list by **Product Groups** to view and edit prices for products in selected groups. Product price import does not filter by product group.
+- **Layouts**: In the Layout Designer, **Product shortcuts** tiles can show a **Product Group** (so one tile shows all products in that group).
+- **Menus**: **Menus** (sale popup) and **Self Service Menu** (legacy kiosk) content can be built from product groups.
+
+## Best practices
+
+- Create product groups before or as you add products so you can assign products to groups and use groups in layouts and menus.
+- Use clear names (e.g. "Drinks", "Hot food", "Sides") so staff can find them when building layouts and setting prices.
+- Use **Usage** before deleting a product group.
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Management" icon="diagram-project" href="/enterprise/pages/management/overview">
+    How product groups fit with products, prices, and layouts.
+  </Card>
+  <Card title="Products" icon="shopping-bag" href="/enterprise/pages/management/products">
+    Product catalog (assign products to groups when editing a product).
+  </Card>
+  <Card title="Product Prices" icon="dollar-sign" href="/enterprise/pages/management/product-prices">
+    Filter the outlet price grid by product group when editing prices (import does not use product group).
+  </Card>
+  <Card title="Layouts" icon="th-large" href="/enterprise/pages/management/layouts">
+    Add product group tiles (product shortcuts) to a layout.
+  </Card>
+</CardGroup>

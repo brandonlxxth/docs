@@ -67,6 +67,52 @@
                   "enterprise/pages/member/member-group-management",
                   "enterprise/pages/member/cost-centre"
                 ]
+              },
+              {
+                "group": "Campaign",
+                "pages": [
+                  "enterprise/pages/campaign/messaging",
+                  "enterprise/pages/campaign/notification-templates"
+                ]
+              },
+              {
+                "group": "Vision",
+                "pages": [
+                  "enterprise/pages/vision/overview"
+                ]
+              },
+              {
+                "group": "Management",
+                "pages": [
+                  "enterprise/pages/management/overview",
+                  "enterprise/pages/management/layouts",
+                  "enterprise/pages/management/table-layout",
+                  "enterprise/pages/management/menus",
+                  "enterprise/pages/management/self-service-menu",
+                  "enterprise/pages/management/tenders",
+                  "enterprise/pages/management/sessions",
+                  "enterprise/pages/management/products",
+                  "enterprise/pages/management/product-label",
+                  "enterprise/pages/management/product-prices",
+                  "enterprise/pages/management/price-bands",
+                  "enterprise/pages/management/price-band-scheduler",
+                  "enterprise/pages/management/price-band-groups",
+                  "enterprise/pages/management/product-groups",
+                  "enterprise/pages/management/product-challenge",
+                  "enterprise/pages/management/outlet-type",
+                  "enterprise/pages/management/operators",
+                  "enterprise/pages/management/operator-roles",
+                  "enterprise/pages/management/receipts",
+                  "enterprise/pages/management/resources",
+                  "enterprise/pages/management/allergens",
+                  "enterprise/pages/management/course",
+                  "enterprise/pages/management/product-tags",
+                  "enterprise/pages/management/waste-reason",
+                  "enterprise/pages/management/pay-at-table",
+                  "enterprise/pages/management/receipt-portal",
+                  "enterprise/pages/management/checklist",
+                  "enterprise/pages/management/messaging"
+                ]
               }
             ]
           }

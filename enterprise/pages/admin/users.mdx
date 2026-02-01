@@ -13,9 +13,9 @@ Navigate to **Configuration > Admin > Users** in the navigation menu.
 
 ## Viewing Users
 
-Use the search box at the top to find users; results load in a modal showing user name, email, role, status, and other key details.
+Use the search box at the top to find users; results appear below, showing user name, email, role, status, and other key details.
 
-## Creating a User
+### Creating a user
 
 <Steps>
 <Step title="Open the Users page">
@@ -51,17 +51,17 @@ Use the search box at the top to find users; results load in a modal showing use
 </Step>
 </Steps>
 
-## Editing a User
+### Editing a user
 
 To edit an existing user:
 
-1. Search for the user and select them from the results in the modal
+1. Search for the user and select them from the results below
 2. Click **Edit**
 3. Update details on the User tab (name, email, role, time zone, landing page, etc.)
 4. Adjust **User Outlet Permissions** or **User Restriction** as required
 5. Click Save
 
-## User Outlet Override Permissions
+### User outlet override permissions
 
 By default, a user can access all outlets that their **user role** is allowed to access. You can override this so a user only has access to certain outlets.
 
@@ -92,7 +92,22 @@ You can only select outlets that the user's role is allowed to access. You canno
 - **Temporary access**: Limit new or temporary users to specific locations
 - **Compliance**: Ensure users only see data they are authorised to see
 
-## User Restriction Override
+## User fields reference
+
+| Field | Tab | What it does |
+|-------|-----|----------------|
+| **Name** | User | Full name of the user. |
+| **Email** | User | Email address; used to log in. |
+| **Password** | User | Initial password for new users. |
+| **Phone number** | User | — |
+| **Reference** | User | Optional reference or ID. |
+| **User role** | User | Role that defines this user's permissions. |
+| **Time zone** | User | User's time zone for dates and times. |
+| **Landing page** | User | Page the user sees after login. |
+| **User Outlet Permissions** | User Outlet Permissions | Override so this user only has access to selected outlets (subset of the role’s outlets). |
+| **User Restriction** | User Restriction | Override so extra restrictions apply to this user; entities with those restrictions are hidden from them. |
+
+### User restriction override
 
 In addition to their role, you can apply extra **restrictions** to a user. Restrictions are defined by name on the [Restriction](/enterprise/pages/admin/restriction) page. When a user has a restriction, the system **hides all entities** (e.g. products, outlets) that have that same restriction assigned—so the user cannot see or access those entities.
 
@@ -107,7 +122,7 @@ In addition to their role, you can apply extra **restrictions** to a user. Restr
 If you do not override, the user is subject only to the restrictions assigned to their role. When you override, you choose exactly which restrictions apply to this user; entities with those restrictions will be hidden from them.
 </Info>
 
-## Other User Options
+### Other user options
 
 - **Invite user**: When creating a user, you can send an invite instead of setting a password
 - **Landing page**: Control which page the user sees first after login (e.g. Dashboard, Stock, Recent activity)
@@ -116,13 +131,13 @@ If you do not override, the user is subject only to the restrictions assigned to
 - **Terminal alerts**: When the Terminal Alerts tab is shown, configure terminal alerts for this user
 - **Reports**: When the Reports tab is shown, configure which reports this user can access
 
-## Deleting a User
+### Deleting a user
 
 <Warning>
 Deleting a user is permanent. The user will no longer be able to log in. Ensure the user is no longer required before deleting.
 </Warning>
 
-1. Search for the user and select them from the results in the modal
+1. Search for the user and select them from the results below
 2. Click **Delete**
 3. Confirm the deletion
 

@@ -1,0 +1,145 @@
+---
+title: "Vision"
+description: "Configure customer-facing display content for point of sale, kiosks, and quick serve screens in the Management Portal"
+---
+
+## Overview
+
+Vision is the content shown on **customer-facing screens**—at the till (point of sale), on self-service kiosks, and on quick serve displays. You create **visions** (named sets of images or video, in order), upload media, then assign which vision each outlet uses. You can also schedule when content changes so different visions play at different times (e.g. breakfast menu in the morning, promotions in the afternoon).
+
+You need the **Vision** permission to access Customer Screen, Kiosk, Quick Serve, Assignment, and Asset. You need **Vision Scheduler** to create and manage schedules.
+
+Navigate to **Configuration > Vision** in the navigation menu.
+
+## Vision types and where they show
+
+Each vision type corresponds to a specific screen or area. You create visions per type, then assign them to outlets (and optionally schedule changes).
+
+### Customer Screen (PoS)
+
+**Where it shows** — The **customer-facing screen at the till** (point of sale). This is the display the customer sees while the operator is serving them.
+
+**Creating and editing** — Go to **Configuration > Vision > PoS (Point of Sale) > Customer Screen**. Use the selector at the top to choose a vision or click the **+** icon to create a new one. Each vision has a name and an ordered list of images or video (drag rows to reorder). You can optionally set headings for different states (e.g. terminal startup). Save when done.
+
+**File upload** — **Configuration > Vision > PoS > Customer Screen File Upload**. Upload images and video (e.g. .jpg, .png, .mp4, .webm) for use in Customer Screen visions.
+
+**Assigning** — Assign the Customer Screen vision to an outlet via **Vision > Assignment** (using the outlet hierarchy) or on the outlet’s **Vision** tab (PoS dropdown).
+
+### Kiosk Home
+
+**Where it shows** — The **home or background screen** on **self-service kiosks**. This is the main kiosk display (e.g. welcome or idle screen).
+
+**Creating and editing** — **Configuration > Vision > Kiosk > Home**. Create or select a vision, add a name and ordered images/video, reorder by dragging, then Save.
+
+**File upload** — **Configuration > Vision > Kiosk > Kiosk File Upload**. Upload assets for both Kiosk Home and Kiosk Sales.
+
+**Assigning** — Assign via **Vision > Assignment** or on the outlet’s **Vision** tab (Kiosk Home dropdown).
+
+### Kiosk Sales
+
+**Where it shows** — The **sales or product area** on **self-service kiosks**. This is where product content is shown during ordering.
+
+**Creating and editing** — **Configuration > Vision > Kiosk > Sales**. Same pattern: name, ordered images/video, drag to reorder, Save.
+
+**File upload** — Same as Kiosk Home: **Configuration > Vision > Kiosk > Kiosk File Upload**.
+
+**Assigning** — Assign via **Vision > Assignment** or on the outlet’s **Vision** tab (Kiosk Sales dropdown).
+
+### Quick Serve
+
+**Where it shows** — **Quick serve display screens** (customer-facing screens in quick serve areas).
+
+**Creating and editing** — **Configuration > Vision > Quick Serve > Quick Serve**. Create or select a vision, set name and ordered assets, Save.
+
+**File upload** — **Configuration > Vision > Quick Serve > File Upload**.
+
+**Assigning** — Assign via **Vision > Assignment** or when configuring the outlet (if the outlet uses quick serve).
+
+## Assigning vision and managing assets
+
+You can set or change which vision an outlet uses in two ways: the Assignment page (with the outlet hierarchy) or the outlet’s Vision tab. You can also view and manage all vision assets in one place.
+
+### Assignment page (and the hierarchy)
+
+Go to **Configuration > Vision > Assignment**.
+
+- The **left-hand panel** shows the **outlet hierarchy** (sites and outlets in a tree). Use the search box to find outlets if needed.
+- **Single outlet** — Click an outlet in the tree. The right-hand panel loads a form with three dropdowns: **Customer Screen** (PoS), **Self Service Home** (Kiosk Home), and **Self Service Sales** (Kiosk Sales). Choose the visions you want for that outlet and click Save.
+- **Bulk** — Click the **Bulk** button in the card toolbar (top right of the Assignment page) to switch to bulk mode. The tree then shows checkboxes. Select one or more outlets, then set the same Customer Screen, Kiosk Home, and Kiosk Sales visions for all of them and Save.
+
+So you **change vision configuration via the hierarchy**: select the outlet (or outlets in bulk) in the hierarchy tree, then set the vision in the form on the right.
+
+### Outlet Vision tab
+
+When you **create or edit an outlet**, open the **Vision** tab. You’ll see:
+
+- **PoS** — Customer Screen vision for that outlet.
+- **Self Service** — Kiosk Home and Kiosk Sales visions (for self-service kiosks).
+
+Choose the visions from the dropdowns and save the outlet. This is the same assignment as on the Assignment page; you can use either place.
+
+### Asset
+
+**Configuration > Vision > Asset** — View **all** vision assets (images and video) in one list, regardless of type. Select an asset to preview it. You can delete assets you no longer need. Useful when cleaning up or checking what’s in use.
+
+## Vision Scheduler
+
+The Vision Scheduler lets you **switch which vision is shown at specific times** for selected outlets. For example: show a breakfast vision in the morning and a promotions vision in the afternoon, or change content by day of the week.
+
+You need the **Vision Scheduler** permission. Go to **Configuration > Vision > Vision Scheduler**.
+
+### What a schedule is
+
+A **schedule** has:
+
+- A **name** (e.g. "Breakfast and lunch rotation").
+- **Availability** — Which outlets the schedule applies to. You select outlets (e.g. via a hierarchy or checklist) when creating or editing the schedule.
+- **Events** — Time ranges during which specific visions are used. Each event says which Customer Screen (PoS), Kiosk Home, and Kiosk Sales visions to show, and when (start and end date/time). You must choose at least one vision per event.
+
+During an event’s time range, the system shows the event’s visions on the relevant screens at the schedule’s outlets. Outside those times, the outlet uses its normal (default) vision assignment from the Assignment page or outlet Vision tab.
+
+### Creating a schedule
+
+1. On the Vision Scheduler page, click the **+** icon to create a new schedule.
+2. **Details** tab: Enter a **Name**. Under **Availability**, select the **outlets** this schedule applies to (the outlets where scheduled content will switch).
+3. Click Save. After saving, a **Scheduler** tab appears.
+4. Open the **Scheduler** tab to add events (see below).
+
+### Adding and editing events
+
+On the **Scheduler** tab you see a **calendar** (Month, Week, or Day view).
+
+- **Add an event** — Click the **Add** button or click (and optionally drag) on the calendar to set the time range. A window opens.
+- In the window:
+  - **Event name** — A label for the event (e.g. "Breakfast content").
+  - **Customer Screen (PoS)** — Vision to show on customer screens at the till during this event. Optional if you set Kiosk Home or Kiosk Sales.
+  - **Kiosk Home** — Vision to show on kiosk home screens during this event.
+  - **Kiosk Sales** — Vision to show on kiosk sales screens during this event.  
+  You must select **at least one** of these three.
+  - **Date range** — Start and end date and time for the event.
+  - **Repeats** (for new events) — If you want the event to repeat, tick **Repeats** and choose which **days of the week** it runs, and set **Repeats until** (end date). The system creates a linked series of events.
+5. Click Save. The event appears on the calendar. You can **click an event** to edit or delete it, or **drag** it to change the time; you can also **resize** the event bar to change start or end time.
+
+Events are shown on the calendar with their time, name, and the vision names. Linked (recurring) events are indicated so you can edit or delete the series if needed.
+
+### How scheduling works with assignment
+
+- **Default** — Each outlet has a default vision set on the Assignment page or outlet Vision tab (Customer Screen, Kiosk Home, Kiosk Sales).
+- **During a scheduled event** — For outlets that are part of the schedule’s Availability, the system temporarily shows the event’s visions instead of the default, for the event’s time range.
+- **After the event** — The outlet goes back to its default vision.
+
+So: set defaults first (Assignment or outlet Vision tab), then use the scheduler to override them at specific times for specific outlets.
+
+## Best practices
+
+- **Clear naming**: Use descriptive names for visions so staff can identify them quickly when assigning or scheduling
+- **Set defaults first**: Assign default visions on the Assignment page or outlet Vision tab before adding scheduler events, so outlets always have content when no event is running
+- **Reuse assets**: Upload once per type (e.g. PoS File Upload) and reuse the same assets across visions where appropriate; use **Vision > Asset** to review and remove unused files
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Configuration" icon="cog" href="/enterprise/pages/configuration">
+    Return to the Configuration section overview.
+  </Card>
+</CardGroup>

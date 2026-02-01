@@ -1,0 +1,71 @@
+---
+title: "Menus"
+description: "Manage sale popup menus that appear on terminals in the Management Portal"
+---
+
+## Overview
+
+Menus are a way to **group layout icons**—products, tenders, product groups, and the like—into a single popup. You create a menu, add the items (e.g. products or product groups) to it, and then use the menu in one of two ways:
+
+- **Assigned to a sales layout**: Add the menu as a **tile** on a Layout in the Layout Designer (Menus tab). When an operator taps that tile on the till, the popup opens so they can add items (e.g. “Add a drink?”, “Sides?”).
+- **Assigned to a product (popup menu)**: Attach the menu to a **product**. When an operator taps that product on the till, the popup opens automatically. Common uses include a **coffee** product with a popup menu for **milk** (e.g. whole, skim, oat) or size, or a main with a popup for add-ons.
+
+**Permissions:** You need the **Layout** permission to access Menus.
+
+## Using Menus
+
+### Accessing Menus
+
+Navigate to **Configuration > Management > Menus** in the navigation menu.
+
+### Viewing menus
+
+When you open the Menus page, you see a **selector at the top** and a **+** icon. Choose a menu from the list; its details load in the content area below so you can view or edit it.
+
+### Creating a menu
+
+1. On the Menus page, click the **+** icon (or use **Configuration > Management > Layouts** and create a menu from the Layout menu flow: **Create menu**).
+2. Enter a **Name** and configure the menu content (products or product groups that appear in the popup). Use the designer to add items and set order.
+3. Click Save.
+
+### Editing a menu
+
+1. Open the Menus page and select the menu from the list.
+2. Change the **Name** or menu items (add, remove, reorder) as needed.
+3. Click Save.
+
+## How menus link
+
+- **Layouts**: In the **Layout** Designer, open the **Menus** tab and add a menu as a tile. The terminal shows that tile; when the operator taps it, the popup opens.
+- **Products (popup menus)**: You can assign a menu to a product so the menu opens when the operator taps that product (e.g. coffee → milk options). This is configured on the product (or in the product setup flow).
+- **Products and Product Groups**: Menu content is built from **Products** or **Product Groups** (Configuration > Management > Products, Product Groups).
+
+## Menu fields reference
+
+| Field | What it does |
+|-------|----------------|
+| **Name** | Display name of the menu (e.g. Add drink, Sides, Milk options). |
+| **Menu content** | Products or product groups in the popup; add, remove, and reorder in the designer. |
+
+## Best practices
+
+- Use clear menu names (e.g. “Add drink”, “Sides”, “Milk options”) so staff can find them when adding to layouts or products.
+- Group related products (e.g. drinks, sides, milk choices) in a menu so operators get one popup per category.
+- Use popup menus on products when the product has options (e.g. coffee with milk choice, main with add-ons) so the options open as soon as the operator taps the product.
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Management" icon="diagram-project" href="/enterprise/pages/management/overview">
+    How menus fit with layouts and terminals.
+  </Card>
+  <Card title="Layouts" icon="th-large" href="/enterprise/pages/management/layouts">
+    Add menu tiles to a layout in the Designer.
+  </Card>
+  <Card title="Self Service Menu" icon="mobile-screen" href="/enterprise/pages/management/self-service-menu">
+    Legacy self-service terminal menus. For kiosk ordering, see Ordering.
+  </Card>
+  <Card title="Ordering" icon="shopping-cart" href="/enterprise/pages/ordering">
+    Self Service Ordering: Kiosk Menu and Kiosk Menu Group—the self-service menus everyone uses.
+  </Card>
+</CardGroup>

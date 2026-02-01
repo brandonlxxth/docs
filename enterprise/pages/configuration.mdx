@@ -65,106 +65,39 @@ Configure loyalty programs, vouchers, and promotional incentives:
 
 ## Campaign
 
-Marketing and communication tools:
+Send messages and manage reusable notification templates:
 
-- **Messaging**: Create and manage messaging campaigns to communicate with customers or members
-- **Notification Templates**: Create reusable templates for notifications and messages
+<CardGroup cols={2}>
+<Card title="Messaging" icon="comments" href="/enterprise/pages/campaign/messaging">
+  Send one-off messages to a single member or a member group (push notification and/or email).
+</Card>
+
+<Card title="Notification templates" icon="bell" href="/enterprise/pages/campaign/notification-templates">
+  Create and manage reusable templates for automated notifications (email receipt, voucher entitlement, etc.).
+</Card>
+</CardGroup>
 
 ## Management
 
-The Management subsection contains the most comprehensive set of configuration options:
+Management is where you configure day-to-day operations: what products are sold, how they are priced, how the till screen looks (layouts), who can operate it (operators and operator roles), how customers pay (tenders), and how receipts and menus behave. These settings are used by terminals and self-service kiosks. Layouts and product prices link to **sessions** (operational periods) and **outlets**: each outlet has sessions, and for each session you assign a price band and layouts, so the same outlet can use different layouts and prices at different times.
 
-### Layouts and Menus
+For a full explanation of how Management pieces link together (sessions, price bands, layouts, product prices, terminals, operators, tenders, and the rest), see the Management overview.
 
-- **Layouts**: Configure terminal layouts for point-of-sale displays
-- **Table Layout**: Set up table-based layouts for table service operations
-- **Menus**: Manage sale popup menus that appear on terminals
-- **Self Service Menu**: Configure self-service kiosk menus for customer ordering
-
-### Products and Pricing
-
-- **Products**: Manage your complete product catalog
-- **Product Label**: Configure product labels and display settings
-- **Product Prices**: Set and manage product pricing across locations
-- **Price Bands**: Configure price band tiers for different customer segments
-- **Price Band Scheduler**: Schedule price band changes for promotions or time-based pricing
-- **Price Band Groups**: Organize price bands into groups
-- **Product Groups**: Organize products into groups for easier management
-- **Product Challenge**: Configure product restrictions and age verification requirements
-
-### Operations
-
-- **Tenders**: Configure payment tender types (cash, card, etc.)
-- **Sessions**: Manage operational sessions and session settings
-- **Operators**: Manage operator accounts and access
-- **Operator Roles**: Configure operator role permissions and capabilities
-- **Outlet Type**: Define outlet types to standardize configurations
-
-### Receipts and Printing
-
-- **Receipts**: Configure receipt templates, printing settings, and receipt formatting
-
-### Resources and Settings
-
-- **Resources**: Manage system resources and assets
-- **Allergens**: Configure allergen information for products
-- **Course**: Set up course configurations for menu organization
-- **Product Tags**: Manage product tags for categorization and organization
-- **Waste Reason**: Configure waste reason codes for tracking product waste
-
-### Pay at Table
-
-<Warning>
-**Requires Pay at Table Module**: This feature requires the Pay at Table module, which is charged separately.
-</Warning>
-
-- **QR Code Generator**: Generate QR codes for pay-at-table functionality, allowing customers to pay directly from their mobile devices
-
-### Receipt Portal
-
-<Warning>
-**Requires Receipt Portal Module**: This feature requires the Receipt Portal module, which is charged separately.
-</Warning>
-
-- **QR Code Generator**: Generate QR codes for receipt portal access, allowing customers to view digital receipts
-
-### Checklist
-
-- **Configuration**: Set up checklist configurations for operational procedures
-- **Dashboard**: View checklist dashboard with completion status and metrics
-
-### Messaging
-
-- **Send Message Templates**: Create server message templates for system notifications
-- **Terminal Message Templates**: Create terminal message templates for operator communications
-- **Send Message to POS**: Send messages directly to terminals in real-time
-- **Message History**: View message history and delivery status
+<CardGroup cols={2}>
+  <Card title="Management" icon="diagram-project" href="/enterprise/pages/management/overview">
+    How layouts, products, pricing, sessions, operators, tenders, receipts, and related settings link together.
+  </Card>
+</CardGroup>
 
 ## Vision
 
-Vision configuration for different display types and customer-facing screens:
+Customer-facing display content for point of sale, kiosks, and quick serve:
 
-### PoS (Point of Sale)
-
-- **Customer Screen**: Configure customer-facing screens at point of sale
-- **File Upload**: Upload assets (images, videos) for PoS displays
-
-### Kiosk
-
-- **Home**: Configure kiosk home screen layout and content
-- **Sales**: Configure kiosk sales screen for product display
-- **File Upload**: Upload assets for kiosk displays
-
-### Quick Serve
-
-- **Quick Serve**: Configure quick serve display screens
-- **File Upload**: Upload assets for quick serve displays
-
-### General Vision
-
-- **Assignment**: Assign vision assets to specific locations or terminals
-- **Asset**: Manage vision assets and media files
-- **Vision Scheduler**: Schedule vision content changes for different times or events
+<CardGroup cols={2}>
+<Card title="Vision" icon="tv" href="/enterprise/pages/vision/overview">
+  Configure content for customer screens (PoS, Kiosk, Quick Serve), upload assets, assign to outlets, and use the Vision Scheduler.
+</Card>
+</CardGroup>
 
 ## Terminal
 

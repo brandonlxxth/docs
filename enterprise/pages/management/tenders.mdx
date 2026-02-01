@@ -1,0 +1,84 @@
+---
+title: "Tenders"
+description: "Configure payment tender types (cash, card, etc.) in the Management Portal"
+---
+
+## Overview
+
+Tenders are **payment types** used when taking payment at the till (e.g. Cash, Card/EFT, Account, Other). You configure each tender with a name, type, optional layout colours for the terminal tile, exchange rate for foreign currency, and options such as overpayments behaviour (change, gratuity, forfeit, not allowed), cash drawer, session close declare, and reporting.
+
+**Overpayments**: Only certain overpayment types are shown in the **Options** tab depending on the **Type** you select. For example, **Cash** and **Cash Foreign Currency** show **Change** (and Not allowed); **EFT** shows **Gratuity**; **Other** shows **Gratuity** and **Forfeit**; **Account** and some other types show **Forfeit** or **Not allowed** only. Choose the tender type first—the overpayment options that appear will match that type.
+
+You need the **Tender** permission to access this page.
+
+## Using Tenders
+
+### Accessing Tenders
+
+Navigate to **Configuration > Management > Tenders** in the navigation menu.
+
+### Viewing tenders
+
+When you open the Tenders page, you see a **selector at the top** and a **+** icon. Choose a tender from the list; its details load in the content area below so you can view or edit it.
+
+### Creating a tender
+
+1. On the Tenders page, click the **+** icon.
+2. **Details** tab: Enter a **Name**. Select **Type** (e.g. Cash, EFT, Account, Other). Optionally set **Reference**, **Name (alt)**, **Layout tile colour**, and **External reference** fields. Set **Minimum value** and **Maximum value** if needed. For foreign currency types, set **Exchange rate**.
+3. **Options** tab: Set **Overpayments**. The overpayment options shown (Change, Gratuity, Forfeit, Not allowed) depend on the **Type** you selected—only the options that apply to that tender type are displayed. Optionally enable **Cash drawer**, **Session close declare**, **Session close include variance**, **Exclude from tender total**, **Override print**, **Email receipt** (if not Portugal), **Report taxable**, **Cost centre**, and **Allow empty order** (for Account type).
+4. Click Save.
+
+### Editing a tender
+
+1. Open the Tenders page and select the tender from the list.
+2. Change **Name**, **Type**, colours, values, or **Options** as needed.
+3. Click Save.
+
+You can use the **Usage** button to see where the tender is used (layouts, vouchers, accounts). Tenders that are in use cannot be deleted until they are removed from those areas.
+
+## Tender fields reference
+
+| Field | Tab | What it does |
+|-------|-----|----------------|
+| **Name** | Details | Display name of the tender (e.g. Cash, Card). |
+| **Type** | Details | Tender type: Cash, Cash Foreign Currency, EFT, Account, Other, etc. Determines which overpayment options appear in Options. |
+| **Reference** | Details | — |
+| **Name (alt)** | Details | — |
+| **Layout tile colour** | Details | Fill and text colour of the tender button on the layout. |
+| **External reference** | Details | — |
+| **Minimum value**, **Maximum value** | Details | — |
+| **Exchange rate** | Details | For foreign currency tenders. |
+| **Overpayments** | Options | What happens when the customer pays more than the total: Change, Gratuity, Forfeit, or Not allowed. Options shown depend on Type. |
+| **Cash drawer** | Options | — |
+| **Session close declare** | Options | — |
+| **Session close include variance** | Options | — |
+| **Exclude from tender total** | Options | — |
+| **Override print** | Options | — |
+| **Email receipt** | Options | (Not shown for Portugal.) — |
+| **Report taxable** | Options | — |
+| **Cost centre** | Options | — |
+| **Allow empty order** | Options | For Account type; allows tendering with no order lines. |
+
+## How tenders link
+
+- **Layouts**: Tenders can be added as tiles on a **Layout** so operators see payment buttons for each tender.
+- **Terminals**: When an operator tenders a sale, they choose a tender; the terminal uses the tender’s options (e.g. cash drawer, print, report taxable).
+- **Vouchers**: Vouchers reference tenders (e.g. for payment rules); the **Usage** button shows how many vouchers use a tender.
+- **Accounts**: Account tender type is used for member/account payments; **Allow empty order** can be set for account tenders.
+
+## Best practices
+
+- Use clear names (e.g. "Cash", "Card", "Member account") so operators recognise them on the till.
+- Set **Overpayments** to match your policy; the options shown depend on the tender type (e.g. Change for Cash, Gratuity for EFT).
+- Check **Usage** before deleting a tender.
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Management" icon="diagram-project" href="/enterprise/pages/management/overview">
+    How tenders fit with layouts and terminals.
+  </Card>
+  <Card title="Layouts" icon="th-large" href="/enterprise/pages/management/layouts">
+    Add tender tiles to a layout.
+  </Card>
+</CardGroup>

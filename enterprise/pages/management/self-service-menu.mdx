@@ -1,0 +1,71 @@
+---
+title: "Self Service Menu"
+description: "Configure menus for legacy self-service terminals in the Management Portal"
+---
+
+## Overview
+
+This page configures **menus for legacy self-service terminals**—image-based popup menus used on certain kiosk hardware. If you use **Configuration > Ordering > Self Service Ordering** (Kiosk Menu, Kiosk Menu Group) for kiosk and mobile ordering, that is where most self-service menu configuration is done. This Management page is for the legacy self-service terminal menus only.
+
+On this page you create and edit self-service popup models (resolution, products, product groups, images) that are used on legacy kiosk layouts.
+
+You need the **Self Service Image Menu** permission to access this page.
+
+## Using Self Service Menu
+
+### Accessing Self Service Menu
+
+Navigate to **Configuration > Management > Self Service Menu** in the navigation menu.
+
+### Viewing self-service menus
+
+When you open the Self Service Menu page, you see a list of self-service menus. Choose a menu from the selector; its details load in the content area below so you can view or edit it.
+
+### Creating a self-service menu
+
+1. On the Self Service Menu page, click the **+** icon (or use the create flow that opens the menu designer with self-service resolution).
+2. Configure the menu: name, resolution (e.g. self-service image menu), and content (products, product groups, images) in the designer.
+3. Click Save.
+
+### Editing a self-service menu
+
+1. Open the Self Service Menu page and select the menu from the list.
+2. Change the name or menu content (items, order, images) as needed.
+3. Click Save.
+
+You can **Copy** an existing self-service menu to create a new one based on it.
+
+## Self service menu fields reference
+
+| Field | What it does |
+|-------|----------------|
+| **Name** | Display name for the menu (e.g. Kiosk main menu, Kiosk drinks). |
+| **Resolution** | Screen resolution for the menu (e.g. self-service image menu); should match your kiosk screens. |
+| **Content** | Products, product groups, and images that make up the menu; configured in the designer. |
+
+## How self-service menu links
+
+- **Kiosk layouts**: Self-service menus are used in **Layouts** configured for kiosk/self-service (e.g. in the Layout Designer, Menus tab for self-service layouts). Kiosks at outlets use those layouts.
+- **Products and Product Groups**: Menu content is built from **Products** and **Product Groups** (Configuration > Management > Products, Product Groups).
+
+## Best practices
+
+- Use a resolution that matches your kiosk screens when creating the menu.
+- Name menus clearly (e.g. “Kiosk main menu”, “Kiosk drinks”) so they are easy to find when assigning to kiosk layouts.
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Ordering" icon="shopping-cart" href="/enterprise/pages/ordering">
+    Self Service Ordering: Kiosk Menu and Kiosk Menu Group—the self-service menus most clients use.
+  </Card>
+  <Card title="Management" icon="diagram-project" href="/enterprise/pages/management/overview">
+    How legacy self-service menus fit with kiosk layouts.
+  </Card>
+  <Card title="Menus" icon="list" href="/enterprise/pages/management/menus">
+    Sale popup menus for operator terminals.
+  </Card>
+  <Card title="Layouts" icon="th-large" href="/enterprise/pages/management/layouts">
+    Layouts (including legacy kiosk/self-service image options).
+  </Card>
+</CardGroup>

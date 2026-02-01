@@ -1,0 +1,157 @@
+---
+title: "Operator Roles"
+description: "Configure operator role permissions and capabilities in the Management Portal"
+---
+
+## Overview
+
+Operator Roles define **what operators can do** when they log in at the till: permissions (e.g. discount, void, refund), outlet access (which outlets they can work at), and other capabilities.
+
+**How it works:** Each **Operator** is assigned one **Operator Role**. When an operator logs in at a terminal, their role determines what actions they can perform and which outlets (and optionally terminals) they can use.
+
+**Permissions:** You need the **Operator Role** permission to access this page.
+
+## Using Operator Roles
+
+### Accessing Operator Roles
+
+Navigate to **Configuration > Management > Operator Roles** in the navigation menu.
+
+### Viewing operator roles
+
+When you open the Operator Roles page, you see a **selector at the top** and a **+** icon. Choose an operator role from the list; its details load in the content area below so you can view or edit it (Name, Restriction, and sections: Options, Reports, Stock, Tender, Training).
+
+### Creating an operator role
+
+1. On the Operator Roles page, click the **+** icon.
+2. Enter a **Name** (e.g. "Cashier", "Supervisor", "Manager"). Optionally set **Restriction** (User Role Restriction) so the role applies only when the user/outlet is subject to that restriction.
+3. In **Options**, **Reports**, **Stock**, **Tender**, and **Training** sections, tick the checkboxes for the permissions this role should have (see reference tables below).
+4. Click Save.
+
+### Editing an operator role
+
+1. Open the Operator Roles page and select the operator role from the list.
+2. Change **Name**, **Restriction**, or any permission checkboxes in Options, Reports, Stock, Tender, or Training as needed.
+3. Click Save.
+
+You can **Copy** an operator role to create a new one based on it. Use **Usage** to see which operators use this role before deleting. Roles that are in use cannot be deleted until operators are reassigned to another role.
+
+## Operator role fields reference
+
+### Details
+
+| Field | What it does |
+|-------|----------------|
+| **Name** | Display name of the role (e.g. Cashier, Supervisor, Manager). |
+| **Restriction** (User Role Restriction) | Optional **Restriction** (from Configuration > Admin > Restriction); when set, the role applies only when the user/outlet is subject to that restriction. |
+
+### Options (permissions)
+
+| Field | What it does |
+|-------|----------------|
+| **Session Open** | Allows opening a till session. |
+| **Session Close** | Allows closing a till session. |
+| **Cash Lift** | Allows cash lift. |
+| **Cash Drop** | Allows cash drop. |
+| **Sales** | Allows making sales. |
+| **No Sale** | Allows no-sale transaction. |
+| **Waste** | Allows recording waste. |
+| **Void Order Line** | Allows voiding a line on an order. |
+| **Cancel Order** | Allows cancelling an order. |
+| **Refund Order** | Allows refunding an order. |
+| **Refund Mode** | Allows refund mode. |
+| **Merge Order** | Allows merging orders. |
+| **Split Order** | Allows splitting an order. |
+| **Print Order** | Allows printing an order. |
+| **Review Order** | Allows reviewing order history. |
+| **Order Enquiry** | Allows order enquiry. |
+| **Product Enquiry** | Allows product enquiry. |
+| **Enter Preparator Text** | Allows entering free-text preparator on order lines. |
+| **Price Adjustment** | Allows price adjustment on order lines. |
+| **Accept Invoice** | Allows accepting invoice (when fiscal/invoice feature enabled). |
+| **Review Slips** | Allows reviewing slip history. |
+| **Change Layout** | Allows changing layout at the till. |
+| **Declare Gratuity** | Allows declaring gratuity. |
+| **Standalone Mode** | Allows terminal to run when network is disconnected. |
+| **Shutdown** | Allows shutting down the terminal. |
+| **Checklist** | Allows completing checklist. |
+| **Order Override** | Allows overriding order lock (taking over another operator’s order). |
+| **Printer Toggle** | Allows changing printer. |
+| **Account Query** | Allows account query. |
+| **Switch Terminal** | Allows switching terminal. |
+| **Product Search** | Allows product search. |
+| **Read Messages** | Allows reading messages at the till. |
+| **Send Messages** | Allows sending messages. |
+| **EFT Voice Referral** | Allows EFT voice referral. |
+| **Browser** | Allows browser access. |
+
+### Reports
+
+| Field | What it does |
+|-------|----------------|
+| **Z Report** | Allows running Z report. |
+| **X Report** | Allows running X report. |
+| **Timeslot Report** | Allows timeslot report. |
+| **Profit Report** | Allows profit report. |
+| **Price Band Report** | Allows price band report. |
+| **Price List Report** | Allows price list report. |
+| **Product Mix Report** | Allows product mix report. |
+
+### Stock
+
+<Info>
+The **Stock** section appears when the Stock feature is enabled for your organisation.
+</Info>
+
+| Field | What it does |
+|-------|----------------|
+| **Stock Open** | Allows stock open. |
+| **Stock Close** | Allows stock close. |
+| **Stock Accept** | Allows stock accept. |
+| **Stock Query** | Allows stock query. |
+| **Stock Requisition** | Allows stock requisition. |
+| **Stock Transfer** | Allows stock transfer. |
+
+### Tender
+
+| Field | What it does |
+|-------|----------------|
+| **Third Party Account** | Allows tendering with Account (third party) tender type. |
+| **Cash** | Allows tendering with Cash. |
+| **EFT** | Allows tendering with EFT. |
+| **Kappture** | Allows tendering with Kappture tender type. |
+| **Invoice** | Allows tendering with Invoice (when enabled). |
+| **Other** | Allows tendering with Other tender type. |
+| **Pay by Bank** | Allows tendering with Pay by Bank / invoice (when enabled). |
+
+### Training
+
+| Field | What it does |
+|-------|----------------|
+| **Training Videos** | Allows access to training videos at the till. |
+
+## How operator roles link
+
+- **Operators**: Each **Operator** (Configuration > Management > Operators) has one **Operator Role**. When they log in at a terminal, their role’s permissions apply. Outlet access can be set per operator on the Operator form (Outlets tab).
+- **Terminals**: Operators log in at **Terminals**; the terminal uses the operator’s role for the session.
+- **Restriction** (Admin): Optionally an operator role can be tied to a **Restriction** (Configuration > Admin > Restriction) so the role applies only when the user or outlet is subject to that restriction.
+
+## Best practices
+
+- Create operator roles before creating operators so you can assign a role to each operator.
+- Use clear role names (e.g. "Cashier", "Supervisor", "Manager") and set permissions to match your policy (e.g. supervisors can void, managers can override price).
+- Check **Usage** before deleting an operator role.
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Management" icon="diagram-project" href="/enterprise/pages/management/overview">
+    How operator roles fit with operators and terminals.
+  </Card>
+  <Card title="Operators" icon="user" href="/enterprise/pages/management/operators">
+    Assign an operator role to each operator.
+  </Card>
+  <Card title="Restriction" icon="lock" href="/enterprise/pages/admin/restriction">
+    Optional restriction linked to operator role.
+  </Card>
+</CardGroup>

@@ -51,6 +51,11 @@ You are an AI writing assistant specialized in creating exceptional technical do
 - Document error handling and edge cases
 - Cover authentication, rate limits, and technical constraints
 
+### Documentation accuracy and sources
+
+- When documenting Management Portal or related features, **reference the www, app-kappture, and services-go repositories** so the information remains accurate. Use the codebase to verify UI flows, terminology, permissions, and where features are configured.
+- **Do not reiterate the same points** in different sections or with different wording. State each point once in the most appropriate place; avoid redundant bullets or paragraphs that repeat the same function or concept.
+
 ## Mintlify component reference
 
 ### Callout components

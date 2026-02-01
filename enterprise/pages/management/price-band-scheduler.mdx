@@ -1,0 +1,72 @@
+---
+title: "Price Band Scheduler"
+description: "Schedule price band changes for promotions or time-based pricing in the Management Portal"
+---
+
+## Overview
+
+Price Band Scheduler lets you **schedule when a different price band applies** (e.g. Happy Hour 4–6 pm, weekend member prices).
+
+**How it works:** You create schedules with **Events**. Each event defines which **Price Band** is used during a time range for selected outlets. During an event’s time range, the system uses that price band’s **Product Prices** for those outlets instead of the session’s default price band.
+
+**Integration:** This works with **Sessions** and **Outlets** so you can switch prices by time without changing the session.
+
+**Permissions:** You need the **Price Band Scheduler** permission to access this page.
+
+## Using Price Band Scheduler
+
+### Accessing Price Band Scheduler
+
+Navigate to **Configuration > Management > Price Band Scheduler** in the navigation menu.
+
+### Viewing schedules
+
+When you open the Price Band Scheduler page, you see a list of schedules. Each schedule has a **Name** and **Events** (time ranges and the price band to use). Choose a schedule from the list; its details and events load so you can view or edit it.
+
+### Creating a schedule
+
+1. On the Price Band Scheduler page, click the **+** icon.
+2. Enter a **Name** for the schedule.
+3. Configure **Events**: for each event, set the **Price Band** to use, **Start** and **End** date/time, and optionally **Repeats** (e.g. days of the week, repeats until). Add events for each time range when you want a different price band (e.g. Happy Hour 4–6 pm).
+4. Configure **Availability**: select the **Outlets** (or sites) this schedule applies to.
+5. Click Save.
+
+### Editing a schedule
+
+1. Open the Price Band Scheduler page and select the schedule from the list.
+2. Change **Name**, add or edit **Events** (price band, start/end, repeats), or change **Availability** (outlets) as needed.
+3. Click Save.
+
+## Price band scheduler fields reference
+
+| Field | What it does |
+|-------|----------------|
+| **Name** | Display name of the schedule (e.g. Happy Hour, Weekend member prices). |
+| **Events** | Each event: **Price Band** to use, **Start** and **End** date/time, **Repeats** (e.g. days of week, until date). |
+| **Availability** | Which **Outlets** (or sites) this schedule applies to. |
+
+## How price band scheduler links
+
+- **Price Bands**: Each event specifies which **Price Band** to use during that time range. Product prices are set per outlet and per price band on **Product Prices**.
+- **Sessions**: Sessions still have a default price band; the scheduler **overrides** which price band is used at the scheduled time for the schedule’s outlets.
+- **Outlets**: You select which outlets (or sites) the schedule applies to (**Availability**). Only those outlets use the scheduled price band during the event’s time range.
+
+## Best practices
+
+- Create **Price Bands** and set **Product Prices** per outlet and price band before creating scheduler events.
+- Use clear schedule and event names (e.g. "Happy Hour", "Weekend member prices") so staff can see what each event does.
+- Set **Repeats** for recurring events (e.g. every weekday 4–6 pm) so you don’t have to add many one-off events.
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Management" icon="diagram-project" href="/enterprise/pages/management/overview">
+    How price band scheduler fits with sessions and product prices.
+  </Card>
+  <Card title="Price Bands" icon="tags" href="/enterprise/pages/management/price-bands">
+    Define the price bands used in scheduler events.
+  </Card>
+  <Card title="Product Prices" icon="dollar-sign" href="/enterprise/pages/management/product-prices">
+    Set prices per outlet and per price band.
+  </Card>
+</CardGroup>

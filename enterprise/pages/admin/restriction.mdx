@@ -9,11 +9,13 @@ Restrictions are labels you create here by **name** only. You assign them to [Us
 
 Navigate to **Configuration > Admin > Restriction** in the navigation menu.
 
-## Viewing Restrictions
+## Using Restriction
 
-Use the search box at the top to find restrictions; results load in a modal showing name and whether each restriction is in use.
+### Viewing restrictions
 
-## Creating a Restriction
+Use the search box at the top to find restrictions; results appear below, showing name and whether each restriction is in use.
+
+### Creating a restriction
 
 1. Click the **+** icon to create a new restriction.
 2. Enter a **name** (e.g. "Confidential", "Regional only"). Use a name that makes it clear what the restriction is for.
@@ -26,9 +28,15 @@ Use the search box at the top to find restrictions; results load in a modal show
 
 Entities with those restrictions will be hidden from users who have them (via role or user override).
 
-## Editing and Deleting
+## Restriction fields reference
 
-- **Edit**: Search for the restriction and select it from the results in the modal, click **Edit**, change the **name**, then Save. Changes affect all roles, users, and entities using it.
+| Field | What it does |
+|-------|----------------|
+| **Name** | Label for the restriction (e.g. Confidential, Regional only). When a user has this restriction, they cannot see any entity (product, outlet, site) that has the same restriction assigned. |
+
+### Editing and deleting
+
+- **Edit**: Search for the restriction and select it from the results below, click **Edit**, change the **name**, then Save. Changes affect all roles, users, and entities using it.
 - **Delete**: Use **Usage** / **Get Usage** to see where the restriction is used. Remove it from all roles, users, and entities first. Search for the restriction, select it from the results, then click **Delete**.
 
 <Warning>

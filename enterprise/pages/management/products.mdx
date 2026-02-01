@@ -1,0 +1,146 @@
+---
+title: "Products"
+description: "Manage your product catalog—the core of what you sell in Kappture"
+---
+
+## Overview
+
+Products are the **core of the Kappture product**: everything you sell at the till, on kiosks, or in ordering is a product. You create and maintain products here. Each product has a **name**, **reference** (code/SKU), **product group**, and optional details such as image, barcodes, description, allergens, tags, waste reason, and product challenge (restrictions). You then set **product prices** per outlet and per price band, and use products in **layouts** (menus, product shortcuts), **menus** (including popup menus assigned to a product), **Product Label**, and reporting.
+
+The product form is organised into **tabs**: **Details**, **Options**, **Cost Price**, **Prices**, **Allergens**, and—when the Stock module is enabled—**Stock Control**, **Availability**, **Par Level**, **Supplier**, **Stock Depletion**, and **Requisition Rules**. There is also a **Signage** tab. Each tab holds a specific set of fields or lists.
+
+You need the **Product** permission to access this page.
+
+## Using Products
+
+### Accessing Products
+
+Navigate to **Configuration > Management > Products** in the navigation menu.
+
+### Viewing products
+
+When you open the Products page, you see a **search/selector at the top** and a **+** icon. Search or choose a product; its details load in the content area below so you can view or edit it.
+
+### Creating a product
+
+1. On the Products page, click the **+** icon.
+2. **Details** tab: Enter **Name** (required) and **Product Group**. Add any other details you need (see [Product fields reference](#product-fields-reference) below for what each field does).
+3. Use the **Options**, **Cost Price**, **Prices**, **Allergens**, and **Signage** tabs as needed. If the Stock module is enabled, use **Stock Control**, **Availability**, **Par Level**, **Supplier**, **Stock Depletion**, and **Requisition Rules**.
+4. Click Save.
+
+Prices can also be set from **Configuration > Management > Product Prices** instead of the product **Prices** tab.
+
+### Editing a product
+
+1. Open the Products page and select the product from the list (or search).
+2. Change any tab: **Details**, **Options**, **Cost Price**, **Prices**, **Allergens**, Stock tabs, or **Signage**.
+3. Click Save.
+
+You can **Copy** a product to create a new one based on it. You can **Import** and **Export** products when your role has the relevant permissions. Use the **Usage** button to see where the product is used (layouts, menus, etc.). Products that are in use (e.g. on layouts or in self-service) cannot be deleted until they are removed from those areas; for self-service, the delete option is restricted and an information message is shown.
+
+## Product fields reference
+
+The following lists **non-required** product fields by tab. Use this as a glossary for what each field does.
+
+### Details tab
+
+| Field | What it does |
+|-------|----------------|
+| **Name** | Display name of the product (required). |
+| **Product Group** | The group this product belongs to; used in layouts, menus, and to filter the outlet price grid when editing prices. |
+| **Reporting Name** | — |
+| **Long Name** | — |
+| **Description** | — |
+| **Image** | Product image (e.g. for till or kiosk); upload via the dropzone. |
+| **Restriction** | Restriction label; users who have this restriction cannot see this product. |
+| **Product Tags** | Tags attached to the product; used in filtering and reporting. |
+| **Override Tax Band Group** | When set, this product uses the selected tax price band group instead of the session’s price band. |
+| **Override Tax Band** | When set, this product uses the selected tax price band instead of the session’s price band. |
+| **Override Price Band** | When set, this product uses the selected price band for pricing. |
+| **Adjustment %** | — |
+| **Report Quantity Multiplier** | — |
+| **Valid Times** | Start and end time; restricts when the product is available (e.g. breakfast items only in the morning). |
+| **Cook time minutes** | — |
+| **Barcodes** | Up to 12 barcodes (EAN-8, EAN-13, UPC); open via the Barcodes button. |
+| **Additional receipt text** (Name alt) | Text printed on the receipt in addition to the product name. |
+| **Popup Menu** | The menu that opens when an operator taps this product on the till (e.g. milk options for coffee). |
+| **Product Challenge** | Product restriction rule; controls who can sell or see this product. |
+| **Reference** | Code or SKU for the product; used in imports, reporting, and identification. |
+| **External Reference 1**, **External Reference 2** | — |
+| **Product Type** | Terminal, Stock, or Terminal and Stock (when Stock is enabled); controls where the product is available. |
+| **Deposit Return Product** | Links to another product used for deposit/return schemes. |
+| **Popup List Group** (Kiosk Menu Group) | — |
+| **Tax Exemption Reason** | (Portugal only.) Required when the selected tax/price band has a zero tax rate. |
+
+### Options tab
+
+| Field | What it does |
+|-------|----------------|
+| **Weighed** | — |
+| **Tare Weight** | — |
+| **Kitchen Print** | — |
+| **Open Price** | — |
+| **Open Price Percentage** | — |
+| **Kiosk Meal Deal** | — |
+| **Use as Cover** (Cover Indicator) | — |
+| **Preparator** | — |
+| **Ordering Hide Price** | — |
+| **Send to Order Screen** | — |
+| **Top Up** (Account Top Up) | — |
+| **Exclude External Export** | When set, this product is excluded from external exports. |
+| **Deposit Return Scheme** (Use as Deposit) | — |
+| **Credit** | (Not shown for Portugal.) — |
+| **Allow Negative Order** | (Not shown for Portugal.) — |
+| **Kitchen Screen** (External Kitchen Screen) | — |
+| **Kitchen Department** | — |
+| **Ideal Cook Times** | Up to four values (minutes); used for kitchen display or prep timing. |
+
+### Other tabs
+
+| Tab | What it does |
+|-----|----------------|
+| **Cost Price** | Cost prices per outlet; used for margin and reporting. |
+| **Prices** | Selling prices per outlet and price band; also editable from Product Prices. |
+| **Allergens** | Which allergens apply to this product; shown on terminals and in ordering. |
+| **Stock Control** | (When Stock is enabled.) Stock settings for this product. |
+| **Availability** | (When Stock is enabled.) When and where the product is available. |
+| **Par Level** | (When Stock is enabled.) Par levels per outlet. |
+| **Supplier** | (When Stock is enabled.) Supplier(s) and cost for this product. |
+| **Stock Depletion** | (When Stock is enabled.) Which products deplete when this one is sold. |
+| **Requisition Rules** | (When Stock is enabled.) Requisition rules for this product. |
+| **Signage** | Name and text for customer-facing display screens. |
+
+## How products link
+
+- **Product Prices**: Prices are set per **Outlet** and per **Price Band** on **Configuration > Management > Product Prices**, or on the product’s **Prices** tab. Sessions use a price band, so when the till is in a session, it uses that session’s price band’s prices for products.
+- **Product Groups**: Products belong to **Product Groups** (Configuration > Management > Product Groups). Groups are used in Product Prices (to filter the outlet price grid when editing prices—import does not use product group), in Layouts (product shortcuts, menus), and in reporting.
+- **Layouts**: Products and product groups appear in **Layouts** as menus and product shortcut tiles. Assigning a **Popup Menu** to a product on the Details tab means that when an operator taps that product on the till, that menu opens (e.g. milk options for a coffee product).
+- **Menus**: Menu content is built from products or product groups. Menus can be added as tiles on a layout or assigned to a product as a popup menu.
+- **Product Label**, **Allergens**, **Product Tags**, **Waste Reason**, **Product Challenge**: Configured under Management and attached to products; used on terminals, in ordering, and in reporting. **Course** is configured under Management and used to group products in an order (terminals mark courses done; KMS shows courses in tabs)—courses are not assigned to products on the product form.
+
+## Best practices
+
+- Use a consistent **Reference** (code/SKU) so pricing, imports, and reporting stay clear.
+- Assign every product to a **Product Group** so you can filter the outlet price grid when editing prices and use groups in layouts and menus.
+- Set **Allergens** and **Product Tags** so terminals and ordering show the right information.
+- Use **Popup Menu** on products that have options (e.g. coffee with milk choice) so the options open when the operator taps the product.
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Management" icon="diagram-project" href="/enterprise/pages/management/overview">
+    How products link to pricing, layouts, and sessions.
+  </Card>
+  <Card title="Product Management" icon="shopping-bag" href="/enterprise/features/product-management">
+    Product catalog, pricing, and product configuration in detail.
+  </Card>
+  <Card title="Product Prices" icon="dollar-sign" href="/enterprise/pages/management/product-prices">
+    Set prices per product, outlet, and price band.
+  </Card>
+  <Card title="Product Groups" icon="layer-group" href="/enterprise/pages/management/product-groups">
+    Organise products into groups.
+  </Card>
+  <Card title="Menus" icon="list" href="/enterprise/pages/management/menus">
+    Popup menus on layouts and assigned to products.
+  </Card>
+</CardGroup>

@@ -7,7 +7,9 @@ description: "Import members from CSV or other file formats into the Management 
 
 The Member Import page lets you import multiple members into the system at once from a file. This is useful for bulk member creation, updating existing members, or migrating member data from another system.
 
-## Preparing Your Import File
+## Using Member Import
+
+### Preparing your import file
 
 Before importing, prepare your member data file:
 
@@ -37,7 +39,19 @@ Contact your administrator for a template file showing the required column forma
 - Remove any special characters that might cause issues
 - Check for duplicate email addresses or member numbers
 
-## Importing Members
+## Member import file reference
+
+| Column or step | What it does |
+|----------------|----------------|
+| **Member name** | Full name of the member. |
+| **Email address** | Email; must be unique. |
+| **Phone number** | Optional phone. |
+| **Member number or ID** | Unique identifier; may be auto-generated if blank. |
+| **Other member fields** | Any other columns required for your setup (see your template). |
+| **Parse** | Maps file columns to member fields and shows a preview. |
+| **Import results** | Successfully imported count, failed count, and error details. |
+
+### Importing members
 
 <Steps>
 <Step title="Open Member Import">
@@ -76,7 +90,7 @@ Contact your administrator for a template file showing the required column forma
 </Step>
 </Steps>
 
-## Understanding Parse Results
+### Understanding parse results
 
 When you parse a file, the system shows:
 
@@ -129,7 +143,7 @@ Import creates new members when they don't exist, and updates existing members w
 Contact your administrator for details about import settings and which options are enabled.
 </Info>
 
-## Handling Import Errors
+### Handling import errors
 
 If some members fail to import:
 

@@ -1,0 +1,84 @@
+---
+title: "Operators"
+description: "Manage operator accounts and access in the Management Portal"
+---
+
+## Overview
+
+Operators are **staff who log in at the till** (terminal). Each operator has a **Name** (and typically a PIN or credentials) and an **Operator Role**.
+
+**How it works:** The operator role determines what the operator can do (permissions, capabilities). When an operator logs in at a terminal, their **Operator Role** is used for the session; orders and terminal session cash are tied to the operator who served.
+
+**Analytics:** All terminal actions performed by an operator are linked to analytics. Reports that use operator data include: **Operator Product Sales** (product sales by operator), **Operator Performance** (operator events and activity), **Operator Top Events**, **Event Operator Statistics**, **Event Operator Performance**, **Event Operator Activity Sales Refund**, **Event Operator Activity Voids Cancels**, and others. You can filter or group by operator in many reports.
+
+**Receipt Explorer and Z Report Explorer:** Operators appear on the **Receipt Explorer** (you can filter receipts by operator; each receipt shows the operator who served) and the **Z Report Explorer** (Z report details show the operator).
+
+**Permissions:** You need the **Operator** permission to access this page.
+
+## Using Operators
+
+### Accessing Operators
+
+Navigate to **Configuration > Management > Operators** in the navigation menu.
+
+### Viewing operators
+
+When you open the Operators page, you see a list of operators. Each has a **Name** and **Operator Role**. Choose an operator from the list; their details load in the content area below so you can view or edit them.
+
+### Creating an operator
+
+1. On the Operators page, click the **+** icon.
+2. **Details** tab: Enter a **Name**. Select **Operator Role** and **Security Type**. Enter **PIN** if required (when Security Type is PIN Swipe to Logon or PIN Swipe to Switch Operator). Optionally set **Short Name**, **Key**, **Reference**, **External Reference 1**, **External Reference 2**, and the checkboxes (Is Training Mode, Is Guest, Is External Audit) as shown.
+3. **Outlets** tab: Optionally restrict which **Outlets** this operator can work at; leave unrestricted for all outlets.
+4. Click Save.
+
+### Editing an operator
+
+1. Open the Operators page and select the operator from the list.
+2. Change **Name**, **Operator Role**, **Security Type**, **PIN**, **Outlets**, or any other Details or Outlets tab settings as needed.
+3. Click Save.
+
+You can **Copy** an operator to create a new one based on them. You can **Import** operators when your role has the relevant permissions.
+
+## Operator fields reference
+
+| Field | Tab | What it does |
+|-------|-----|----------------|
+| **Name** | Details | Display name of the operator (e.g. first name or staff code). |
+| **Operator Role** | Details | Role that defines what this operator can do (permissions, capabilities). |
+| **Security Type** | Details | How the operator logs in: None, PIN Swipe to Logon, or PIN Swipe to Switch Operator. |
+| **PIN** | Details | Used to log in at the till. Required when Security Type is PIN Swipe to Logon or PIN Swipe to Switch Operator. |
+| **Short Name** | Details | Optional short name for the operator (e.g. for display where space is limited). |
+| **Key** | Details | Optional key (numeric or hexadecimal) for hardware or card logon. |
+| **Reference** | Details | Optional reference (e.g. for integration or payroll). |
+| **External Reference 1** | Details | Optional reference for integration or reporting. |
+| **External Reference 2** | Details | Optional reference for integration or reporting. |
+| **Is Training Mode** | Details | When ticked, operator is in training mode (shown when fiscal operator training mode is enabled). |
+| **Is Guest** | Details | When ticked, operator is a guest (e.g. for self-ordering). |
+| **Is External Audit** | Details | When ticked, operator is marked for external audit. |
+| **Outlets** | Outlets | Which outlets this operator can work at; select outlets or leave unrestricted for all outlets. |
+
+## How operators link
+
+- **Operator Roles**: Each operator has one **Operator Role** (Configuration > Management > Operator Roles). The role defines permissions and capabilities (e.g. what they can sell, discount, void).
+- **Terminals**: Operators log in at **Terminals**; the terminal uses the operator’s role for the session. Orders and terminal session cash record the **Operator** who served.
+- **Outlets**: Operators may have **Outlet** overrides (which outlets they can work at) configured on the operator or role.
+- **Reports**: Operator data is used in many reports (e.g. Operator Product Sales, Operator Performance, Event Operator Statistics). All terminal actions performed by an operator are linked to analytics.
+- **Receipt Explorer**: You can filter receipts by operator; each receipt shows the operator who served.
+- **Z Report Explorer**: Z report details show the operator.
+
+## Best practices
+
+- Create **Operator Roles** first, then create operators and assign a role to each.
+- Use clear operator names (e.g. first name or staff code) so they are recognisable in reports, Receipt Explorer, and Z Report Explorer.
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Management" icon="diagram-project" href="/enterprise/pages/management/overview">
+    How operators fit with terminals and operator roles.
+  </Card>
+  <Card title="Operator Roles" icon="user-tag" href="/enterprise/pages/management/operator-roles">
+    Configure permissions and capabilities for operators.
+  </Card>
+</CardGroup>

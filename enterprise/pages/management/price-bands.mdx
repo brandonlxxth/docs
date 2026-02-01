@@ -1,0 +1,81 @@
+---
+title: "Price Bands"
+description: "Configure price band tiers for different customer segments in the Management Portal"
+---
+
+## Overview
+
+Price Bands define **pricing tiers** (e.g. Standard, Member, Happy Hour). Each **Session** has one **Price Band** assigned to it; when a terminal at an outlet is running in that session, it uses that price band’s **Product Prices** for that outlet. Product prices are set **per outlet and per price band** on **Product Prices**. You can group price bands in **Price Band Groups** and use **Price Band Scheduler** to switch which price band applies at certain times.
+
+You need the **Price Band** permission to access this page.
+
+## Using Price Bands
+
+### Accessing Price Bands
+
+Navigate to **Configuration > Management > Price Bands** in the navigation menu.
+
+### Viewing price bands
+
+When you open the Price Bands page, you see a **selector at the top** and a **+** icon. Choose a price band from the list; its details load in the content area below so you can view or edit it.
+
+### Creating a price band
+
+1. On the Price Bands page, click the **+** icon.
+2. Enter the required fields: **Name** (e.g. "Standard", "Member", "Happy Hour"), **Tax rate name**, **Tax rate code**, and **Tax rate**. Optionally set **Layout tile colour**, **External reference 1**, and **External reference 2**.
+3. Click Save.
+
+### Editing a price band
+
+1. Open the Price Bands page and select the price band from the list.
+2. Change **Name**, **Tax rate name**, **Tax rate code**, **Tax rate**, **Layout tile colour**, **External reference 1**, or **External reference 2** as needed.
+3. Click Save.
+
+You can use **Usage** to see where the price band is used (sessions, layouts, product prices, vouchers, etc.) before deleting. Price bands that are in use cannot be deleted until they are removed from those areas.
+
+## Price band fields reference
+
+| Field | Required | What it does |
+|-------|----------|----------------|
+| **Name** | Yes | Display name of the price band (e.g. Standard, Member, Happy Hour). |
+| **Tax rate name** | Yes | Name of the tax rate used for this price band (e.g. for reporting or receipts). |
+| **Tax rate code** | Yes | Single-character code for the tax rate (e.g. for fiscal or reporting). |
+| **Tax rate** | Yes | Tax rate percentage (0–100) applied to product prices in this price band. |
+| **Layout tile colour** | No | Fill colour of the price band tile when shown on a layout (e.g. till screen). |
+| **Layout tile text colour** | No | Text colour of the price band tile when shown on a layout. |
+| **External reference 1** | No | Optional reference for integration or reporting (max 50 characters). |
+| **External reference 2** | No | Optional reference for integration or reporting (max 50 characters). |
+
+## How price bands link
+
+- **Sessions**: Each **Session** has a **Price Band**. When the till is in that session, it uses that price band’s product prices for the current outlet.
+- **Product Prices**: Prices are set per **Outlet** and per **Price Band** on **Configuration > Management > Product Prices**.
+- **Price Band Groups**: Price bands can be grouped under **Configuration > Management > Price Band Groups** (e.g. for reporting or voucher rules).
+- **Price Band Scheduler**: **Configuration > Management > Price Band Scheduler** lets you schedule when a different price band applies (e.g. Happy Hour 4–6 pm).
+- **Layouts**: Layouts can be restricted to certain price bands or price band groups.
+
+## Best practices
+
+- Create price bands before creating **Sessions** and before setting **Product Prices** per outlet and price band.
+- Use clear names (e.g. "Standard", "Member", "Happy Hour") so staff can match them to sessions and pricing.
+- Use **Usage** before deleting a price band.
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Management" icon="diagram-project" href="/enterprise/pages/management/overview">
+    How price bands link to sessions and product prices.
+  </Card>
+  <Card title="Sessions" icon="clock" href="/enterprise/pages/management/sessions">
+    Each session uses one price band.
+  </Card>
+  <Card title="Product Prices" icon="dollar-sign" href="/enterprise/pages/management/product-prices">
+    Set prices per outlet and per price band.
+  </Card>
+  <Card title="Price Band Scheduler" icon="calendar-clock" href="/enterprise/pages/management/price-band-scheduler">
+    Schedule when a price band applies.
+  </Card>
+  <Card title="Price Band Groups" icon="object-group" href="/enterprise/pages/management/price-band-groups">
+    Group price bands.
+  </Card>
+</CardGroup>

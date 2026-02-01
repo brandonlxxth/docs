@@ -1,0 +1,70 @@
+---
+title: "Price Band Groups"
+description: "Organize price bands into groups in the Management Portal"
+---
+
+## Overview
+
+Price Band Groups let you **group price bands** (e.g. "Member bands", "Promo bands").
+
+**Where groups are used:** Groups are used for reporting, for voucher or promotion rules that apply to a whole group of price bands, and for **Layouts** (you can restrict a layout to certain price bands or price band groups).
+
+**Permissions:** You need the **Price Band Group** permission to access this page.
+
+## Using Price Band Groups
+
+### Accessing Price Band Groups
+
+Navigate to **Configuration > Management > Price Band Groups** in the navigation menu.
+
+### Viewing price band groups
+
+When you open the Price Band Groups page, you see a **selector at the top** and a **+** icon. Choose a price band group from the list; its details (name and which price bands belong to it) load in the content area below so you can view or edit it.
+
+### Creating a price band group
+
+1. On the Price Band Groups page, click the **+** icon.
+2. Enter a **Name** (e.g. "Member bands", "Promo bands").
+3. Select which **Price Bands** belong to this group (checkboxes or multi-select).
+4. Click Save.
+
+### Editing a price band group
+
+1. Open the Price Band Groups page and select the price band group from the list.
+2. Change **Name** or which **Price Bands** are in the group as needed.
+3. Click Save.
+
+You can use **Usage** to see where the group is used (e.g. layouts, vouchers) before deleting. Groups that are in use cannot be deleted until they are removed from those areas.
+
+## Price band group fields reference
+
+| Field | What it does |
+|-------|----------------|
+| **Name** | Display name of the group (e.g. Member bands, Promo bands). |
+| **Price Bands** | Which price bands belong to this group; select from the list. |
+
+## How price band groups link
+
+- **Price Bands**: Each group contains one or more **Price Bands** (Configuration > Management > Price Bands).
+- **Layouts**: Layouts can be restricted to certain **Price Bands** or **Price Band Groups** (Layout form, Price Band / Price Band Group tab).
+- **Vouchers and promotions**: Some voucher or promotion rules may apply to a **Price Band Group** (e.g. discount for all member bands).
+- **Reporting**: Reports may group or filter by price band group.
+
+## Best practices
+
+- Create **Price Bands** first, then create groups and assign price bands to them.
+- Use clear group names (e.g. "Member bands", "Happy hour bands") so staff can use them in layouts and promotions.
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Management" icon="diagram-project" href="/enterprise/pages/management/overview">
+    How price band groups fit with price bands and layouts.
+  </Card>
+  <Card title="Price Bands" icon="tags" href="/enterprise/pages/management/price-bands">
+    Define the price bands you add to groups.
+  </Card>
+  <Card title="Layouts" icon="th-large" href="/enterprise/pages/management/layouts">
+    Restrict layouts to price bands or price band groups.
+  </Card>
+</CardGroup>

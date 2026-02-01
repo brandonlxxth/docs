@@ -7,15 +7,17 @@ description: "Manage client device registrations and access in the Management Po
 
 The Client Devices page lets you manage **client devices**—devices or applications that are registered to access your organisation’s systems (e.g. APIs, mobile apps, or other integrations). You can add devices, generate or manage API keys, and control which devices are allowed to connect.
 
-## Accessing the Client Devices Page
+## Using Client Devices
+
+### Accessing the Client Devices page
 
 Navigate to **Configuration > Admin > Client Devices** in the navigation menu.
 
-## Viewing Client Devices
+### Viewing client devices
 
-Use the search box at the top to find client devices; results load in a modal showing device or application name, identifier or type, status, last used or created date, and API key status.
+Use the search box at the top to find client devices; results appear below, showing device or application name, identifier or type, status, last used or created date, and API key status.
 
-## Adding a Client Device
+### Adding a client device
 
 <Steps>
 <Step title="Open the Client Devices page">
@@ -42,6 +44,14 @@ Use the search box at the top to find client devices; results load in a modal sh
 </Step>
 </Steps>
 
+## Client device fields reference
+
+| Field | What it does |
+|-------|----------------|
+| **Name** | Clear name for the device or application (e.g. Warehouse app, Reporting service). |
+| **Description** or **Identifier** | Optional; helps identify the device later. |
+| **API key** | Generated via the Generate API Key action; used by the device to authenticate. Store securely; may be shown only once. |
+
 ## API Keys
 
 Many client devices authenticate using an **API key**:
@@ -54,16 +64,16 @@ Many client devices authenticate using an **API key**:
 Treat API keys like passwords. Do not share them or commit them to code repositories. Rotate keys if they may have been exposed.
 </Warning>
 
-## Editing a Client Device
+### Editing a client device
 
 To edit an existing device:
 
-1. Search for the device and select it from the results in the modal
+1. Search for the device and select it from the results below
 2. Click **Edit**
 3. Update the name, description, or other fields
 4. Click Save
 
-## Checking Device Usage
+### Checking device usage
 
 Before deleting a device, check if it is in use:
 
@@ -71,14 +81,14 @@ Before deleting a device, check if it is in use:
 2. Review where or how the device is referenced (e.g. integrations, logs)
 3. If it is in use, plan to update or replace those references before deleting
 
-## Deleting a Client Device
+### Deleting a client device
 
 <Warning>
 Deleting a client device will revoke its access. Any application or integration using that device or its API key will stop working until reconfigured with a new device or key.
 </Warning>
 
 1. Ensure nothing critical still depends on this device (check usage)
-2. Search for the device and select it from the results in the modal
+2. Search for the device and select it from the results below
 3. Click **Delete**
 4. Confirm the deletion
 
