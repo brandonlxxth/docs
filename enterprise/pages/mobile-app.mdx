@@ -1,0 +1,65 @@
+---
+title: "Mobile app"
+description: "Configure content and features for the Kappture mobile app"
+---
+
+## Overview
+
+The **Mobile App** section in the Management Portal (under **Configuration > Mobile App**) configures content that appears in the Kappture mobile app for members. Currently this includes the Board feature for news and announcements.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Board | Board | Configuration (Mobile App) |
+
+## Board
+
+The Board displays news, announcements, and updates to mobile app users. Each board item appears as a card with an image, title, and rich text content.
+
+### Creating a board item
+
+Navigate to **Configuration > Mobile App > Board** and click **Create**.
+
+### Details tab
+
+| Field | What it does |
+|-------|----------------|
+| **Name** | Title of the board item (e.g. "New Summer Menu", "Holiday Hours"). Max 50 characters. Required. Displayed as the card title in the mobile app. |
+| **Reference** | Optional internal reference (e.g. campaign ID, ticket number). Max 50 characters. Not displayed to end users. |
+| **Restriction** | Apply a restriction to control when this board item is visible. Select from **Configuration > Admin > Restriction**. Optional. |
+| **Image** | Banner image for the board item. **PNG format only**. Max file size 1MB. Required. Displayed at the top of the card in the mobile app. Upload via drag-and-drop or click to select. |
+| **Body** | Rich text content of the announcement. Required. Supports formatted text, lists, links. Max 500 characters. Use the text editor to format content. HTML tags are allowed. |
+
+### Member Groups tab
+
+| Field | What it does |
+|-------|----------------|
+| **Member Groups** | Select which member groups can see this board item. If no groups are selected, the board item is visible to all members. Select one or more groups from **Configuration > Member > Member Groups**. Use the search box to filter groups. |
+
+### Usage
+
+- Board items appear in the mobile app's news/board section
+- Items are ordered by creation date (newest first)
+- Members only see board items assigned to their member groups (or all items if no groups are selected)
+- Restrictions control visibility based on time, date, or other conditions
+- Board items can be edited or deleted (if not in use)
+
+### Best practices
+
+1. **Use clear, engaging titles** - The name appears as the card title
+2. **Choose high-quality images** - PNG format, optimized for mobile screens
+3. **Keep body content concise** - Max 500 characters keeps content scannable
+4. **Target relevant audiences** - Use member groups to show relevant content to specific segments
+5. **Use restrictions for time-sensitive content** - Schedule announcements to appear/disappear automatically
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Member Groups" icon="users" href="/enterprise/pages/member/member-group">
+    Configure member groups for targeting board items.
+  </Card>
+  <Card title="Restrictions" icon="shield" href="/enterprise/pages/admin/restriction">
+    Create restrictions to control board item visibility.
+  </Card>
+</CardGroup>

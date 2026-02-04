@@ -7,6 +7,12 @@ description: "Configure payment tender types (cash, card, etc.) in the Managemen
 
 Tenders are **payment types** used when taking payment at the till (e.g. Cash, Card/EFT, Account, Other). You configure each tender with a name, type, optional layout colours for the terminal tile, exchange rate for foreign currency, and options such as overpayments behaviour (change, gratuity, forfeit, not allowed), cash drawer, session close declare, and reporting.
 
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Tenders | Tender | Configuration (Management) |
+
 **Overpayments**: Only certain overpayment types are shown in the **Options** tab depending on the **Type** you select. For example, **Cash** and **Cash Foreign Currency** show **Change** (and Not allowed); **EFT** shows **Gratuity**; **Other** shows **Gratuity** and **Forfeit**; **Account** and some other types show **Forfeit** or **Not allowed** only. Choose the tender type first—the overpayment options that appear will match that type.
 
 You need the **Tender** permission to access this page.

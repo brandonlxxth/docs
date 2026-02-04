@@ -1,0 +1,162 @@
+---
+title: "Suppliers"
+description: "Add supplier information and assign it to your products"
+---
+
+## Overview
+
+The Supplier page allows you to create and manage supplier master data in the system. Suppliers are the companies or vendors from whom you purchase products. This page enables you to maintain supplier information including contact details, addresses, and supplier codes, which are then used throughout the system for product configuration, stock ordering, and reporting.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Suppliers | Supplier | Stock Control (Stock Administration) |
+
+## Accessing Suppliers
+
+Navigate to **Stock > Stock Administration > Supplier**.
+
+## Understanding Suppliers
+
+A supplier in the system represents a vendor or company from which you purchase products. Each supplier record contains:
+
+- **Basic Information**: Name and supplier code
+- **Address Details**: Full address including multiple address lines, locality, region, post code, and country
+- **Contacts**: One or more contact persons with their details (name, email, phone, title, department)
+
+### Key concepts
+
+| Concept | Description |
+|---------|-------------|
+| **Supplier Code** | An optional code used to identify the supplier. Useful for reporting and integration with external systems. Displayed alongside the supplier name in dropdown lists. |
+| **Primary Contact** | Each supplier can have multiple contacts. One contact can be designated as the primary contact. Only one contact can be primary at a time. |
+| **Supplier Usage** | Once created, suppliers can be assigned to products (through the Product Supplier tab). Suppliers are used in stock ordering, delivery tracking, and reporting. |
+
+<Warning>
+Suppliers cannot be deleted once created to maintain data integrity. If you need to stop using a supplier, edit the name to indicate it's no longer active (e.g., add "DISCONTINUED" prefix).
+</Warning>
+
+## Creating a Supplier
+
+<Steps>
+<Step title="Navigate to Suppliers">
+  Go to **Stock > Stock Administration > Supplier**.
+</Step>
+
+<Step title="Create new supplier">
+  Click the **Create** button.
+</Step>
+
+<Step title="Enter details">
+  Fill in the **Details** tab:
+  - **Name** (required): The supplier's name
+  - **Supplier Code** (optional): A code to identify the supplier
+  - **Address** (required): Address line 1
+  - **Address Line 2-4** (optional): Additional address lines
+  - **Locality** (optional): City or town
+  - **Country** (optional)
+  - **Post Code** (optional)
+</Step>
+
+<Step title="Add contacts (optional)">
+  Click on the **Contacts** tab to add contact persons.
+</Step>
+
+<Step title="Save">
+  Click **Save** to create the supplier.
+</Step>
+</Steps>
+
+## Managing Contacts
+
+### Adding a contact
+
+<Steps>
+<Step title="Open Contacts tab">
+  Edit a supplier and click on the **Contacts** tab.
+</Step>
+
+<Step title="Add contact">
+  Click the **Add** button (green plus icon).
+</Step>
+
+<Step title="Enter contact details">
+  Fill in the contact information:
+  - **Name** (required)
+  - **Email** (required): Must be a valid email address
+  - **Phone Number** (optional)
+  - **Title** (optional): Job title or position
+  - **Department** (optional)
+  - **Primary Contact**: Check this box to designate as primary contact
+</Step>
+
+<Step title="Save">
+  Click **Save** to add the contact.
+</Step>
+</Steps>
+
+<Note>
+Only one contact can be marked as primary. If you mark a new contact as primary, the previous primary contact will automatically lose its primary status. The primary contact information is pre-filled as default when creating Stock Orders.
+</Note>
+
+### Editing a contact
+
+1. Open the supplier and go to the **Contacts** tab
+2. Click the **Edit** button (pencil icon) for the contact
+3. Modify the contact details
+4. Click **Save**
+
+### Removing a contact
+
+1. Open the supplier and go to the **Contacts** tab
+2. Click the **Delete** button (trash icon) for the contact
+3. The contact is immediately removed
+
+## Supplier fields reference
+
+### Basic information
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| **Name** | Yes | The supplier's business name. |
+| **Supplier Code** | No | A code used to identify the supplier in your system. |
+
+### Address information
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| **Address** | Yes | First line of the address. |
+| **Address Line 2** | No | Second line of the address. |
+| **Address Line 3** | No | Third line of the address. |
+| **Address Line 4** | No | Fourth line of the address. |
+| **Locality** | No | City, town, or locality. |
+| **Country** | No | Country name. |
+| **Post Code** | No | Postal or ZIP code. |
+
+### Contact fields
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| **Name** | Yes | Contact person's name. |
+| **Email** | Yes | Contact's email address (must be valid). |
+| **Phone Number** | No | Contact's phone number. |
+| **Title** | No | Job title or position (e.g., "Sales Manager"). |
+| **Department** | No | Department name (e.g., "Procurement", "Sales"). |
+| **Primary Contact** | No | Checkbox to designate as the primary contact. |
+
+## Viewing supplier product configuration
+
+To see a global list of product supplier configuration grouped by supplier, navigate to **Analytics > Reports > Product Suppliers**.
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Stock Orders" icon="shopping-cart" href="/enterprise/pages/stock/orders">
+  Create purchase orders from suppliers.
+</Card>
+
+<Card title="Products" icon="box" href="/enterprise/pages/management/products">
+  Configure products and assign suppliers.
+</Card>
+</CardGroup>

@@ -1,0 +1,176 @@
+---
+title: "Terminal"
+description: "Manage and monitor terminals (POS devices), configure terminal types, hierarchy, sessions, jobs, and security in the Management Portal"
+---
+
+## Overview
+
+The **Terminal** section (under **Configuration > Terminal**) is where you manage and monitor your **terminals**—the physical or virtual point-of-sale devices (tills, kiosks, kitchen screens, and related hardware) at your outlets. A large part of day-to-day behaviour is defined here: each terminal belongs to an **outlet**, has a **terminal type** that determines its role, and is configured with receipt, layout (via outlet sessions), operators, tenders, checklist, pay-at-table options, and more.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Hierarchy (Terminals) | Hierarchy | Configuration (Terminal) |
+| Terminal Status | Terminal Status | Configuration (Terminal) |
+| Session Management | Session Management | Configuration (Terminal) |
+| Terminal Screenshot | Terminal Screenshot | Configuration (Terminal) |
+| Terminal Security | Terminal Security | Configuration (Terminal) |
+| Terminal Alerts | Terminal Alerts | Configuration (Terminal) |
+| Terminal Session Activity | Terminal Session Activity | Configuration (Terminal) |
+
+Terminal configuration is extensive. You create and edit terminals from **Configuration > Terminal > Hierarchy** (by outlet). Each terminal has multiple **tabs** or **sections** covering identity, display, session timeouts, receipt, checklist, pay-at-table, member selection, and **payment options**. The [Terminal configuration](/enterprise/pages/terminal/configuration) page lists every field and tab in detail. The **Payment options** tab is kept brief in the docs: each option is a variation of credentials required (API keys, merchant IDs, terminal IDs, secrets); configure the one that matches your payment provider.
+
+**Permissions:** Access to Terminal section pages (Hierarchy, Status, Session Activity, Session Management, Jobs, Security) depends on your role. You need the appropriate permissions to create or edit terminals and to view status or sessions.
+
+Navigate to **Configuration > Terminal** in the navigation menu.
+
+## Terminal section pages
+
+Under **Configuration > Terminal** you’ll find these pages:
+
+| Page | What it does |
+|------|----------------|
+| **Hierarchy** | View and manage the **terminal hierarchy** (terminals grouped by outlet). From here you **add** new terminals to an outlet or **select** an existing terminal to edit it. The terminal form opens with all configuration tabs: Details, Display, Session/Timeouts, Receipt, Checklist, Pay at Table, Member, Payment options. |
+| **Status** | Monitor **terminal status and connectivity**. See which terminals are online, offline, or in a session. Use this to troubleshoot connectivity or see which devices are in use. |
+| **Session Activity** | View **terminal session activity and usage**. See when sessions were opened or closed, which operator was logged in, and related activity per terminal. |
+| **Session Management** | Manage **terminal sessions**—for example, close sessions remotely. Useful when a terminal is stuck or you need to end a session from the portal. |
+| **Jobs** | View and manage **terminal jobs and tasks**. Terminals receive jobs (e.g. layout updates, config pushes); this page lets you see job status and history. |
+| **Security** | Configure **terminal security settings and access controls**. You restrict which terminals can be used where and which users can manage them using the settings on this page. |
+
+Creating and editing terminals is done from **Hierarchy**: select an outlet (or navigate the tree), then add a terminal or click an existing one to open the terminal form.
+
+## Terminal types: overviews
+
+Every terminal has a **terminal type** that defines what the device is used for. The type controls which features and UI the terminal shows (sales screen, kitchen display, kiosk, and so on). When you create a terminal, you choose its type; the form shows or hides tabs based on type—for example Pay at Table and Member selection apply to operator POS, Kiosk host type applies only to Self-Service Kiosk. Layout and session behaviour come from the **outlet**: the outlet’s **Outlet Sessions** define which layout and price band the terminal uses for each session (see [Management](/enterprise/pages/management/overview)).
+
+Below is an overview of each type—what it is, when to use it, and how it fits with the rest of the system.
+
+### Terminal (Operator POS)
+
+Standard **till** used by staff to take orders and payments.
+
+- **Operators** log in at the device (**Configuration > Management > Operators** and **Operator Roles**). The terminal uses the **layout** and **price band** from the outlet’s current **session** (Outlet Sessions are configured on the outlet; you don’t set layout on the terminal itself).
+- Staff see product buttons, **tenders**, **menus** (popup menus from **Configuration > Management > Menus**), and complete a **Checklist** when opening a session if a Checklist is assigned to the terminal.
+- You can assign a **Receipt** template for printing, a **Background image** (resource), and **Sales view type** (Bar or Tables) for bar-style vs table-based sales.
+- For table service: enable **Pay at Table** and set the Pay at Table tender and print receipt option.
+- **Payment mode** (EFT, Standalone EFT, or Cost Centre) and the **Payment options** tab control how card, cash, and non-cash payments are handled.
+- **Member select type** (None, Member List, Token Entry, Member Pin) controls how members are selected for loyalty or member-linked sales.
+
+**Use this type for** every staff-operated till at your outlets.
+
+### Preparation Point (terminal type)
+
+**Preparation points are not terminals—they are destinations for orders.** A preparation point is configured under the outlet (see [Ordering](/enterprise/pages/ordering)) and does nothing by itself. Orders are **sent to** the preparation point from different data sources. **Only KMS terminals** (Kitchen Management Screen) let you **see and manage** those orders directly.
+
+**Data sources that send orders to the preparation point:**
+
+- **QR ordering** — Customers scan a QR code (**Ordering > Self Service Ordering > QR Code Generator**) and place an order; the order is sent to the preparation point. No manual configuration on a forwarding terminal is required.
+- **Terminals with a preparation point set** — Operator tills, kiosk terminals, and pay-at-table order terminals must have the **Preparation point** selected in their terminal configuration to send orders to that preparation point.
+- **App ordering** — Orders placed via the mobile app are sent to the preparation point. No manual configuration on a forwarding terminal is required.
+- **Ordering API endpoints** — Orders placed via the ordering API (e.g. authorize/commit with `terminalId` or `preparationPointId`) are sent to the specified preparation point.
+- **Self-service kiosk ordering** — The kiosk terminal’s configuration must include the desired **Preparation point** so orders are sent to that preparation point.
+- **Pay at Table** — The order terminal’s configuration must include the desired **Preparation point** so pay-at-table orders are sent to that preparation point.
+
+
+### Kitchen Management Screen (KMS)
+
+**Only KMS terminals let you directly update the status of a preparation point order** (e.g. mark courses done). Orders are sent to the preparation point (the destination) by terminals, QR ordering, app, pay at table, kiosk, and the ordering API. A **KMS terminal** has a **Preparation point** selected in its configuration so it displays the orders at that preparation point. KMS shows orders organised by **course** (configured under **Configuration > Management > Course**) so kitchen or bar staff can fulfil and **mark courses done**. You can **view** preparation point orders (order status, queue, activity, fulfillment metrics, real-time updates) via the **Ordering dashboard** (**Ordering > Dashboard**); only KMS allows updating order status directly.
+
+- Set **Preparation point** on this terminal to the preparation point whose orders this KMS should display. Set **Order consolidation type** and **Order terminal** (master) as needed.
+- KMS terminals do not take payments and do not show product buttons for sale; they are display-only for the kitchen or bar.
+
+**Use this type for** kitchen or bar displays where you want to manage and display orders by course and mark courses complete. See [Ordering](/enterprise/pages/ordering) for preparation point configuration (name, type, location, products, stock, course, and other options). See [Ordering](/enterprise/pages/ordering) for the ordering dashboard (view-only).
+
+### Vending Machine
+
+Used when the device is a **vending machine**
+
+- The terminal type tells the system that this device behaves as a vending endpoint—taking selection and payment via the machine’s own payment mechanism or a linked payment flow, and reporting sales or stock when configured.
+- Configuration includes **Payment mode**, **Payment options**, and vending-specific settings when exposed in the portal for this type.
+
+**Use this type for** vending machines that are registered as terminals in your organisation.
+
+### Self-Service Kiosk
+
+**Customer-facing kiosks** where customers browse and order without staff.
+
+- The device uses kiosk layouts and ordering flows. Customer-facing content (**Kiosk Home**, **Kiosk Sales**) is assigned at **outlet** level under **Configuration > Vision**.
+- On the terminal set **Kiosk host type** to **Kiosk** (full ordering kiosk) or **Self Checkout** (self-checkout style device).
+- **Payment mode** and **Payment options** apply when the kiosk takes payment. You can use **EFT** or **member payments** at the kiosk; member payments utilise **vouchers**, **accounts**, and related features as a normal terminal would (e.g. loyalty, member balance, voucher redemption). **Member select type** can be used for member identification at the kiosk.
+
+**Use this type for** any self-checkout devices in your outlets.
+
+### Customer Status Screen
+
+**Customer Status Screen (CSS)** is a way to **display future orders** to the customer—i.e. the orders that are sent to preparation points and managed by KMS.
+
+- CSS screens display the **order numbers** that the KMS screens are working on. The display can be in **Grid** or **List** mode. When KMS operators update orders (e.g. mark in progress or ready for collection), the status appears on the CSS—e.g. **“in progress”** or **“collect”**—depending on the mode.
+- The screen **does not take orders or payments**; it is display-only so customers can see the status of their order.
+- **Display mode** is **Grid** or **List**. **Operation type** / **POS host type** can be set to **Customer Screen Portrait** or **Customer Screen Landscape**. Use **Linked terminal** to associate the CSS with the relevant terminal or context so it shows the order numbers and status for orders being worked on by KMS.
+
+**Use this type for** customer-facing status displays that show which order numbers KMS is working on and their status (in progress, collect, etc.).
+
+### Quick Serve
+
+**Quick-serve** displays or devices in quick-serve areas.
+
+- The outlet can have **Quick Serve** vision assigned under **Configuration > Vision** so that content (e.g. menu boards, promotions) is shown on this terminal.
+- The device displays Quick Serve vision content; quick-serve-specific ordering or payment behaviour is configured on the terminal and outlet as needed.
+
+**Use this type when** you have terminals or displays dedicated to quick-serve lanes or areas.
+
+---
+
+**Summary table** (for quick reference):
+
+| Type | Purpose |
+|------|---------|
+| **Terminal (Operator POS)** | Staff till; operators log in, use outlet layout/session, take orders and payments. |
+| **Preparation Point** | Display terminal for orders sent to a preparation point (preparation point is the destination; this terminal shows them). |
+| **Kitchen Management Screen (KMS)** | Display terminal to see and manage orders at a preparation point; orders by course; mark courses done. |
+| **Vending Machine** | Vending machine or similar unattended device. |
+| **Self-Service Kiosk** | Customer kiosk or self-checkout; **Kiosk** or **Self Checkout** host type. |
+| **Customer Status Screen** | Displays future orders (prep point orders managed by KMS); shows order numbers KMS is working on and status (e.g. in progress, collect). |
+| **Quick Serve** | Quick-serve display or device; Quick Serve vision at outlet. |
+
+## How terminal configuration fits together
+
+- **Outlet** — Each terminal belongs to one **outlet**. The outlet’s **Outlet Sessions** define which **layout** and **price band** the terminal uses when it is in a given session. You don’t set layout on the terminal itself; it comes from the outlet.
+- **Management** — Receipt (**Configuration > Management > Receipts**), **Operators** and **Operator Roles**, **Tenders**, **Checklist**, **Menus**, and **Resources** (e.g. background image) are configured under Management and then **assigned or referenced** on the terminal (e.g. receipt type, checklist, background resource).
+- **Pay at Table** — For table-service terminals you can enable **Pay at Table** on the terminal and set the **Pay at Table tender** and whether to **print receipt** when pay-at-table payment completes (see [Pay at Table](/enterprise/pages/management/pay-at-table)).
+- **Vision** — Customer-facing screens (PoS customer screen, Kiosk Home, Kiosk Sales, Quick Serve) are assigned at **outlet** level under **Configuration > Vision**; the terminal type (e.g. Kiosk) determines which of those screens the device uses.
+
+For a **full list of every terminal field and tab**, see [Terminal configuration](/enterprise/pages/terminal/configuration).
+
+## Payment options (brief)
+
+The **Payment options** tab on the terminal form lists all supported payment providers and integrations: EFT, standalone EFT, cost centre, and third-party gateways. Each option is a **variation of credentials required**: API keys, merchant IDs, terminal IDs, secrets. Choose the option that matches your payment provider and fill in the credential fields shown for that option. The portal shows the inputs for the selected provider.
+
+## Best practices
+
+- **Set outlet and type first**: When adding a terminal, assign the correct **outlet** and **terminal type** so the right layouts, sessions, and features apply.
+- **Use Hierarchy**: Use **Configuration > Terminal > Hierarchy** to see terminals per outlet and to create or edit terminals in context.
+- **Receipt and checklist**: Assign a **Receipt** (Print) so the terminal can print receipts; assign a **Checklist** if operators should complete a checklist when opening a session (see [Checklist](/enterprise/pages/management/checklist)).
+- **Pay at Table**: For table-service tills, enable **Pay at Table** and set the **Tender** and **Print receipt** option so pay-at-table flows work correctly.
+- **Monitor with Status and Session Management**: Use **Status** to check connectivity and **Session Management** to close stuck sessions when needed.
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Configuration" icon="cog" href="/enterprise/pages/configuration">
+    Return to the Configuration overview (Member, Incentives, Campaign, Management, Vision, Terminal, Admin).
+  </Card>
+  <Card title="Terminal configuration" icon="list" href="/enterprise/pages/terminal/configuration">
+    Full field reference for every terminal tab and setting.
+  </Card>
+  <Card title="Management" icon="diagram-project" href="/enterprise/pages/management/overview">
+    How layouts, sessions, receipts, operators, tenders, and checklist link to terminals.
+  </Card>
+  <Card title="Pay at Table" icon="qrcode" href="/enterprise/pages/management/pay-at-table">
+    Terminal Pay at Table settings (tender, print receipt).
+  </Card>
+  <Card title="Vision" icon="tv" href="/enterprise/pages/vision/overview">
+    Customer-facing screens (PoS, Kiosk, Quick Serve) assigned per outlet.
+  </Card>
+</CardGroup>

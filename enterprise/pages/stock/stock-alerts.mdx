@@ -1,0 +1,146 @@
+---
+title: "Stock Alerts"
+description: "Real-time stock actions from the point of sale"
+---
+
+## Overview
+
+Stock Alerts is a real-time monitoring system that displays pending stock movement events requiring action. The page shows three types of alerts: Stock Verification (opening stock counts), Stock Close (closing stock counts), and Stock Requisition (stock transfer requests). These alerts automatically feed into the user notification system, ensuring relevant users are notified when action is required.
+
+All stock alert types are created by Point of Sale terminals.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Stock Alerts | Stock Alerts | Stock Control (Stock Movements) |
+
+<Note>
+You can only view alerts for outlets you have access to through your user role.
+</Note>
+
+## Notification Preferences
+
+To receive notifications about stock alerts:
+
+1. Navigate to **Profile > Notification Settings**
+2. Enable the stock notification types:
+   - **Stock Verification**: Notifications for stock opening/verification events
+   - **Stock Requisition**: Notifications for stock requisition requests
+   - **Stock Close**: Notifications for stock closing events
+3. Choose delivery method: **Inbox** and/or **Email**
+
+## Accessing Stock Alerts
+
+Navigate to **Stock > Stock Movements > Stock Alerts**.
+
+The page displays a live, auto-refreshing table of all pending stock alerts.
+
+## Alert Types
+
+| Alert Type | Color | Purpose | Action Required |
+|------------|-------|---------|-----------------|
+| **Stock Verification** | Blue | Alerts for stock opening/verification events | Review counted stock items and verify opening levels are acceptable. |
+| **Stock Close** | Green | Alerts for stock closing events | Review counted stock items and verify closing levels are acceptable. |
+| **Stock Requisition** | Yellow/Orange | Alerts for stock requisition requests | Review the requisition and fulfill the stock transfer request. |
+
+## Alert Information
+
+Each alert displays:
+
+- **Type**: The type of alert
+- **Date/Time**: When the event was created
+- **Source Outlet**: The outlet where the event originated
+- **Destination Outlet**: The outlet that is the destination
+- **Operator**: The PoS operator that created the event
+- **Action Button**: Claim or Release button
+
+## Using Stock Alerts
+
+### Viewing Alerts
+
+1. Navigate to **Stock > Stock Movements > Stock Alerts**
+2. The page automatically refreshes every 5 seconds
+3. Use the filter checkboxes to show/hide specific alert types:
+   - **Verification**: Toggle Stock Verification alerts
+   - **Stock Close**: Toggle Stock Close alerts
+   - **Requisition**: Toggle Stock Requisition alerts
+
+### Claiming an Alert
+
+Claiming is useful for large stock teams working through many alerts:
+
+1. Find the alert in the table
+2. Click the **Claim** button
+3. The button changes to **Release** and shows your username
+4. Other users will see that the alert is claimed by you
+
+<Note>
+Only one user can claim an alert at a time. Claiming indicates you are working on it but doesn't prevent others from viewing it.
+</Note>
+
+### Processing an Alert
+
+1. Click anywhere on the alert row (except the button)
+2. You will be taken to the appropriate page:
+   - **Stock Verification** alerts → Stock Open page
+   - **Stock Close** alerts → Stock Close page
+   - **Stock Requisition** alerts → Stock Requisition page
+3. Complete the required actions on that page
+4. Once processed, the alert disappears from the Stock Alerts page
+
+## Notification System
+
+### How Alerts Feed into Notifications
+
+Stock alerts automatically generate user notifications when events are created. Notifications ensure users are informed even when not actively viewing the Stock Alerts page.
+
+### Receiving Notifications
+
+**Inbox Notifications:**
+- Appear in your system inbox (notification bell icon)
+- Click to go directly to the relevant stock event page
+- Remain until you process the event or mark as read
+
+**Email Notifications:**
+- Sent when stock events are created
+- Contain details about the event and a link to process it
+
+## Additional Reports
+
+- **PoS Stock Movements**: Historical report of each outlet's stock movements (requisition, verify, close) with operator, date/time, and status
+
+## Frequently asked questions
+
+**Why don't I see any alerts on the Stock Alerts page?**
+
+Possible reasons:
+- You don't have the "Stock Alerts" permission
+- You don't have access to outlets with pending events
+- There are no pending stock events
+- Alerts are filtered out (check filter checkboxes)
+
+**Can multiple users work on the same alert?**
+
+No, only one user can claim an alert at a time. However, multiple users can receive notifications and view the alert details.
+
+**What's the difference between the Stock Alerts page and notifications?**
+
+- **Stock Alerts Page**: Live dashboard showing all pending alerts. Auto-refreshes every 5 seconds.
+- **Notifications**: User-specific alerts delivered via Inbox and/or Email. Provides direct links to process events.
+
+**I received a notification but the alert isn't on the page. Why?**
+
+The alert may have been processed by another user, expired, or you may not have the "Stock Alerts" permission to view the page.
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Stock Dashboard" icon="gauge-high" href="/enterprise/pages/stock/stock-dashboard">
+  Monitor stock outlet status.
+</Card>
+
+<Card title="Stock Take" icon="clipboard-check" href="/enterprise/pages/stock/stock-take">
+  Perform stock counts.
+</Card>
+</CardGroup>

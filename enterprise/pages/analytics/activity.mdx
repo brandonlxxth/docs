@@ -1,0 +1,406 @@
+---
+title: "Activity"
+description: "Track and review transaction receipts, Z reports, journals, checklists, product refusals, and preparation point activity"
+---
+
+## Overview
+
+The **Activity** subsection under **Analytics > Activity** provides tools to track and review system activity across your organisation. Use these pages to search transaction receipts, view end-of-day Z reports, download order and product journals, review checklist completions, track product refusal events, and monitor click and collect operations.
+
+Navigate to **Analytics > Activity** in the main navigation.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Receipt Explorer | Receipt Explorer | Analytics |
+| Z Report Explorer | Z Report Explorer | Analytics |
+| Journal | Journal | Analytics |
+| Checklist | Checklist | Configuration (Management) |
+| Product Refusal | Product Challenge | Configuration (Management) |
+| CCU Journal | CCU Journal | Analytics |
+| Click and Collect Journal | Journal | Analytics |
+
+<Note>
+Receipt Explorer is not available for organisations using Portugal fiscalisation mode.
+</Note>
+
+---
+
+## Receipt Explorer
+
+Search and view transaction receipts from your terminals. Receipts display in a visual card format matching the terminal receipt layout.
+
+### Accessing Receipt Explorer
+
+Navigate to **Analytics > Activity > Receipt Explorer**.
+
+### Filter fields
+
+| Field | Description |
+|-------|-------------|
+| **Date Range** | Start and end date/time for the search. Defaults to today (00:00–23:59). |
+| **Outlet** | Filter to a specific outlet or select "All" for all outlets. |
+| **Terminal** | Filter to a specific terminal within the selected outlet. Select "All" for all terminals. The terminal dropdown updates when you change the outlet. |
+| **Tender** | Filter to transactions using a specific tender type (cash, card, etc.) or "All". |
+| **Operator** | Filter to transactions processed by a specific operator or "All". |
+| **Order Type** | Filter by order type: All, Sale, Refund, Sale Cancel, or Refund Cancel. |
+| **Order Number** | Search for a specific order by entering the order number and terminal ID. |
+| **Order Total** | Filter by minimum and/or maximum order total. Maximum value: 20,000,000. |
+| **Card Details** | Search by card last four digits and/or expiry date (MM/YY format). |
+
+### Using Receipt Explorer
+
+<Steps>
+<Step title="Set your filters">
+  Select the date range, outlet, terminal, tender, operator, and order type filters. Optionally enter order number, order total range, or card details.
+</Step>
+
+<Step title="Click Go">
+  Click the **Go** button to search for receipts matching your criteria.
+</Step>
+
+<Step title="View receipts">
+  Receipts display as visual cards showing the receipt layout. Each card shows order details, products, totals, tenders, and VAT summary.
+</Step>
+
+<Step title="Load more results">
+  Click the **More** button to load additional receipts. Results are paginated for performance.
+</Step>
+
+<Step title="Print a receipt">
+  Hover over a receipt card to reveal the print button. Click to open the receipt in a printable format. For orders with EFT (card) payments, you can choose which EFT receipt data to include.
+</Step>
+</Steps>
+
+### Receipt details displayed
+
+Each receipt card shows:
+
+| Field | Description |
+|-------|-------------|
+| **Header** | Receipt header text from the terminal's print configuration. |
+| **Order Type** | SALE, REFUND, SALE CANCEL, or REFUND CANCEL. |
+| **Table Number** | Table number (for table service orders). |
+| **Terminal** | Terminal name and ID. |
+| **Order** | Receipt/order number. |
+| **Operator** | Operator name and ID. |
+| **Price Band** | Price band used for the order. |
+| **Date/Time** | Order date and time. For table orders, shows open and close times. |
+| **Member** | Member name and ID (if not "Everyone"). |
+| **Covers** | Number of covers (if recorded). |
+| **Products** | List of products with quantity, name, and gross value. |
+| **Total** | Order total value. |
+| **Tenders** | Payment methods used with values. Shows card last four digits for EFT payments. |
+| **Change/Gratuity** | Change due or gratuity amount (based on overpayment type). |
+| **VAT Summary** | Tax breakdown by rate showing net, VAT, and total per tax rate. |
+| **EFT Data** | Merchant and customer EFT receipt data (for card payments). |
+| **Footer** | Receipt footer text from the terminal's print configuration. |
+
+---
+
+## Z Report Explorer
+
+View Z reports from terminals for end-of-day reconciliation. Z reports summarise terminal session activity including sales, tenders, vouchers, gratuities, tax, and cash declarations.
+
+### Accessing Z Report Explorer
+
+Navigate to **Analytics > Activity > Z Report Explorer**.
+
+### Filter fields
+
+| Field | Description |
+|-------|-------------|
+| **Site** | Select a site to filter outlets and terminals. |
+| **Outlet** | Filter to a specific outlet or "All". Updates based on selected site. |
+| **Terminal** | Filter to a specific terminal or "All". Updates based on selected outlet. |
+| **Session Open Date** | The date to search for terminal sessions. Defaults to today. |
+
+### Using Z Report Explorer
+
+<Steps>
+<Step title="Select filters">
+  Choose the site, outlet, and terminal. Select the session open date.
+</Step>
+
+<Step title="Click Go">
+  Click **Go** to load terminal sessions for the selected date and filters.
+</Step>
+
+<Step title="View session list">
+  A table displays all matching terminal sessions with session details.
+</Step>
+
+<Step title="View Z Report">
+  Click a session row to open the Z Report modal showing the full session summary.
+</Step>
+</Steps>
+
+### Z Report details
+
+The Z Report modal displays:
+
+| Section | Description |
+|---------|-------------|
+| **Session** | Session name. |
+| **Terminal** | Terminal name. |
+| **Operator** | Operator who closed the session. |
+| **Open/Close DateTime** | Session open and close timestamps. |
+| **Average Order Time** | Average time per order during the session. |
+| **Covers** | Total covers served. |
+| **Summary** | Sales summary totals. |
+| **Tenders (Taxable)** | Taxable tender totals by tender type. |
+| **Tenders (Other)** | Non-taxable tender totals. |
+| **Vouchers** | Voucher redemption totals. |
+| **Gratuities** | Gratuity totals. |
+| **Tax Rates** | Tax collected by rate. |
+| **Cash** | Cash declaration details (declared, expected, variance). |
+
+---
+
+## Journal
+
+Download order or product journal data as a CSV file. The journal provides transaction-level detail for audit, reconciliation, or external analysis.
+
+### Accessing Journal
+
+Navigate to **Analytics > Activity > Journal**.
+
+### Journal types
+
+| Type | Description |
+|------|-------------|
+| **Orders** | One row per order with order-level totals and tender information. |
+| **Products** | One row per product line with product-level detail including quantity, pricing, and discounts. |
+
+### Filter fields
+
+| Field | Description |
+|-------|-------------|
+| **Type** | Select Orders or Products journal type. |
+| **Date Range** | Start and end date/time. Defaults to today. |
+| **Site** | Filter to a specific site. |
+| **Outlet** | Filter to a specific outlet or "All". |
+| **Tender** | Filter to a specific tender type or "All". |
+| **Order Type** | Filter by: All, Sale, Refund, Sale Cancel, or Refund Cancel. |
+
+### Using Journal
+
+<Steps>
+<Step title="Select journal type">
+  Choose **Orders** for order-level data or **Products** for product-level detail.
+</Step>
+
+<Step title="Set filters">
+  Select date range, site, outlet, tender, and order type filters.
+</Step>
+
+<Step title="Download">
+  Click the download icon in the card toolbar. The journal downloads as a CSV file.
+</Step>
+</Steps>
+
+### Export columns
+
+**Orders journal:**
+
+| Column | Description |
+|--------|-------------|
+| Order Id | Internal order identifier. |
+| Order | Order/receipt number. |
+| Date Time | Order timestamp. |
+| Site | Site name. |
+| Outlet | Outlet name. |
+| Terminal | Terminal name. |
+| Operator | Operator name. |
+| Tender | Tender type used. |
+| Member | Member name. |
+| Gross | Gross total. |
+| Tax | Tax amount. |
+| Net | Net total. |
+| Order Type | Sale, Refund, Sale Cancel, or Refund Cancel. |
+
+**Products journal:**
+
+| Column | Description |
+|--------|-------------|
+| Order Id | Internal order identifier. |
+| Order | Order/receipt number. |
+| Date Time | Order timestamp. |
+| Site | Site name. |
+| Outlet | Outlet name. |
+| Terminal | Terminal name. |
+| Member | Member name. |
+| Email | Member email. |
+| Product | Product name. |
+| Gross | Product gross value. |
+| Tax | Product tax amount. |
+| Net | Product net value. |
+| Quantity | Quantity sold. |
+| Tax Rate | Tax rate applied. |
+| Order Type | Sale, Refund, Sale Cancel, or Refund Cancel. |
+| Discounted Gross | Gross after discounts. |
+| Discounted Net | Net after discounts. |
+
+---
+
+## Checklist
+
+View checklist completion reports showing which checklist items were completed by which operator, on which terminal, and when. This is a report view—to configure checklists, go to **Configuration > Management > Checklist**.
+
+### Accessing Checklist
+
+Navigate to **Analytics > Activity > Checklist**.
+
+### Filter fields
+
+| Field | Description |
+|-------|-------------|
+| **Date Range** | Start and end date/time for checklist completions. |
+| **Site** | Filter to specific sites (multi-select). |
+| **Outlet** | Filter to specific outlets (multi-select). |
+
+### Using Checklist report
+
+<Steps>
+<Step title="Set filters">
+  Select the date range, sites, and outlets.
+</Step>
+
+<Step title="Generate report">
+  Click the generate button to view the checklist completion report.
+</Step>
+
+<Step title="View results">
+  The report shows checklist items with completion details by operator, terminal, and timestamp.
+</Step>
+</Steps>
+
+<Info>
+To configure checklists (create, edit, assign to terminals), go to **Configuration > Management > Checklist**. The Checklist Dashboard at that location shows completion status by outlet.
+</Info>
+
+---
+
+## Product Refusal
+
+Track product refusal events when operators decline to sell age-restricted or challenged products. This report shows when products with challenges (e.g., age verification) were refused at the point of sale.
+
+### Accessing Product Refusal
+
+Navigate to **Analytics > Activity > Product Refusal**.
+
+### Filter fields
+
+| Field | Description |
+|-------|-------------|
+| **Date Range** | Start and end date/time for refusal events. |
+| **Site** | Filter to specific sites (multi-select). |
+| **Outlet** | Filter to specific outlets (multi-select). |
+| **Download Data Only** | Download raw data as CSV instead of viewing the report. |
+| **Summary** | Show summary totals instead of line-level detail. |
+
+### Report options
+
+| Option | Description |
+|--------|-------------|
+| **Detail view** | Shows each refusal event with product, operator, terminal, and timestamp. |
+| **Summary view** | Aggregates refusals by product or outlet for overview analysis. |
+| **Data only** | Downloads the data as a CSV file for external analysis. |
+
+### Using Product Refusal report
+
+<Steps>
+<Step title="Set filters">
+  Select the date range, sites, and outlets.
+</Step>
+
+<Step title="Choose report options">
+  Select Summary for aggregated view, or leave unchecked for line-level detail. Check "Download Data Only" for CSV export.
+</Step>
+
+<Step title="Generate report">
+  Click generate to view the report or download the CSV.
+</Step>
+</Steps>
+
+---
+
+## CCU Journal
+
+Download Customer Communication Unit (CCU) journal data as a CSV file. CCU journals track customer communication events.
+
+### Accessing CCU Journal
+
+Navigate to **Analytics > Activity > CCU Journal**.
+
+### Filter fields
+
+| Field | Description |
+|-------|-------------|
+| **Date Range** | Start and end date for CCU events. Defaults to today. |
+| **Site** | Filter to a specific site. |
+| **Outlet** | Filter to a specific outlet or "All". |
+
+### Using CCU Journal
+
+<Steps>
+<Step title="Set filters">
+  Select the date range, site, and outlet.
+</Step>
+
+<Step title="Download">
+  Click the download button. The CCU journal downloads as a CSV file named `CcuJournal_[guid].csv`.
+</Step>
+</Steps>
+
+---
+
+## Click and Collect Journal
+
+Download click and collect journal data as a CSV file. This journal tracks orders sent to preparation points for fulfilment.
+
+### Accessing Click and Collect Journal
+
+Navigate to **Analytics > Activity > Click and Collect Journal**.
+
+### Filter fields
+
+| Field | Description |
+|-------|-------------|
+| **Date Range** | Start and end date for preparation point orders. Defaults to today. |
+| **Site** | Filter to a specific site. |
+| **Outlet** | Filter to a specific outlet or "All". |
+| **Preparation Point** | Filter to a specific preparation point. |
+| **Tender** | Filter to a specific tender type. |
+
+### Using Click and Collect Journal
+
+<Steps>
+<Step title="Set filters">
+  Select the date range, site, outlet, preparation point, and tender filters.
+</Step>
+
+<Step title="Download">
+  Click the download button. The journal downloads as a CSV file named `ClickAndCollectJournal_[guid].csv`.
+</Step>
+</Steps>
+
+---
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Analytics Overview" icon="chart-line" href="/enterprise/pages/analytics/overview">
+    Return to the Analytics section overview.
+  </Card>
+  <Card title="Checklist (Configuration)" icon="list-check" href="/enterprise/pages/management/checklist">
+    Configure checklists and view the Checklist Dashboard.
+  </Card>
+  <Card title="Product Challenge" icon="shield" href="/enterprise/pages/management/product-challenge">
+    Configure product restrictions that trigger refusal tracking.
+  </Card>
+  <Card title="Ordering" icon="utensils" href="/enterprise/pages/ordering">
+    Configure preparation points for order routing.
+  </Card>
+</CardGroup>

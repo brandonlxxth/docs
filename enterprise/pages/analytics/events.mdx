@@ -1,0 +1,232 @@
+---
+title: "Events"
+description: "Create and manage revenue events for tracking special occasions, promotions, and time periods in reports"
+---
+
+## Overview
+
+The **Events** section under **Analytics > Events** allows you to create and manage revenue events. Events are time-bound markers that you can use to segment and analyse sales data in reports. Use events to track special occasions, promotions, sporting fixtures, concerts, or any other time periods you want to analyse separately.
+
+Navigate to **Analytics > Events** in the main navigation.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Events | Events | Analytics |
+| Event Categories | Events | Analytics |
+| Event Tags | Event Tags | Analytics |
+| Import (on Events page) | Revenue Event Import | Configuration (Management section) |
+
+---
+
+## Events
+
+Create and manage individual revenue events. Each event has a name, date range, category, and can be assigned to specific outlets.
+
+### Accessing Events
+
+Navigate to **Analytics > Events > Events**.
+
+### Events list
+
+The Events page displays all events, with options to filter by category. Use the toolbar buttons to:
+
+- **Create** - Add a new event
+- **Calendar** - View events in a calendar format
+- **Import** - Bulk import events from CSV (requires Revenue Event Import permission)
+
+### Event fields
+
+| Field | Description |
+|-------|-------------|
+| **Name** | Display name for the event. |
+| **Date Range** | Start and end date/time for the event. |
+| **Event Category** | Category to group this event under. Select from your configured categories. |
+| **Tags** | Optional tags for additional organisation and filtering. Multi-select from your configured event tags. |
+| **Attendance** | Optional expected or actual attendance figure. |
+| **Notes** | Free-text notes about the event. |
+| **Staff Costs** | Optional staff cost information for the event. |
+| **External Reference** | Optional external reference ID for integration with other systems. |
+| **Outlets** | Select which outlets this event applies to. Choose "All" or select specific outlets from the hierarchy. |
+
+### Creating an event
+
+<Steps>
+<Step title="Click Create">
+  Click the create button in the toolbar.
+</Step>
+
+<Step title="Enter event details">
+  Fill in the event name, select the date range using the date picker, and choose an event category.
+</Step>
+
+<Step title="Add optional information">
+  Optionally add tags, attendance figures, notes, staff costs, and external references.
+</Step>
+
+<Step title="Select outlets">
+  Choose whether the event applies to all outlets or select specific outlets from the hierarchy on the right side of the form.
+</Step>
+
+<Step title="Save">
+  Click the save button to create the event.
+</Step>
+</Steps>
+
+### Calendar view
+
+Click the **Calendar** button to view events in an interactive calendar. The calendar supports:
+
+- **Month, Week, Day, and List views** - Toggle between views using the buttons in the top right
+- **Event details** - Hover over an event to see its details in a popup
+- **Quick edit** - Click an event to open it for editing
+
+### Importing events
+
+If you have the Revenue Event Import permission, you can bulk import events from a CSV file.
+
+Navigate to **Analytics > Events > Events** and click the **Import** button in the page header.
+
+<Steps>
+<Step title="Navigate to Events">
+  Go to **Analytics > Events > Events** in the main navigation.
+</Step>
+
+<Step title="Click Import">
+  Click the **Import** button in the page header toolbar.
+</Step>
+
+<Step title="Prepare your CSV">
+  The CSV file should contain columns for event name, start date, end date, category, tags, attendance, notes, outlets, and whether it applies to all outlets.
+</Step>
+
+<Step title="Upload the file">
+  Drag and drop your CSV file or click to browse.
+</Step>
+
+<Step title="Review the preview">
+  The system validates your file and displays a preview of events to be created, any new tags that will be created, and any errors.
+</Step>
+
+<Step title="Commit the import">
+  If the preview looks correct, click the save button to create the events.
+</Step>
+</Steps>
+
+<Note>
+New tags referenced in the import file are created automatically during the import process.
+</Note>
+
+### Editing and deleting events
+
+- **Edit**: Click an event in the list or calendar to open the edit form
+- **Delete**: Open an event and click the delete button in the toolbar
+
+---
+
+## Event Categories
+
+Event categories group related events together. Use categories to organise events by type, such as "Sporting Events", "Concerts", "Promotions", or "Holidays".
+
+### Accessing Event Categories
+
+Navigate to **Analytics > Events > Event Categories**.
+
+### Category fields
+
+| Field | Description |
+|-------|-------------|
+| **Name** | Display name for the category. |
+| **Default** | Whether this is the default category for new events. Only one category can be set as default. |
+
+### Forecasts and budgets
+
+When editing an existing category, you can set forecast and budget values per outlet. These values are used for comparison in event reports.
+
+| Field | Description |
+|-------|-------------|
+| **Global Price** | Enter a value and click "Apply Forecast" or "Apply Budget" to set the same value for all outlets. |
+| **Forecast** | Expected revenue forecast per outlet for events in this category. |
+| **Budget** | Budget allocation per outlet for events in this category. |
+
+### Creating a category
+
+<Steps>
+<Step title="Click Create">
+  Click the create button in the toolbar.
+</Step>
+
+<Step title="Enter name">
+  Enter a name for the category.
+</Step>
+
+<Step title="Save">
+  Click save to create the category. Forecast and budget values can be added when editing the category.
+</Step>
+</Steps>
+
+### Category usage
+
+Click the usage button when editing a category to see which events are using it. Categories that are in use cannot be deleted.
+
+---
+
+## Event Tags
+
+Event tags provide an additional way to organise and filter events. Unlike categories (where each event has one category), events can have multiple tags.
+
+### Accessing Event Tags
+
+Navigate to **Analytics > Events > Event Tags**.
+
+### Tag fields
+
+| Field | Description |
+|-------|-------------|
+| **Name** | Display name for the tag. |
+
+### Creating a tag
+
+<Steps>
+<Step title="Click Create">
+  Click the create button in the toolbar.
+</Step>
+
+<Step title="Enter name">
+  Enter a name for the tag.
+</Step>
+
+<Step title="Save">
+  Click save to create the tag.
+</Step>
+</Steps>
+
+### Using tags
+
+Once created, tags appear in the tag selector when creating or editing events. Select multiple tags to apply them to an event.
+
+---
+
+## Using events in reports
+
+Events are used in event-specific reports to analyse performance during specific time periods. Event reports allow you to:
+
+- Compare actual revenue against forecasts and budgets
+- Analyse sales by outlet, terminal, or tender during events
+- Track performance across similar events using categories and tags
+
+Event reports are available under **Analytics > Reports** in the Events report category.
+
+---
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Analytics Overview" icon="chart-line" href="/enterprise/pages/analytics/overview">
+    Return to the Analytics section overview.
+  </Card>
+  <Card title="Reports" icon="file-chart-line" href="/enterprise/pages/analytics/reports">
+    Learn about available reports including event reports.
+  </Card>
+</CardGroup>

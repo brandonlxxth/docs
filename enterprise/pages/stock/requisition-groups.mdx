@@ -1,0 +1,157 @@
+---
+title: "Requisition Groups"
+description: "Add extra layers of routing for stock requisition outlets"
+---
+
+## Overview
+
+Product Requisition Groups allow you to configure custom sourcing rules for stock requisitions. This feature lets you override the default stock request outlet on a per-product basis, giving you fine-grained control over which outlet supplies stock for specific products.
+
+This is particularly useful when:
+
+- **Wet vs. dry storage separation**: Route beverages from climate-controlled wet storage and packaged goods from dry storage
+- **Premium wine cellar management**: Direct fine wines and champagnes from a dedicated cellar to VIP areas
+- **Multi-level stadium operations**: Source concession stock from the nearest storage facility on each level
+- **Fresh vs. packaged separation**: Direct fresh ingredients from kitchen prep areas and packaged goods from dry storage
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Product Requisition Groups | Product Requisition Group | Stock Control (Stock Administration) |
+| Product Assignment | Product | Configuration (Management) |
+
+## How It Works
+
+By default, each outlet has a **Stock Request Outlet** setting that determines where all stock requisitions are sent. Product Requisition Groups override this default behavior for specific products.
+
+When a stock requisition is accepted via Stock Alerts:
+
+1. The system checks if the product belongs to a Product Requisition Group
+2. If **yes**: It uses the custom outlet mapping from the group
+3. If **no**: It uses the outlet's default Stock Request Outlet
+
+## Prerequisites
+
+Before setting up Product Requisition Groups:
+
+1. **User Roles**: Your user needs the "Product Requisition Groups" role
+2. **Stock-Holding Outlets**: Source outlets must be configured as stock-holding outlets
+3. **Products**: Products must already be created in your system
+
+## Creating a Product Requisition Group
+
+<Steps>
+<Step title="Navigate to Requisition Groups">
+  Go to **Stock > Stock Administration > Product Requisition Groups**.
+</Step>
+
+<Step title="Create new group">
+  Click the **Create** button.
+</Step>
+
+<Step title="Enter name">
+  Enter a descriptive name indicating the products or sourcing strategy (e.g., "Fresh Produce Group", "Beverage Distribution").
+</Step>
+
+<Step title="Configure outlet mappings">
+  For each outlet, specify which outlet should fulfill stock requests:
+  - **Outlet**: The outlet that will be requesting stock
+  - **Request Outlet**: Select which outlet should fulfill requests
+    - Choose **Default** to use the outlet's standard Stock Request Outlet
+    - Choose a specific outlet to override the default for products in this group
+</Step>
+
+<Step title="Save">
+  Click **Save** to create the group.
+</Step>
+</Steps>
+
+<Note>
+You don't need to configure a custom request outlet for every outlet. Outlets set to "Default" will continue using their standard Stock Request Outlet configuration.
+</Note>
+
+## Assigning Products to Requisition Groups
+
+### During Product Creation or Editing
+
+1. Navigate to **Management > Products** and open a product
+2. Go to the **Requisition Rules** tab
+3. In the **Product Requisition Group** dropdown, select the group
+4. Save the product
+
+### During Bulk Import
+
+When importing product updates:
+
+1. In your product import file, include the Product ID and name
+2. Use the export function to get a template with existing products
+3. The import process assigns all products in the file to the selected group
+
+<Warning>
+Removing a product from a requisition group reverts it to using the outlet's default Stock Request Outlet setting.
+</Warning>
+
+## Example Scenarios
+
+### Wet vs. Dry Storage
+
+**Situation**: Your stadium has separate storage facilities for beverages and packaged goods.
+
+**Setup**:
+1. Create "Wet Storage Group" - Map all concession outlets → Wet Storage Facility
+2. Create "Dry Storage Group" - Map all concession outlets → Dry Storage Facility
+3. Assign beverages to Wet Storage Group
+4. Assign dry goods to Dry Storage Group
+
+**Result**: Stock requisitions automatically route to the correct storage facility.
+
+### Wine Cellar Distribution
+
+**Situation**: You have a main alcohol storage and a separate climate-controlled wine cellar.
+
+**Setup**:
+1. Set all outlets' default Stock Request Outlet to Main Beverage Storage
+2. Create "Premium Wine Cellar Group"
+   - Map premium dining outlets → Wine Cellar
+   - Map VIP lounges → Wine Cellar
+   - Map standard concessions → Default
+3. Assign premium wines and champagnes to Wine Cellar Group
+
+**Result**: Premium wines route from the wine cellar while standard beverages use main storage.
+
+## Understanding the Workflow
+
+When a stock requisition is processed:
+
+1. **Stock Alert Generated**: Terminal creates requisitions via K-stock
+2. **Information Button**: Products with requisition groups show "This product will be requested from [Outlet]"
+3. **Requisition Accepted**: Management portal user accepts the requisition
+4. **System Checks Product**: Determines source outlet based on requisition group or default
+5. **Transfer Created**: Stock transfer is created from source outlet(s) to requesting outlet
+6. **Operator Accepts**: Operator accepts approved transfers using K-stock
+7. **Stock Updated**: Stock tables are updated
+
+<Note>
+Products with requisition groups can result in multiple transfers if different products have different source outlets.
+</Note>
+
+## Troubleshooting
+
+| Problem | Solution |
+|---------|----------|
+| Products not routing to expected outlet | Verify product is assigned to the requisition group. Check outlet mapping isn't set to "Default". |
+| Requisition group not in product dropdown | Confirm the group was saved. Verify you have correct permissions. |
+| All products using default outlet | Check products are assigned to the group. Verify outlet mapping configuration. |
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Stock Transfers" icon="arrows-left-right" href="/enterprise/pages/stock/transfers">
+  Understand how transfers are created from requisitions.
+</Card>
+
+<Card title="Products" icon="box" href="/enterprise/pages/management/products">
+  Assign products to requisition groups.
+</Card>
+</CardGroup>

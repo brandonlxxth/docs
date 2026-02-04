@@ -1,0 +1,180 @@
+---
+title: "Stock Adjustments"
+description: "Quickly add or remove stock from locations"
+---
+
+## Overview
+
+Stock Adjustments allow you to record changes to your inventory levels that occur outside of normal stock movements (such as deliveries, transfers, or returns). This feature is essential for correcting stock discrepancies, recording waste, theft, or damage, and adjusting inventory to match physical counts.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Adjustments | Adjustment | Stock Control (Stock Movements) |
+| Authorise Adjustments | Adjustment Authorise | Stock Control (Stock Movements) |
+| Adjustment Report | Adjustment Report | Stock Control (Stock Movements) |
+
+### Additional requirements
+
+- **User Role Outlets**: Users can only create and view adjustments for outlets assigned to their user role
+- **Reason Codes**: At least one reason code must exist; all manually created adjustments require a reason for each product
+- **Product Availability**: Ensure the products you're adjusting are available in the selected outlet
+
+## Accessing Stock Adjustments
+
+- **Adjustments**: Navigate to **Stock > Stock Movements > Adjustments > Adjustment**
+- **Adjustment Report**: Navigate to **Stock > Stock Movements > Adjustments > Adjustment Report**
+- **Summary Report**: Navigate to **Analytics > Reports > Stock > Stock Adjustment Summary**
+
+## Creating a Stock Adjustment
+
+<Steps>
+<Step title="Navigate to Adjustments">
+  Go to **Stock > Stock Movements > Adjustments > Adjustment**.
+</Step>
+
+<Step title="Create new adjustment">
+  Click the create button to open the adjustment form.
+</Step>
+
+<Step title="Select outlet">
+  Select the outlet where the adjustment will be applied.
+</Step>
+
+<Step title="Enter details">
+  Fill in the adjustment details:
+  - **Date**: Select the date for the adjustment (defaults to today)
+  - **Reference**: Enter an optional reference number or code
+  - **Notes**: Add any additional notes or comments
+</Step>
+
+<Step title="Add adjustment lines">
+  Click the add button to add products. For each product line:
+  - **Product**: Search and select the product to adjust
+  - **Unit of Measure**: Automatically populated based on the product
+  - **Reason Code**: Select the reason for the adjustment (required)
+  - **In Stock Quantity**: Displays current stock level for reference
+  - **Quantity**: Enter the adjustment quantity (positive for increases, negative for decreases)
+  - **Unit Price**: Automatically populated from the product's current price
+  - **Line Total**: Automatically calculated (Quantity × Unit Price)
+</Step>
+
+<Step title="Authorise">
+  Once all lines are complete, click the **Authorise** button and confirm.
+</Step>
+</Steps>
+
+<Note>
+Adjustments are saved automatically as you work, so you can return to incomplete adjustments later. An adjustment number is assigned once saved.
+</Note>
+
+<Warning>
+Once authorised, adjustments affect stock levels and cannot be edited or deleted.
+</Warning>
+
+## Understanding Quantities
+
+| Quantity Type | Description |
+|---------------|-------------|
+| **Positive** | Increases stock levels (e.g., found stock, inventory correction) |
+| **Negative** | Decreases stock levels (e.g., waste, theft, damage) |
+
+## Adjustment Report
+
+Navigate to **Stock > Stock Movements > Adjustments > Adjustment Report**.
+
+### Filtering adjustments
+
+| Filter | Description |
+|--------|-------------|
+| **Date Range** | Select a start and end date. |
+| **Outlet** | Filter by specific outlet(s). |
+| **Created By** | View adjustments created by specific users. |
+| **Authorised By** | View adjustments authorised by specific users. |
+
+### Report columns
+
+| Column | Description |
+|--------|-------------|
+| **Number** | The adjustment number. |
+| **Outlet** | The outlet where the adjustment was applied. |
+| **Reference** | The reference number or code (if provided). |
+| **Created Date** | Date and time when the adjustment was created. |
+| **Created By** | User who created the adjustment. |
+| **Authorised Date** | Date and time when the adjustment was authorised. |
+| **Authorised By** | User who authorised the adjustment. |
+| **Total** | Total value of the adjustment. |
+
+### Printing adjustments
+
+1. Use the filters to find the adjustment
+2. Click the print icon next to the adjustment
+3. A detailed report opens showing all line items
+
+## Stock Adjustment Summary Report
+
+Navigate to **Analytics > Reports > Stock > Stock Adjustment Summary**.
+
+This report shows:
+- **Outlet/Product**: Combination of outlet and product
+- **Quantity**: Total quantity adjusted for each product
+- **Value**: Total value of adjustments for each product
+- **Outlet Totals**: Summary totals for each outlet
+- **Grand Total**: Overall totals across all selected outlets
+
+You can filter by date range, site, and outlet, and export to CSV.
+
+## Common use cases
+
+### Correcting stock count discrepancies
+
+1. Create a new adjustment for the outlet
+2. Select the product with a discrepancy
+3. Choose "Stock Count Discrepancy" as the reason code
+4. Enter the quantity difference (positive to increase, negative to decrease)
+5. Add a note explaining the discrepancy
+6. Save and authorise
+
+### Recording waste
+
+1. Create a new adjustment for the outlet
+2. Add the expired or wasted products
+3. For each product, select "Waste" as the reason code
+4. Enter negative quantities (e.g., -10 to reduce stock by 10 units)
+5. Add notes explaining the waste
+6. Save and authorise
+
+## Frequently asked questions
+
+**Why can't I see the Authorise button?**
+
+The Authorise button only appears when:
+- You have the "Authorise Adjustment" permission
+- The adjustment has been saved (has an adjustment number)
+- The adjustment has at least one line item with a non-zero quantity
+- The adjustment has not already been authorised
+
+**Can I edit an adjustment after it's been authorised?**
+
+No. Once authorised, adjustments cannot be edited or deleted. This ensures data integrity and maintains an accurate audit trail. Create a new adjustment to reverse or correct errors.
+
+**What happens if I enter a negative quantity?**
+
+Negative quantities reduce stock levels. This is useful for recording waste, theft, damage, or other stock reductions.
+
+**Can I print an adjustment before it's authorised?**
+
+No. The print function is only available for authorised adjustments.
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Reason Codes" icon="tag" href="/enterprise/pages/stock/reason-codes">
+  Configure reason codes for adjustments.
+</Card>
+
+<Card title="Stock Take" icon="clipboard-check" href="/enterprise/pages/stock/stock-take">
+  Perform stock counts and reconciliation.
+</Card>
+</CardGroup>

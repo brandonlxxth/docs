@@ -1,0 +1,145 @@
+---
+title: "Generated Reports"
+description: "View and download reports that were scheduled for background generation"
+---
+
+## Overview
+
+The **Generated Reports** page displays reports that were scheduled for background generation. When a report request would time out due to the volume of data involved, the system queues it for background processing instead. The report still takes time to generate, but it completes without timing out. Once ready, the report appears here for download.
+
+Navigate to **Analytics > Generated Reports**.
+
+## When to use Generated Reports
+
+Generated Reports solve the problem of report timeouts. If you regularly run a report that fails or times out when generated directly, scheduling it for background generation allows the system to process the data without browser timeout limits.
+
+**Common scenarios:**
+
+- Reports covering several weeks or months of transaction data
+- High-volume organisations where even short date ranges contain large amounts of data
+- Complex reports that aggregate data across many dimensions
+
+The report generation still takes time—often longer than an immediate report would if it succeeded—but it runs in the background and completes reliably.
+
+## How scheduling is triggered
+
+Each report type has a day threshold. When your requested date range meets or exceeds this threshold, the system automatically schedules the report for background generation instead of attempting to generate it immediately.
+
+For example, if a report's threshold is set to 7 days:
+- A 5-day report generates immediately
+- A 10-day report is scheduled for background generation
+
+<Tip>
+If you regularly experience timeouts when generating a report, [contact Kappture Support](/contact) to adjust the day threshold. Lowering the threshold causes the report to be scheduled for shorter date ranges, avoiding timeouts.
+</Tip>
+
+<Info>
+If a report you use is not currently configured for scheduling, [contact Kappture Support](/contact) to have it added.
+</Info>
+
+## How report scheduling works
+
+<Steps>
+<Step title="Request a report">
+  Select your report filters and date range in **Analytics > Reports**, then generate the report.
+</Step>
+
+<Step title="System checks date range">
+  The system compares your date range against the report's day threshold.
+</Step>
+
+<Step title="Report is queued">
+  If the date range exceeds the threshold, the report is added to a processing queue. You see a message indicating the report has been scheduled.
+</Step>
+
+<Step title="Background processing">
+  A background worker picks up the report request, retrieves the data, and generates the output files.
+</Step>
+
+<Step title="Notification">
+  When processing completes, you receive a notification in the Management Portal. The report appears in Generated Reports with a status indicating success, no data, or error.
+</Step>
+
+<Step title="Download">
+  Download your completed report in PDF, Excel, or CSV format.
+</Step>
+</Steps>
+
+## Using Generated Reports
+
+### Viewing your reports
+
+The Generated Reports page displays a table of all your scheduled reports:
+
+| Column | Description |
+|--------|-------------|
+| **Report** | The name of the report type. |
+| **Requested** | Date and time you submitted the report request. |
+| **Report Date Range** | The date range covered by the report. |
+| **Status** | Current status: Pending, Completed, No Data, or Failed. |
+| **Download** | Download buttons for available formats (PDF, Excel, CSV). |
+| **Delete** | Remove the report from your list. |
+
+The page automatically refreshes every 3 seconds to show updated status for pending reports.
+
+### Report statuses
+
+| Status | Badge Colour | Description |
+|--------|--------------|-------------|
+| **Pending** | Blue | Report is queued and waiting to be processed. |
+| **Completed** | Green | Report generated successfully. Download buttons are available. |
+| **No Data** | Blue | Report completed but no data matched your filters. |
+| **Failed** | Red | Report generation encountered an error. Try again or [contact Kappture Support](/contact) if the issue persists. |
+
+### Downloading reports
+
+Completed reports are available in up to three formats:
+
+| Format | Icon | Use case |
+|--------|------|----------|
+| **PDF** | Document icon | Print-ready format with formatting and branding. |
+| **Excel** | Spreadsheet icon | Editable spreadsheet for further analysis. |
+| **CSV** | Text file icon | Raw data for import into other systems. |
+
+Click the corresponding icon to download. Not all reports support all formats—only available formats display download buttons.
+
+### Deleting reports
+
+Click the delete (bin) icon to remove a report from your list. This action cannot be undone. Deleting a report removes it from the Generated Reports page but does not affect your underlying transaction data.
+
+## Processing times
+
+Report processing time depends on:
+
+- **Date range**: Longer periods require more data retrieval and processing.
+- **Data volume**: Organisations with high transaction volumes take longer to process.
+- **Report complexity**: Some reports aggregate data across multiple dimensions, requiring more computation.
+- **Queue position**: Multiple pending reports are processed in order.
+
+Most reports complete within a few minutes. Large reports spanning several months of high-volume data take longer.
+
+<Note>
+If a report remains in "Pending" status for an extended period, [contact Kappture Support](/contact).
+</Note>
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Generated Reports | Reports | Analytics |
+| Stock Generated Reports | Stock Reports | Stock Control |
+
+Users with either permission can view their own generated reports.
+
+---
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Analytics Overview" icon="chart-line" href="/enterprise/pages/analytics/overview">
+    Return to the Analytics section overview.
+  </Card>
+  <Card title="Reports" icon="file-chart-line" href="/enterprise/pages/analytics/reports">
+    Learn about available reports and how to generate them.
+  </Card>
+</CardGroup>

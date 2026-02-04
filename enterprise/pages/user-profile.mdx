@@ -1,0 +1,150 @@
+---
+title: "User Profile"
+description: "Manage your account settings, time zone, trading day, password, API keys, and notification preferences"
+---
+
+## Overview
+
+The User Profile page lets you manage your personal account settings in the Management Portal. Access it by clicking your name or avatar in the top-right corner and selecting **Profile**, or navigate directly to `/User/UserProfile`.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| User Profile | — | Available to all authenticated users |
+| Manage API Keys | Manage Api Keys | Configuration (Admin) |
+
+<Note>
+Every authenticated user can access their own User Profile. The **Manage Api Keys** permission is only required to create and manage API keys.
+</Note>
+
+## Accessing your profile
+
+1. Click your name or avatar in the top-right corner of the Management Portal.
+2. Select **Profile** from the dropdown menu.
+
+## Profile settings
+
+### Time zone
+
+Your time zone determines how dates and times display throughout the Management Portal, including on the Dashboard, in reports, and in activity logs.
+
+| Field | Description |
+|-------|-------------|
+| **Time zone** | Select your local time zone from the dropdown. All dates and times in the portal display in this time zone. |
+
+<Warning>
+If your time zone is incorrect, Dashboard metrics, report date ranges, and activity timestamps will appear offset. Ensure this matches your operating region.
+</Warning>
+
+### Trading Day start time
+
+The Trading Day start time defines when your business day begins for Dashboard calculations.
+
+| Field | Description |
+|-------|-------------|
+| **Trading Day start time** | The time your trading day starts (default: 00:00). |
+
+**How it works:**
+
+- **Default (00:00–23:59)**: A trading day runs from midnight to midnight.
+- **Custom start time (e.g. 06:00)**: Transactions before 06:00 count toward the previous trading day. For example, if your trading day starts at 06:00, a transaction at 02:00 on Tuesday is included in Monday's totals on the Dashboard.
+
+This setting affects Dashboard date calculations including "Today", "Yesterday", and other date-based filters.
+
+<Note>
+This setting applies to the Dashboard only. Reports use their own date range selections.
+</Note>
+
+### Password
+
+Change your password from your profile.
+
+<Steps>
+<Step title="Open your profile">
+  Click your name in the top-right corner and select **Profile**.
+</Step>
+
+<Step title="Click Change Password">
+  Click the **Change Password** button.
+</Step>
+
+<Step title="Enter your new password">
+  Enter your current password, then enter and confirm your new password.
+</Step>
+
+<Step title="Save">
+  Click **Save** to update your password.
+</Step>
+</Steps>
+
+<Tip>
+Use a strong password with a mix of uppercase, lowercase, numbers, and symbols.
+</Tip>
+
+### API key generation
+
+Generate API keys to authenticate with the Kappture API. API keys allow external applications to access data and perform actions via the API.
+
+#### API access scope
+
+API keys are linked to your user account and organisation. The API operates at the organisation level and provides access to organisation-wide data.
+
+#### Generating an API key
+
+<Steps>
+<Step title="Open your profile">
+  Click your name in the top-right corner and select **Profile**.
+</Step>
+
+<Step title="Navigate to API keys">
+  Go to the **API Keys** section of your profile.
+</Step>
+
+<Step title="Generate a new key">
+  Click **Generate API Key**. The key displays once—copy it immediately.
+</Step>
+
+<Step title="Store the key securely">
+  Save the API key in a secure location. You cannot retrieve it again after leaving the page.
+</Step>
+</Steps>
+
+<Warning>
+API keys grant access to your account with your full permissions. Do not share them or commit them to version control. If a key is compromised, delete it and generate a new one.
+</Warning>
+
+For API documentation, see the [API Reference](/api-reference/introduction).
+
+### Notification preferences
+
+Configure how you receive notifications from the Management Portal.
+
+| Setting | Description |
+|---------|-------------|
+| **Email notifications** | Enable or disable email notifications for alerts and updates. |
+| **Terminal alerts** | Receive notifications when terminals go offline or encounter issues. |
+| **Cash management alerts** | Receive notifications for cash management events. |
+
+Notification settings vary based on your user role and enabled modules.
+
+## Saving changes
+
+Click **Save** after making changes to your profile. Changes take effect immediately.
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Dashboard" icon="gauge" href="/enterprise/pages/analytics/dashboard">
+    Dashboard uses your time zone and trading day settings.
+  </Card>
+  <Card title="Authentication" icon="key" href="/enterprise/authentication">
+    How to log in to the Management Portal.
+  </Card>
+  <Card title="API Reference" icon="code" href="/api-reference/introduction">
+    Use your API keys to integrate with the Kappture API.
+  </Card>
+  <Card title="Users (Admin)" icon="users" href="/enterprise/pages/admin/users">
+    Admins can manage user accounts, roles, and permissions.
+  </Card>
+</CardGroup>

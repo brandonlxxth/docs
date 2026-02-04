@@ -5,10 +5,22 @@ description: "Generate QR codes for pay-at-table so customers can view and pay t
 
 ## Overview
 
-Pay at Table lets you **generate QR codes** that customers scan at the table (e.g. with a smartphone) to **view their bill and pay by credit card** without going to the till. You create **QR code configurations** in the Management Portal (name, outlet, payment account, optional logo and colour, gratuity options). Each configuration has a base URL; when you **view** a saved config, you enter a **table number** (1–9999) to generate a QR code that deep-links to that table’s order, or use **bulk download** (start/end table, up to 100) to get a ZIP of QR images. Customers scan the code to open the payment flow: if the URL includes a table number they go straight to that table’s bill; otherwise they see a **table selection** screen, then the order page. They check the bill and pay by card (via **Stripe Checkout** or **JudoPay**), with optional **gratuity** if you configured it. Payment is applied to that table’s order; the till can show Pay at Table alerts and, if configured, **print a receipt** when the customer pays. Pay at Table works with **network selling master terminals** and fits **table service** where operators manage table tabs via **Table Layout** on the till.
+Pay at Table lets you **generate QR codes** that customers scan at the table to **view their bill and pay by credit card** without going to the till.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Pay at Table | QR Code Generator | Configuration (Pay At Table) |
+
+**What you do:** Create **QR code configurations** in the Management Portal (name, outlet, payment account, optional logo, colour, gratuity). Each config has a base URL. When you **view** a saved config, you enter a **table number** (1–9999) to generate a QR that deep-links to that table’s order, or use **bulk download** (start/end table, up to 100) to get a ZIP of QR images.
+
+**What the customer does:** Scans the QR. If the URL includes a table number they go straight to that table’s bill; otherwise they see a **table selection** screen, then the order page. They check the bill and pay by card (**Stripe Checkout** or **JudoPay**), with optional **gratuity** if you configured it. Payment applies to that table’s order; the till can show alerts and **print a receipt** if configured.
+
+**Context:** Works with **network selling master terminals** and **table service** where operators manage table tabs via **Table Layout** on the till.
 
 <Warning>
-**Requires Pay at Table module**: This feature requires the Pay at Table module, which is charged separately. If you don't see this section in your navigation, contact your administrator or Kappture support to enable the Pay at Table module.
+**Requires Pay at Table module**: This feature requires the Pay at Table module, which is charged separately. If you don't see this section in your navigation, contact your administrator or [Kappture Sales](/contact) to enable the Pay at Table module.
 </Warning>
 
 **Permissions:** You need the **Pay at Table QR Code Generator** permission to access this page.
@@ -17,86 +29,101 @@ Pay at Table lets you **generate QR codes** that customers scan at the table (e.
 
 ### Staff and venue setup
 
-1. **Enable the module** — Ensure the Pay at Table module is enabled for your organisation (see warning above).
-2. **Create a QR code configuration** — In **Configuration > Management > Pay at Table > QR Code Generator**, click the **+** icon. Enter a **Name** (e.g. "Restaurant", "Zone A"). Select the **Outlet** (only outlets that have at least one order terminal are listed). Select the **Account** used for card payment—this must be a **Stripe Checkout** or **JudoPay** account; the payment flow uses it to charge the customer’s card. Optionally set a **Logo** (resource type Logo) and **Color** for the payment screen. Optionally set **Gratuity Option 1**, **2**, and **3** (0–100% tip presets) so customers can add a tip when paying. Save.
-3. **Generate QR codes per table** — After saving, click **View** on the config. In the **Single** tab: enter a **Table number** (1–9999). The URL updates to include that table (e.g. `https://pay.kappture.com/order/{orgId}/{codeId}/{tableNumber}`). The QR code is generated for that URL. Use **Copy** to copy the URL, or **Download** to save the QR image (e.g. for Table 5). In the **Bulk** tab: enter **Start Table Number** and **End Table Number** (1–9999, max 100 codes at once), then click **Generate & Download ZIP** to get a ZIP of PNG files (table-1.png, table-2.png, …), one per table.
-4. **Print or display at the table** — Print the QR codes (e.g. on table tents or stickers) or display them on screens at each table so customers can scan easily.
-5. **Terminal configuration** — On terminals used for table service, enable **Pay at Table** in the terminal configuration and set the **Tender** used when a customer pays at the table (e.g. Card/EFT). Optionally enable **Print receipt** so the till prints a receipt when a Pay at Table payment completes. Pay at Table is compatible with **network selling master terminals**; operators continue to take orders and manage table tabs using **Table Layout** on the till.
+1. **Enable the module** — Ensure the Pay at Table module is enabled (see warning above).
+
+2. **Create a QR code configuration** — **Configuration > Management > Pay at Table > QR Code Generator** → click **+**.
+   - **Name** (e.g. "Restaurant", "Zone A").
+   - **Outlet** (only outlets with at least one order terminal are listed).
+   - **Account** — **Stripe Checkout** or **JudoPay**; required for card payment.
+   - **Logo** (optional) — Resource type Logo; **Color** (optional).
+   - **Gratuity Option 1, 2, 3** (optional) — 0–100% tip presets.
+   - Save.
+
+3. **Generate QR codes per table** — After saving, click **View** on the config.
+   - **Single** tab: Enter **Table number** (1–9999). URL updates; QR image updates. Use **Copy** or **Download** (PNG).
+   - **Bulk** tab: **Start** and **End** table number (max 100). Click **Generate & Download ZIP** → ZIP of table-1.png, table-2.png, …
+
+4. **Print or display** — Print QR codes (e.g. table tents, stickers) or display on screens at each table.
+
+5. **Terminal configuration** — On terminals used for table service: enable **Pay at Table**, set **Tender** (e.g. Card/EFT), optionally **Print receipt**. Compatible with **network selling master terminals**; operators use **Table Layout** on the till.
 
 ### Customer flow
 
-1. **At the table** — The customer scans the QR code on the table with their smartphone (camera or QR app).
-2. **URL determines next step** — If the QR code URL includes a **table number** (e.g. …/order/orgId/codeId/5), the customer goes straight to that table’s order page. If the URL has no table number (e.g. …/order/orgId/codeId), they see a **table selection** screen where they enter or select their table number.
-3. **View the bill** — The payment flow loads the order for that outlet and table (creating or opening the table order as needed). The customer sees their table’s bill—items and total.
-4. **Pay** — The customer pays by **credit card** (via the Stripe or JudoPay account you configured). If you set **gratuity options**, they can add a tip (e.g. 10%, 15%, 20%). Payment is applied to that table’s order. The till can show Pay at Table alerts and, if **Print receipt** is enabled, print a receipt for the operator or customer.
+1. **Scan** — Customer scans the QR on the table with their smartphone (camera or QR app).
+
+2. **Next step** — URL has table number → go straight to that table’s order page. No table number → **table selection** screen; customer enters or selects table.
+
+3. **View bill** — Payment flow loads the order for that outlet and table. Customer sees items and total.
+
+4. **Pay** — Pay by **credit card** (Stripe or JudoPay). Optional tip if gratuity options are set. Payment applies to that table’s order; till shows alerts and can print receipt if enabled.
 
 ## Using Pay at Table (Management Portal)
 
 ### Accessing Pay at Table
 
-Navigate to **Configuration > Management > Pay at Table > QR Code Generator** in the navigation menu.
+Navigate to **Configuration > Management > Pay at Table > QR Code Generator**.
 
 ### Creating a QR code configuration
 
-When you open the Pay at Table page, you see a list of existing configurations. Click the **+** icon to create a new one. In the form:
+List of configs → click **+**. In the form:
 
 - **Name** — Display name (e.g. "Restaurant", "Zone A").
-- **Outlet** — The outlet this QR config applies to; only outlets that have at least one order terminal appear in the list. The payment flow uses this to load the correct table orders.
-- **Account** — The **Stripe Checkout** or **JudoPay** account used to charge the customer’s card. Required for card payment.
-- **Logo** — Optional. A resource of type **Logo** from **Configuration > Management > Resources**; used on the payment screen.
-- **Color** — Optional. Colour for the payment screen (e.g. brand colour).
-- **Gratuity Option 1**, **2**, **3** — Optional. Tip percentages (0–100%, e.g. 10, 15, 20) shown to the customer when paying.
+- **Outlet** — Config applies to this outlet; only outlets with at least one order terminal appear.
+- **Account** — **Stripe Checkout** or **JudoPay**; required for card payment.
+- **Logo** — Optional; resource type **Logo** from **Configuration > Management > Resources**.
+- **Color** — Optional; payment screen colour.
+- **Gratuity Option 1, 2, 3** — Optional; 0–100% (e.g. 10, 15, 20).
 
-Save to store the configuration. The base URL is generated (e.g. `https://pay.kappture.com/order/{orgId}/{codeId}`); table number is added when you generate individual QR codes.
+Save. Base URL is generated; table number is added when you generate individual QR codes.
 
 ### Viewing, generating QR codes, and bulk download
 
-Select a saved configuration and click **View**. A modal opens with two tabs:
+Select a config → **View**. Modal with two tabs:
 
-- **Single** — Enter a **Table number** (1–9999). The URL updates to include that table; the QR code image updates. Use **Copy** to copy the URL or **Download** to save the QR as a PNG (e.g. for one table).
-- **Bulk** — Enter **Start Table Number** and **End Table Number** (1–9999). You can generate up to **100** QR codes at once. Click **Generate & Download ZIP** to create a ZIP file containing one PNG per table (table-1.png, table-2.png, …).
+- **Single** — Enter **Table number** (1–9999). URL and QR image update. **Copy** URL or **Download** PNG.
+- **Bulk** — **Start** and **End** table number (1–9999, max 100). **Generate & Download ZIP** → one PNG per table.
 
 ### Editing and deleting
 
-Click **Edit** on a configuration to change Name, Outlet, Account, Logo, Color, or gratuity options, then Save. Click **Delete** when the configuration is no longer in use. Deleting does not remove already-printed QR codes; those links will stop working once the config is deleted.
+**Edit** → change Name, Outlet, Account, Logo, Color, gratuity → Save. **Delete** when no longer in use (existing printed QR links will stop working).
 
 ## Pay at Table fields reference
 
 | Field | What it does |
 |-------|----------------|
-| **Name** | Display name for the QR code configuration (e.g. Restaurant, Zone A). |
-| **Outlet** | Outlet this config applies to; only outlets with at least one order terminal are listed. The payment flow loads table orders for this outlet. |
-| **Account** | **Stripe Checkout** or **JudoPay** account used to charge the customer’s card. Required for Pay at Table card payment. |
-| **Logo** | Optional. Resource of type **Logo** (from **Configuration > Management > Resources**) shown on the payment screen. |
-| **Color** | Optional. Colour used on the payment screen (e.g. brand colour). |
-| **Gratuity Option 1, 2, 3** | Optional. Tip percentages (0–100%) offered to the customer when paying (e.g. 10, 15, 20). |
-| **Table number** (in View) | When viewing a config, enter a table number (1–9999) to generate a QR code that deep-links to that table’s order. URL format: `…/order/{orgId}/{codeId}/{tableNumber}`. |
-| **Bulk: Start / End Table Number** | In View > Bulk, the range of table numbers (1–9999, max 100 codes) to generate QR images for; downloads as a ZIP. |
+| **Name** | Display name for the config (e.g. Restaurant, Zone A). |
+| **Outlet** | Config applies to this outlet; only outlets with an order terminal listed. |
+| **Account** | **Stripe Checkout** or **JudoPay**; required for card payment. |
+| **Logo** | Optional; resource type **Logo** (Resources); payment screen. |
+| **Color** | Optional; payment screen colour. |
+| **Gratuity Option 1, 2, 3** | Optional; tip % (0–100%) when paying. |
+| **Table number** (in View) | When viewing: enter 1–9999 to generate QR for that table. URL: `…/order/{orgId}/{codeId}/{tableNumber}`. |
+| **Bulk: Start / End** | View > Bulk: range (max 100); downloads as ZIP. |
 
 ### Terminal configuration (Pay at Table)
 
 | Setting | What it does |
 |--------|----------------|
-| **Pay at Table** | Enable Pay at Table on this terminal so it participates in Pay at Table orders and can show alerts when a customer pays at the table. |
-| **Tender** | The tender (e.g. Card/EFT) used when recording a Pay at Table payment. |
-| **Print receipt** | When enabled, the till prints a receipt when a Pay at Table payment completes. |
+| **Pay at Table** | Enable on terminal; participates in Pay at Table orders and shows alerts. |
+| **Tender** | Tender used for Pay at Table payment (e.g. Card/EFT). |
+| **Print receipt** | Till prints receipt when Pay at Table payment completes. |
 
 ## How Pay at Table links
 
-- **Outlets and terminals**: Each QR config is tied to an **Outlet** that has at least one order terminal. The payment flow uses the outlet’s **order terminal** to create or load table orders. Table numbers (1–9999) must align with how tables are defined in your **Table Layout** and on the till.
-- **Account**: Card payment is processed via the **Stripe Checkout** or **JudoPay** account you select on the QR config. Configure accounts under **Configuration** (e.g. Accounts) so they appear in the Pay at Table Account list.
-- **Table Layout**: Operators use **Table Layout** on the till to open tabs per table, add orders, and manage table service. Pay at Table QR codes let customers pay that same table’s bill from their phone; the table number in the QR URL or entered on the table selection screen must match the table identifiers used on the till.
-- **Terminals**: Enable **Pay at Table** on terminals used for table service; set the **Tender** and optionally **Print receipt**. Pay at Table works with **network selling master terminals**.
-- **Resources**: The **Logo** on the QR config is a resource of type **Logo** from **Configuration > Management > Resources**.
+- **Outlets and terminals** — QR config tied to **Outlet** with an order terminal. Table numbers (1–9999) align with **Table Layout** and till.
+- **Account** — Card payment via **Stripe Checkout** or **JudoPay** on the QR config. Configure accounts under **Configuration**.
+- **Table Layout** — Operators use it on the till for table tabs and orders. Pay at Table QR links customers to that table’s bill; table number must match till.
+- **Terminals** — Enable **Pay at Table**, set **Tender**, **Print receipt**. Works with **network selling master terminals**.
+- **Resources** — **Logo** on QR config is resource type **Logo** from **Configuration > Management > Resources**.
 
 ## Best practices
 
-- Use a clear **Name** for each config (e.g. "Restaurant", "Zone A") so staff know which config to use when generating QR codes for different areas.
-- Ensure at least one **order terminal** is assigned to the outlet so the outlet appears in the Pay at Table Outlet list and table orders can be created.
-- Use **Single** tab to generate and download one QR per table (e.g. Table 5), or **Bulk** to generate up to 100 table QR codes in one ZIP for printing.
-- Keep table numbers (1–9999) consistent with your **Table Layout** and till so the correct tab is charged when the customer pays.
-- On terminals used for table service, enable **Pay at Table**, set the **Tender**, and enable **Print receipt** if you want a receipt when the customer pays at the table.
-- Print or display QR codes where customers can easily scan them (e.g. table tents, stickers, or table-top screens).
+- Clear **Name** per config so staff know which to use.
+- At least one **order terminal** on the outlet so it appears in the list.
+- **Single** tab for one QR per table; **Bulk** for up to 100 in one ZIP.
+- Table numbers (1–9999) consistent with **Table Layout** and till.
+- On table-service terminals: **Pay at Table** on, **Tender** set, **Print receipt** if desired.
+- Place QR codes where customers can scan easily (table tents, stickers, screens).
 
 ## Related documentation
 
@@ -105,9 +132,9 @@ Click **Edit** on a configuration to change Name, Outlet, Account, Logo, Color, 
     How Pay at Table fits with outlets and payment.
   </Card>
   <Card title="Table Layout" icon="table-cells" href="/enterprise/pages/management/table-layout">
-    Configure table layouts so operators manage table tabs; Pay at Table QR codes link customers to those tables for payment.
+    Table layouts and table tabs; Pay at Table links customers to those tables.
   </Card>
   <Card title="Receipt Portal" icon="qrcode" href="/enterprise/pages/management/receipt-portal">
-    Another QR code generator (for receipt portal access); similar setup flow.
+    Receipt portal QR codes; similar setup flow.
   </Card>
 </CardGroup>

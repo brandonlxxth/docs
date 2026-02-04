@@ -1,0 +1,207 @@
+---
+title: "Stock Take"
+description: "Perform stock counts at locations using a count sheet"
+---
+
+## Overview
+
+The Stock Take page allows you to record physical inventory counts for your outlets. You can enter counts manually, import them from a CSV file, print count sheets for physical counting, view detailed reports, and reset stock take periods once complete.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Stock Take | Stock Take | Stock Control (Stock Take) |
+| Enter Stock Count | Enter Stock Count | Stock Control (Stock Take) |
+| Print Count Sheet | Print Count Sheet | Stock Control (Stock Take) |
+| Stock Take Reports | Stock Reports | Stock Control (Stock Take) |
+| Stock Take Reset | Reset Stock Take | Stock Control (Stock Take) |
+
+## Prerequisites
+
+### Stock Configuration Flow
+
+You cannot start the stock take process without first following this configuration flow:
+
+<Steps>
+<Step title="Create Count Sheet Groups">
+  Create groups to organize products for counting.
+</Step>
+
+<Step title="Assign Groups to Count Sheet">
+  Associate groups with a count sheet.
+</Step>
+
+<Step title="Create Stock Take Period">
+  Create a period defining when the stock take occurs.
+</Step>
+
+<Step title="Assign Period to Outlets">
+  Assign the period to outlets that will perform the stock take.
+</Step>
+
+<Step title="Perform Stock Take">
+  Enter counts, review reports, and reset the period.
+</Step>
+</Steps>
+
+### Product Configuration Requirements
+
+For a product to appear in stock takes:
+
+| Requirement | Description |
+|-------------|-------------|
+| **Count Sheet Group** | Product must be in a count sheet group applied to the count sheet in use. |
+| **Product Availability** | Product must be available in the outlet you're counting. |
+| **Product Type** | Must be Stock or Terminal & Stock type. Terminal type is not countable. |
+
+### New Outlet Onboarding
+
+For a product to be counted, it needs to exist in the stock table. For the first stock take, stock must be moved into the outlet before the initial count. Options include:
+
+| Method | Description |
+|--------|-------------|
+| **Adjustment** (recommended) | Create an adjustment with all current stock levels. Use a reason code like "Onboarding" or "New Outlet". |
+| **Transfer** | Transfer stock from another location. |
+| **Delivery** | Create an order and record a delivery from a supplier. |
+
+## Accessing Stock Take
+
+Navigate to **Stock > Stock Take > Stock Take**.
+
+The page displays a hierarchy tree on the left and a period table on the right. Select an outlet to view its associated stock take periods.
+
+## Performing a Stock Take
+
+### Starting a Stock Take
+
+1. Select an outlet from the hierarchy tree
+2. Review the stock take periods displayed in the table
+3. Click **Edit** on a period (available for current periods or periods with status "Pending")
+4. Confirm that you want to start the stock take when prompted
+
+### Entering Stock Counts
+
+The Enter Stock Count step displays a table of products organized by count sheet groups.
+
+**Manual Entry:**
+- Enter counts directly in the Count column for each product
+- Counts are saved automatically when you leave a field
+- Counts can include decimal values (up to 2 decimal places)
+- Counts are limited to a range between -1,000,000.00 and 1,000,000.00
+
+**Available Actions:**
+- **Import**: Upload a CSV file containing stock counts
+- **Export**: Download current counts as a CSV file
+- **Print**: Print a count sheet for physical counting (requires permission)
+
+### Importing Stock Counts
+
+You can import stock counts from a CSV file to save time.
+
+**CSV Format:**
+
+```
+Product Id,Product,Unit of Measure Id,Unit of Measure,Count Sheet Group Id,Count Sheet Group,Count
+123,Product A,1,Each,5,Group 1,25.50
+124,Product B,1,Each,5,Group 1,10.00
+```
+
+<Note>
+The header row is included but automatically skipped during import. Only Product Id, Unit of Measure Id, and Count columns are required.
+</Note>
+
+**Common Import Errors:**
+- Invalid Product Id format
+- Invalid Unit of Measure Id format
+- Invalid Count value (must be a number)
+- Product not found on the count sheet
+
+### Viewing Reports
+
+After entering counts, navigate to the Reports step to access:
+
+| Report | Description |
+|--------|-------------|
+| **Stock Product Report** | Detailed product-level information. |
+| **Stock Product Group Report** | Summary by product group. |
+| **Stock Variance Report** | Differences between expected and counted quantities. |
+| **Stock Take Summary Report** | Overall stock take summary. |
+| **Loss and Gain Report** | Stock losses and gains. |
+| **Stock Holding Report** | Current stock holdings. |
+
+### Resetting a Stock Take Period
+
+<Warning>
+Resetting a stock take period cannot be undone. Make sure all counts are correct and reports have been reviewed before resetting.
+</Warning>
+
+The Reset step finalizes the stock take period. This action:
+- Completes the stock take process
+- Updates stock current quantity based on entered counts
+- Resets ALL movement columns in the stock on hand report to 0
+- Sets the opening and current counts
+- The period status becomes "Completed" for the outlet
+
+## Stock on Hand Reporting
+
+Real-time stock reporting is available in **Analytics > Reports > Stock on Hand**. Reporting is done per stock take period.
+
+### Report Columns
+
+| Column | Description |
+|--------|-------------|
+| **Opening Quantity** | Stock at the beginning of the current period (from previous period's closing balance). |
+| **Opening Value** | Monetary value of opening quantity. |
+| **Delivered Quantity** | Stock received through deliveries during the period. |
+| **Delivered Value** | Monetary value of delivered stock. |
+| **Transfer In Quantity** | Stock received from other outlets. |
+| **Transfer In Value** | Monetary value of stock transferred in. |
+| **Transfer Out Quantity** | Stock sent to other outlets. |
+| **Transfer Out Value** | Monetary value of stock transferred out. |
+| **Sold Quantity** | Stock sold through point of sale. |
+| **Sold Value** | Monetary value of stock sold. |
+| **Returned Quantity** | Stock returned to suppliers. |
+| **Returned Value** | Monetary value of returned stock. |
+| **Adjusted Quantity** | Stock adjustments (positive or negative). |
+| **Adjusted Value** | Monetary value of adjusted stock. |
+| **Waste Quantity** | Stock recorded as waste. |
+| **Waste Value** | Monetary value of wasted stock. |
+
+### Stock Value Calculation
+
+The stock system uses **Weighted Average Cost (WAC)** to calculate product unit prices. FIFO and LIFO are not supported.
+
+<Tip>
+To increase stock report accuracy beyond 2 decimal places, go to **Configuration > Terminal > Hierarchy > Edit Group (top level) > Stock Control** and modify **Stock Report Accuracy**.
+</Tip>
+
+## Frequently asked questions
+
+**Why can't I edit a stock take period?**
+
+Stock take periods can only be edited if they are the current period or have "Pending" or "In Progress" status. Completed periods cannot be modified.
+
+**What happens if I enter a count incorrectly?**
+
+You can update counts at any time before resetting the period. Change the value and it saves automatically.
+
+**Can I import partial counts?**
+
+Yes. The import function only updates products included in your file. Products not included retain their existing counts.
+
+**Can I undo a reset?**
+
+No. Once a period has been reset, it cannot be edited or undone.
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Stock Take Periods" icon="calendar" href="/enterprise/pages/stock/stock-take-periods">
+  Create and manage stock take periods.
+</Card>
+
+<Card title="Count Sheets" icon="file-lines" href="/enterprise/pages/stock/count-sheets">
+  Configure count sheets for stock takes.
+</Card>
+</CardGroup>

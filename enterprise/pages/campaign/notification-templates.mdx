@@ -7,6 +7,12 @@ description: "Create and manage reusable notification templates for email and pu
 
 Notification templates define reusable content for automated notifications—email and push—that the system sends to members in specific situations: **receipt emails** (for orders), **voucher entitlement and redeem messages**, **welcome or registration messages when a member joins**, and **verification emails** (e.g. when verifying an email address).
 
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Notification Templates | Notification Templates | Configuration (Campaign) |
+
 You create and edit templates here; then you assign a template in the place that uses it (Site, Voucher, etc.). Each template has a **name**, **notification source** (used as subject/from in email), **subject**, **email body** (HTML), and optionally **push notification text**. You can also choose **Use email only** so the template sends email only and does not require push text.
 
 You need the **Notification templates** permission (maintain notification templates) in your user role to access this page.

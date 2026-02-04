@@ -1,0 +1,145 @@
+---
+title: "Stock Dashboard"
+description: "Monitor stock outlet status and spot problems easily"
+---
+
+## Overview
+
+The Stock Dashboard provides a visual overview of stock status across all outlets in your organization. It displays outlet cards showing the current stock state, requisition activity, and par level alerts, allowing you to quickly identify which outlets need attention.
+
+Each outlet card shows key metrics including the number of requisitions, fulfilled requisitions, completed movements, and rejected movements. The dashboard also highlights products that are below minimum par levels or above maximum par levels.
+
+<Note>
+Current stock state refers to the Point of Sale outlet stock state. Stock-only outlets like cellars and stores will not appear on the stock dashboard by default.
+</Note>
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Stock Dashboard | Stock Dashboard | Stock Control (Stock Dashboard) |
+| Par Level Reports | Reports | Analytics |
+
+<Note>
+The Stock Dashboard only displays outlets that you have access to through your user role.
+</Note>
+
+## Accessing Stock Dashboard
+
+Navigate to **Stock > Stock Dashboard**.
+
+## Understanding the Stock Dashboard
+
+### Page Header
+
+| Element | Description |
+|---------|-------------|
+| **Legend** | Red badge = Products Below Min Par; Blue badge = Products Above Max Par |
+| **Search Box** | Search for outlets by name (filters as you type) |
+| **Filter Button** | Opens the filter panel to refine the view |
+
+### Filter Panel
+
+| Filter | Description |
+|--------|-------------|
+| **Event Selection** | View outlets for a specific event period, or leave blank for today's outlets. |
+| **Open** | Outlet is open and operating normally. |
+| **Closed** | Outlet is closed. |
+| **Verification Pending** | Stock verification is awaiting approval. |
+| **Verification Rejected** | Stock verification was rejected and needs re-counting. |
+| **Close Pending** | Closing stock count is awaiting approval. |
+| **Close Rejected** | Closing stock count was rejected. |
+| **No Period Available** | No stock period is configured for this outlet. |
+
+### Outlet Card Color Coding
+
+| Color | Status |
+|-------|--------|
+| **Green** | Open - outlet is operating normally |
+| **Yellow** | Verification Pending - opening stock count awaiting approval |
+| **Red** | Verification Rejected or Close Rejected |
+| **Gray** | Closed - outlet is closed |
+| **Dark Gray** | No Period Available - no stock period configured |
+
+### Outlet Card Information
+
+Each outlet card displays:
+
+**Header:**
+- Outlet icon and name
+
+**Body:**
+- **Status Title**: Current state of the outlet
+- **Activity Summary**:
+  - **X Requisitions**: Number of requisitions created by operators
+  - **X Fulfilled**: Number of requisitions approved by users
+  - **X Completed**: Number of stock movements accepted by operators
+  - **X Rejected**: Number of stock movements rejected by users
+
+**Par Level Badges:**
+- **Red Badge**: Count of products below minimum par level (click to view details)
+- **Blue Badge**: Count of products above maximum par level (click to view details)
+
+## Using the Stock Dashboard
+
+### Filtering Outlets
+
+**By Event:**
+1. Click the **Filter** button
+2. Select an event from the **Event** dropdown
+3. The dashboard updates to show only outlets for the selected event
+
+**By Status:**
+1. Click the **Filter** button
+2. Check the status checkboxes for the states you want to view
+3. Click **Clear** to remove all status filters
+
+**By Outlet Name:**
+1. Type the outlet name in the search box
+2. The dashboard automatically filters to show matching outlets
+
+<Tip>
+To hide outlets (like a cellar) from the dashboard, enable **Hide on Stock Dashboard** in **Configuration > Terminal > Hierarchy > Outlet > Stock Control**.
+</Tip>
+
+### Viewing Par Level Details
+
+When an outlet has par level issues:
+
+1. Click the **red badge** to view products below minimum par level
+2. Click the **blue badge** to view products above maximum par level
+3. This opens the Stock on Hand Par Level Monitor showing:
+   - Detailed grid of products with current quantities
+   - Minimum, standard, and maximum par levels
+   - Color-coded cells indicating which products need attention
+   - Options to replenish stock directly from the report
+
+## Frequently asked questions
+
+**Why don't I see all outlets on the dashboard?**
+
+The Stock Dashboard only displays outlets you have access to through your user role. Also check if filters are applied that may be hiding outlets.
+
+**Why does an outlet show "No Period Available"?**
+
+No stock take period has been configured for that outlet. A system administrator needs to configure and assign a stock take period.
+
+**Can I take action directly from the dashboard cards?**
+
+The dashboard is primarily for monitoring. Click on par level badges to view detailed reports. Navigate to **Stock > Stock Alerts** to process pending verifications.
+
+**How often does the dashboard update?**
+
+The dashboard shows real-time data when you load or refresh the page. It doesn't automatically refresh - reload the page to see updated information.
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Stock Alerts" icon="bell" href="/enterprise/pages/stock/stock-alerts">
+  Process pending stock verifications and requisitions.
+</Card>
+
+<Card title="Par Levels" icon="chart-line" href="/enterprise/pages/stock/par-levels">
+  Configure par levels for stock monitoring.
+</Card>
+</CardGroup>

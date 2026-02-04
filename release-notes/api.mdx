@@ -1,14 +1,111 @@
 ---
-title: API releases
+title: API Changelog
 description: Release notes for the API, newest first
 ---
 
-All API releases are listed below. Click a release to read the full notes.
+These release notes list upcoming and recent changes to the Kappture API.
 
-| Release | Date |
-|:--------|:-----|
-| [API 2025.5](/release-notes/api/2025-05-08-api-2025.5) | 8 May 2025 |
-| [API 2025.4](/release-notes/api/2025-04-25-api-2025.4) | 25 Apr 2025 |
-| [API 2025.3](/release-notes/api/2025-03-26-api-2025.3) | 26 Mar 2025 |
-| [API 2025.2](/release-notes/api/2025-03-18-api-2025.2) | 18 Mar 2025 |
-| [API 2025.1](/release-notes/api/2025-02-11-api-2025.1) | 11 Feb 2025 |
+## 2025
+
+### May 8th
+
+> Stock Deliveries: GET All and GET with filters `/stock/delivery`
+
+> Stock Order: GET All and GET with filters `/stock/order`
+
+> Allergens: GET All `/allergens`
+
+
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID  | Description |
+|:-----------|:--------------------------------|
+| 8698w3q0w       |  Stock Deliveries:  `/stock/delivery`
+| 8698w2vnh       |  Stock Orders:  `/stock/order`
+| 8698thea3       |  Allergens:  `/allergens`
+| 8698thea3       |  Update product allergens PUT & GET `/product/{id}`
+| 8698zgc11       |  Return encoded string with qr-code image url:  `member/{id}/qr-code`
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:------------|:-----------------------------|
+| 8698zgd58       | Product: Fixed rounding error for price and cost-price
+
+---
+
+### April 25th
+
+> Product Group: Added PUT for `/product-group`
+
+
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID  | Description |
+|:-----------|:--------------------------------|
+| 8698ppvye       |  Product Group: Added PUT for `/product-group`
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:------------|:-----------------------------|
+| 8698rnxqh       | Product: fixed default return value for weighed option
+
+---
+
+### March 26th
+
+> Transaction: Post sales into Kappture from 3rd party systems
+
+> Member: Get member qr-code
+
+
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID  | Description |
+|:-----------|:--------------------------------|
+| 8698cvcpr       | Post sales into Kappture from 3rd party systems
+| 8698f6wwv       | GET member qr-code `/member/{id}/qr-code`
+
+### March 18th
+
+> Product: Signage fields added to product endpoint
+
+> Archived : Option to GET deleted entities
+
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID  | Description |
+|:-----------|:--------------------------------|
+| 86986uxcn       | Product - Signage fields added to GET
+| 8696rea5r       | Archived - GET Operator, Terminal, Outlet, Product, Product-Group, Tender
+
+### February 11th
+
+#### 🎉 New Features & Improvements
+> Documentation: [developer.kappture.com](https://developer.kappture.com)  
+
+> Authentication: API keys and can be generated in your Management Portal Profile.
+
+
+#### ✨ Features
+
+- **Layout Management**
+- **Order Processing**
+- **Price Updates**
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID  | Description |
+|:-----------|:--------------------------------|
+| 8697j9h7t       | Layouts - Get, Create, Delete and Update |
+| 8697g0c93       | Tender - Get |
+| 8697g0c51       | Background Resources - Get |
+| 8697g0bzw       | Session - Get |
+| 869745kbq       | Product Price - Update, Create, Delete |
+| 8695g3kuf       | Order Processor |
+

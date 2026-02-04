@@ -1,0 +1,196 @@
+---
+title: "Payment"
+description: "Payment methods, card management, and account top-ups"
+---
+
+## Overview
+
+The mobile app supports multiple payment methods for checkout and account top-ups. Payment is configured in the Management Portal under **Configuration > Terminal** (Payment options tab).
+
+## Payment methods
+
+At checkout, members can pay with:
+
+### Saved cards
+- Previously saved credit/debit cards
+- Quick checkout with saved payment details
+- CVV may be required for security
+- Manage saved cards in Settings
+
+### New card
+- Enter card details at checkout
+- Option to save card for future use
+- Supports all major card types (Visa, Mastercard, Amex)
+- Card tokenization for security
+
+### Account credit
+- Pay using prepaid account balance
+- Balance must be sufficient for order total
+- Can be combined with partial card payment
+- View balance in Home tab
+
+### Cost centre
+- Enter cost centre code at checkout
+- Charge purchase to department or project
+- Cost centre must be assigned to member
+- May require approval code
+
+### Platform pay
+- **Apple Pay** (iOS) - Use cards saved in Apple Wallet
+- **Google Pay** (Android) - Use cards saved in Google Pay
+- Touch ID / Face ID for authorization
+- One-tap checkout
+
+## Payment provider
+
+The app uses Stripe as the payment provider, configured in the Management Portal:
+
+### Stripe
+Payment provider with support for:
+- Card payments (credit/debit)
+- Platform pay (Apple Pay, Google Pay)
+- 3D Secure authentication
+- Card tokenization
+- PCI compliance
+
+Stripe is configured per outlet in **Configuration > Terminal > Payment options tab**.
+
+## Card management
+
+Members can manage saved payment cards:
+
+### View cards
+- See all saved cards
+- Card type and last 4 digits
+- Expiry date
+- Default card indicator
+
+### Save new card
+- Add card at checkout (select "Save card for future use")
+- Or add from Settings > Security
+- Card details tokenized and stored securely
+- Never store full card numbers
+
+### Delete card
+- Remove saved card from account
+- Cannot delete if it's the only payment method with active subscriptions
+- Deletion is immediate
+
+### Set default card
+- Choose preferred card for quick checkout
+- Default card is pre-selected at checkout
+- Can be changed at any time
+
+Card data is stored securely by Stripe, not on Kappture servers or in the app.
+
+## Account top-up
+
+Members can add credit to their account balance:
+
+### Top-up process
+1. Go to Home tab
+2. Tap account to view details
+3. Tap "Top up"
+4. Enter amount to add
+5. Select payment method (card or platform pay)
+6. Confirm and pay
+
+### Top-up limits
+Account types can have top-up limits configured in **Configuration > Member > Account**:
+- Minimum top-up amount
+- Maximum top-up amount
+- Maximum account balance
+
+### Top-up transaction
+After successful top-up:
+- Amount is added to account balance
+- Transaction appears in account history
+- Receipt is available in app
+- Email confirmation (if enabled)
+
+## Payment security
+
+### PCI compliance
+- Card data is tokenized by payment provider
+- App never stores full card numbers
+- PCI DSS compliant payment processing
+- Secure HTTPS communication
+
+### 3D Secure
+- Additional authentication for card payments
+- Required by some card issuers
+- Redirects to bank for verification
+- Supports 3D Secure 2.0
+
+### Encryption
+- All payment data encrypted in transit
+- TLS 1.2+ for API communication
+- Secure token storage
+
+## Payment at checkout
+
+### Payment flow
+1. Review order and total
+2. Select payment method
+3. Apply vouchers or discounts
+4. Confirm payment details
+5. Submit order
+6. Payment processed
+7. Order confirmation
+
+### Split payment
+Some outlets allow splitting payment between:
+- Account credit + card payment
+- Multiple cards
+- Cost centre + card payment
+
+Split payment availability depends on outlet terminal configuration.
+
+### Payment failure
+
+If payment fails:
+- Error message displayed
+- Reason for failure (if provided)
+- Option to try again or use different payment method
+- Order is not placed
+
+Common failure reasons:
+- Insufficient funds
+- Card declined by issuer
+- 3D Secure authentication failed
+- Network error
+- Expired card
+
+## Refunds
+
+Refunds for cancelled or modified orders:
+- Processed automatically by payment provider
+- Return to original payment method
+- Appear in account history
+- May take 3-5 business days for card refunds
+- Instant for account credit refunds
+
+Refunds are initiated from the Management Portal by administrators.
+
+## Configuration in Management Portal
+
+| Payment feature | Management Portal location |
+|----------------|---------------------------|
+| Payment provider (Stripe) | **Configuration > Terminal** (Payment options tab on ordering terminals) |
+| Account types | **Configuration > Member > Account** |
+| Cost centres | **Configuration > Member > Cost Centre** |
+| Refund processing | **Ordering > Dashboard** (order details) |
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Terminal configuration" icon="desktop" href="/enterprise/pages/terminal/configuration">
+    Configure payment options on terminals.
+  </Card>
+  <Card title="Accounts" icon="wallet" href="/enterprise/pages/member/account">
+    Set up account types and top-up limits.
+  </Card>
+  <Card title="Cost Centres" icon="building" href="/enterprise/pages/member/cost-centre">
+    Configure cost centre codes.
+  </Card>
+</CardGroup>

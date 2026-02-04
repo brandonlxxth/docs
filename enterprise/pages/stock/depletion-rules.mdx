@@ -1,0 +1,133 @@
+---
+title: "Depletion Rules"
+description: "Define consumption of a product when it is sold"
+---
+
+## Overview
+
+The Product Depletion Rules (Stock Depletion) tab controls how stock is reduced when a product is sold. Depletion rules define the relationship between selling a product at the point of sale and the reduction of stock levels for one or more stock products.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Product Configuration | Product | Configuration (Management) |
+| Product Depletion Groups | Product Depletion Group | Stock Control (Stock Administration) |
+
+## Accessing Depletion Rules
+
+Navigate to **Management > Products > [Product] > Depletion Rules tab**.
+
+## Understanding Depletion Rules
+
+### One Rule or Multiple?
+
+This depends on the use case:
+
+| Scenario | Depletion Rules |
+|----------|-----------------|
+| **Simple product** | Most products only deplete a single stock product (e.g., a Cola Bottle depletes itself). |
+| **Composite product** | A product containing multiple ingredients (e.g., a cocktail or burger) needs multiple rules, each depleting a different stock product. |
+
+### Depletion Line Fields
+
+| Field | Description |
+|-------|-------------|
+| **Product** | The product that will cause depletion (can be the same as the main product, or a related item). |
+| **Unit of Measure** | The selling UoM for that product (e.g., "Each", "Bottle", "Case of 24"). |
+| **Quantity** | The depletion quantity - how much stock of the count unit is reduced when one unit is sold. |
+
+### Help Button
+
+Clicking the **Information (i)** button opens the **Depletion Quantity** helper. This helper reads the product's base unit of measure configuration and shows different screens depending on how that unit is set up.
+
+## Depletion by Base Unit Type
+
+### Simple Base UoM (e.g., "Each")
+
+For products where the base unit of measure is a simple unit (such as "Each"):
+
+- The help panel shows a written explanation of the calculation
+- Depletion quantity = Selling quantity ÷ Count unit of measure quantity
+
+**Example: Apples**
+- Apples are purchased in boxes of 10
+- Each apple sold should reduce stock by one apple from a box
+- Selling quantity: 1
+- Count unit of measure: Box of 10
+- Depletion quantity: 1 ÷ 10 = **0.10**
+
+### Volume-Based UoM (Kegs, Pints, Shots)
+
+For products where the base unit of measure is volumetric (gallons or litres):
+
+- A table shows pre-calculated options
+- Select a **Selling Unit of Measure** to see the **Depletion Quantity**
+- Click **Select** to copy the chosen depletion quantity back to the field
+
+**Common Gallon Types:**
+- Pint, Half Pint
+- 11 Gallon Barrel
+- Barrel, Puncheon, Tun
+- Gallon
+
+**Common Litre Types:**
+- Bottle (1 litre)
+- Double Spirit (50ml), Single Spirit (25ml)
+- Magnum (1.5 litre)
+- Glass (175ml), Glass (125ml)
+- 500ml (0.5 litre)
+
+## Depletion Examples
+
+| Base Unit | Business Case | Stock Control Unit | Depletion Rule |
+|-----------|---------------|-------------------|----------------|
+| **Each** | Cola bottles counted and sold individually | Each | Cola Bottle depletes itself with quantity **1** |
+| **Gallon** | Lager counted by gallon, sold as pints | Gallon | Lager Pint depletes Lager Keg with quantity **0.125000** |
+| **Gallon** | Ale counted using 11-gallon kegs | 11 Gallon Keg | Ale Pint depletes Ale 11 Gallon Keg with quantity **0.011364** |
+| **Litre** | Whisky 70cl bottles, sold in 25ml shots | 70cl bottle | Whisky Single depletes Whisky Bottle 70cl with quantity **0.035714** |
+| **Litre** | Red wine 75cl bottles, sold by glass | 75cl bottle | Red Wine 125ml Glass depletes Red Wine Bottle with quantity **0.166667** |
+| **Litre** | Daiquiri uses rum, lime juice, syrup | Multiple bottles | Three rules: Rum (0.071429), Lime Juice (0.030000), Syrup (0.015000) |
+
+## Configuring Depletion Rules
+
+<Steps>
+<Step title="Open product">
+  Navigate to **Management > Products** and open the product.
+</Step>
+
+<Step title="Go to Depletion Rules tab">
+  Click on the **Depletion Rules** tab.
+</Step>
+
+<Step title="Select Depletion Group (optional)">
+  Choose a **Product Depletion Group** if you need outlet-specific depletion routing.
+</Step>
+
+<Step title="Add depletion lines">
+  Click **Add** to create depletion lines. For each line:
+  - Select the component **Product** and **Unit of Measure**
+  - Enter the **Quantity** to deplete
+  - Use the **Help (i)** button for calculation assistance
+</Step>
+
+<Step title="Save">
+  Save the product to apply the depletion rules.
+</Step>
+</Steps>
+
+<Tip>
+For volume-based products (kegs, bottles), use the Help button to access pre-calculated depletion quantities based on common serving sizes.
+</Tip>
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Depletion Groups" icon="layer-group" href="/enterprise/pages/stock/depletion-groups">
+  Route depletion to different outlets.
+</Card>
+
+<Card title="Unit of Measure" icon="ruler" href="/enterprise/pages/stock/unit-of-measure">
+  Configure units for depletion calculations.
+</Card>
+</CardGroup>

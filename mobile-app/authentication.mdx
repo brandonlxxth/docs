@@ -1,0 +1,65 @@
+---
+title: "Authentication"
+description: "Sign up, login, and account verification in the mobile app"
+---
+
+## Overview
+
+The Kappture mobile app requires users to create a member account before placing orders. Members authenticate with email and password.
+
+Member accounts are managed in the Management Portal under **Configuration > Member > Member**.
+
+## Sign up
+
+New users create an account with name, email, and password. After signing up, the member is logged in immediately and can start ordering.
+
+The sign up form also requires accepting the Terms & Conditions and Privacy Policy.
+
+### Member creation in Management Portal
+
+When a user signs up in the mobile app, a member record is created in **Configuration > Member > Member**. The member account includes:
+- Member details (name, email, phone)
+- Account balances (if account types are configured)
+- Member group assignments
+- Order history
+- Loyalty points (if loyalty is enabled)
+
+## Login
+
+Returning users sign in with their email address and password. The app includes a "Forgot Password?" link to reset passwords.
+
+## Forgot password
+
+Members can reset their password if forgotten:
+
+1. Enter email address on Forgot Password screen
+2. Receive password reset email with a verification code
+3. Enter the verification code
+4. Enter new password with confirmation
+5. Sign in with new password
+
+The verification code is sent to the member's email address and must be entered to proceed with the password reset.
+
+## Member groups
+
+Members can be assigned to member groups in **Configuration > Member > Member Group**. Member groups control:
+- Access to accounts (members must be in the account's member group to see and use the account in the app)
+- Board item visibility (news/announcements)
+- Special pricing or discounts
+- Access to specific features or products
+- Campaign targeting
+
+Member group assignments are configured in **Configuration > Member > Member** in the Management Portal, not in the mobile app.
+
+See [Member Group documentation](/enterprise/pages/member/member-group) and [Account documentation](/enterprise/pages/member/account) for configuration details.
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Members" icon="users" href="/enterprise/pages/member/member">
+    Manage member accounts in Management Portal.
+  </Card>
+  <Card title="Member Groups" icon="user-group" href="/enterprise/pages/member/member-group">
+    Configure member groups for targeting.
+  </Card>
+</CardGroup>

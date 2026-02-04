@@ -1,0 +1,151 @@
+---
+title: "Order Prefix"
+description: "Customize the stock order number formatting per outlet"
+---
+
+## Overview
+
+Order Prefixes allow you to create and manage prefixes that are prepended to stock order numbers. They help identify and organize stock orders by adding a text prefix to the order number, making it easier to distinguish orders from different outlets, departments, or locations.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Order Prefix | Order Prefix | Stock Control (Stock Administration) |
+
+## Accessing Order Prefix
+
+Navigate to **Stock > Stock Administration > Order Prefix**.
+
+## Understanding Order Prefixes
+
+An order prefix is a text string (such as "ORD-", "BAR-", "KIT-") that is prepended to stock order numbers. When a stock order is created, the system automatically formats the order number as:
+
+**Prefix + Order ID padded to 8 digits**
+
+| Prefix | Order ID | Formatted Order Number |
+|--------|----------|------------------------|
+| ORD- | 123 | ORD-00000123 |
+| BAR- | 4567 | BAR-00004567 |
+| VENUE-A- | 567 | VENUE-A-00000567 |
+
+### Key concepts
+
+| Concept | Description |
+|---------|-------------|
+| **Prefix Assignment** | Order prefixes are assigned to outlets (not directly to orders). Each outlet can have one prefix assigned. |
+| **Order Number Format** | The prefix is followed by the order ID, padded with zeros to 8 digits. |
+| **Outlet Configuration** | Prefixes are assigned in the **Stock Control** tab of outlet configuration. An outlet can have no prefix (orders will have no prefix). |
+
+## Creating an Order Prefix
+
+<Steps>
+<Step title="Navigate to Order Prefix">
+  Go to **Stock > Stock Administration > Order Prefix**.
+</Step>
+
+<Step title="Create new prefix">
+  Click the **Create** button.
+</Step>
+
+<Step title="Enter name">
+  Enter a **Name** for the prefix (e.g., "ORD-", "BAR-", "KIT-", "VENUE-A-").
+</Step>
+
+<Step title="Save">
+  Click **Save** to create the prefix.
+</Step>
+</Steps>
+
+<Tip>
+**Naming tips:**
+- Use descriptive prefixes that help identify the source or type of orders
+- Common formats include abbreviations followed by a hyphen (e.g., "ORD-", "BAR-")
+- Use location codes, department codes, or outlet identifiers
+- Keep prefixes short but meaningful
+</Tip>
+
+## Editing an Order Prefix
+
+1. Navigate to **Stock > Stock Administration > Order Prefix**
+2. Select the prefix from the dropdown list
+3. Click **Edit**
+4. Modify the **Name** field
+5. Click **Save**
+
+<Note>
+Changing a prefix name affects all future orders created for outlets using that prefix. Historical orders retain their original order numbers with the previous prefix.
+</Note>
+
+## Deleting an Order Prefix
+
+Order prefixes can only be deleted if they are not currently assigned to any outlets.
+
+1. Select the prefix you want to delete
+2. Click **Edit**
+3. If not in use, a **Delete** button will be available
+4. Click **Delete** and confirm
+
+<Warning>
+Before deleting a prefix, ensure it is not assigned to any outlets. Remove the prefix assignment from each outlet first (set it to "None").
+</Warning>
+
+## Assigning Prefixes to Outlets
+
+Order prefixes are assigned to outlets during outlet configuration:
+
+1. Navigate to **Configuration > Terminal > Hierarchy > Outlet**
+2. Open or create an outlet
+3. Click on the **Stock Control** tab
+4. In the **Order Prefix** dropdown, select the prefix
+5. Click **Save**
+
+<Note>
+The Order Prefix field is optional. If no prefix is selected, stock orders for that outlet will not have a prefix in their order numbers.
+</Note>
+
+## Where prefixes appear
+
+Order prefixes appear in:
+
+- Stock order header when viewing or editing orders
+- Stock order lists and reports
+- Delivery records and receipts
+- Order status tracking
+- Search results and filters
+
+## Order prefix fields reference
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| **Name** | Yes | The prefix text that will be prepended to order numbers. |
+
+## Frequently asked questions
+
+**Can I use the same prefix for multiple outlets?**
+
+Yes. Multiple outlets can share the same prefix when they're in the same category (e.g., all bars use "BAR-"). Each order will still have a unique order number because the order ID is unique.
+
+**How long can a prefix name be?**
+
+There is no specific documented limit, but keep prefixes short and meaningful. Very long prefixes may make order numbers difficult to read.
+
+**What characters can I use in a prefix name?**
+
+Letters, numbers, and common punctuation characters (such as hyphens). Use a consistent format across all prefixes for better organization.
+
+**How do I know which prefix an outlet is using?**
+
+Navigate to **Hierarchy > Outlet**, open the outlet, and check the **Stock Control** tab. The **Order Prefix** dropdown shows the currently assigned prefix.
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Stock Orders" icon="shopping-cart" href="/enterprise/pages/stock/orders">
+  Create stock orders with prefixes.
+</Card>
+
+<Card title="Terminal Configuration" icon="desktop" href="/enterprise/pages/terminal/configuration">
+  Configure outlets with order prefixes.
+</Card>
+</CardGroup>

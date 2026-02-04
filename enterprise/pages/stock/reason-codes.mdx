@@ -1,0 +1,112 @@
+---
+title: "Reason Codes"
+description: "Create reason codes for categorizing stock adjustments"
+---
+
+## Overview
+
+Stock Reason Codes allow you to categorize and document the reasons for stock adjustments. When creating stock adjustments, you assign a reason code to each adjustment line to explain why the stock level was changed. This helps with reporting, auditing, and understanding stock movements.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Reason Codes | Reason Code | Stock Control (Stock Administration) |
+
+## Accessing Reason Codes
+
+Navigate to **Stock > Stock Administration > Reason Codes**.
+
+## Understanding Reason Codes
+
+Reason codes are simple labels (such as "Damaged", "Expired", "Found", "Theft") that you assign to stock adjustments. Each adjustment line can have one reason code selected, which helps categorize why the stock level was adjusted.
+
+## Creating a Reason Code
+
+<Steps>
+<Step title="Navigate to Reason Codes">
+  Go to **Stock > Stock Administration > Reason Codes**.
+</Step>
+
+<Step title="Create new reason code">
+  Click the **Create** button.
+</Step>
+
+<Step title="Enter name">
+  Enter a **Name** for the reason code (e.g., "Damaged", "Expired", "Found", "Theft").
+</Step>
+
+<Step title="Save">
+  Click **Save** to create the reason code.
+</Step>
+</Steps>
+
+## Editing a Reason Code
+
+1. Navigate to **Stock > Stock Administration > Reason Codes**
+2. Select the reason code from the dropdown list
+3. Click **Edit**
+4. Modify the **Name** field
+5. Click **Save**
+
+## Deleting a Reason Code
+
+Reason codes can only be deleted if they are not currently being used in any stock adjustments.
+
+1. Select the reason code and click **Edit**
+2. If the reason code is not in use, a **Delete** button will be available
+3. Click **Delete** and confirm
+
+<Note>
+Reason codes that have been used in stock adjustments can be deleted. Once deleted, it will still be visible on reporting and previously created adjustments.
+</Note>
+
+## Using Reason Codes in Stock Adjustments
+
+<Warning>
+You must create at least one reason code before you can create stock adjustments. The system displays an error message if you try to create an adjustment without any reason codes configured.
+</Warning>
+
+When creating a stock adjustment:
+
+1. Navigate to **Stock > Adjustment > Create**
+2. Add products to the adjustment
+3. For each product line, select a **Reason Code** from the dropdown
+4. Complete and save the adjustment
+
+Reason codes help you:
+- Track why stock levels changed
+- Generate reports filtered by reason
+- Identify patterns in stock adjustments
+- Maintain audit trails
+
+## Reason code fields reference
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| **Name** | Yes | Label for the reason code (e.g., Damaged, Expired, Found, Theft). |
+
+## Common reason codes
+
+| Reason Code | Use Case |
+|-------------|----------|
+| **Damaged** | Products damaged during handling or events. |
+| **Expired** | Products that have passed their expiration date. |
+| **Found** | Stock discovered during inventory checks. |
+| **Theft** | Products lost to theft. |
+| **Spoilage** | Food that has spoiled. |
+| **Overproduction** | Excess production that needs to be written off. |
+| **Inventory Correction** | Discrepancies found during stock counts. |
+| **Quality Issue** | Products that don't meet quality standards. |
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Stock Adjustments" icon="sliders" href="/enterprise/pages/stock/adjustments">
+  Create stock adjustments using reason codes.
+</Card>
+
+<Card title="Stock Overview" icon="warehouse" href="/enterprise/pages/stock">
+  Return to the Stock section overview.
+</Card>
+</CardGroup>

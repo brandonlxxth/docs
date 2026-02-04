@@ -8,8 +8,22 @@ description: "Online ordering and self-service features in the Management Portal
 The Ordering section manages online ordering, self-service kiosk ordering, and preparation point operations.
 
 <Warning>
-**Requires Ordering or Click & Collect Module**: This section requires either the Ordering module or the Click & Collect module, which are charged separately. If you don't see this section in your navigation, contact your administrator or Kappture support to enable one of these modules.
+**Requires Ordering or Click & Collect Module**: This section requires either the Ordering module or the Click & Collect module, which are charged separately. If you don't see this section in your navigation, contact your administrator or [Kappture Sales](/contact) to enable one of these modules.
 </Warning>
+
+## Required permissions
+
+Ordering permissions are configured in **Admin > User Roles** under the **Online Ordering** tab.
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Order Event | Order Event | Online Ordering |
+| Configuration | Configuration | Online Ordering (Catalog Ordering) |
+| Dashboard | Dashboard | Online Ordering (Catalog Ordering) |
+| Order Status | Order Status | Online Ordering (Catalog Ordering) |
+| Preparation Point Stock | Preparation Point Stock | Online Ordering (Catalog Ordering) |
+| QR Code Generator | QR Code Generator | Online Ordering (Catalog Ordering) |
+| Future Order Close | Future Order Close | Online Ordering (Catalog Ordering) |
 
 ## Ordering pages and features
 
@@ -19,11 +33,13 @@ Manage online ordering events. Create and configure events that allow customers 
 
 ### Dashboard
 
-View the preparation point dashboard to monitor:
+The **ordering dashboard** (Ordering > Dashboard) lets you **view** preparation point orders. You can monitor:
 - Order status and queue
 - Preparation point activity
 - Order fulfillment metrics
 - Real-time order updates
+
+The dashboard is view-only. To **update** the status of a preparation point order (e.g. mark courses done), use a **KMS terminal** (Kitchen Management Screen); see [Terminal](/enterprise/pages/terminal/overview#kitchen-management-screen-kms).
 
 ### Product Stock
 
@@ -48,7 +64,7 @@ Configuration for self-service kiosk and mobile ordering:
   Return to the navigation overview.
 </Card>
 
-<Card title="Stock Management" icon="boxes" href="/enterprise/features/stock-management">
+<Card title="Stock" icon="boxes" href="/enterprise/pages/stock">
   Learn about stock management for preparation points.
 </Card>
 </CardGroup>

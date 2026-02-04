@@ -1,0 +1,141 @@
+---
+title: "Par Levels"
+description: "Keep track of your expected stock levels at all times"
+---
+
+## Overview
+
+Stock par levels define the minimum, target, and maximum quantities you expect to hold for each product at every outlet. They help teams see where stock is under- or over-supplied, guide replenishment decisions, and underpin stock-to-par reports. Par levels can be maintained centrally from the Stock Administration area and individually on the product Par Level tab.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Par Levels | Par Levels | Stock Control (Stock Administration) |
+| Product Par Level Tab | Product | Configuration (Management) |
+
+## Accessing Par Levels
+
+- **Outlet-level management**: Navigate to **Stock > Stock Administration > Par Level**
+- **Product-level defaults**: Navigate to **Management > Products > [Product] > Par Level tab**
+
+## Understanding Par Levels
+
+| Level | Description |
+|-------|-------------|
+| **Minimum (Min)** | The lowest acceptable quantity before action is needed. Reports highlight when stock falls below this level. |
+| **Standard (Par)** | The working target you aim to hold. This is the ideal stock level for normal operations. |
+| **Maximum (Max)** | The ceiling to avoid overstock. Reports highlight when stock exceeds this level. |
+
+## Managing Outlet Par Levels
+
+<Steps>
+<Step title="Navigate to Par Levels">
+  Go to **Stock > Stock Administration > Par Level**.
+</Step>
+
+<Step title="Select outlet">
+  Use the hierarchy tree to pick a site or outlet. Select an outlet to enable **Edit** and **Export**.
+</Step>
+
+<Step title="Edit par levels">
+  Click **Edit** to load the inline editor:
+  - Columns for **Min**, **Par**, and **Max** values per product
+  - A global field lets you type one number and apply it to Min, Par, or Max in bulk
+  - Values clamp between 0 and 1,000,000 to avoid accidental extremes
+</Step>
+
+<Step title="Save changes">
+  Changes save automatically when you tab away from a field. Success/failure messages confirm the update.
+</Step>
+
+<Step title="Return to tree">
+  Click **Back** to return to the tree when finished.
+</Step>
+</Steps>
+
+## Setting Par Levels on the Product Tab
+
+1. Go to **Management > Products**, open a product, and select the **Par Level** tab
+2. Optionally enter a **Global Par Level** to prefill all outlets
+3. For each outlet row, adjust the **Min**, **Par**, and **Max** fields
+4. Use the "Apply Min/Par/Max" buttons to push one value to every outlet at once
+5. Save the product to store the changes
+
+## Import and Export
+
+### Export
+
+1. From the Par Level page, select an outlet
+2. Click **Export**
+3. The system downloads a CSV with headers:
+
+```
+Outlet ID,Outlet,Product ID,Product,Min Par Level,Par Level,Max Par Level
+```
+
+### Import
+
+1. Choose **Upload** on the Par Level page
+2. Drop in a CSV and confirm
+
+**Required format** (include the header row exactly as shown):
+
+```
+Outlet ID,Outlet,Product ID,Product,Min Par Level,Par Level,Max Par Level
+12,Main Bar,101,Classic Lager,5,12,20
+12,Main Bar,202,House Gin,2,6,10
+17,North Concession,303,Frozen Fries,3,8,12
+```
+
+<Note>
+Each row updates one product/outlet combination. Invalid rows (unknown outlet/product or non-numeric values) are reported in the import result, while valid rows are applied.
+</Note>
+
+## How Par Levels are Used
+
+| Feature | Usage |
+|---------|-------|
+| **Par Level Reports** | Compare on-hand quantities to Min/Par/Max thresholds to identify shortages or overstock. |
+| **Par Level Monitor** | Live report showing real-time product levels with colour coding: red (below min), yellow (below standard), purple (above max). |
+| **Stock Dashboard** | Shows red bubble for products below min par and blue bubble for products above max par. |
+| **Replenish & Withdraw** | Create automatic transfers based on current figures and par levels. |
+| **Stock Orders** | Create orders to restore minimum, standard, or maximum par levels. |
+
+## Par level fields reference
+
+| Field | Description |
+|-------|-------------|
+| **Min Par Level** | Minimum acceptable quantity. Stock below this triggers alerts. |
+| **Par Level** | Standard/target quantity for normal operations. |
+| **Max Par Level** | Maximum acceptable quantity. Stock above this indicates overstock. |
+
+## Frequently asked questions
+
+**Do I have to set up par levels?**
+
+No, par levels are optional. However, some features like Replenish/Withdraw stock are dependent on par levels being configured.
+
+**Can I edit multiple outlets at once?**
+
+Yes. Use the product Par Level tab's global field and "Apply" buttons to push values to every outlet for that product, or import a CSV covering many outlet/product combinations.
+
+**Do imported files need a header?**
+
+Yes. The first row must match the export header exactly. The importer skips that line and validates each subsequent row.
+
+**How do par levels influence stock reports?**
+
+Par-based reports compare on-hand quantities with the configured Min/Par/Max values. Keeping levels up to date ensures shortage alerts and replenishment decisions are accurate.
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Stock Orders" icon="shopping-cart" href="/enterprise/pages/stock/orders">
+  Create orders based on par levels.
+</Card>
+
+<Card title="Stock Transfers" icon="arrows-left-right" href="/enterprise/pages/stock/transfers">
+  Replenish stock based on par levels.
+</Card>
+</CardGroup>

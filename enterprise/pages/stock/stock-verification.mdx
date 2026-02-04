@@ -1,0 +1,149 @@
+---
+title: "Stock Verification"
+description: "Quick on-the-spot counts of your stock locations"
+---
+
+## Overview
+
+Stock Verification is designed for quick spot counts to verify inventory levels without performing a full stock take. Unlike formal stock takes that cover all products in a count sheet, stock verification allows you to quickly check specific products or sections of your inventory. When verification counts differ from expected quantities, the system automatically creates stock adjustments to reconcile the differences.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Stock Verification | Stock Verification | Stock Control (Stock Take) |
+
+## Accessing Stock Verification
+
+Navigate to **Stock > Stock Take > Stock Verification**.
+
+The page displays a hierarchy tree showing sites and outlets. Use the search box to filter outlets.
+
+## Using Stock Verification
+
+### Selecting Outlets
+
+1. Browse or search for outlets in the hierarchy tree
+2. Select one or more outlets using the checkboxes
+3. When outlets are selected, action buttons become available:
+   - **Print Verification Sheet**: Available when one or more outlets are selected
+   - **Enter Verification**: Available only when exactly one outlet is selected
+
+### Printing a Verification Sheet
+
+<Steps>
+<Step title="Select outlets">
+  Select one or more outlets from the hierarchy tree.
+</Step>
+
+<Step title="Print sheet">
+  Click the **Print Verification Sheet** button.
+</Step>
+
+<Step title="Review sheet">
+  A printable verification sheet opens showing:
+  - Product information (name, unit of measure)
+  - Current expected quantity
+  - Space to record counted quantities
+</Step>
+
+<Step title="Count stock">
+  Use this sheet for physical counting, then return to enter the counts.
+</Step>
+</Steps>
+
+### Entering Verification Counts
+
+<Steps>
+<Step title="Select outlet">
+  Select exactly one outlet from the hierarchy tree.
+</Step>
+
+<Step title="Enter verification">
+  Click the **Enter Verification** button.
+</Step>
+
+<Step title="Enter counts">
+  A table displays all products for the selected outlet:
+  - **Count Sheet Group Name**: The count sheet group the product belongs to
+  - **Product**: Product name and identifiers
+  - **Unit of Measure**: The unit used for this product
+  - **Current**: The expected quantity based on stock movements
+  - **Count**: Input field for entering the actual counted quantity
+</Step>
+
+<Step title="Save">
+  Click **Save** to create adjustments for any variances.
+</Step>
+</Steps>
+
+### Entering Counts
+
+- Enter counts directly in the **Count** column
+- Counts can include decimal values (up to 2 decimal places)
+- Counts are limited to 1,000,000.00 maximum
+- Use the search box to quickly find specific products
+- Products are grouped by count sheet group
+
+### Visual Indicators
+
+| Indicator | Meaning |
+|-----------|---------|
+| **Yellow highlight** | The entered count differs from the expected quantity. |
+| **Normal row** | The count matches the expected quantity. |
+
+This visual feedback helps you quickly identify which products need attention.
+
+## How Adjustments Are Created
+
+When you save verification counts, the system automatically:
+
+1. Calculates the difference between counted and expected quantities for each product
+2. Creates a stock adjustment record for products with variances
+3. Sets the adjustment quantity to the variance (positive for increases, negative for decreases)
+4. Uses the product's preferred cost price to calculate adjustment values
+5. Records the adjustment with a reference format: `VERIFY|Outlet Name|YYYY-MM-DD`
+6. Includes a note indicating the adjustment was created from stock verification
+
+<Note>
+The adjustment is immediately applied to your stock records, updating inventory levels to match your verification counts.
+</Note>
+
+## Stock Verification vs Stock Take
+
+| Feature | Stock Verification | Stock Take |
+|---------|-------------------|------------|
+| **Purpose** | Quick spot checks of specific products | Formal process covering all products in a count sheet |
+| **Scope** | Selected products or sections | All products in assigned count sheet |
+| **Process** | Immediate adjustment creation | Period-based with reports and reset |
+| **Timing** | Anytime | Scheduled periods |
+
+## Frequently asked questions
+
+**Why can I only select one outlet when entering verification?**
+
+Stock Verification is designed for quick spot counts at a single location. You can print verification sheets for multiple outlets, but counts must be entered one outlet at a time.
+
+**What happens if I enter a count that matches the expected quantity?**
+
+No adjustment is created for that product. Only products with variances generate adjustments.
+
+**Can I edit verification counts after saving?**
+
+No. Once saved and adjustments are created, you cannot edit the verification directly. Perform another verification or create manual adjustments if needed.
+
+**Why are some rows highlighted in yellow?**
+
+Rows are highlighted when the count differs from the expected quantity. The highlighting updates in real-time as you enter counts.
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Stock Take" icon="clipboard-check" href="/enterprise/pages/stock/stock-take">
+  Perform full stock takes with periods.
+</Card>
+
+<Card title="Stock Adjustments" icon="sliders" href="/enterprise/pages/stock/adjustments">
+  View adjustments created from verification.
+</Card>
+</CardGroup>

@@ -1,0 +1,227 @@
+---
+title: "Stock Scan App"
+description: "Android application for barcode-based stock operations"
+---
+
+## Overview
+
+The Stock Scan app is an Android-only application designed for the Zebra TC27 scanner terminal. It is intended for retail environments such as supermarkets where most products are barcoded and identified using shelf-edge labels.
+
+## Features
+
+The Stock Scan app integrates with the Management Portal and supports:
+
+- Operator login using PoS ID and PIN
+- Managing multiple stock-enabled outlets (based on operator permissions)
+- Barcode scanning for all product-related functions
+- Creating stock adjustments using reason codes
+- Creating stock orders (saved per supplier for later authorisation)
+- Creating stock takes, including automatic stock take period generation
+- Creating shelf-edge label requests
+- Recording product wastage
+- Checking product information via barcode scan
+
+## Required Setup
+
+### Outlet and Terminal
+
+- The outlet must have **Stock Holding** enabled
+- A single terminal record must be created for the handheld device
+- After creating the terminal, go to **Outlet Configuration > Stock Control > Stock Terminal** and assign the handheld terminal
+
+### System User
+
+A database user with the **System User** flag must exist. This should be present by default; do not remove it.
+
+### Generate Client Device Keys
+
+Each device requires a unique QR code to authenticate the app with a specific environment and OrgId.
+
+<Steps>
+<Step title="Enable permission">
+  Ensure the user role permission **Client Device** is enabled.
+</Step>
+
+<Step title="Navigate to Client Devices">
+  Go to **Admin > Client Devices**.
+</Step>
+
+<Step title="Create device record">
+  Create a new device record with a name and optional reference.
+</Step>
+
+<Step title="Scan QR code">
+  A unique QR code is generated. Scan this code on the device. Each code can be used once per device.
+</Step>
+</Steps>
+
+<Note>
+If the QR prompt is closed, regenerate a code by editing the device and selecting **Generate API Key**.
+</Note>
+
+### Confirming Credentials on Device
+
+On first launch, the app prompts for a QR code scan. After scanning, the device displays the OrgId and environment for confirmation.
+
+In the Management Portal, the device shows as **Identified**. Devices not yet linked display as **Not Identified**.
+
+### Clearing App Credentials
+
+To reset the device (e.g., to switch OrgId):
+
+1. Hold the orange **Login** button for five seconds
+2. The admin screen appears showing OrgId, Environment, App Version, and Device ID
+3. Select **Clear Credentials**, then confirm
+4. The device returns to the QR setup screen
+
+### Client Device Count Sheets
+
+Count sheets available to handheld devices can be restricted using tick boxes in the Client Device record. By default, **all** sheets are available.
+
+### Operator Setup
+
+Operators require:
+
+- A login code and PIN
+- Outlet assignments (controls visibility in the app)
+- Appropriate security type (PIN rules)
+
+If an outlet is missing from the app, check the operator's outlet permissions.
+
+### Product Configuration
+
+Products must have:
+
+- Name and group
+- Barcode
+- Product type: **Stock** or **Terminal & Stock**
+- Stock availability for the selected outlet
+- Stock control UoM and count sheet group
+- Primary supplier configuration (UoM, pricing)
+- Depletion rule configuration (required for wastage)
+
+### Required Codes and Groups
+
+- **Stock Reason Codes**: At least one required
+- **Waste Reason Codes**: At least one required
+- **Stock Count Sheets / Groups**: Sheets must be assigned to product groups
+- **Stock Suppliers**: Required for stock orders
+
+## Operation
+
+After operator login, available outlets are shown. If only one outlet is assigned, the app goes directly to that outlet's home screen.
+
+The outlet home screen displays six functions:
+
+| Function | Description |
+|----------|-------------|
+| **Adjustment** | Create stock adjustments with reason codes. |
+| **Order** | Create stock orders (saved for later authorisation). |
+| **Stock Take** | Complete stock takes with barcode scanning. |
+| **Labels** | Create shelf-edge label requests. |
+| **Waste** | Record product wastage. |
+| **Product Info** | View product details by scanning barcode. |
+
+## Making Stock Adjustments
+
+<Steps>
+<Step title="Select reason code">
+  Select a reason code (applies to all items in the adjustment).
+</Step>
+
+<Step title="Scan products">
+  Scan products and enter quantities (positive or negative). **Zero Stock** sets quantity to reach zero.
+</Step>
+
+<Step title="Review and confirm">
+  On the Confirm page, swipe left on an item to edit or delete. Confirm to complete the adjustment.
+</Step>
+</Steps>
+
+<Note>
+Adjustments are submitted immediately and cannot be saved for later authorisation.
+</Note>
+
+## Making Stock Orders
+
+<Steps>
+<Step title="Scan products">
+  Scan products to add them to the order.
+</Step>
+
+<Step title="Confirm quantities">
+  For each product, confirm the quantity.
+</Step>
+
+<Step title="Review and submit">
+  The confirmation page groups items per supplier. Submitting creates **saved** (not authorised) orders.
+</Step>
+</Steps>
+
+<Warning>
+Orders must be authorised later in the Management Portal using **Order Status**.
+</Warning>
+
+## Completing Stock Takes
+
+- Select a count sheet before scanning
+- Scanned products populate with expected quantity; adjust as needed
+- Negative quantities cannot be set
+- A yellow banner shows remaining uncounted items
+- When all items are counted, the banner turns green
+- Each submitted stock take creates a new period named: **Stock Take YYYY-MM-DD**
+
+## Creating Shelf Edge Labels
+
+1. Scan products to create a label request
+2. For each product, set quantity
+3. Submit to send the request to **Management > Product Label**
+4. In the portal, select **Print Labels**, choose a price band, and generate the print document
+
+<Note>
+Labels can only be created for products with existing barcodes. This tool cannot assign new barcodes.
+</Note>
+
+## Recording Product Wastage
+
+1. Select a wastage reason code
+2. Scan products and enter wastage quantities
+3. Submit to create the wastage record
+
+<Warning>
+Wastage uses cost prices, not selling prices. Wastage will not post if the product does not have a depletion rule.
+</Warning>
+
+## Product Info
+
+Scanning a product displays:
+
+- Units of measure
+- Prices
+- Supplier details
+- Current stock quantity
+- Last ordered information
+- Selling prices per price band
+
+Useful for verifying shelf-edge label accuracy.
+
+## Data Storage
+
+- Active actions persist through device reboots
+- Each outlet keeps its own independent action state
+
+<Warning>
+The app cannot be used offline. Any action without internet access returns a network error.
+</Warning>
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Client Devices" icon="mobile" href="/enterprise/pages/admin/client-devices">
+  Set up client device authentication.
+</Card>
+
+<Card title="Stock Take" icon="clipboard-check" href="/enterprise/pages/stock/stock-take">
+  Stock take process in the Management Portal.
+</Card>
+</CardGroup>

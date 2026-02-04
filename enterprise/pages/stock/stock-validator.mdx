@@ -1,0 +1,145 @@
+---
+title: "Stock Validator"
+description: "Ensure your product stock configuration is complete"
+---
+
+## Overview
+
+The Stock Validator is a read-only configuration review tool that helps you quickly check whether your stock setup is complete and usable. It highlights products and outlets that are missing key settings (such as count sheets, suppliers, or stock holding flags) so you can correct them in the relevant configuration pages.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Stock Validation | Stock Validation | Stock Control (Stock Administration) |
+
+<Note>
+The outlet list only shows **outlets you have access to** and is further limited to **stock-holding outlets** (outlets configured to hold stock).
+</Note>
+
+## Accessing Stock Validator
+
+Navigate to **Stock > Stock Administration > Stock Validation**.
+
+## Using Stock Validator
+
+### Choose Outlet and Count Sheet
+
+<Steps>
+<Step title="Select outlet">
+  In the **Options** panel, select the **Outlet** you want to review.
+</Step>
+
+<Step title="Select count sheet (optional)">
+  Pick a specific **Count Sheet**, or leave as **All** to review all products.
+</Step>
+
+<Step title="Apply">
+  Click **Apply** to load the validation results.
+</Step>
+</Steps>
+
+### Header Information
+
+At the top of the results you will see:
+
+| Field | Description |
+|-------|-------------|
+| **Outlet** | The outlet you selected. |
+| **Stock Holding Outlet** | The outlet that physically holds stock for this location (or N/A if not configured). |
+| **Stock Request Outlet** | The outlet used when this site requests stock (or N/A if not configured). |
+| **Is Stock Holding** | Whether the outlet is set up as stock-holding. |
+| **Count Sheet** | The count sheet in use (or N/A). |
+| **Stock Take Period & Date** | The current stock take period and date (or N/A). |
+
+### Product Validation
+
+Below the header:
+
+- **Search box**: Filter by product name
+- **Show All checkbox**:
+  - **Unchecked (default)**: Only products with problems are shown
+  - **Checked**: All products are shown, including valid ones
+
+### Validation Columns
+
+| Column | Description |
+|--------|-------------|
+| **Product** | Product name. |
+| **Type** | Product type. |
+| **Unit of Measure** | The primary unit used for stock. |
+| **Count Sheet Group** | The group this product appears in for counting. |
+| **Depletion Group / Rule** | How stock is depleted. |
+| **Has Price** | Whether the product has a price configured. |
+| **Is Available** | Whether the product is available in the outlet. |
+| **Has Supplier** | Whether the product has a supplier configured. |
+| **Has Stock** | Whether the product has stock holding configured. |
+
+### Understanding Icons
+
+| Icon | Meaning |
+|------|---------|
+| **Green tick** | Setting is present and valid. |
+| **Red cross** | Setting is missing or not correctly configured. |
+
+Products missing key settings appear by default so you can fix them in the relevant configuration screens.
+
+## Example Use Case
+
+**Scenario**: A stadium operator wants to ensure all kiosk products are ready for stock take before a major event.
+
+<Steps>
+<Step title="Open Stock Validation">
+  Go to **Stock > Stock Administration > Stock Validation**.
+</Step>
+
+<Step title="Select outlet and count sheet">
+  Choose the main concourse outlet and relevant matchday count sheet.
+</Step>
+
+<Step title="Review problems">
+  Leave **Show All** unchecked to list only problematic products.
+</Step>
+
+<Step title="Fix issues">
+  For each product without a supplier, count sheet group, or unit of measure, update via the standard Product, Supplier, or Count Sheet configuration pages.
+</Step>
+
+<Step title="Repeat">
+  Repeat for each kiosk outlet until the list is empty.
+</Step>
+</Steps>
+
+## Frequently asked questions
+
+**Why is my outlet not appearing in the dropdown?**
+
+Only outlets you are assigned to will appear. Additionally, the list is filtered to stock-holding outlets. If an outlet is not configured as stock-holding, it will not appear.
+
+**Why do I see "N/A" for Stock Holding Outlet or Stock Request Outlet?**
+
+These relationships have not been configured for the selected outlet. Update the outlet configuration to set appropriate values.
+
+**Why are some products missing from the table?**
+
+By default, only products with issues are shown. Tick **Show All** to see all products.
+
+**Can I fix settings directly in Stock Validator?**
+
+No. Stock Validator is view-only. Make changes in the relevant configuration pages (Product, Supplier, Count Sheet, Outlet settings), then refresh Stock Validation to confirm.
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Products" icon="box" href="/enterprise/pages/management/products">
+  Configure products for stock.
+</Card>
+
+<Card title="Suppliers" icon="truck" href="/enterprise/pages/stock/suppliers">
+  Configure suppliers.
+</Card>
+
+<Card title="Count Sheets" icon="file-lines" href="/enterprise/pages/stock/count-sheets">
+  Configure count sheets.
+</Card>
+</CardGroup>

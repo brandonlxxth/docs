@@ -7,6 +7,10 @@ description: "System configuration and management tools in the Management Portal
 
 The Configuration section contains all system configuration and management tools. This is where you set up products, layouts, operators, terminals, member groups, incentives, and other core system components.
 
+## Required permissions
+
+Each sub-section within Configuration has its own permissions. See individual page documentation for specific permission requirements. Permissions are configured in **Admin > User Roles** under the **Configuration** tab.
+
 ## Member
 
 Manage member accounts and customer information:
@@ -79,7 +83,7 @@ Send messages and manage reusable notification templates:
 
 ## Management
 
-Management is where you configure day-to-day operations: what products are sold, how they are priced, how the till screen looks (layouts), who can operate it (operators and operator roles), how customers pay (tenders), and how receipts and menus behave. These settings are used by terminals and self-service kiosks. Layouts and product prices link to **sessions** (operational periods) and **outlets**: each outlet has sessions, and for each session you assign a price band and layouts, so the same outlet can use different layouts and prices at different times.
+Management is where you configure day-to-day operations: what products are sold, how they are priced, how the till screen looks (layouts), who can operate it (operators and operator roles), how customers pay (tenders), and how receipts and menus behave. It also includes **checklists** (shown when operators open a session), **messaging** (send messages to terminals), and **Pay at Table** and **Receipt Portal** (QR code generation). These settings are used by terminals and self-service kiosks. Layouts and product prices link to **sessions** (operational periods) and **outlets**: each outlet has sessions, and for each session you assign a price band and layouts, so the same outlet can use different layouts and prices at different times.
 
 For a full explanation of how Management pieces link together (sessions, price bands, layouts, product prices, terminals, operators, tenders, and the rest), see the Management overview.
 
@@ -101,12 +105,23 @@ Customer-facing display content for point of sale, kiosks, and quick serve:
 
 ## Terminal
 
-Terminal management and monitoring:
+Terminal management and monitoring: hierarchy (create and edit terminals by outlet), status, session activity, session management, jobs, and security. Each terminal has a **type** (operator POS, kiosk, kitchen screen, etc.) and is configured with receipt, checklist, pay-at-table options, and payment options (credentials for your payment provider). Layout and session behaviour come from the **outlet** (Outlet Sessions).
 
-- **Hierarchy**: View and manage terminal hierarchy and organization
+<CardGroup cols={2}>
+  <Card title="Terminal" icon="desktop" href="/enterprise/pages/terminal/overview">
+    Terminal section overview: types, Hierarchy, Status, Session Activity, Session Management, Jobs, Security.
+  </Card>
+  <Card title="Terminal configuration" icon="list" href="/enterprise/pages/terminal/configuration">
+    Full field reference for every terminal tab and setting (payment options kept brief).
+  </Card>
+</CardGroup>
+
+Under **Configuration > Terminal** you’ll find:
+
+- **Hierarchy**: View and manage terminal hierarchy (terminals by outlet); create or edit terminals from here
 - **Status**: Monitor terminal status and connectivity
 - **Session Activity**: View terminal session activity and usage
-- **Session Management**: Manage terminal sessions, including closing sessions remotely
+- **Session Management**: Manage terminal sessions (e.g. close sessions remotely)
 - **Jobs**: View and manage terminal jobs and tasks
 - **Security**: Configure terminal security settings and access controls
 
@@ -151,11 +166,7 @@ Administrative and security tools:
   Return to the navigation overview.
 </Card>
 
-<Card title="Product Management" icon="shopping-bag" href="/enterprise/features/product-management">
-  Learn about product catalog management.
-</Card>
-
-<Card title="Site Management" icon="store" href="/enterprise/features/site-management">
-  Understand site and outlet configuration.
+<Card title="Stock" icon="boxes" href="/enterprise/pages/stock">
+  Learn about inventory and stock management.
 </Card>
 </CardGroup>

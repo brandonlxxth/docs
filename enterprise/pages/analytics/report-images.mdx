@@ -1,0 +1,104 @@
+---
+title: "Report Images"
+description: "Upload and manage images used in reports"
+---
+
+## Overview
+
+The Report Images page lets you upload and manage PNG images that can be used in reports. These images are typically used for report headers, logos, and custom branding that appears on generated reports.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Report Images | Report Images | Analytics |
+
+## Accessing Report Images
+
+Navigate to **Analytics > Configuration > Report Images** in the navigation menu.
+
+## Using Report Images
+
+### Viewing report images
+
+The page displays a list of all uploaded report images. Each entry shows the image name.
+
+### Creating a report image
+
+<Steps>
+<Step title="Open Report Images">
+  Navigate to **Analytics > Configuration > Report Images**.
+</Step>
+
+<Step title="Create new image">
+  Click the **+** icon to create a new report image.
+</Step>
+
+<Step title="Enter details">
+  Fill in:
+  - **Name**: A descriptive name for the image (e.g. "Company Logo", "Report Header")
+</Step>
+
+<Step title="Upload image">
+  Drag and drop a PNG file into the upload area, or click to browse for a file.
+  
+  <Note>
+  Only PNG files are accepted. Maximum file size is 1MB.
+  </Note>
+</Step>
+
+<Step title="Save">
+  Click the save button to upload and save the report image.
+</Step>
+</Steps>
+
+### Editing a report image
+
+1. Select the report image from the list
+2. Click **Edit**
+3. Update the name or upload a new image
+4. Click save
+
+### Checking image usage
+
+Before deleting an image, check if it is in use:
+
+1. Edit the report image
+2. Click the **Usage** button to see where the image is referenced
+3. If it is in use by the organisation, it will show the organisation/group name
+
+### Deleting a report image
+
+<Warning>
+You can only delete report images that are not in use. Remove the image from any reports or configurations before deleting.
+</Warning>
+
+1. Select the report image from the list
+2. Click **Delete**
+3. Confirm the deletion
+
+## Report image fields reference
+
+| Field | What it does |
+|-------|--------------|
+| **Name** | Display name for the report image (e.g. Company Logo, Header Image). |
+| **Image** | The PNG image file. Only PNG format is supported. Maximum 1MB. |
+
+## Best practices
+
+- **Use descriptive names**: Name images clearly so you know their purpose (e.g. "Invoice Header", "Receipt Logo")
+- **Optimise file size**: Keep images under 1MB for faster report generation
+- **Use PNG format**: Only PNG images are supported for transparency and quality
+- **Check usage before deleting**: Always verify an image isn't in use before removing it
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Analytics Overview" icon="chart-line" href="/enterprise/pages/analytics/overview">
+  Return to the Analytics section overview.
+</Card>
+
+<Card title="Generated Reports" icon="timer" href="/enterprise/pages/analytics/generated-reports">
+  View and download scheduled reports.
+</Card>
+</CardGroup>

@@ -1,0 +1,118 @@
+---
+title: "Count Sheet Groups"
+description: "Label your products for stock counting and filtering"
+---
+
+## Overview
+
+Stock Count Sheet Groups are labels you assign to products so they appear on the right count sheets during stock takes. By grouping products together—such as "Beer Kegs" or "Dry Goods"—you can build count sheets that mirror how teams physically count inventory across outlets or departments.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Count Sheet Group | Count Sheet Group | Stock Control (Stock Administration) |
+| Product Assignment | Product | Configuration (Management) |
+
+## Accessing Count Sheet Groups
+
+Navigate to **Stock > Stock Administration > Count Sheet Group**.
+
+## Creating a Count Sheet Group
+
+<Steps>
+<Step title="Navigate to Count Sheet Groups">
+  Go to **Stock > Stock Administration > Count Sheet Group**.
+</Step>
+
+<Step title="Create new group">
+  Click **Create** (or select an existing group and choose **Edit**).
+</Step>
+
+<Step title="Enter name">
+  Enter a descriptive name (e.g., "Spirits", "Fresh Veg", "Event Snacks").
+</Step>
+
+<Step title="Save">
+  Click **Save** to create the group.
+</Step>
+</Steps>
+
+<Note>
+- When editing an existing group, you can view usage to see which products or count sheets depend on it.
+- The delete button is only available if the group is not in use.
+</Note>
+
+## Assigning Products to Groups
+
+Products are assigned to groups in the **Product > Stock** tab:
+
+1. Edit the product
+2. Select the desired Count Sheet Group from the dropdown
+3. Save
+
+Once a product has a group, it automatically appears on any count sheet that references that group.
+
+## Relationship to Count Sheets and Stock Takes
+
+- Count sheets link to one or more Count Sheet Groups
+- When teams run a stock take (**Stock > Stock Take > Enter Count**), they pick a count sheet
+- The groups tied to that sheet determine the product list, printable count sheet, and CSV export/import template
+- Changing a group's membership (which products are assigned) immediately affects future stock takes
+
+## Import support
+
+While there is no direct import for the groups themselves, you can bulk-assign products to a group via **Product > Import Update**:
+
+1. Choose **Count Sheet Group** as the update option
+2. Select the target group in the dropdown
+3. Upload a CSV **without headers** in the `[Id,Name]` format
+4. Confirm to apply the group to every product listed
+
+**Example CSV (no header):**
+
+```
+101,Classic Lager
+202,House Gin
+303,Frozen Fries
+```
+
+## Count sheet group fields reference
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| **Name** | Yes | Descriptive name for the group (e.g., "Spirits", "Fresh Veg"). |
+
+## Frequently asked questions
+
+**Can I delete a group that's in use?**
+
+No. If products or count sheets reference a group, the delete button is hidden. Remove those dependencies first.
+
+**How do I move many products to a new group?**
+
+Use the product import update (Count Sheet Group option) with a CSV in `[ProductId,ProductName]` format and no header row.
+
+**Can a product belong to multiple groups?**
+
+No. Each product has one Count Sheet Group. If it needs to appear on multiple count sheets, associate those sheets with the same group.
+
+**Do I need groups before I can create count sheets?**
+
+Yes. Count sheets reference groups. Create the groups first, then build count sheets that combine them.
+
+**Is a product group the same as a count sheet group?**
+
+No. Product groups are a separate entity and not used in stock. In the stock system, a product will always be configured with both a product group and a count sheet group.
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Count Sheets" icon="file-lines" href="/enterprise/pages/stock/count-sheets">
+  Create count sheets using groups.
+</Card>
+
+<Card title="Products" icon="box" href="/enterprise/pages/management/products">
+  Assign products to count sheet groups.
+</Card>
+</CardGroup>

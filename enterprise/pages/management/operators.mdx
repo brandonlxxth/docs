@@ -7,6 +7,12 @@ description: "Manage operator accounts and access in the Management Portal"
 
 Operators are **staff who log in at the till** (terminal). Each operator has a **Name** (and typically a PIN or credentials) and an **Operator Role**.
 
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Operators | Operator | Configuration (Management) |
+
 **How it works:** The operator role determines what the operator can do (permissions, capabilities). When an operator logs in at a terminal, their **Operator Role** is used for the session; orders and terminal session cash are tied to the operator who served.
 
 **Analytics:** All terminal actions performed by an operator are linked to analytics. Reports that use operator data include: **Operator Product Sales** (product sales by operator), **Operator Performance** (operator events and activity), **Operator Top Events**, **Event Operator Statistics**, **Event Operator Performance**, **Event Operator Activity Sales Refund**, **Event Operator Activity Voids Cancels**, and others. You can filter or group by operator in many reports.

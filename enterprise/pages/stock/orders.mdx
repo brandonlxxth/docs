@@ -1,0 +1,207 @@
+---
+title: "Stock Orders"
+description: "Order new stock from your product suppliers"
+---
+
+## Overview
+
+Stock Orders allow you to create purchase orders from suppliers for your outlets. Orders can be created manually, from templates, or prefilled using par level settings. Once created, orders must be authorised before they can be delivered. The Order Status page provides a centralized view to manage multiple orders, authorise them, cancel them, and track their delivery status.
+
+<Info>
+Ordering is a two-stage process: **Order & Delivery**. Ordering stock does not update the current stock on hand until it has been delivered. You cannot make a delivery without an order.
+</Info>
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Orders | Order | Stock Control (Stock Movements) |
+| Order Status | Order Status | Stock Control (Stock Movements) |
+| Authorise Orders | Order Authorise | Stock Control (Stock Movements) |
+| Order Templates | Order Template | Stock Control (Stock Movements) |
+
+### Additional requirements
+
+- **User Role Outlets**: You must be permitted to view an outlet to create a stock order for it
+- **Suppliers & Products**: You cannot order without suppliers being configured and products having supplier configuration set
+- **Par Levels** (optional): If you want to order to re-stock at par levels, your products must have par levels configured
+
+## Accessing Stock Orders
+
+Navigate to **Stock > Stock Movements > Orders > Orders**.
+
+## Creating a Stock Order
+
+### Creating a new order
+
+<Steps>
+<Step title="Click Create">
+  Click the **Create** button (plus icon).
+</Step>
+
+<Step title="Select order details">
+  In the modal, select:
+  - **Supplier**: The supplier you're ordering from
+  - **Outlet**: The outlet that will receive the order
+  - **Par Level** (optional): Choose to prefill products based on par levels:
+    - None: Start with an empty order
+    - Minimum: Prefill products at minimum par level
+    - Standard: Prefill products at standard par level
+    - Maximum: Prefill products at maximum par level
+</Step>
+
+<Step title="Create order">
+  Click **Create** in the modal. The order form opens with the selected supplier and outlet.
+</Step>
+</Steps>
+
+### Adding products to an order
+
+1. Click the **Add** button in the order line table
+2. Select a **Product** from the dropdown (products are filtered by outlet and supplier)
+3. Select a **Unit of Measure** for the product
+4. Enter the **Quantity** you want to order
+5. The **Unit Price** is automatically populated from supplier pricing (can be modified)
+6. The **Line Total** is calculated automatically (Quantity × Unit Price)
+
+<Note>
+If you modify a unit price, the system asks if you want to permanently update the supplier's price for this product. If you confirm, the new price is saved in the product supplier configuration. If you decline, the price change only applies to this order.
+</Note>
+
+### Order details
+
+| Field | Description |
+|-------|-------------|
+| **Date** | The order date (defaults to today, can be set up to one year in the future). |
+| **Delivery Date** | The expected delivery date (must be after the order date). |
+| **Reference** | Optional reference number for the order (max 50 characters). |
+| **Internal Reference** | Optional internal reference for your records. |
+| **Notes** | Optional notes about the order (max 50 characters). |
+
+<Tip>
+Entering the same notes every time? In each outlet, you can configure **Order Default Notes** in **Configuration > Terminal > Hierarchy > Outlet > Stock Control**. This automatically pre-populates the notes box when creating an order.
+</Tip>
+
+### Auto-save functionality
+
+Orders are automatically saved as you work:
+- The order is saved when you add or modify products
+- The order is saved when you change dates, references, or notes
+- A success message appears when auto-save completes
+- The order number appears in the header once saved
+
+<Note>
+Auto-save only works for unauthorised orders. Once authorised, orders cannot be edited.
+</Note>
+
+## Authorising an Order
+
+<Steps>
+<Step title="Complete the order">
+  Add all products to the order.
+</Step>
+
+<Step title="Click Authorise">
+  Click the **Authorise** button (checkmark icon).
+</Step>
+
+<Step title="Confirm authorisation">
+  Confirm that you want to authorise the order.
+</Step>
+
+<Step title="Email supplier (optional)">
+  A popup appears asking if you wish to email your supplier:
+  - The supplier's email address is prefilled in the **To** field
+  - Your email is automatically prefilled in the **CC** field
+  - Add an optional message for the email body
+  - The completed order report PDF will be attached to the email
+</Step>
+</Steps>
+
+Once authorised:
+- The order status changes to "Authorised"
+- Additional options become available: Edit, Print, Email, Create Template
+- The order is ready for delivery in the **Stock Delivery** page
+
+## Order Templates
+
+### Creating a template
+
+1. Create and authorise an order
+2. Search for the authorised order on the Order page
+3. Click the **Create Template** button (clone icon)
+4. Enter a name for the template
+5. Click **Save**
+
+The template saves all products, quantities, and supplier/outlet information.
+
+### Creating from a template
+
+1. Click the **Create from Template** button
+2. Select a template from the dropdown
+3. Click **Create**
+4. A new order opens with all products from the template
+5. Modify quantities, add or remove products as needed
+6. Authorise the order
+
+## Editing an Authorised Order
+
+1. Select an authorised order from the dropdown
+2. Click the **Edit** button (pencil icon)
+3. Make your changes
+4. The order must be re-authorised after editing
+
+<Warning>
+Orders that have been partially or fully delivered cannot be edited.
+</Warning>
+
+## Order Status Page
+
+Navigate to **Stock > Stock Movements > Orders > Order Status**.
+
+### Filtering orders
+
+| Filter | Description |
+|--------|-------------|
+| **Date Range** | Filter orders by order date. |
+| **Outlet** | Filter by specific outlet. |
+| **Supplier** | Filter by specific supplier. |
+| **Order Number** | Enter a specific order number. |
+| **Status Type** | Unauthorised, Authorised, Partially Delivered, Complete, or Cancelled. |
+
+### Order status actions
+
+| Status | Available Actions |
+|--------|-------------------|
+| **Unauthorised** | Authorise, Cancel |
+| **Authorised** | Cancel, Print |
+| **Partially Delivered** | Cancel (remaining items), Print |
+| **Complete** | Print |
+| **Cancelled** | Email, Print |
+
+<Note>
+Cancelling a partially delivered order only cancels the undelivered items. Already delivered items remain in the system.
+</Note>
+
+## Additional Reports
+
+In **Analytics > Reports**:
+
+- **Stock Orders Summary**: Historical report of products ordered, filtered by site, outlet, count sheet group, and supplier
+- **Supplier Orders Delivered**: Historical report of orders vs deliveries against each supplier and product
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Stock Deliveries" icon="truck" href="/enterprise/pages/stock/deliveries">
+  Record deliveries against orders.
+</Card>
+
+<Card title="Suppliers" icon="building" href="/enterprise/pages/stock/suppliers">
+  Configure suppliers for ordering.
+</Card>
+
+<Card title="Par Levels" icon="chart-line" href="/enterprise/pages/stock/par-levels">
+  Configure par levels for auto-fill ordering.
+</Card>
+</CardGroup>

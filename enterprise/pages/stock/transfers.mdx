@@ -1,0 +1,200 @@
+---
+title: "Stock Transfers"
+description: "Move stock from one location to another"
+---
+
+## Overview
+
+Stock Transfers allow you to move products between outlets. You can create transfers manually or use pre-defined templates to speed up the process. Transfers can be sent from one source outlet to multiple destination outlets in a single operation. The Transfer Report provides a comprehensive view of all transfers.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Transfer | Transfer | Stock Control (Stock Movements) |
+| Authorise Transfer | Transfer Authorise | Stock Control (Stock Movements) |
+| Transfer Template | Transfer Template | Stock Control (Stock Movements) |
+| Transfer Report | Transfer Report | Stock Control (Stock Movements) |
+
+### Additional requirements
+
+- **Product Configuration**: A product must be available in both the source and destination outlet to transfer it
+- **User Role Outlets**: Your user role must be permitted to select the outlet in source and destination
+
+## Accessing Stock Transfers
+
+Navigate to **Stock > Stock Movements > Transfer > Transfer**.
+
+## Creating a Stock Transfer
+
+<Steps>
+<Step title="Click Create">
+  Click the **Create** button on the Transfers page.
+</Step>
+
+<Step title="Select outlets">
+  In the modal, select:
+  - **Source Outlet**: The outlet transferring products out
+  - **Destination Outlets**: One or more outlets receiving the products (you must select at least one)
+  - **Template** (optional): Select a pre-defined template to automatically populate products and quantities
+</Step>
+
+<Step title="Create transfer">
+  Click **Create** to proceed. The transfer form opens with the selected outlets.
+</Step>
+</Steps>
+
+<Note>
+If you select a template, the source and destination outlets will be automatically set based on the template, and product lines will be pre-populated.
+</Note>
+
+## Entering Transfer Details
+
+| Field | Description |
+|-------|-------------|
+| **Date** | The date for the transfer (defaults to today). |
+| **Reference** | Optional reference number (max 50 characters). |
+| **Notes** | Additional notes about the transfer (max 500 characters). |
+
+## Adding Products to Transfer
+
+1. Click the **Add** button at the bottom of the product table
+2. For each product line:
+   - **Product**: Search and select the product being transferred
+   - **Unit of Measure**: Select the unit of measure
+   - **Source Stock Quantity**: Displays current stock level in the source outlet
+   - **In Stock Quantity**: Displays current stock level in the destination outlet (only shown when transferring to a single destination)
+   - **Quantity**: Enter the quantity to transfer
+   - **Unit Price**: Automatically populated based on the product's cost price
+   - **Line Total**: Automatically calculated as quantity × unit price
+3. To remove a product line, click the delete button (trash icon)
+
+<Warning>
+The system warns you if the source outlet doesn't have enough stock. You can still proceed, but the source outlet's stock levels will become negative. Products with insufficient stock are highlighted in yellow.
+</Warning>
+
+<Note>
+If transferring to multiple destinations, you will only see the source stock quantity, not the destination stock quantities.
+</Note>
+
+## Authorising the Transfer
+
+<Steps>
+<Step title="Add all products">
+  Complete adding all products to the transfer.
+</Step>
+
+<Step title="Click Authorise">
+  Click **Authorise** (if you have the Authorise Transfer permission).
+</Step>
+
+<Step title="Confirm">
+  A confirmation dialog appears. If any products have insufficient stock, you will be warned. Click **Confirm** to authorise.
+</Step>
+</Steps>
+
+After authorising, you can:
+- **Print** the transfer (if you have Transfer Report permission)
+- **Reverse** the transfer to undo it
+- **Create Template** from the transfer for future use
+
+## Reversing a Transfer
+
+You can reverse an authorised transfer to undo it:
+
+1. Open an authorised transfer
+2. Click the **Reverse** button
+3. A new transfer is created with reversed quantities (source and destination outlets are swapped)
+4. Edit the reversed transfer as needed and save it
+
+## Transfer Templates
+
+### Accessing templates
+
+Navigate to **Stock > Stock Movements > Transfer > Transfer Template**.
+
+### Creating a template
+
+1. Select an existing transfer from the dropdown (or create a new transfer first)
+2. Once the transfer is authorised, click the **Create Template** button (clone icon)
+3. In the modal:
+   - **Name**: Enter a name for the template (required)
+   - **Restriction**: Optionally select a user role restriction to limit who can use this template
+4. Click **Save**
+
+<Note>
+Templates are created from authorised transfers and include all products and quantities from that transfer.
+</Note>
+
+### Editing a template
+
+1. Search for the template using the dropdown on the Transfer Template page
+2. You can edit:
+   - **Name**: Change the template name
+   - **Restriction**: Change or remove the user role restriction
+   - **Product Lines**: Add, remove, or modify products and quantities
+3. Click **Save**
+
+### Using a template
+
+When creating a new transfer:
+
+1. In the transfer creation modal, select a template from the **Template** dropdown
+2. The source and destination outlets will be automatically set
+3. Click **Create** to proceed
+4. The transfer form opens with all products and quantities pre-populated
+5. Modify as needed before authorising
+
+## Transfer Report
+
+Navigate to **Stock > Stock Movements > Transfer > Transfer Report**.
+
+### Filtering transfers
+
+| Filter | Description |
+|--------|-------------|
+| **Date Range** | Select a start and end date. |
+| **Source Outlet** | Filter by the outlet transferring products out. |
+| **Destination Outlet** | Filter by the outlet receiving products. |
+| **Authorised By** | Filter by the user who authorised the transfer. |
+
+### Report columns
+
+| Column | Description |
+|--------|-------------|
+| **Number** | The transfer number. |
+| **Source Outlet** | The outlet transferring products out. |
+| **Destination Outlet** | The outlet receiving products. |
+| **Date** | The date and time of the transfer. |
+| **Authorised By** | The user who authorised the transfer. |
+| **Total** | The total value of the transfer. |
+
+## Frequently asked questions
+
+**Can I transfer to multiple destinations in one transfer?**
+
+Yes. You can select multiple destination outlets. However, you will only see the source stock quantity, not individual destination stock quantities. Each destination receives the same products and quantities.
+
+**What happens if the source outlet doesn't have enough stock?**
+
+The system warns you with a yellow highlight on products with insufficient stock. You can still proceed, but the source outlet's stock levels will become negative.
+
+**Can I edit a transfer after it's been authorised?**
+
+No. Once authorised, a transfer cannot be edited. Use the reverse function and create a new transfer if needed.
+
+**Can I save a transfer and come back to it later?**
+
+No. You must add all required products and authorise it in the same session.
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Stock Overview" icon="warehouse" href="/enterprise/pages/stock">
+  Return to the Stock section overview.
+</Card>
+
+<Card title="Stock Adjustments" icon="sliders" href="/enterprise/pages/stock/adjustments">
+  Correct stock levels if needed.
+</Card>
+</CardGroup>

@@ -7,6 +7,10 @@ description: "Configuration for day-to-day operations: layouts, products, pricin
 
 The **Management** subsection (under **Configuration > Management**) is where you configure everything that drives day-to-day operations at your sites and outlets: what products are sold, how they are priced, how the till screen looks, who can operate the till, how customers pay, and how receipts and menus behave. These settings are used by **terminals** (point-of-sale devices) and, where applicable, by **self-service kiosks** and **ordering** flows.
 
+## Required permissions
+
+Each page within Management has its own permission. See individual page documentation for specific permission requirements. Permissions are configured in **Admin > User Roles** under the **Configuration** tab in the **Management** section.
+
 Because Management touches so many areas, it helps to understand how the main pieces link together before diving into individual pages. The sections below explain those links, then list every Management menu item and where it fits.
 
 ## How Management pieces link together
@@ -15,8 +19,8 @@ Because Management touches so many areas, it helps to understand how the main pi
 
 Your organisation is structured as **Sites** containing **Outlets**. Each outlet has an **Outlet Type** (e.g. counter, drive-through, table service). Outlet Type is configured under **Configuration > Management > Outlet Type** and is used to standardise how outlets of the same type behave. When you create or edit an outlet (under **Configuration** or site/outlet management), you assign it a site and an outlet type. Outlets also hold the links to **sessions**, **layouts**, **vision**, and **pricing** described below.
 
-<Card title="Site Management" icon="store" href="/enterprise/features/site-management">
-  How to configure sites, outlets, outlet types, and preparation points.
+<Card title="Terminal" icon="desktop" href="/enterprise/pages/terminal/overview">
+  How terminals are configured at your sites and outlets.
 </Card>
 
 ### Sessions: When the till is “open” and which price band and layout apply
@@ -43,7 +47,7 @@ So the chain is: **Outlet** → has **Outlet Sessions** (each session has a **Pr
 - **Product Challenge** — **Configuration > Management > Product Challenge**. Product restrictions and age verification requirements.
 - **Allergens**, **Course**, **Product Tags**, **Waste Reason** — Under **Configuration > Management**: configure allergens (attached to products), courses (used to group products in an order—terminals mark courses done, KMS shows courses in tabs at the top), tags for categorisation (attached to products), and waste reason codes for tracking waste. Used in terminals, reporting, and (where applicable) ordering and stock.
 
-<Card title="Product Management" icon="shopping-bag" href="/enterprise/features/product-management">
+<Card title="Products" icon="shopping-bag" href="/enterprise/pages/management/products">
   Product catalog, pricing, product groups, and product restrictions in detail.
 </Card>
 
@@ -64,14 +68,14 @@ So: **Terminal** → belongs to **Outlet** → outlet has **Outlet Sessions** (e
 
 - **Receipts** — Receipt templates and print settings. Assigned per terminal (Receipt type). See Terminals above.
 - **Resources** — Images and assets (e.g. terminal background). Used by terminals and other areas that reference resources.
-- **Allergens** — Used by products; displayed where allergen information is shown (e.g. terminals, ordering).
+- **Allergens** — Added or updated via **Import** and **Export** (bulk); assign to products on the Product form (Allergens tab). Displayed where allergen information is shown (e.g. terminals, ordering).
 - **Course** — Course configuration for grouping products in an order; terminals mark courses as done; KMS shows courses in the tabs at the top.
-- **Product Tags** — Used for filtering and categorisation (e.g. in Product Prices, reporting).
+- **Product Tags** — Used for filtering and categorisation (e.g. in Product Prices; filter option on some reports such as Outlet Product Sales and Product Mix Report under **Analytics > Reports**).
 - **Waste Reason** — Reason codes when recording product waste (e.g. in stock or outlet waste).
 - **Outlet Type** — Assigned to outlets; standardises behaviour by type. See Organisation above.
-- **Checklist** — **Configuration > Management > Checklist**. Operational checklists (configuration and dashboard). Checklist events can be tied to operators and terminals.
+- **Checklist** — **Configuration > Management > Checklist**. Operational checklists (configuration and dashboard). Checklists appear when operators **open a session** at the till and must be completed before they can advance. Use the **Checklist Dashboard** for overall status; for line-level detail (operator, terminal, each task), go to **Analytics > Activity > Checklist** (Terminal Checklist report). Once a checklist is in use (has completions), its lines cannot be edited.
 - **Messaging** (under Management) — **Send Message Templates**, **Terminal Message Templates**, **Send Message to POS**, **Message History**. Server and terminal message templates and sending messages to terminals in real time. Separate from **Configuration > Campaign** (member messaging and notification templates).
-- **Pay at Table** — **Configuration > Management > Pay at Table > QR Code Generator**. Generates QR codes for pay-at-table; requires the Pay at Table module.
+- **Pay at Table** — **Configuration > Management > Pay at Table > QR Code Generator**. QR code configs (name, outlet, account, optional logo/color/gratuity); generate a single QR (table number) or bulk QR images (ZIP). Requires the Pay at Table module.
 - **Receipt Portal** — **Configuration > Management > Receipt Portal > QR Code Generator**. Generates QR codes for receipt portal access; requires the Receipt Portal module.
 
 ## Management menu reference
@@ -126,24 +130,24 @@ Navigate to **Configuration > Management** in the navigation menu. The following
 
 | Page | What it does | Links to |
 |------|----------------|----------|
-| **Allergens** | Allergen definitions for products. | Products. |
+| **Allergens** | Allergen definitions; add/update via Import and Export (bulk); assign to products on Product form. | Products. |
 | **Course** | Course configuration for order grouping; terminals mark courses done; KMS shows courses in tabs. | Orders; Terminals; KMS. |
-| **Product Tags** | Tags for categorisation. | Products; Product Prices (filtering). |
+| **Product Tags** | Tags for categorisation; filter in Product Prices and on some reports (e.g. Outlet Product Sales, Product Mix Report) under Analytics > Reports. | Products; Product Prices; Analytics > Reports. |
 | **Waste Reason** | Reason codes for waste. | Products; waste recording. |
 
 ### Pay at Table and Receipt Portal
 
 | Page | What it does | Links to |
 |------|----------------|----------|
-| **Pay at Table > QR Code Generator** | QR codes for pay-at-table. | Requires Pay at Table module. |
+| **Pay at Table > QR Code Generator** | QR configs (name, outlet, account, logo, color, gratuity); single or bulk QR generation. | Requires Pay at Table module. |
 | **Receipt Portal > QR Code Generator** | QR codes for receipt portal. | Requires Receipt Portal module. |
 
 ### Checklist and messaging
 
 | Page | What it does | Links to |
 |------|----------------|----------|
-| **Checklist > Configuration** | Checklist definitions. | Checklist Dashboard; terminals; operators. |
-| **Checklist > Dashboard** | Checklist completion and metrics. | Checklist Configuration. |
+| **Checklist > Configuration** | Checklist definitions; lines locked once in use (completions). | Checklist Dashboard; terminals; operators; Analytics > Activity > Checklist for line-level detail. |
+| **Checklist > Dashboard** | Checklist completion and metrics by outlet. | Checklist Configuration; Analytics > Activity > Checklist for line-level detail. |
 | **Messaging > Send Message Templates** | Server message templates. | Terminal messaging. |
 | **Messaging > Terminal Message Templates** | Terminal message templates. | Send Message to POS. |
 | **Messaging > Send Message to POS** | Send messages to terminals. | Terminal Message Templates; Message History. |
@@ -175,6 +179,8 @@ Each Management menu item has its own documentation page:
 - **Sessions before layouts**: Create Sessions and assign each a Price Band; then on each Outlet configure Outlet Sessions and choose the Layouts (and table layouts if needed) for each session. Terminals then use the right layout and price band when they are in that session.
 - **Price bands and product prices**: Define Price Bands, then set Product Prices per outlet and per price band. Use Price Band Scheduler if you need time-based price changes. Sessions determine which price band is active at the till.
 - **Reuse layouts and resources**: Create layouts and resources once and assign them to multiple outlet/session combinations or terminals where appropriate.
+- **Allergens**: Use Import to add or update allergens in bulk; assign them to products on the Product form (Allergens tab). Export for templates or backup.
+- **Checklists**: Assign checklists to terminals so operators see them when opening a session; use the Checklist Dashboard for status by outlet and **Analytics > Activity > Checklist** for line-level completion detail.
 
 ## Related documentation
 
@@ -182,10 +188,13 @@ Each Management menu item has its own documentation page:
   <Card title="Configuration" icon="cog" href="/enterprise/pages/configuration">
     Return to the Configuration overview (Member, Incentives, Campaign, Management, Vision, Terminal, Admin).
   </Card>
-  <Card title="Product Management" icon="shopping-bag" href="/enterprise/features/product-management">
+  <Card title="Terminal" icon="desktop" href="/enterprise/pages/terminal/overview">
+    Terminal section: hierarchy, status, sessions, jobs, security, and terminal configuration.
+  </Card>
+  <Card title="Products" icon="shopping-bag" href="/enterprise/pages/management/products">
     Product catalog, pricing, and product configuration in detail.
   </Card>
-  <Card title="Site Management" icon="store" href="/enterprise/features/site-management">
-    Sites, outlets, outlet types, and preparation points.
+  <Card title="Stock" icon="boxes" href="/enterprise/pages/stock">
+    Inventory and stock management.
   </Card>
 </CardGroup>

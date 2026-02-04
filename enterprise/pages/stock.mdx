@@ -5,94 +5,177 @@ description: "Inventory management tools in the Management Portal"
 
 ## Overview
 
-The Stock section provides inventory management tools for tracking, managing, and reporting on your inventory across all locations.
+The Stock section provides comprehensive inventory management tools for tracking, managing, and reporting on your inventory across all locations. From ordering and receiving stock to performing stock takes and managing depletion rules, the Stock module covers the full inventory lifecycle.
 
 <Warning>
-**Requires Stock Module**: The entire Stock section requires the Stock module, which is charged separately. If you don't see this section in your navigation, contact your administrator or Kappture support to enable the Stock module.
+**Requires Stock Module**: The entire Stock section requires the Stock module, which is charged separately. If you don't see this section in your navigation, contact your administrator or [Kappture Sales](/contact) to enable the Stock module.
 </Warning>
 
-## Stock pages and features
+## Required permissions
 
-### Stock Alerts
+Stock permissions are configured in **Admin > User Roles** under the **Stock Control** tab. Each sub-feature has its own permission. Key permissions include:
 
-View stock movement alerts and notifications. Get notified when stock levels are low, when movements occur, or when attention is needed.
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Dashboard | Dashboard | Stock Control |
+| Order | Order | Stock Control |
+| Delivery | Delivery | Stock Control |
+| Transfer | Transfer | Stock Control |
+| Return | Return | Stock Control |
+| Adjustment | Adjustment | Stock Control |
+| Stock Take | Stock Take | Stock Control |
+| Stock Reports | Stock Reports | Stock Control |
+| Requisition | Requisition | Stock Control |
 
-### Stock Administration
+## Getting Started with Stock
 
-Configuration and setup tools for stock management:
+<Steps>
+<Step title="Configure basic settings">
+  Set up [suppliers](/enterprise/pages/stock/suppliers), [units of measure](/enterprise/pages/stock/unit-of-measure), and [reason codes](/enterprise/pages/stock/reason-codes).
+</Step>
 
-- **Unit of Measure**: Configure units of measure (kg, liters, units, etc.) for stock items
-- **Supplier**: Manage supplier information and details
-- **Order Prefix**: Configure order prefix codes for organizing stock orders
-- **Reason Codes**: Manage stock reason codes for categorizing stock movements and adjustments
-- **Product Price History**: View historical product price changes
-- **Count Sheet**: Manage stock count sheets used during stock takes
-- **Count Sheet Group**: Organize count sheets into groups for easier management
-- **Par Level**: Configure par levels (target stock levels) for stock items
-- **Product Waste**: Track and manage product waste with reasons and quantities
-- **Product Depletion Group**: Configure product depletion groups for tracking ingredient usage
-- **Product Requisition Group**: Configure product requisition groups for organizing requisitions
-- **Product Insight**: View product insights and analytics related to stock
-- **Stock Validation**: Validate stock data and identify discrepancies
+<Step title="Set up count sheets">
+  Create [count sheet groups](/enterprise/pages/stock/count-sheet-groups) and [count sheets](/enterprise/pages/stock/count-sheets) to organize products for counting.
+</Step>
 
-### Stock Take
+<Step title="Configure products">
+  Assign stock settings to products including supplier configuration, depletion rules, and count sheet groups.
+</Step>
 
-Tools for performing stock counts and verification:
+<Step title="Create stock take periods">
+  Set up [stock take periods](/enterprise/pages/stock/stock-take-periods) and assign them to outlets.
+</Step>
 
-- **Stock Take**: Perform stock counts and enter counted quantities
-- **Stock Take Period**: Configure stock take periods for scheduling regular counts
-- **Stock Take Period Assignment**: Assign stock take periods to specific outlets
-- **Bulk Period Assignment**: Bulk assign stock take periods to multiple outlets at once
-- **Stock Verification**: Verify stock counts and reconcile discrepancies
-- **Stock History**: View stock history and historical stock levels
+<Step title="Start managing stock">
+  Use [orders](/enterprise/pages/stock/orders), [deliveries](/enterprise/pages/stock/deliveries), [transfers](/enterprise/pages/stock/transfers), and the [stock dashboard](/enterprise/pages/stock/stock-dashboard) to manage your inventory.
+</Step>
+</Steps>
 
-### Stock Dashboard
+## Monitoring
 
-View a real-time stock dashboard with key metrics, including:
-- Current stock levels
-- Low stock alerts
-- Recent movements
-- Stock value
-- Performance indicators
+<CardGroup cols={2}>
+<Card title="Stock Dashboard" icon="gauge-high" href="/enterprise/pages/stock/stock-dashboard">
+  Visual overview of stock status across all outlets with par level alerts.
+</Card>
 
-### Stock Movements
+<Card title="Stock Alerts" icon="bell" href="/enterprise/pages/stock/stock-alerts">
+  Real-time monitoring of pending stock verification, close, and requisition events.
+</Card>
 
-Manage all types of stock movements:
+<Card title="Terminal Stock" icon="cash-register" href="/enterprise/pages/stock/terminal-stock">
+  How PoS terminals manage and control stock with K-Stock functions.
+</Card>
+</CardGroup>
 
-### Orders
+## Stock Administration
 
-- **Orders**: Create and manage stock orders to suppliers
-- **Order Status**: View order status and track order progress
+Configure the foundational settings for your stock system.
 
-### Deliveries
+<CardGroup cols={2}>
+<Card title="Suppliers" icon="truck" href="/enterprise/pages/stock/suppliers">
+  Create and manage supplier master data for ordering.
+</Card>
 
-- **Deliveries**: Record and manage stock deliveries from suppliers
-- **Delivery Report**: View delivery reports and history
+<Card title="Unit of Measure" icon="ruler" href="/enterprise/pages/stock/unit-of-measure">
+  Define measurement units for products and stock movements.
+</Card>
 
-### Return
+<Card title="Reason Codes" icon="tag" href="/enterprise/pages/stock/reason-codes">
+  Categorize stock adjustments with reason codes.
+</Card>
 
-- **Returns**: Process stock returns to suppliers
-- **Return Report**: View return reports and history
+<Card title="Count Sheets" icon="file-lines" href="/enterprise/pages/stock/count-sheets">
+  Templates that organize products for stock takes.
+</Card>
 
-### Transfer
+<Card title="Count Sheet Groups" icon="layer-group" href="/enterprise/pages/stock/count-sheet-groups">
+  Group products for counting and filtering.
+</Card>
 
-- **Transfer**: Transfer stock between locations, outlets, or preparation points
-- **Transfer Template**: Create reusable transfer templates for common transfers
-- **Bulk Transfer**: Perform bulk stock transfers for multiple items at once
-- **Replenish Stock**: Replenish stock at locations from central inventory
-- **Withdraw Stock**: Withdraw stock from locations
-- **Transfer Report**: View transfer reports and history
+<Card title="Order Prefix" icon="hashtag" href="/enterprise/pages/stock/order-prefix">
+  Customize stock order number formatting per outlet.
+</Card>
 
-### Adjustments
+<Card title="Par Levels" icon="chart-line" href="/enterprise/pages/stock/par-levels">
+  Define minimum, target, and maximum stock quantities.
+</Card>
 
-- **Adjustment**: Make stock adjustments to correct inventory discrepancies
-- **Adjustment Report**: View adjustment reports and history
+<Card title="Depletion Rules" icon="chart-pie" href="/enterprise/pages/stock/depletion-rules">
+  Configure how stock is reduced when products are sold.
+</Card>
 
-### Requisition
+<Card title="Depletion Groups" icon="layer-group" href="/enterprise/pages/stock/depletion-groups">
+  Route depletion to different outlets based on product.
+</Card>
 
-- **Requisition**: Create stock requisitions to request stock from other locations
-- **Outlet to Outlet Requisition**: Create requisitions between outlets
-- **Requisition Report**: View requisition reports and fulfillment status
+<Card title="Requisition Groups" icon="sitemap" href="/enterprise/pages/stock/requisition-groups">
+  Configure custom sourcing rules for stock requisitions.
+</Card>
+
+<Card title="Stock Validator" icon="check-double" href="/enterprise/pages/stock/stock-validator">
+  Check that your product stock configuration is complete.
+</Card>
+</CardGroup>
+
+## Stock Movements
+
+Manage all types of stock movements including orders, deliveries, transfers, returns, and adjustments.
+
+<CardGroup cols={2}>
+<Card title="Stock Orders" icon="shopping-cart" href="/enterprise/pages/stock/orders">
+  Create purchase orders from suppliers.
+</Card>
+
+<Card title="Stock Deliveries" icon="truck-ramp-box" href="/enterprise/pages/stock/deliveries">
+  Record receipt of goods from suppliers.
+</Card>
+
+<Card title="Stock Transfers" icon="arrows-left-right" href="/enterprise/pages/stock/transfers">
+  Move stock between outlets.
+</Card>
+
+<Card title="Stock Returns" icon="rotate-left" href="/enterprise/pages/stock/returns">
+  Return unwanted stock to suppliers.
+</Card>
+
+<Card title="Stock Adjustments" icon="sliders" href="/enterprise/pages/stock/adjustments">
+  Record changes to inventory outside normal movements.
+</Card>
+
+<Card title="Bulk Transfers" icon="boxes-stacked" href="/enterprise/pages/stock/bulk-transfers">
+  Replenish and withdraw stock automatically based on par levels.
+</Card>
+
+<Card title="Requisitions" icon="clipboard-list" href="/enterprise/pages/stock/requisitions">
+  Create requisitions from the back office.
+</Card>
+</CardGroup>
+
+## Stock Take
+
+Perform stock counts and verification across your outlets.
+
+<CardGroup cols={2}>
+<Card title="Stock Take" icon="clipboard-check" href="/enterprise/pages/stock/stock-take">
+  Perform stock counts and review figures.
+</Card>
+
+<Card title="Stock Take Periods" icon="calendar" href="/enterprise/pages/stock/stock-take-periods">
+  Create periods and assign them to outlets.
+</Card>
+
+<Card title="Stock Verification" icon="magnifying-glass" href="/enterprise/pages/stock/stock-verification">
+  Quick spot counts to verify inventory levels.
+</Card>
+</CardGroup>
+
+## Mobile Stock Management
+
+<CardGroup cols={2}>
+<Card title="Stock Scan App" icon="barcode" href="/enterprise/pages/stock/stock-scan-app">
+  Android application for barcode-based stock operations on Zebra TC27 scanners.
+</Card>
+</CardGroup>
 
 ## Related Documentation
 
@@ -101,7 +184,7 @@ Manage all types of stock movements:
   Return to the navigation overview.
 </Card>
 
-<Card title="Stock Management" icon="boxes" href="/enterprise/features/stock-management">
-  Detailed guide to stock management features and workflows.
+<Card title="Products" icon="box" href="/enterprise/pages/management/products">
+  Configure products with stock settings.
 </Card>
 </CardGroup>

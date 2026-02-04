@@ -1,0 +1,305 @@
+---
+title: "Terminal configuration"
+description: "Field reference for terminal configuration organized by terminal type and tab"
+---
+
+## Overview
+
+When you **create or edit a terminal** (from **Configuration > Terminal > Hierarchy**), the form shows tabs based on the selected **Terminal type**. This reference organizes fields exactly as they appear in the portal: by terminal type, then by tab.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Terminal Configuration | Hierarchy | Configuration (Terminal) |
+
+**Terminal (Operator POS)** is the main reference with all common tabs fully documented (Configuration, Options, Printing, Payment options, Account options, Fiscalisation, Company, Misc options). Other terminal types only document tabs and fields specific to them.
+
+**Quick navigation:**
+- [Terminal (Operator POS)](#terminal-operator-pos)
+- [Preparation Point](#preparation-point)
+- [Kitchen Management Screen (KMS)](#kitchen-management-screen-kms)
+- [Vending Machine](#vending-machine)
+- [Self-Service Kiosk](#self-service-kiosk)
+- [Customer Status Screen](#customer-status-screen)
+- [Self-Checkout (SCO)](#self-checkout-sco)
+- [Pay at Table (Sales Ordering Restaurant)](#pay-at-table-sales-ordering-restaurant)
+
+---
+
+## Terminal (Operator POS)
+
+Standard till/POS terminal for staff to take orders and process payments.
+
+### Configuration tab
+
+| Field | What it does |
+|-------|----------------|
+| **Name** | Display name of the terminal (e.g. "Till 1", "Till Main"). Max 50 characters. Required. |
+| **Outlet** | The outlet this terminal belongs to. The outlet's Outlet Sessions define which layout and price band the terminal uses. Required. |
+| **Terminal type** | Set to **Terminal** for operator POS. |
+| **Hardware ID** | Hardware identifier for device registration/linking. Optional. |
+| **Time zone** | Time zone for the terminal (e.g. "Europe/London"). Affects displayed times and session behavior. |
+| **Reference** | Optional reference (e.g. asset tag, location code). |
+| **Background image** | Resource from **Configuration > Management > Resources** used as till screen background. Optional. |
+| **Sales view type** | Controls sales view layout. **Options:** **Bar** (bar-style), **Tables** (table-based). |
+| **Operation type** | How the terminal operates. **Options:** **Pos** (standard till), **Customer Screen Portrait**, **Customer Screen Landscape**, **Stock only**. |
+| **Closed order timeout** | Minutes (0–60) before an open order is automatically closed. Default 0. |
+| **Idle timeout** | Minutes (0–300) before terminal is considered idle. Default 0. |
+| **Idle close timeout** | Minutes (0–60) to close the idle state (lock or return to login). Default 0. |
+| **Order consolidation type** | How orders consolidate when sent to kitchen. **Options:** **Automatic**, **None**. |
+| **Preparation point** | When set, this terminal **sends** orders to that preparation point. Select from preparation points configured under the outlet. Optional. |
+| **Linked terminal** | ID of another terminal this one links to (e.g. customer display). Optional. |
+| **Linked terminal session** | Session ID of linked terminal when sessions are shared. Optional. |
+| **Order terminal** | Master terminal ID for pay-at-table orders. Optional. |
+| **Receipt** | Receipt template from **Configuration > Management > Receipts**. Optional. |
+| **Cash drawer sensor** | Enable if terminal has cash drawer sensor. |
+| **Disable split print** | Enable to disable split printing (one receipt per transaction). |
+| **Email receipt** | Enable to offer email receipts. |
+| **Payment mode** | How payment is handled. **Options:** **EFT** (integrated), **Standalone EFT**, **Cost Centre**. Required if taking payments. |
+| **Checklist** | Checklist from **Configuration > Management > Checklist** shown at session open. Optional. |
+| **Pay at Table** | Enable for Pay at Table support. |
+| **Pay at Table tender** | Tender used for pay-at-table payments. Required if Pay at Table enabled. |
+| **Pay at Table print receipt** | Enable to print receipt when pay-at-table payment completes. |
+| **Member select type** | Member selection method. **Options:** **None**, **Member List**, **Token Entry**, **Member Pin**. |
+| **Price band override** | Override outlet session price band. Select from **Configuration > Management > Price Bands**. Optional. |
+| **Is Agresso** | Enable Agresso financial system integration. |
+
+### Options tab
+
+| Field | What it does |
+|-------|----------------|
+| **Order enter name** | Enable to allow operator to enter order name (for collection orders). |
+| **Enter covers** | Enable to allow operator to enter number of covers (for table service). |
+| **Cash float entry** | Enable to allow operator to enter cash float at session open. |
+| **Deposit return scheme** | Enable deposit return scheme (e.g. bottle returns). |
+| **Invoice accept** | Enable to accept invoice payments. |
+| **Ordering server** | Enable if terminal receives orders from pay-at-table or kiosks. |
+| **Messaging** | Enable to receive messages from **Configuration > Management > Messaging > Send Message to POS**. |
+
+### Printing tab
+
+| Field | What it does |
+|-------|----------------|
+| **Printer type** | Receipt printer driver. **Options:** **Aures** (no model required), **Epson** (requires model). |
+| **Printer model** | Epson printer model. **Options:** **None**, **TM_M10**, **TM_M30**, **TM_M30II**, **TM_M30III**, **TM_P20**, **TM_P60**, **TM_P60II**, **TM_P80**, **TM_T20**, **TM_T60**, **TM_T70**, **TM_T81**, **TM_T82**, **TM_T83**, **TM_T88**, **TM_T90**, **TM_T90KP**, **TM_U220**, **TM_U330**, **TM_L90**, **TM_H6000**. Leave as None for Aures. |
+| **Printer comms** | Transport method. **Options:** **USB**, **IP** (network). |
+| **Printer name** | Name of the printer (e.g. "Local Receipt Printer"). |
+| **IP Address** | IP address when Printer comms is IP. |
+| **Kitchen print type** | Kitchen printing type. **Options:** **Default**, **Unsorted**. |
+| **Collection receipt font** | Font size for collection receipt. **Options:** **Default** (0), **Large** (1). |
+| **Collection receipt hide QR** | Enable to hide QR code on collection receipts. |
+| **Use printer cashdrawer** | Enable if cash drawer connects via printer. Cannot use with serial port option. |
+| **Kitchen receipt font** | Font size for kitchen receipts. **Options:** **Default** (0), **Large** (1). |
+| **Print Z report** | Enable to print Z report at end of day. Default enabled. |
+| **Print terminal** | Another terminal to route print jobs to. Optional. |
+| **Kitchen printers** | Up to 6 kitchen printers. Each has: **Name**, **Type** (None/Epson), **Model** (None/TM_U220/TM_T70), **Transport** (None/IP), **IP Address**, **Courses**, **Product Groups**. |
+
+### Payment options tab
+
+Configure payment provider integration. Each provider requires specific credentials (API keys, merchant IDs, terminal IDs, secrets).
+
+**Supported providers:**
+- Global Payments, BMS, Sixpay, Worldpay Total, Verifone, Verifone Direct, Sixpay MPD, Worldline, Payworks, Payment Express, Worldpay (legacy), Verifone Hospitality, Bank of Ireland, Elavon, Worldpay PAX, PAX 3C, Linkly, Freedompay, Clover Mini/Flex/REST Pay, Nepting PAX, Nepting Q25, PAX Positive, Swedbank, Optomany, Barclaycard Smartpay, Adyen, Pay by Bank, JudoPay
+
+Most providers support **Receipt type** options: **None**, **All**, **Merchant only**, **Customer only**.
+
+### Account options tab
+
+Configure third-party member, loyalty, account, and PMS integrations.
+
+| Integration | Fields |
+|------------|---------|
+| **Fortress (FGB)** | Username, Password, URL, Post transaction (enable real-time), Member identification (enable), E-Cash payments (enable) |
+| **YoYo Wallet** | Client ID, API Key, Server (URL), Product (for YoYo discounts) |
+| **Savvy** | Team ID, Merchant ID, Server address, Password, Subscription key, API version |
+| **PMS (Hetras)** | Username, Password, Supplier code, Component code, House account, Transaction prefix |
+| **Dynamify** | Username, Password |
+| **Teamcard** | Username, Password, Originator ID, Department ID |
+| **Pronto** | API Key, Extended API Key, Food (product groups), Drink (product groups), Alcohol (product groups), Retail (product groups) |
+| **MyOL** | Username, Password |
+| **Eagle Eye** | Enable (checkbox) |
+| **Kappture API** | Enable (checkbox), Function (function type) |
+
+### Fiscalisation tab
+
+Configure tax compliance for Portugal, Sweden, or France. Fields shown depend on country selected. Once saved, country cannot be changed.
+
+**Portugal:** Country, Subscription ID, Legal Entity ID, Company NIF, Business Unit ID, Workstation ID, Device ID, Cup refund product. Optional Cloud API section: URL, Login ID, Access Token.
+
+**Sweden:** Country, Control Unit Identifier, Username, Password, Name (cash register), Seller ID, Application Package.
+
+**France:** Country, NF525 Certificate Number, SIRET, SIREN, NAF, APE.
+
+### Company tab
+
+Optional fiscal company details printed on receipts: Name, VAT, Address Line 1/2/3, City, Postcode, Country.
+
+### Misc options tab
+
+Contains multiple sub-tabs: QSR, NFC/Mifare, Amazon JWO, Wanzl, Weighing Scales, HID Card Profiles.
+
+| Field | What it does |
+|-------|----------------|
+| **QSR server** | Kitchen server URL for QSR ordering integration. |
+| **NFC mode** | NFC reader mode. **Options:** **Off** (0), **ID/CSN**, **NDEF Type-4 tag emulation**, **Mifare Classic block parser**. |
+| **Key A** | Mifare Classic key A (hex string). Required when NFC mode is Mifare Classic. |
+| **Sector** | Mifare Classic sector number to read from. |
+| **Block** | Mifare Classic block number within sector. |
+| **Offset** | Byte offset within block to start reading. |
+| **Length** | Number of bytes to read from offset. |
+| **Decode mode** | Mifare decode mode. **Options:** **BCD**, **Big Endian**, **Little Endian**, **ASCII**. |
+| **JWO Session ID** | Just Walk Out session. Select from sessions. |
+| **JWO Store ID** | Just Walk Out store identifier. |
+| **JWO Tender ID success** | Tender for successful JWO transactions. |
+| **JWO Tender ID failed** | Tender for failed JWO transactions. |
+| **Wanzl QR code** | Enable to print Wanzl QR codes on receipts for shopping cart unlocking. |
+| **Weight scales type** | **Options:** **None**, **Bizerba**, **Ohaus**. |
+| **Card profiles** | Custom HID card reader profiles. Each has: Name, Format ID, Bit Count, Data Length, Data Start, Fac Length, Fac Start. |
+
+---
+
+## Preparation Point
+
+Display-only terminal showing orders at a preparation point (cannot update order status). Has only the Configuration tab.
+
+### Configuration tab
+
+**Preparation point:** The preparation point whose orders this terminal **displays** (display-only; cannot update status). This terminal cannot mark orders as started or complete.
+
+---
+
+## Kitchen Management Screen (KMS)
+
+Displays and manages orders at a preparation point (only terminal type that can update order status). Has Configuration, KMS, and Printing tabs.
+
+### Configuration tab
+
+**Preparation point:** The preparation point whose orders this KMS **displays and manages**. Only KMS can mark orders as started, done, etc.
+
+### KMS tab
+
+| Field | What it does |
+|-------|----------------|
+| **Future orders delay minutes** | Minutes (1–720) before future orders appear. Orders with target time further ahead stay hidden. Default 15. |
+| **Order target warning amber** | Minutes (0–60) before target time when order turns amber. Default 1. |
+| **Order target warning red** | Minutes (0–60) before target time when order turns red. Default 3. |
+| **Product groups** | Filter orders by product groups. Select from **Configuration > Management > Product Groups**. Leave unset to show all orders. |
+| **Display type** | **Course** (2, course-based layout), **Legacy** (1, legacy layout). |
+| **Order button location** | **Top** (1, default), **Bottom** (2). |
+
+---
+
+## Vending Machine
+
+Vending machine terminal with automatic or manual session control. Has Configuration and Vending tabs.
+
+### Vending tab
+
+| Field | What it does |
+|-------|----------------|
+| **Tender** | Tender for vending transactions. Select from **Configuration > Management > Tenders**. |
+| **Default tax rate** | Default tax rate (0.00–100.00%). Used when product has no tax category. Expressed as percentage (e.g. 20.00 for 20% VAT). |
+| **Begin session type** | **None** (0), **Account Balance** (1 - session starts with balance check), **Fake Balance** (2 - test balance). |
+| **Default product** | Default product(s) to add when no product scanned. Select from **Configuration > Management > Products**. Multi-select. |
+
+---
+
+## Self-Service Kiosk
+
+Customer-facing kiosk for self-ordering. Has Configuration, Printing, Payment options, Account options, Fiscalisation, Company, Misc options, and Designer tabs.
+
+### Configuration tab
+
+**Kiosk host type:** **Kiosk** (0, full ordering), **Self Checkout** (1, self-checkout style). Only visible for Self-Service Kiosk type.
+
+### Designer tab
+
+| Field | What it does |
+|-------|----------------|
+| **Background colour** | Hex colour code for kiosk background (e.g. #000000). |
+| **Text colour option** | **White Text** (0), **Black Text** (1). |
+| **Logo** | Logo resource from **Configuration > Management > Resources** (type Logo). |
+| **Background resource** | Background resource (image/video) from **Configuration > Management > Resources**. |
+| **Home transition type** | **Zoom** (1), **Scroll** (2). |
+| **Home transition delay** | Seconds before returning to home screen after inactivity. Default 300. |
+| **Sales transition delay** | Seconds before transitioning from sales screen. Default 300. |
+
+---
+
+## Customer Status Screen
+
+Displays order numbers and status for customers (linked to KMS). Has Configuration and CSS tabs.
+
+### Configuration tab
+
+**Linked terminal:** Associate CSS with KMS to show order numbers and status from that KMS. This is the key field for CSS terminals.
+
+### CSS tab
+
+| Field | What it does |
+|-------|----------------|
+| **Display mode** | **Grid** (1, order numbers in grid), **List** (2, orders in vertical list). |
+| **Order complete timeout** | Minutes before completed orders are removed. Default 3. |
+| **Open order timeout** | Minutes before open orders flagged as overdue. Default 3. |
+| **Customer status host type** | **Order status legend** (landscape), **Order status column** (portrait). Set automatically. |
+| **Logo** | Logo resource from **Configuration > Management > Resources**. |
+| **Background colour** | Hex colour code for CSS background. |
+| **Text colour option** | **White Text** (0), **Black Text** (1). |
+
+---
+
+## Self-Checkout (SCO)
+
+Self-checkout terminal with assistance features. Has Configuration, Printing, Payment options, Account options, Misc options, SCO, and Designer tabs.
+
+### SCO tab
+
+| Field | What it does |
+|-------|----------------|
+| **Member identification type** | **Kappture** (0), **External** (1), **None** (2). |
+| **Bag product** | Product added when customer uses a bag. Select from **Configuration > Management > Products**. |
+| **Assistance resource** | Resource shown when customer requests assistance. Select from **Configuration > Management > Resources**. |
+| **Order complete resource** | Resource shown when order complete. Select from **Configuration > Management > Resources**. |
+| **Assistance light type** | **None** (0), **Boxtec** (1). |
+| **Member card prompt** | Prompt text (e.g. "Have you scanned your membership card?"). |
+| **Show account balance** | Enable to display member account balance after identification. |
+
+
+---
+
+## Pay at Table (Sales Ordering Restaurant)
+
+Customer-facing pay-at-table terminal. Has Configuration, Payment options, Fiscalisation, Company, and Designer tabs.
+
+### Designer tab
+
+| Field | What it does |
+|-------|----------------|
+| **Logo** | Logo resource from **Configuration > Management > Resources**. |
+| **Background colour** | Hex colour code for pay-at-table screen background. |
+| **Text colour option** | **White Text** (0), **Black Text** (1). |
+| **Home transition type** | **Zoom** (1), **Scroll** (2). |
+| **Home transition delay** | Seconds before returning to home screen. Default 300. |
+| **Assistance requested image** | Resource shown when customer requests assistance. Select from **Configuration > Management > Resources**. |
+| **Payment image** | Resource shown during EFT payment. Select from **Configuration > Management > Resources**. |
+| **Cost centre image** | Resource shown for cost centre payment. Select from **Configuration > Management > Resources**. |
+
+---
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Terminal overview" icon="desktop" href="/enterprise/pages/terminal/overview">
+    Terminal types and how they work together.
+  </Card>
+  <Card title="Management" icon="diagram-project" href="/enterprise/pages/management/overview">
+    Layouts, sessions, receipts, operators, tenders, checklist.
+  </Card>
+  <Card title="Pay at Table" icon="qrcode" href="/enterprise/pages/management/pay-at-table">
+    Pay at Table setup and QR config.
+  </Card>
+  <Card title="Management" icon="diagram-project" href="/enterprise/pages/management/overview">
+    Preparation points and outlet configuration.
+  </Card>
+</CardGroup>

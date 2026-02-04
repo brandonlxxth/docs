@@ -1,0 +1,256 @@
+---
+title: "Ordering"
+description: "Browse products, build orders, and checkout in the mobile app"
+---
+
+## Overview
+
+The mobile app allows members to browse products, add items to cart, select options and modifiers, choose delivery/collection times, and complete checkout with payment.
+
+Products and menus displayed in the app are configured in **Configuration > Management > Products** and **Menus** (or **Self-Service Menu** for mobile ordering).
+
+## Browse products
+
+Members can browse products by:
+- **Menu categories** - Organized groups of products (e.g. "Hot Drinks", "Sandwiches")
+- **Search** - Search by product name
+- **Scan** - Scan product barcodes for Scan & Go
+
+### Product display
+
+Each product shows:
+- Product name
+- Description
+- Price (based on active price band)
+- Image (if configured)
+- Allergen indicators
+- Availability status
+
+Products are filtered based on:
+- Active session times (**Configuration > Management > Sessions**)
+- Price band (**Configuration > Management > Price Bands**)
+- Outlet availability
+- Product restrictions
+
+## Add to cart
+
+When adding a product to cart, members can:
+
+1. **Select modifiers** - Choose required or optional modifiers (e.g. size, extras)
+2. **Adjust quantity** - Increase or decrease quantity
+3. **Add special instructions** - Text notes for preparation
+4. **View price** - See total including modifiers
+
+Modifiers are configured in **Configuration > Management > Products** under the product's popup list options.
+
+## Popup lists
+
+Products can have popup lists for customization:
+- **Single choice** - Select one option (e.g. size: Small, Medium, Large)
+- **Multiple choice** - Select multiple options (e.g. toppings)
+- **Required** - Must select before adding to cart
+- **Optional** - Can be skipped
+
+Popup lists are created in **Configuration > Management > Menus** and linked to products.
+
+## Cart
+
+The cart shows:
+- All added products with modifiers
+- Quantities
+- Line totals
+- Cart subtotal
+- Applied vouchers or discounts
+- Total amount
+
+Members can:
+- Edit quantities
+- Remove items
+- Add vouchers
+- View allergen information
+- Proceed to checkout
+
+## Checkout
+
+Checkout includes several steps depending on outlet configuration:
+
+### 1. Collection/delivery method
+
+Select how to receive the order:
+- **Collection** - Pick up from counter or prep point
+- **Table service** - Delivered to table
+- **Delivery** - Delivered to address (if enabled)
+
+### 2. Time slot selection
+
+If the outlet uses time slots (**Configuration > Management > Sessions**):
+- View available time slots
+- Select preferred collection/delivery time
+- See estimated preparation time
+
+Time slots are configured per session and control when orders can be placed for future collection.
+
+### 3. Table selection
+
+If ordering for table service:
+- Select table number from floor plan
+- Table layout is configured in **Configuration > Management > Table Layout**
+
+### 4. Payment method
+
+Choose payment method:
+- **Saved card** - Credit/debit card saved to account
+- **New card** - Enter new card details (with option to save)
+- **Account credit** - Use account balance
+- **Cost centre** - Enter cost centre code
+- **Platform pay** - Apple Pay or Google Pay
+
+Payment options depend on:
+- Outlet terminal configuration (**Configuration > Terminal** - Payment options tab)
+- Account types enabled (**Configuration > Member > Account**)
+- Cost centre setup (**Configuration > Member > Cost Centre**)
+
+### 5. Apply vouchers
+
+Apply vouchers before payment:
+- Select from available vouchers
+- Enter voucher code
+- View discount applied
+
+Vouchers are configured in **Configuration > Incentives > Voucher**.
+
+### 6. Review and confirm
+
+Final review shows:
+- Order items and total
+- Collection/delivery method
+- Time slot (if selected)
+- Table (if selected)
+- Payment method
+- Applied vouchers
+
+### 7. Submit order
+
+After submitting:
+- Payment is processed
+- Order is sent to preparation point
+- Confirmation screen displays order number
+- Member receives order status updates
+
+## Scan & Go
+
+Scan & Go is a quick ordering mode that allows members to scan product barcodes to add items directly to their cart without browsing menus.
+
+### How Scan & Go works
+
+When ordering from a preparation point with Scan & Go enabled:
+
+1. **Access scanner** - Tap the scan button (scanner icon) that appears as a floating action button in the order screen, or use the Scan tab
+2. **Scan barcode** - Point the camera at a product barcode
+3. **Instant add** - Product is automatically added to cart with haptic feedback
+4. **Repeat** - Continue scanning multiple products
+5. **Review cart** - View all scanned items in cart
+6. **Checkout** - Proceed to checkout when finished
+
+### When to use Scan & Go
+
+Scan & Go is ideal for:
+- Grab-and-go retail environments
+- Convenience stores
+- Quick service scenarios where customers pick products themselves
+- Self-service markets
+
+### Configuration in Management Portal
+
+Scan & Go is enabled per preparation point in **Configuration > Sites > Preparation Points**:
+
+1. Navigate to **Configuration > Sites**
+2. Select the outlet
+3. Click **Preparation Points** tab
+4. Edit or create a preparation point
+5. Enable **Is Scan And Go** checkbox
+6. Save changes
+
+When enabled, the mobile app displays a scanner button when ordering from that preparation point.
+
+### Product requirements
+
+For Scan & Go to work:
+- Products must have barcodes configured in **Configuration > Management > Products**
+- Barcode field must contain a valid barcode value
+- Products must be available in the preparation point's menu
+- Products must be active and in stock
+
+### Scan & Go vs regular ordering
+
+| Feature | Regular ordering | Scan & Go |
+|---------|-----------------|-----------|
+| Product discovery | Browse menus and categories | Scan physical product barcodes |
+| Speed | Browse, select, add to cart | Instant add via barcode scan |
+| Use case | Digital-first ordering | Physical product scanning |
+| Camera required | No | Yes |
+
+## Order tracking
+
+After placing an order, members can:
+- View order status in Home tab
+- Track preparation at prep points
+- Receive push notifications for status updates
+
+Order status updates include:
+- **Pending** - Order received, not yet started
+- **In progress** - Being prepared
+- **Ready** - Ready for collection
+- **Complete** - Order fulfilled
+
+## Preparation points
+
+The Preparation Points tab shows real-time order progress:
+- Orders grouped by preparation point
+- Current status of each order
+- Order details
+
+Preparation points are configured in **Configuration > Sites** (under outlets) and displayed on KMS terminals.
+
+## Reorder
+
+Members can reorder previous orders:
+1. Go to **Settings > Order History**
+2. Select past order
+3. Tap "Reorder"
+4. All items added to cart
+5. Modify if needed and checkout
+
+## Configuration in Management Portal
+
+| App feature | Management Portal configuration |
+|-------------|--------------------------------|
+| Products | **Configuration > Management > Products** |
+| Menus | **Configuration > Management > Menus** or **Self-Service Menu** |
+| Prices | **Configuration > Management > Price Bands**, **Product Prices** |
+| Sessions (time slots) | **Configuration > Management > Sessions** |
+| Table layout | **Configuration > Management > Table Layout** |
+| Preparation points | **Configuration > Sites** (preparation points) |
+| Popup lists (modifiers) | **Configuration > Management > Menus** (popup lists) |
+| Allergens | **Configuration > Management > Allergens** |
+| Payment options | **Configuration > Terminal** (Payment options tab) |
+| Account types | **Configuration > Member > Account** |
+| Cost centres | **Configuration > Member > Cost Centre** |
+| Vouchers | **Configuration > Incentives > Voucher** |
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Products" icon="utensils" href="/enterprise/pages/management/products">
+    Configure products and pricing.
+  </Card>
+  <Card title="Menus" icon="book-open" href="/enterprise/pages/management/menus">
+    Build menus and categories.
+  </Card>
+  <Card title="Sessions" icon="clock" href="/enterprise/pages/management/sessions">
+    Configure time slots and availability.
+  </Card>
+  <Card title="Vouchers" icon="ticket" href="/enterprise/pages/incentives/voucher">
+    Set up vouchers and discounts.
+  </Card>
+</CardGroup>

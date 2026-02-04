@@ -1,0 +1,159 @@
+---
+title: "Unit of Measure"
+description: "Define measurement units for products, stock movements, and supplier configurations"
+---
+
+## Overview
+
+Units of Measure (UoMs) define how products are measured throughout the system for stock movements and supplier configurations. They enable accurate tracking of quantities when products are purchased, stored, and sold in different measurement units.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Unit of Measure | Unit of Measure | Stock Control (Stock Administration) |
+| Product UoM Assignment | Product | Configuration (Management) |
+
+## Accessing Unit of Measure
+
+Navigate to **Stock > Stock Administration > Unit of Measure**.
+
+## Understanding Units of Measure
+
+### Primary units
+
+Primary units are base measurement units that serve as the foundation for conversions. Examples include:
+
+- Each
+- Kilogram
+- Gallon
+- Litre
+
+Primary units do not have a base unit or conversion factor, as they are the base measurement themselves.
+
+### Non-primary units
+
+Non-primary units are alternative measurement units that convert to a primary (base) unit. Examples include:
+
+| Non-Primary Unit | Base Unit | Conversion Factor | Meaning |
+|------------------|-----------|-------------------|---------|
+| Case | Each | 12 | 12 x Each = 1 x Case |
+| 500g | Gram | 500 | 500 x Gram = 1 x 500g |
+| 11 gallon Keg | Gallon | 11 | 11 x Gallon = 1 x 11 Gallon Keg |
+| 70cl Bottle | Litre | 0.7 | 0.7 x Litre = 1 x 70cl Bottle |
+
+## Creating a Unit of Measure
+
+<Steps>
+<Step title="Navigate to Unit of Measure">
+  Go to **Stock > Stock Administration > Unit of Measure**.
+</Step>
+
+<Step title="Create new unit">
+  Click the **Create** button.
+</Step>
+
+<Step title="Enter details">
+  Enter a **Name** for the unit (e.g., "Box", "Case", "500g").
+</Step>
+
+<Step title="Configure conversion (for non-primary units)">
+  If creating a non-primary unit:
+  - Select a **Base Unit** from the dropdown (only primary units are available)
+  - Enter a **Conversion Factor** (must be greater than 0)
+  - The system displays a conversion message showing the relationship
+</Step>
+
+<Step title="Save">
+  Click **Save** to create the unit.
+</Step>
+</Steps>
+
+<Note>
+The conversion factor must be a positive number (whole value or decimal). The system validates this when you save.
+</Note>
+
+## Editing a Unit of Measure
+
+1. Navigate to **Stock > Stock Administration > Unit of Measure**
+2. Select the unit from the list
+3. Click **Edit**
+4. Modify the **Name** and **Conversion Factor**
+5. Click **Save**
+
+<Warning>
+The **Base Unit** cannot be changed after creation. This field is disabled when editing to maintain data integrity across existing stock records.
+</Warning>
+
+## Where Units of Measure are used
+
+| Context | Usage |
+|---------|-------|
+| **Products** | Each product has a count unit of measure that defines how stock is tracked. |
+| **Suppliers** | Products can have different units of measure when purchased from different suppliers. |
+| **Stock Movements** | All stock operations (orders, deliveries, transfers, adjustments) use units of measure. |
+| **Stock Reports** | Reports display quantities using the appropriate unit of measure. |
+| **Terminal Stock** | Terminal stock functions display units of measure on the UI. |
+
+## Importing Unit of Measure updates
+
+You can bulk update product unit of measure assignments through **Management > Products > Import > Update Import > Unit of Measure**.
+
+### Import format
+
+The import format is: `[Id,Name]`
+
+<Warning>
+The import file does **not** use headers. Start directly with the data rows.
+</Warning>
+
+**Example CSV (no header):**
+
+```
+1,Each
+2,Box
+3,Case
+```
+
+Where:
+- First column: Product ID
+- Second column: Unit of Measure Name
+
+### Import warnings
+
+When importing unit of measure updates that change a product's base unit, the following data is automatically removed:
+
+- Current depletion rules on the altered product
+- Current supplier configuration on the altered product
+- Current stock on hand data on the altered product
+
+<Warning>
+This action cannot be undone. Ensure you have backups and understand the implications before proceeding with bulk unit of measure updates.
+</Warning>
+
+## Choosing the right unit of measure
+
+The count unit of measure for a product should match how you physically count and track that product in inventory:
+
+| Product Type | Recommended Unit |
+|--------------|------------------|
+| Individual items sold separately | Each |
+| Items sold in boxes (tracked by box) | Box |
+| Bulk ingredients | Kilogram or Litre |
+| Wet stock (kegs, bottles) | Gallon or Litre |
+
+<Tip>
+For wet stock like kegs or bottles, use volumetric measurements (Litre or Gallon). When creating sales products (a pint or a single shot), the depletion rule quantity has a conversion helper showing common measurements.
+</Tip>
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Products" icon="box" href="/enterprise/pages/management/products">
+  Configure products with units of measure.
+</Card>
+
+<Card title="Suppliers" icon="truck" href="/enterprise/pages/stock/suppliers">
+  Configure supplier-specific units of measure.
+</Card>
+</CardGroup>

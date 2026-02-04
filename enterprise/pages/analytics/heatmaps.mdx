@@ -1,0 +1,309 @@
+---
+title: "Heatmaps"
+description: "Visual heatmap displays for analysing sales patterns across your locations"
+---
+
+## Overview
+
+The **Heatmaps** section under **Analytics > Heatmap** allows you to create visual heatmap displays that overlay sales data on custom images such as floor plans, site maps, or venue layouts. Use heatmaps to visualise revenue and order patterns across your outlets throughout the day.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Heatmaps | Heatmap | Analytics |
+
+---
+
+## How heatmaps work
+
+A heatmap consists of:
+
+1. **A background image** - Upload an image representing your venue, floor plan, or site layout
+2. **Outlet markers** - Position markers on the image to represent each outlet's location
+3. **Sales data overlay** - The system displays revenue or order counts as coloured heat indicators at each marker position
+
+When viewing a heatmap, areas with higher sales activity appear as warmer colours (red/orange), while lower activity areas appear as cooler colours (blue/purple).
+
+---
+
+## Configuration
+
+Navigate to **Analytics > Heatmap > Configuration** to create and manage heatmap configurations.
+
+### Configuration list
+
+The Configuration page displays all configured heatmaps in a dropdown. Select a heatmap to edit it, or click the create button to add a new one.
+
+### Heatmap fields
+
+| Field | Description |
+|-------|-------------|
+| **Name** | Display name for the heatmap. This appears in the heatmap list and when viewing. |
+| **Image** | The background image for the heatmap. Upload a JPG or PNG file (max 1MB). This image serves as the canvas on which outlet markers are placed. |
+
+### Creating a heatmap
+
+<Steps>
+<Step title="Navigate to Configuration">
+  Go to **Analytics > Heatmap > Configuration** in the main navigation.
+</Step>
+
+<Step title="Click Create">
+  Click the create button in the toolbar.
+</Step>
+
+<Step title="Enter name">
+  Enter a descriptive name for the heatmap (e.g., "Main Venue Floor Plan", "Stadium Layout").
+</Step>
+
+<Step title="Upload image">
+  Drag and drop an image file or click to browse. The image should be a JPG or PNG file, maximum 1MB. Use an image that represents the physical layout of your venue or site.
+</Step>
+
+<Step title="Save">
+  Click the save button to create the heatmap. After saving, you can access the Designer to place outlet markers.
+</Step>
+</Steps>
+
+<Note>
+For best results, use a clear, high-contrast image with recognisable landmarks that help identify outlet locations.
+</Note>
+
+### Editing a heatmap
+
+Select a heatmap from the dropdown and modify the name or upload a new image. Click save to apply changes.
+
+### Deleting a heatmap
+
+Open a heatmap for editing and click the delete button in the toolbar.
+
+---
+
+## Designer
+
+The Designer allows you to place outlet markers on your heatmap image. Each marker represents an outlet and displays that outlet's sales data when viewing the heatmap.
+
+Navigate to **Analytics > Heatmap > Configuration**, select a heatmap, and click the **Designer** button (crop icon) in the toolbar.
+
+### Designer interface
+
+The Designer displays:
+
+- **Heatmap image** (left) - Your uploaded image with draggable outlet markers
+- **Selected Outlets** (right) - List of outlets currently placed on the heatmap
+- **Add Outlet** (right) - Dropdown to add new outlets to the heatmap
+
+### Placing outlets
+
+<Steps>
+<Step title="Open the Designer">
+  From the Configuration page, select a heatmap and click the Designer button.
+</Step>
+
+<Step title="Add an outlet">
+  Use the "Add Outlet" dropdown to select an outlet, then click **Add**. A numbered marker appears on the image.
+</Step>
+
+<Step title="Position the marker">
+  Drag the marker to the correct location on the image representing that outlet's physical position.
+</Step>
+
+<Step title="Repeat for other outlets">
+  Add and position markers for all outlets you want to include in the heatmap.
+</Step>
+
+<Step title="Save">
+  Click the save button to store the outlet positions.
+</Step>
+</Steps>
+
+### Designer controls
+
+| Action | Description |
+|--------|-------------|
+| **Add** | Adds the selected outlet to the heatmap at the default position. |
+| **Drag marker** | Click and drag a marker to reposition it on the image. |
+| **Delete marker** | Click the delete icon (trash) on a marker to remove that outlet from the heatmap. |
+| **Hover outlet name** | Hovering over an outlet name in the Selected Outlets list highlights the corresponding marker. |
+| **Click outlet name** | Clicking an outlet name in the list selects and highlights that marker. |
+
+---
+
+## Viewing heatmaps
+
+Navigate to **Analytics > Heatmap > Heatmaps** to view your configured heatmaps with sales data overlaid.
+
+### Heatmap list
+
+The Heatmaps page displays all configured heatmaps as cards. Each card shows:
+
+- **Heatmap name**
+- **Preview image**
+- **Outlet count** - Number of outlets configured on this heatmap
+- **View buttons** - Three buttons to view different data types
+
+### View modes
+
+Each heatmap offers three viewing modes:
+
+| Mode | Button | Description |
+|------|--------|-------------|
+| **Revenue Totals** | Eye icon (blue) | Shows total revenue for the selected date as a heatmap overlay. |
+| **Revenue by Interval** | Coins icon (yellow) | Shows revenue broken down by time intervals with a time slider. |
+| **Orders by Interval** | Bars icon (cyan) | Shows order counts broken down by time intervals with a time slider. |
+
+---
+
+## Revenue Totals view
+
+The Revenue Totals view displays the total revenue for each outlet on the selected date as a heatmap overlay.
+
+### Using Revenue Totals
+
+<Steps>
+<Step title="Open the view">
+  Click the eye icon on a heatmap card, or navigate directly to **Analytics > Heatmap > Heatmaps** and select Revenue Totals.
+</Step>
+
+<Step title="Select a date">
+  Use the date picker to select the date you want to view. The heatmap updates to show that day's data.
+</Step>
+
+<Step title="Interpret the display">
+  The heatmap overlay shows colour intensity based on revenue. Higher revenue outlets appear as warmer colours (towards red), lower revenue as cooler colours (towards blue/purple).
+</Step>
+</Steps>
+
+### Revenue Totals fields
+
+| Field | Description |
+|-------|-------------|
+| **Date** | The date to display data for. Select from the date picker. |
+| **Heatmap overlay** | Visual heat overlay on the image showing revenue intensity at each outlet marker. |
+
+---
+
+## Revenue by Interval view
+
+The Revenue by Interval view breaks down revenue by time intervals throughout the day, allowing you to see how sales patterns change over time.
+
+### Using Revenue by Interval
+
+<Steps>
+<Step title="Open the view">
+  Click the coins icon on a heatmap card.
+</Step>
+
+<Step title="Select a date">
+  Use the date picker to select the date you want to analyse.
+</Step>
+
+<Step title="Choose an interval">
+  Select the time interval: **5 minutes**, **10 minutes**, or **15 minutes**. Smaller intervals provide more granular data but more time periods to review.
+</Step>
+
+<Step title="Use the time slider">
+  Drag the slider to move through time periods. The heatmap and summary table update to show data for that specific interval.
+</Step>
+
+<Step title="Play animation">
+  Click the **Play** button to automatically animate through all time periods. Click **Stop** to pause.
+</Step>
+</Steps>
+
+### Revenue by Interval fields
+
+| Field | Description |
+|-------|-------------|
+| **Date** | The date to display data for. |
+| **Interval** | Time interval for data aggregation: 5, 10, or 15 minutes. |
+| **Time** | Current time period displayed. Shows as a label (e.g., "14:30"). |
+| **Time slider** | Drag to move through time periods for the selected date. |
+| **Play/Stop** | Buttons to animate through time periods automatically. |
+
+### Summary table
+
+The summary table below the heatmap shows:
+
+| Column | Description |
+|--------|-------------|
+| **Outlet** | Outlet name. Click to expand and see terminal breakdown. |
+| **Value** | Revenue value for this outlet during the current time interval. |
+| **Expand** | Click the plus icon to expand and view individual terminal values within the outlet. |
+
+Rows are colour-coded based on relative performance:
+- **Red** - Highest revenue (95%+ of maximum)
+- **Orange** - High revenue (80-95% of maximum)
+- **Green** - Medium-high revenue (60-80% of maximum)
+- **Blue** - Medium revenue (40-60% of maximum)
+- **Purple** - Lower revenue (below 40% of maximum)
+
+---
+
+## Orders by Interval view
+
+The Orders by Interval view works identically to Revenue by Interval, but displays order counts instead of revenue values.
+
+### Using Orders by Interval
+
+<Steps>
+<Step title="Open the view">
+  Click the bars icon on a heatmap card.
+</Step>
+
+<Step title="Select a date">
+  Use the date picker to select the date you want to analyse.
+</Step>
+
+<Step title="Choose an interval">
+  Select the time interval: **5 minutes**, **10 minutes**, or **15 minutes**.
+</Step>
+
+<Step title="Use the time slider">
+  Drag the slider to move through time periods. The heatmap and summary table update to show order counts for that interval.
+</Step>
+</Steps>
+
+### Orders by Interval fields
+
+| Field | Description |
+|-------|-------------|
+| **Date** | The date to display data for. |
+| **Interval** | Time interval for data aggregation: 5, 10, or 15 minutes. |
+| **Time** | Current time period displayed. |
+| **Time slider** | Drag to move through time periods for the selected date. |
+| **Play/Stop** | Buttons to animate through time periods automatically. |
+
+### Summary table
+
+| Column | Description |
+|--------|-------------|
+| **Outlet** | Outlet name. Click to expand and see terminal breakdown. |
+| **Order** | Order count for this outlet during the current time interval. |
+| **Expand** | Click the plus icon to expand and view individual terminal order counts within the outlet. |
+
+---
+
+## Use cases
+
+Heatmaps are useful for:
+
+- **Identifying busy periods** - See which times of day have the highest activity at each location
+- **Comparing outlet performance** - Visualise which outlets generate the most revenue relative to their position
+- **Staffing decisions** - Use interval data to understand when outlets need more staff coverage
+- **Event analysis** - Review activity patterns during special events or promotions
+- **Layout optimisation** - Identify high-traffic areas and consider adjustments to outlet placement or signage
+
+---
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Analytics Overview" icon="chart-line" href="/enterprise/pages/analytics/overview">
+    Return to the Analytics section overview.
+  </Card>
+  <Card title="Dashboard" icon="gauge" href="/enterprise/pages/analytics/dashboard">
+    Real-time sales metrics and live dashboards.
+  </Card>
+</CardGroup>

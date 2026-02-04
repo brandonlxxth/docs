@@ -1,0 +1,149 @@
+---
+title: "Stock Returns"
+description: "Return unwanted stock back to suppliers"
+---
+
+## Overview
+
+Stock Returns allow you to record products being returned to suppliers. When you create a return, you specify the outlet, supplier, and products being returned. Once saved, the return is automatically authorised and applied to stock levels. The Return Report provides a comprehensive view of all returns.
+
+<Note>
+A return will only reduce current stock levels, not increase them.
+</Note>
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Returns | Return | Stock Control (Stock Movements) |
+| Return Report | Return Report | Stock Control (Stock Movements) |
+
+## Accessing Stock Returns
+
+Navigate to **Stock > Stock Movements > Return > Returns**.
+
+## Creating a Stock Return
+
+<Steps>
+<Step title="Click Create">
+  Click the **Create** button on the Returns page.
+</Step>
+
+<Step title="Select details">
+  In the modal, select:
+  - **Supplier**: The supplier you are returning products to
+  - **Outlet**: The outlet returning the products
+</Step>
+
+<Step title="Create return">
+  Click **Create** to proceed. The return form opens with the selected outlet and supplier.
+</Step>
+</Steps>
+
+## Entering Return Details
+
+| Field | Description |
+|-------|-------------|
+| **Date** | The date for the return (defaults to today). |
+| **Reference** | Optional reference number (max 50 characters). |
+| **Notes** | Additional notes about the return (max 500 characters). |
+
+## Adding Products to Return
+
+1. Click the **Add** button at the bottom of the product table
+2. For each product line:
+   - **Product**: Select the product being returned
+   - **Unit of Measure**: Select the unit of measure
+   - **Quantity**: Enter the quantity being returned
+   - **Unit Price**: Automatically populated from supplier pricing
+   - **Line Total**: Automatically calculated (Quantity × Unit Price)
+3. To remove a product line, click the delete button (trash icon)
+
+<Note>
+The system only shows products that are available for the selected supplier and outlet combination. If no products appear, verify that products are assigned to both the supplier and outlet.
+</Note>
+
+## Saving the Return
+
+1. Add all products to the return
+2. Click **Save**
+3. The return is automatically authorised and applied to stock levels
+4. After saving, you can:
+   - **Print** the return (if you have Return Report permission)
+   - **Email** the return to the supplier
+
+<Warning>
+Returns are automatically authorised when saved, so they cannot be edited after saving. If you need to make changes, create a new return or contact your system administrator.
+</Warning>
+
+## Email Functionality
+
+You can email returns to suppliers:
+
+1. Open an authorised return
+2. Click the **Email** button
+3. In the email modal:
+   - **To**: The primary supplier contact email is pre-filled
+   - **CC**: Select additional email addresses if needed
+   - **Subject**: Pre-filled with "Return"
+   - **Message**: Enter any additional message
+4. Click **Send** to email the return as a PDF attachment
+
+## Return Report
+
+Navigate to **Stock > Stock Movements > Return > Return Report**.
+
+### Filtering returns
+
+| Filter | Description |
+|--------|-------------|
+| **Date Range** | Select a start and end date. |
+| **Outlet** | Filter by specific outlet. |
+| **Supplier** | Filter by specific supplier. |
+| **Created By** | Filter by the user who created the return. |
+| **Authorised By** | Filter by the user who authorised the return. |
+
+### Report columns
+
+| Column | Description |
+|--------|-------------|
+| **Number** | The return number. |
+| **Outlet** | The outlet that created the return. |
+| **Supplier** | The supplier receiving the return. |
+| **Date** | The date of the return. |
+| **Created By** | The user who created the return. |
+| **Authorised By** | The user who authorised the return. |
+| **Total** | The total value of the return. |
+
+## Additional Reports
+
+In **Analytics > Reports**:
+
+- **Stock on Hand**: Includes Returned Qty and Returned Value for the stock take period
+- **Stock Return Summary**: Historical report of products returned per outlet
+
+## Frequently asked questions
+
+**Why don't I see any products when creating a return?**
+
+Products only appear if they are assigned to the selected supplier and available at the selected outlet. Verify that products are properly configured for both.
+
+**What happens to stock levels when I save a return?**
+
+When you save a return, it is automatically authorised and applied to stock. The quantities returned are deducted from the outlet's stock levels immediately.
+
+**Can I return products to multiple suppliers in one return?**
+
+No. Each return can only be for one supplier. Create separate returns for each supplier.
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Suppliers" icon="truck" href="/enterprise/pages/stock/suppliers">
+  Configure suppliers for returns.
+</Card>
+
+<Card title="Stock Adjustments" icon="sliders" href="/enterprise/pages/stock/adjustments">
+  Alternative way to reduce stock levels.
+</Card>
+</CardGroup>

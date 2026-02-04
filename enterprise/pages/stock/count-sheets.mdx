@@ -1,0 +1,123 @@
+---
+title: "Count Sheets"
+description: "Control what stock takers should be able to count"
+---
+
+## Overview
+
+Stock Count Sheets are templates that organise products into logical groups for stock takes. Each sheet references one or more Count Sheet Groups, so only the relevant products are displayed when teams are counting stock. This keeps counting consistent across outlets, areas, and departments.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Count Sheet | Count Sheet | Stock Control (Stock Administration) |
+
+## Accessing Count Sheets
+
+Navigate to **Stock > Stock Administration > Count Sheet**.
+
+## Understanding Count Sheets
+
+| Concept | Description |
+|---------|-------------|
+| **Count Sheet Group** | Products are assigned to these groups on the product Stock Control tab. Groups drive which products appear on a count sheet. |
+| **Usage in Stock Take Periods** | When admins create stock take periods, a count sheet must be set. When a stock take is started, teams will be counting groups determined by the count sheet. |
+
+<Warning>
+Without at least one count sheet configured, new stock take periods cannot be created.
+</Warning>
+
+## Creating a Count Sheet
+
+<Steps>
+<Step title="Navigate to Count Sheets">
+  Go to **Stock > Stock Administration > Count Sheet**.
+</Step>
+
+<Step title="Create new sheet">
+  Click **Create** (or select a sheet and choose **Edit**).
+</Step>
+
+<Step title="Enter name">
+  Enter a clear name (e.g., "Main Bar Sheet", "Kitchen Sheet").
+</Step>
+
+<Step title="Select groups">
+  Under **Count Sheet Group**, tick the groups that should appear on the sheet.
+</Step>
+
+<Step title="Save">
+  Click **Save** to create the count sheet.
+</Step>
+</Steps>
+
+<Note>
+- Editing a sheet immediately affects future stock takes that use it.
+- The usage button (visible when editing) shows where the sheet is in use.
+- Sheets cannot be deleted; create a replacement if you need a different layout.
+</Note>
+
+## Relationship to Stock Takes
+
+Stock takes reference a specific count sheet (**Stock > Stock Take**). The selected sheet defines:
+
+- The product list
+- The printed count sheet
+- The CSV export/import template
+
+Staff can export counts, print the sheet, or import updated counts during the take.
+
+## Product Assignment Workflow
+
+<Steps>
+<Step title="Assign products to groups">
+  Assign each product to a Count Sheet Group in **Product > Create/Edit > Stock tab**.
+</Step>
+
+<Step title="Associate groups with sheets">
+  Associate Count Sheet Groups with a count sheet in the Count Sheet UI.
+</Step>
+
+<Step title="Use in stock takes">
+  During stock takes, selecting the sheet surfaces all products in its groups.
+</Step>
+</Steps>
+
+This separation lets you reuse groups across multiple sheets (e.g., "Beer", "Spirits") while tailoring sheets to different outlets or departments.
+
+## Import support
+
+There is no direct import for count sheets themselves, but you can bulk-assign products to Count Sheet Groups via **Product > Import Update**:
+
+1. Choose **Count Sheet Group** as the update option
+2. Select the target group in the dropdown
+3. Upload a CSV **without headers** in the `[Id,Name]` format
+4. Confirm the import to apply the group to all listed products
+
+**Example CSV (no header):**
+
+```
+101,Classic Lager
+202,House Gin
+303,Frozen Fries
+```
+
+## Count sheet fields reference
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| **Name** | Yes | Descriptive name for the count sheet (e.g., "Main Bar Sheet"). |
+| **Count Sheet Groups** | Yes | One or more groups that determine which products appear on this sheet. |
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Count Sheet Groups" icon="layer-group" href="/enterprise/pages/stock/count-sheet-groups">
+  Create groups to organize products for counting.
+</Card>
+
+<Card title="Stock Take" icon="clipboard-check" href="/enterprise/pages/stock/stock-take">
+  Perform stock counts using count sheets.
+</Card>
+</CardGroup>

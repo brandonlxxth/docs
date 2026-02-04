@@ -1,0 +1,128 @@
+---
+title: "Depletion Groups"
+description: "Add an extra layer of outlet depletion when selling products"
+---
+
+## Overview
+
+By default, each stock product sold in an outlet depletes using the configured stock holding outlet. Stock Product Depletion Groups allow extra control on how product sales or wastage reduce stock in the correct stock-holding outlet. Each group links every selling outlet (e.g., tills, kiosks) to the stock-holding outlet that should lose inventory when the product is consumed.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Product Depletion Groups | Product Depletion Group | Stock Control (Stock Administration) |
+| Product Configuration | Product | Configuration (Management) |
+
+## Accessing Depletion Groups
+
+- **Manage groups**: Navigate to **Stock > Stock Administration > Product Depletion Group**
+- **Assign to a product**: Navigate to **Management > Products > [Product] > Depletion Rules tab**
+
+## Creating a Depletion Group
+
+<Steps>
+<Step title="Navigate to Depletion Groups">
+  Go to **Stock > Stock Administration > Product Depletion Group**.
+</Step>
+
+<Step title="Create new group">
+  Click **Create** (or select a group and choose **Edit**).
+</Step>
+
+<Step title="Enter name">
+  Enter a clear **Name** for the group (e.g., "Main Bar Depletions", "Kitchen Prep Depletions").
+</Step>
+
+<Step title="Map outlets">
+  Use the **Stock Holding Outlet** dropdown beside each outlet row to decide where stock should be depleted when that outlet sells the product:
+  - Select a specific stock-holding outlet
+  - Choose **Default** to fall back to the product's primary stock outlet
+</Step>
+
+<Step title="Save">
+  Click **Save** to create the group.
+</Step>
+</Steps>
+
+<Note>
+Groups cannot be deleted once created. Create a replacement and update products if you need a new structure. Use the **Usage** button to see which products depend on a group.
+</Note>
+
+## Linking a Group to a Product
+
+<Steps>
+<Step title="Open product">
+  Navigate to **Management > Products** and open the product.
+</Step>
+
+<Step title="Go to Depletion Rules tab">
+  Click on the **Depletion Rules** tab.
+</Step>
+
+<Step title="Select group">
+  Choose the desired **Product Depletion Group** from the dropdown.
+</Step>
+
+<Step title="Configure depletion lines">
+  Add depletion lines describing what should be consumed:
+  - Pick the component product and its unit of measure
+  - Enter the quantity to deplete
+  - Add multiple lines if the sale consumes several ingredients
+</Step>
+
+<Step title="Save">
+  Save the product. The rules now drive automatic depletion.
+</Step>
+</Steps>
+
+## How Depletion Groups Work
+
+When a sale or waste transaction is created, the system:
+
+1. Looks at the selling outlet
+2. Uses the active product depletion group to map that outlet to the correct stock-holding outlet
+3. Applies the product's depletion lines to reduce the specified items from the mapped stock outlet
+
+This ensures that outlet sales can consume stock from a central cellar, while kitchen sales can draw from prep fridges, without manually adjusting transfers.
+
+## Depletion group fields reference
+
+| Field | Description |
+|-------|-------------|
+| **Name** | Descriptive name for the group. |
+| **Stock Holding Outlet** | For each outlet, select which stock outlet should lose inventory when products are sold. |
+
+## Frequently asked questions
+
+**Do I have to create a group before setting depletion rules?**
+
+Yes. The product's Depletion Rules tab expects an existing group so it knows how to route stock per outlet.
+
+**Can one product belong to multiple depletion groups?**
+
+No. Each product references a single Product Depletion Group. Create separate products if you need different routing for variants.
+
+**What happens if I leave the Stock Holding Outlet as Default?**
+
+The system falls back to the product's default stock outlet.
+
+**Why are my depletion rules not firing?**
+
+Confirm the product is assigned to a group, the depletion lines have valid products/units/quantities, and the selling outlet has a stock-holding outlet selected in the group.
+
+**Can I audit which products use a group before changing it?**
+
+Yes. Click the **Usage** button when editing a group to see dependent products/outlets.
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Depletion Rules" icon="chart-pie" href="/enterprise/pages/stock/depletion-rules">
+  Configure depletion quantities for products.
+</Card>
+
+<Card title="Products" icon="box" href="/enterprise/pages/management/products">
+  Assign depletion groups to products.
+</Card>
+</CardGroup>

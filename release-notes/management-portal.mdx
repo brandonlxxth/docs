@@ -1,47 +1,1097 @@
 ---
-title: Management Portal releases
+title: Management Portal Changelog
 description: Release notes for the Management Portal, newest first
 ---
 
-All Management Portal releases are listed below. Click a release to read the full notes.
+These release notes list upcoming and recent changes to the Management Portal.
 
-| Release | Date |
-|:--------|:-----|
-| [Management Portal 2026.3](/release-notes/management-portal/2026-01-28-management-portal-2026.3) | 28 Jan 2026 |
-| [Management Portal 2026.2](/release-notes/management-portal/2026-01-14-management-portal-2026.2) | 14 Jan 2026 |
-| [Management Portal 2026.1](/release-notes/management-portal/2026-01-07-management-portal-2026.1) | 7 Jan 2026 |
-| [Management Portal 2025.35](/release-notes/management-portal/2025-12-24-management-portal-2025.35) | 24 Dec 2025 |
-| [Management Portal 2025.34](/release-notes/management-portal/2025-12-10-management-portal-2025.34) | 10 Dec 2025 |
-| [Management Portal 2025.33](/release-notes/management-portal/2025-12-03-management-portal-2025.33) | 3 Dec 2025 |
-| [Management Portal 2025.32](/release-notes/management-portal/2025-11-26-management-portal-2025.32) | 26 Nov 2025 |
-| [Management Portal 2025.31](/release-notes/management-portal/2025-11-19-management-portal-2025.31) | 19 Nov 2025 |
-| [Management Portal 2025.30](/release-notes/management-portal/2025-11-12-management-portal-2025.30) | 12 Nov 2025 |
-| [Management Portal 2025.29](/release-notes/management-portal/2025-11-05-management-portal-2025.29) | 5 Nov 2025 |
-| [Management Portal 2025.28](/release-notes/management-portal/2025-10-29-management-portal-2025.28) | 29 Oct 2025 |
-| [Management Portal 2025.27](/release-notes/management-portal/2025-10-22-management-portal-2025.27) | 22 Oct 2025 |
-| [Management Portal 2025.26](/release-notes/management-portal/2025-10-15-management-portal-2025.26) | 15 Oct 2025 |
-| [Management Portal 2025.25](/release-notes/management-portal/2025-10-08-management-portal-2025.25) | 8 Oct 2025 |
-| [Management Portal 2025.24](/release-notes/management-portal/2025-10-01-management-portal-2025.24) | 1 Oct 2025 |
-| [Management Portal 2025.23](/release-notes/management-portal/2025-09-24-management-portal-2025.23) | 24 Sep 2025 |
-| [Management Portal 2025.22](/release-notes/management-portal/2025-09-17-management-portal-2025.22) | 17 Sep 2025 |
-| [Management Portal 2025.21](/release-notes/management-portal/2025-09-10-management-portal-2025.21) | 10 Sep 2025 |
-| [Management Portal 2025.20](/release-notes/management-portal/2025-09-03-management-portal-2025.20) | 3 Sep 2025 |
-| [Management Portal 2025.19](/release-notes/management-portal/2025-08-27-management-portal-2025.19) | 27 Aug 2025 |
-| [Management Portal 2025.18](/release-notes/management-portal/2025-08-20-management-portal-2025.18) | 20 Aug 2025 |
-| [Management Portal 2025.17](/release-notes/management-portal/2025-08-13-management-portal-2025.17) | 13 Aug 2025 |
-| [Management Portal 2025.16](/release-notes/management-portal/2025-08-06-management-portal-2025.16) | 6 Aug 2025 |
-| [Management Portal 2025.15](/release-notes/management-portal/2025-07-31-management-portal-2025.15) | 31 Jul 2025 |
-| [Management Portal 2025.14](/release-notes/management-portal/2025-07-16-management-portal-2025.14) | 16 Jul 2025 |
-| [Management Portal 2025.13](/release-notes/management-portal/2025-07-02-management-portal-2025.13) | 2 Jul 2025 |
-| [Management Portal 2025.12](/release-notes/management-portal/2025-06-19-management-portal-2025.12) | 19 Jun 2025 |
-| [Management Portal 2025.11](/release-notes/management-portal/2025-06-11-management-portal-2025.11) | 11 Jun 2025 |
-| [Management Portal 2025.10](/release-notes/management-portal/2025-05-22-management-portal-2025.10) | 22 May 2025 |
-| [Management Portal 2025.9](/release-notes/management-portal/2025-05-14-management-portal-2025.9) | 14 May 2025 |
-| [Management Portal 2025.8](/release-notes/management-portal/2025-04-23-management-portal-2025.8) | 23 Apr 2025 |
-| [Management Portal 2025.7](/release-notes/management-portal/2025-04-09-management-portal-2025.7) | 9 Apr 2025 |
-| [Management Portal 2025.6](/release-notes/management-portal/2025-03-26-management-portal-2025.6) | 26 Mar 2025 |
-| [Management Portal 2025.5](/release-notes/management-portal/2025-03-19-management-portal-2025.5) | 19 Mar 2025 |
-| [Management Portal 2025.4](/release-notes/management-portal/2025-02-26-management-portal-2025.4) | 26 Feb 2025 |
-| [Management Portal 2025.3](/release-notes/management-portal/2025-02-10-management-portal-2025.3) | 10 Feb 2025 |
-| [Management Portal 2025.2](/release-notes/management-portal/2025-02-05-management-portal-2025.2) | 5 Feb 2025 |
-| [Management Portal V2](/release-notes/management-portal/2025-01-30-management-portal-v2) | 30 Jan 2025 |
+## 2026
+
+### January 28th
+
+This release improves navigation and user experience with sidebar menu loading fixes, Kiosk Menu Group reorganization, and enhanced Kiosk Menu configuration options. It also adds performance optimizations for enterprise applications, new Self Checkout terminal options, and disables the BRISK tab to prevent accidental configuration changes. Bug fixes address Account Flash Report conversion calculations for doubles and 2-pint servings.
+
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869bxt0nm | Fixed sidebar navigation flash that occurred on page load by rendering menu state server-side instead of relying on JavaScript |
+| 869bxenx5 | Improved www-enterprise application performance and authentication with Redis/Valkey optimizations, increased thread pool capacity, consolidated connections, and enhanced security measures |
+| 869bwjbrr | Enhanced Kiosk Menu page with improved modal display, scrollable content, and added minimum/maximum limits (9999) for product options |
+| 869buk38q | Moved Kiosk Menu Group from Configuration > Management to Self Service Ordering navbar and renamed Menus to Kiosk Menus for improved navigation consistency |
+| 869bmd6bn | Implemented Kiosk Menu Group functionality without requiring new sync tables, allowing menu groups to be assigned to products and processed during kiosk menu saves |
+| 869brfkxc | Disabled BRISK tab on web portal terminal page to prevent accidental configuration changes that could impact BRISK functionality |
+| 869bu0jjt | Added "Show Account Balance" option to Self Checkout (SCO) terminal configuration to support terminal version 1.10.8.9 |
+
+
+---
+
+### January 14th
+
+This release fixes several reporting issues including Site Voucher Usage report grouping, quantity decimal precision in exports, Tender Tax Summary calculations for orders with multiple card transactions, Outlet Product Sales export column alignment, and Stock Adjustment report created date display.
+
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869ay20rn | Fixed Site Voucher Usage report to correctly group vouchers by Site instead of by Outlet, displaying one voucher record per Site |
+| 869bc4rgn | Fixed report exports to display quantity values with consistent decimal precision (2 decimal places) matching the on-screen report display, preventing rounding discrepancies in split transactions |
+| 869axgjfd | Fixed Tender Tax Summary reports to correctly handle orders with multiple rows per tender type, preventing tax amounts from being multiplied incorrectly |
+| 869bp5uj3 | Fixed Outlet Product Sales report exports to prevent pricing columns from shifting when products have values in the Product Param column |
+| 869bntwep | Fixed Stock Adjustment report to correctly display the created date for adjustments instead of showing 01/01/0001 00:00 |
+
+---
+
+### January 7th
+
+This release enhances reporting capabilities with Product Configuration Report improvements, adds QR Ordering data to Event Site Summary reports, and expands Accounts Flash Report functionality. Bug fixes address Layout Designer background image display, product report CSV export handling for products with commas, and depletion rule quantity validation.
+
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869bkr3m8 | Enhanced Product Configuration Report to include Tax Band Group Override field and separated multiple barcodes into individual columns (Barcode 1, Barcode 2, etc.) |
+| 8698z63ab | Added QR Ordering data to Event Site Summary report to provide comprehensive event overview |
+| 8698z60dg | Enhanced Accounts Flash Report with additional tabs and integrated QR Report data |
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869bm8yc1 | Fixed Layout Designer to display background images on 720x1400 large button layouts, improving visibility of interface elements in light mode |
+| 869bcdpek | Fixed product reports with "Download Data Only" option to correctly handle products containing commas in CSV exports, preventing data from being split across multiple cells |
+| 869bgqk47 | Added quantity validation to depletion rule configuration with minimum 0.0001 and maximum 1,000,000.999999 limits, and disabled information display when no product is set |
+
+---
+
+## 2025
+
+### December 24th
+
+This release introduces KapptureFlow with initial stock management functionality including Stock, Products, Outlets pages, and Transfers. It also adds new payment processing APIs for Clover RestPay access token generation and additional FreedomPay terminal parameters. Bug fixes address Member Account Balance report execution with Member Groups and Audit logging for first-time user logins.
+
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869auykzq | Added new REST API for Clover RestPay access token generation with OAuth support |
+| 869bf4gt8 | Added "Days to Keep Offline Transactions" parameter to FreedomPay terminal payment options |
+| 869bcf0gb | Added Order Button Location parameter field for KMS terminal types to configure button position |
+| 869bhvn81 | Introduced KapptureFlow with initial implementation including Stock Page, Products Page, Outlets Page, Transfers, and Stock Takes |
+| 869a5qt4e | Improved Transfer creation usability by repositioning Create and Cancel buttons for better accessibility |
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869behcjh | Fixed Member Account Balance report to correctly execute when a Member Group is selected by correcting parameter name in stored procedure |
+| 869b0edfn | Fixed Audit logging to record Log On events when users accept terms and conditions on their first login |
+
+---
+
+### December 10th
+
+This release introduces a new portrait layout for Castles devices optimised for performance, screen size, and accessibility. It also adds new validation to prevent blank stock requisitions. Bug fixes address Member Import group assignment, Site Product Group Tax Summary Report export column ordering, and Dashboard site filter multi-selection.
+
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 8699nuak9 | Created new portrait layout for Castles devices with responsive design |
+| 869bd7vb6 | Added Worldpay Online PIN and Elavon Online PIN options to Freedompay PAL version configuration for Castles devices |
+| 869ax09t7 | Added validation to prevent authorising Stock Requisitions when all product counts are set to 0.00 |
+| 869b9mrch | Added Fiscal Cloud API configuration fields (URL, Login ID, Access Token) for Portugal terminals |
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869b2yexm | Fixed Member Import to correctly assign imported members to the selected member group instead of always using the default group |
+| 869bcp82t | Fixed Site Product Group Tax Summary Report export column ordering to match the previous management portal |
+| 869atp8zr | Fixed Dashboard filters to allow multiple site selection |
+
+### December 3rd
+
+This release introduces a new "Recently Used" landing page that improves user experience by providing quick access to frequently used features. It also adds Fiscal Cloud API configuration fields for Portugal terminals and optimises user record saving performance. Bug fixes address Member token validation, Meal Deal Voucher product display with special characters, Stock Movement URL validation, Voucher availability permissions, and Terminal Yoyo discount product configuration.
+
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869b4auzd | Added new "Recently Used" landing page as the default landing page, showing recently accessed features and popular features for quick access |
+| 869b9mrch | Added Fiscal Cloud API configuration fields (URL, Login ID, Access Token) to Terminal Fiscalisation tab for Portugal terminals |
+| 869b9jkdv | Optimised user record saving to significantly reduce execution time when saving users and user profiles  |
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869b1g2w9 | Fixed issue where Member form would show an endless loading spinner when submitting with a duplicate token without leaving the field |
+| 869b4kmdd | Fixed issue where products with special characters (such as apostrophes) would not display correctly when loading Meal Deal Vouchers |
+| 869b8y2aq | Added validation to prevent access to blank Stock Alert pages when entering invalid IDs in the URL |
+| 869b4av69 | Fixed issue where altering Voucher availability with restricted Outlet Permissions would incorrectly remove availability for outlets the user cannot see |
+| 869b8bj4c | Added missing Discount Product field to Terminal Yoyo account options configuration |
+
+### November 26th
+
+This release introduces Order to Par Level functionality for efficient stock ordering and restores "All" and "None" buttons for outlet selection in Report Options. Bug fixes address product reference searching in Stock Orders, Revenue Event outlet permissions, Stock Validator help text, Count Sheet information display, Account Top Up duplicate submissions, receipt signature lines, Pay at Table QR code validation, and Stock Movement maximum quantity enforcement.
+
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869azvym1 | Added "Order to Par Level" functionality to automatically pre-fill order quantities based on Min, Standard, or Max par levels for selected location and supplier |
+| 869atnrtg | Restored "All" and "None" buttons for outlet selection in Report Options to reduce clicks when selecting multiple outlets |
+| 869b85knx | Corrected button order in Product Challenge configuration (Add and Copy buttons) |
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869axvyz0 | Product Reference field is now included when searching for products to add to Stock Orders |
+| 869b4gf0p | Revenue Event outlet selection now correctly respects user outlet permissions and no longer modifies outlets the user cannot access |
+| 869b7kh57 | Stock Validator help text for "Has Price" and "Has Stock" columns has been restored |
+| 869b44eby | Added information modal to Count Sheet configuration pages that displays which periods the count sheet is assigned to |
+| 869azupz1 | Account Top Up save button is now disabled after clicking to prevent duplicate top-ups from multiple clicks |
+| 869axkx9k | Empty signature lines in Receipt editor no longer create blank signature lines on receipts |
+| 869b8d8gx | Stock Opening, Stock Requisition, and Stock Close screens now enforce maximum product line quantity of 1,000,000 to prevent invalid data entry |
+
+---
+
+### November 19th
+
+This release adds a date range picker to the Audit feature and fixes export functionality to return all pages. Bug fixes address Preparation Point Stock configuration validation, Site Voucher Usage report grouping, Event Tender report filtering, Operator PIN requirements, Operator Role deletion handling, and Pay at Table QR code generation.
+
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869b4y0ak | Added date range picker to the Audit feature and fixed export to return all pages instead of only the currently viewed page |
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869au60yn | Preparation Point Stock configuration now prevents adding duplicate products to the same configuration |
+| 869ay20rn | Site Voucher Usage report now correctly groups vouchers by Site instead of by Outlet |
+| 869b5505x | Tender filter now works correctly on Event Site Tenders, Event Outlet Tenders, Event Terminal Tenders, and Event Outlet Type Tenders reports |
+| 869b5er4w | Operator PIN field is no longer required when security type is set to None |
+| 862jtmzrn | Operator Role deletion now prevents deletion when operators are assigned to the role, preventing data corruption and Operator Configuration report errors |
+| 869b5xu57 | Pay at Table QR code generator now enforces minimum 1 and maximum 9999 table validations, fixes search box typing issues, and improves URL preview field functionality |
+
+---
+
+### November 12th
+
+This release adds cashdrawer serial port configuration for terminals and Pay@Table gratuity options. It also fixes Stock Dashboard par levels display issue.
+
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869axnng3 | Added "Use Cashdrawer Serial Port" option in terminal configuration. Cannot be used simultaneously with "Use Cashdrawer Printer" option |
+| 869a6thzq | Added configurable Pay@Table gratuity options and bulk QR code downloads |
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869b44up9 | Stock Dashboard par levels now display correctly when products are updated in an outlet |
+
+---
+
+### November 5th
+
+This release introduces Kiosk Menu Groups for chaining multiple menu selections on Self Service Kiosks (requires terminal support in a future release, version TBC). It also improves Order Journal, Receipt Explorer and other Back-office reports performance and fixes issues with the Stock on Hand Par Level Monitor and Dashboard Outlet Totals metric.
+
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 8698xey2c/869av0p8p | Added Kiosk Menu Groups to allow multiple menu options to be chained on Self Service Kiosks (e.g., size, milk, syrup). Management Portal configuration included in this release; terminal support will be available in a future release (version TBC) |
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 8699h0tqz | Improved Order Journal, Receipt Explorer and other Back-office reports performance by storing local date times at source to remove runtime UTC conversions |
+| 869b05xwj | Stock on Hand Par Level Monitor pivot table now loads correctly when displaying three or fewer products |
+| 869an0fuh | Additional Outlet Totals metric now displays correct data in Dashboard |
+
+---
+
+### October 29th
+
+This release improves outlet saving functionality and fixes Stock Take report filtering. Bug fixes address Receipt Explorer overpayment display, voucher product references, delivery report formatting, user permissions, and product creation issues.
+
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869awkmbf | Fixed outlet saving functionality to prevent failures when saving immediately |
+| 869ahckhk | Fixed Stock Take reports to properly filter to specific count sheet after reset |
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869ay3d08 | Resolved a security exploit that allowed unauthorized terminal configuration changes. This fix prevents terminals from being forced into unintended states such as network selling, remote printing, or RPC mode |
+| 869axkapd | Receipt Explorer now properly displays overpayment information on printed receipts |
+| 869apzhmv | Product references are now visible for products already in vouchers in the new management portal |
+| 869auhv1p | Delivery report headings no longer show data in wrong places when reference is empty |
+| 869amxwa5 | User override permissions no longer default to 'all' when changing language preferences |
+| 869axupdx | Product creation no longer fails when form lines exceed 2048 lines |
+| 869axvp3y | Product creation no longer fails when reporting name exceeds 50 characters |
+
+### October 22nd
+
+This release adds Stock Requisition groups for alternate outlet configuration and refund cup support for Portugal Fiscalisation. Terminal address validation now only requires Address Line 1, and the Consolidated Top Products report sorting has been corrected.
+
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869av0776 | Added Stock Requisition groups to allow the configuration of alternate override request outlets |
+| 869avfjm9 | Added refund cup configuration to terminals in Portugal Fiscalisation mode |
+| 869avghth | Relaxed terminal address requirements to only require Address Line 1, instead of Every Address line |
+| 869aqvrka | Fixed product sorting in the Consolidated Top Products by Quantity report to sort by quantity instead of product name |
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869aha2yy | Fixed preset value tender keys not being set correctly for European languages in the Layout Designer |
+| 869ap2rt1 | Fixed missing reference not being included when setting Preparation Point Stock in hierarchy |
+| 869atb36g | Fixed Count Sheet page numbering to start at 1 instead of 0 |
+
+### October 15th
+
+This release enhances the Price Band Scheduler with advanced date and time options and prevents deletion of active price bands. It also improves Receipt Explorer formatting when Overpayment types are used and optimises the Site Product Group Tax Summary Report. Fixes address fiscalisation role enforcement, Mobile App Board hyperlink formatting, saving Negative Adjustments, and product display with special characters in Meal Deals.
+
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869arghe3 | Prevent price bands from being deleted if assigned to price band schedules or Price Band Overrides |
+| 869atkq9h | Added between dates and specific times on each day option to the Price Band Scheduler |
+| 869an4q80 | Improved the Receipt Explorer formatting to match Terminals when Overpayment types are used |
+| 869apzptq/869aupwhv | Site Product Group Tax Summary Report - Added Include Download Data Only Option & Performance optimisation |
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869atpm4j | Improved the Price Band Override conflict dialog messaging when at Site or Outlet level |
+| 869ap05vu | Hyperlink formatting option was missing from Mobile App Boards |
+| 869aurc8m | Negative Adjustments were not saved correctly in new management portal  |
+| 869auywry | Training mode and operator role restrictions based on the Fiscalisation mode were enforced wrong |
+| 869a02mnd | Products With Special Characters didn't display correctly in the 'What' page when creating Meal Deals |
+
+---
+
+### October 8th
+
+Introduces a new Price Band Scheduler for dynamic pricing, adds further Portuguese fiscalisation features. Also Fixes tender discrepancies in reports and dashboard analytics.
+
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 8698urxzr/869ap3fvv | Implemented a Price Band Scheduler, this allows dynamic pricing depending on dates, times and entire date ranges. (Enable the Price Band Schedule user role to begin using) **Requires terminal release 1.10.8.0**|
+| 869ap86m8/869angqm9 | Implemented further Portuguese Fiscalisation requirements |
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869abkqdc/869am1agn | Fix tender discrepancies in tender reports and dashboard analytics |
+| 869ap67gn | Other type tenders didn't allow gratuity overpayment option |
+| 869and338 | Negative adjustments would not be reflected correctly on the Stock On Hand Report |
+
+---
+
+### October 1st
+
+Adds support for Price Band Overrides at Site, Outlet and Terminal levels and enables SCO terminals to save vision configurations. Fixes multiple UI issues in Price Band Scheduling.
+
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869af52j4 | Added the ability to apply Price Band Overrides at Site, Outlet and Terminal levels |
+| 869amygg6 | Allowed SCO terminals save vision configuration (This will use the Second Screen Vision types) |
+
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869ak5dtu | Resolved multiple UI issues for Price Band Scheduling |
+
+
+---
+
+### September 24th
+
+Adds a “Download Data Only” option to Product Group Tender reports. Improves dashboard caching, fixes time zone errors, duplicate cash banking records, menu name updates, price band display in Receipt Explorer, and future-date filtering in the Product Frequency Dashboard.
+
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 86991h4b0 | Added Download Data Only to Product Group Tender reports |
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869a8h1uz | Unexepected delays with the live dashboard, caching has been improved |
+| 869a8nfyr | Average Transaction Time Reports would use UTC date instead of a Terminals local time zone |
+| 869a0v6y0 | The Live Dashboard would show data based on UTC instead of user timezone (Your timzone can be updated in the profile page: https://admin.kappture.com/User/UserProfile) |
+| 869ajw5ec | Duplicated Cash management banking records |
+| 1zhvd69 | Menu names would not update on Terminal Layouts until an update was made to the designer |
+| 869ak0hnm | The incorrect Price Band would be shown on the Receipt explorer headers when overrides are in use |
+| 8699z93ru | The Product Frequency Dashboard metric would get all days data when you filtered to try and find a product from future dates |
+
+---
+
+### September 17th
+
+This update renames two Portugal fiscalisation fields, adds Portugal company info to terminal exports, refines Stock History Report criteria, and improves transfer warnings for negative stock. It also fixes duplicated product groups in meal deals, restores the missing delete option for receipt template logos, and ensures terminal status exports include all data.
+
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869aeu4yb | Rename two Portugal fiscalisation related fields |
+| 869aeua8f | Added Portugal company information to the terminal export |
+| 869ac6zqj | Updated the report criteria for the Stock History Report to reflect the data it returns |
+| 869a836vf | Improved warnings on Transfers when products will reduce the source quantity into negative |
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869a0y4f9 | Product Groups that appeared on multiple rows of a meal deal would duplicate |
+| 869af49nc | Restored the missing delete option from receipt template logo |
+| 869ag26ec | Terminal status would only export only export the data visible on screen |
+
+---
+
+### September 10th
+
+This update adds further Portugal fiscalization restriction requirements and fixes issues with missing waste orders in reports, incorrect rounding of discount voucher percentages, broken terminal configuration when saving preparation point courses, and improves receipt finder performance.
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869adxu0e/869admzbj | Further Portugal Fiscalization restriction requirements |
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869abc4z9 | Consolidated Product Waste report not showing all waste orders |
+| 869ac61q2 | Discount voucher percentage wouldn't round to two decimal places |
+| 869ae8370 | Saving Preparation Point Course configuration would break Terminal configuration |
+| 869aaq9w0 | Receipt finder performance optimisation |
+
+---
+
+### September 3rd
+
+This release adds Price Band scheduling, improves pricing import/export with product references and barcodes, and delivers key bug fixes including French language voucher issues, stock reports, and receipt explorer times.
+
+
+#### ✨ Features
+
+| Internal Ticket ID | Description |
+|:-------------------|:----------------------------------------------|
+| 869a1f98z | Added support for managing Price Band scheduling (requires upcoming terminal release) |
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869a1tpda | Added Product Reference to the Pricing import to allow easy exports and imports |
+| 869a4rrny | Include Product Reference and Barcode on the Stock Verification screen |
+
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869aak3h1 | Vouchers created while using French language mode would prevent vouchers executing on Terminals |
+| 869aakaym | Standardised separators for price import/export while in French language mode |
+| 869a59ra4 | Existing product depletion rules blocked decimal entry into the value |
+| 869aa1p9y | Removed the QR code tab from the "Everyone" member |
+| 869a9y09b | Empty External Reference's 3/4 would prevent the Member Import processing |
+| 869a753p6 | Stock to Cash reports would not include excel formulas for calculations |
+| 869a970f0 | Table open date time is not shown in local time on the Receipt Explorer |
+
+---
+
+### August 27th
+
+This release simplifies product management by removing the deprecated Challenge 25 option, adds support for downloading and viewing member QR codes and enforces Portugal fiscalisation requirements. It also resolves an issue where product references were not displaying correctly in Self Service Ordering Menus and Vouchers.
+
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869a8vwcc | Added QR code to the member page, this can be used for identification on terminals with a barcode scanner. |
+| 869a5wk9z | Remove deprecated challenge 25 option from product options |
+| 869a8jjj1/869a8jjrb/869a7m164/869a9wmxp | Enforce Portugal fiscalisation requirements |
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869a4pk1q/869a0u6z3 | Product references are not shown in product containers on Self Service Ordering Menus & Vouchers |
+
+---
+
+### August 20th
+
+Fixes an issue where the selected navigation menu item would not centre properly
+
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 8699xq8pf | Fixes an issue where the selected navigation menu item would not centre properly |
+
+---
+
+### August 13th
+
+This release improves French translations and fixes issues with menu layouts, slow Receipt Explorer performance on large datasets, missing receipt data in certain reports, and encoding problems with special characters and commas in exports.
+
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869a07rkf | Further enhanced French translations |
+| 869a3vyad | Add discount information to product journal |
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 8699zn0en | Issue where modifying a menu through a Layout would break the selection boxes |
+| 86995f1kf/869a1f345 | Issues with slow performance on large Receipt Finder datasets, and data being missing from some report versions |
+| 8699rvptd | Fixed encoding issues with special characters and commas on Terminal Session Activity export |
+
+---
+
+### August 6th
+
+This update enhances product label customisation and error handling and increases default and maximum records in the Product Price table. It also fixes an issue where removing vouchers from members didn't fully remove the voucher.
+
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 8699zxywq | Implemented download into the Audit |
+| 8699z7vad | Improved Product Label Customisation & Error Handling |
+| 8699ye80e | Increased Product Price table to load 50 records by default, and have a limit of 100 |
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869a08c0j | Removing vouchers from members would not actually remove the voucher |
+
+---
+
+### July 31st
+
+This release adds tender overpayment support, new reporting options, improved cash management, and menu capacity increases. It also resolves issues with client device management, menu defaults, outlet validations, and preset value tender calculations.
+
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 8699uq26m | Implemented Tender Overpayment Options |
+| 8699z7qnm | Implemented download data only into Site Revenue Summary |
+| 8699u1pk0 | Added Product Group Voucher Analysis reports - Site/Outlet and Terminal Versions |
+| 869a0tcn0/8699zrje0 | Cash Mangagement Enhancements |
+| 8699tkvj3 | Added the reference column back into the Product Pricing Export |
+| 8699z1594 | Increased the ammount of Menus allowed |
+
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 8699vjnrx | Deleting or Creating a new Client Device would prevent deleting any other rows |
+| 8699v5vd3 | NULL Menu Maximum Selections not prefilling the field with 0 |
+| 8699wyt28 | Outlet Validation checks being skipped |
+| 8699rtf2x | Moving a Preset Value Tender on a layout would multiply the value by 100 |
+| 8699vjktt | Dashboard Revenue map would get an error trying to load location details |
+| 8699we2mx | Various selection fields would not manage Portuguese characters |
+
+---
+
+### July 16th
+
+This release introduces important enhancements, including Portugal Fiscalization configuration for products and terminals, new reporting features such as Stock to Cash Reports, and improvements to stock management terminology. Additionally, critical bug fixes have addressed issues related to Vision Asset loading, Receipt Portal QR code audits, order journal calculations, CSV exports, permission errors, and various UI and data-handling improvements.
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 8699k6z1v, 8699k3z7u, 8699k3yb1, 8699vmcuu, 8699v8x22, 8699w6709 | Portugal Fiscalization configuration added to Products and terminals |
+| 8699gfdgr | Added Parent Pay Unmatched Diners page |
+| 8699gfcp5 | Added Stock To Cash Reports |
+| 8696j94gb | Improved terminology used on the stock withdrawal screen |
+| 8699uqe4b | Add External Reference 4 to Member configuration |
+| 8699vn73j | Added legacy stock take close mode to group configuration |
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 8699u05u0 | Vision Asset list not loading in specific organisations |
+| 86982ft6j | Receipt Portal QR code audit issues |
+| 86975wf7u | Display issue on the dashboard calendar title for "Ajourd'hui" |
+| 8699f9fe7 | Order Journals not accounting for multiple products in an order that had the same Net/Gross pair |
+| 86989n5h5 | Identical labels for the Pay At Table And Receipt Portal QR code generators in the global search container |
+| 8699mx9tt | Product Configuration downloaded CSV was not present |
+| 8696vwb96 | Revenue Events incorrect permissions |
+| 8699aru1x | Stock Product Insight failing with values over 99999.99, values up to 999999.99 are now allowed |
+| 8697v6g2u | Users unable to search for terminals by Hardware ID |
+| 8699ruuj3 | Terminal Session Activity would show first time open sessions under the closed filter |
+| 8699rek1b | Unable to save a member when the organisation has large amount of vouchers |
+| 8699k31mf | Web Ordering Banners Not Saving correctly |
+
+---
+
+### July 2nd
+
+Added a global scroll-to-top button; plus fixes for negative adjustments, Report calculations, tender layout issues, Session configuration performance improvements and more.
+
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 8699gdy38 | Added a global scroll to top button |
+| 8699hp3e9 | Removed unneccesary KMS Printing configuration options |
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 8699h5jgq | Issue where you were unable to make negative adjustments |
+| 8698zgjpt | Event Site Summary CSV export incorrect total formatting |
+| 8699dxk3z | Removing a key from the tender layout, and attempting to add another in the same box would show the wrong pop-up |
+| 8699e543q | Copying the everyone member would not hide the intended fields |
+| 8699n7e1z | SCO Terminal type missing configuration for images |
+| 8699986ct | Slow performance on the session configuration page of Outlets |
+| 869989y70 | Sold Retail Value incorrectly calculated in the Stock Holding report |
+
+---
+
+### June 19th
+
+This release adds a new SCO terminal type, enhances product labelling features, and introduces barcode search capability across all product searches. It also fixes issues related to dashboard time selection , performance issues in delivery creation, product price exports, and product saving errors.
+
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 8699avjcp | Add SCO Terminal Type |
+| 8699cvtma | Product Label Enhancements |
+| 8699a8pdk | Added search by barcode to all Product searches |
+| 8699g5qu4 | Add Eagle Eye account option |
+| 8699gekrh | Add Lane 3000 UPP Freedompay PED type |
+| 8699j03zr | Add Member Identification to SCO configuration |
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 86999qp2t | Dashboard Time Selection setting incorrect date range |
+| 8699b85h1 | Product Label outlet list not checking user access |
+| 86995fu56 | Product Price Export would ignore global cost price if outlet cost price was not set |
+| 8698qpfgw | Error saving Products when selecting all the tabs (with stock management enabled) |
+| 8699b7ryc | Product Label Requests auto refresh resets paging |
+| 869997tdh | Stock Take Period assignment ordering issue when multiple periods assigned with same date |
+| 8699h6cvp | Incorrect permission against Receipt report |
+| 8699fyvu7 | Copying an incentive would also copy the original name |
+| 8699fry1j | Terminals saving unneccesary JSON values |
+| 8699eju34 | Hardware ID exported as decimal in terminal export |
+| 86999x5c8 | Poor perfomance generating the Order list for new deliveries |
+
+
+---
+
+### June 11th
+
+This release improves audit logs, includes sale/refund cancellations in journals, adds client device support, and updates the default product type settings for stock management. It also fixes issues with Biometric scanning, stock period assignments, user permissions, product imports, and reward configurations.
+
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869959gzt | Improved Audit log when changing the default label measurements |
+| 8698ndexj | Include Sale/Refund cancels in the Journal |
+| 8699b0fjh | Client Device Support |
+| 8699a8d6a | Updated Default Product Type when Stock Management is enabled |
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 8699dhjgx | Users were unable to scan new biometrics for members |
+| 8699cayr6 | Copying an Operator Role would modify the original record |
+| 8698v96pc | Stock take periods would be closed when assigning a new period to an outlet |
+| 86997ua46 | Incorrect user permission against Product Labels |
+| 86999apy7 | Incorrect user permission against Operator |
+| 86998e62e | Stock Delivery report incorrectly showing Filter and Favourite buttons |
+| 8698zyubk | Large Adjustments fail with a network error |
+| 8699a5hgd | Hidden UI Issue caused by low resoltion in Incentive configuration |
+| 8699913t6 | Operator availability would override all outlets, including ones the user couldn't see |
+| 86995f1kf | Receipt Explorer not displaying Products with specific configurations |
+| 86999jat8 | Receipt Explorer Minimum/Maximum filters not working as expected |
+| 869992wgt/8699ar69n/86994y4zb | Product import not saving all required data for Stock Availability, Product Groups and Product Challenge |
+| 86992gutc/869949krc  | Reporting date range calculation updates |
+| 86995921g/869959gr2 | Product Label Requests UI issues |
+| 869357fxk | Stock Orders not being moved to partially delivered status when a line is delivered with 0 quantity |
+| 86996vjjb | Include/Exclude Product configuration not saving on Rewards |
+
+---
+
+### May 22nd
+
+This release introduces a new Close Stock Verifications Report, shelf edge label printing, improved Portuguese translations, increased inactivity timeout, and enhancements to Z Reports/Receipts and FreedomPay payment options. It also includes various fixes for layout options, Role Permissions, Kiosk (Hierarchy) designer, and resolves exceptions related to heat maps.
+
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 8695qn7u4 | Added Close Stock Verifications Report |
+| 8698gp4dm | Updated Portuguese Translations |
+| 8698xvuay | Added covers to Z Report Explorer and Report |
+| 869957bx5 | Increase Inactivity timeout |
+| 8698w3y0k | Shelf Edge Label Printing |
+| 86991yehq | Add new freedompay PED type |
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 8698xg8nz | Copy terminal option was missing in Hierarchy |
+| 869904z4p | Cannot add a menu on Self Service Layout types |
+| 8698pj257 | Trading Day Start time was being converted incorrectly |
+| 86991qgnv | Negative Period Length in Stock Take Summary Report |
+| 8699020wd | Net & Tax Headers Wrong Way Round in Journal |
+| 8698ze6uq | Product Search Operator Role was not saving |
+| 8698hj128 | Product Group Default Colour incorrect |
+| 869926vzm | Receipt Explorer failing with extremely high values |
+| 8693paa1f/86991maft | Store local date time at source to remove run-time calculations against reports |
+| 8698v37u6 | Receipt report inconsistent formatting |
+| 8698jpqy9 | Source/destination summary preview page missing for single outlet Stock Replenish & Withdrawal |
+| 869902f0g | Stock Loss & Gain Report returned no data |
+| 869936erd | Stock Take period Name is being returned as the outlet name instead of period name |
+| 869900m8h | Tenders couldn't have negative minimum values |
+| 8698vj9va | Kiosk designer missing 'None' option on various fields |
+| 8698kczrm | Unhandled exception when trying to play a heat map |
+
+---
+
+### May 14th
+
+This release improves French translations. It also includes fixes for cost price display in waste reports, issues saving certain stock take periods configurations, issues saving certain member group configurations & product availability issues.
+
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 8698b9dxk | Improved French Translations |
+| 8698z2u9f | Improved Product Pricing Import Performance |
+
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 8698xtf1t | Incorrect Cost Price in Consolidated Product Waste Reason Report |
+| 8698wpyhg | Daily Trading Analysis report Non-cash sales calculated incorrectly |
+| 8698u6vxg | Line total summary missing from stock order report |
+| 8698vmhmu | Product Availability affecting outlets the user doesn't have access to |
+| 8698v8bgj | Unable to save Member Group changes on databases with large quantities of vouchers |
+| 8698jrzbt | Unable to assign Stock Take Periods on Organisations with large quantities of Stock Take Periods |
+| 8698wa9y4 | Discount Voucher Value entry wouldn't allow decimal point |
+| 8698zwun6 | Stock alert rejection issues when accessing multiple pages |
+
+---
+
+### April 23rd
+
+This release introduces the new Click & Collect Journal and Order Delivered Report, along with several enhancements to transfer templates, weekly finance summaries, stock take reports, and receipt formatting. Bug fixes address pricing imports, user restrictions, and permission issues.
+
+
+You will now no longer see restrictions that your user or user role doesn't have access to. This means that if you create a restriction you will need to assign to your user or user role to see it.
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 86981n0xu | Added Click & Collect Journal |
+| 869711g02 | Added Order Delivered Report |
+| 8694wym6w | Added Restrictions to Stock Transfer Templates |
+| 8698czpqw | Updated Weekly Finance Summary to run from Monday-Sunday |
+| 8698cz5jx | Updated Stock Take Summary report to filter on Count Sheet Group |
+| 8698r25rh | Updated Receipt Explorer To Match Terminal Formatting |
+| 8698t86cy | Updated Meal Deal LUA to version 07/04/2025-a |
+| 8698rcbwx | Include option to show/hide EFT receipt data when printing Receipts in Receipt Explorer |
+| 8698v76yx | Update terminal Freedompay payment options to support Castles devices |
+| 8698u6020 | Update terminal Adyen payment options to include "All In One Device" option|
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 8698p39q0 | Account Flash Report Not Using Event Dates |
+| 8696w5arp | Added Missing Weekly Finance Report |
+| 8698pyq95 | Site level Price Import import always show no prices to update |
+| 8694bn232 | Product Configuration Export report ignoring user restrictions |
+| 8698pc1q4 | Fixed several Ordering and Vision User Role Permission issues |
+| 8698przte | Stock Navigation bar not showing specific selections with only one User Role permission |
+
+---
+
+### April 9th
+
+Fixed cost price and post-discount net issues in reports, enforced product description limits, improved report filter scrolling, and corrected global payment print type configuration.
+
+
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:------------|:-----------------------------|
+| 86987zdkx | Stock Valuation By Site - Incorrect cost price calculation |
+| 8698f3kmf | Site Daily Summary Report - Incorrect Post Discount Net calculation |
+| 8698g241t | Product description character limit wasn't enforced |
+| 862k6y6pf | Incorrect Global Payment Print Type Configuration |
+| 86985phmp | Unable to scroll report filter options |
+
+---
+
+### March 26th
+
+Added Site & Outlet Operator product sales and transaction wait reports, plus improved stock movement permissions. Bug fixes for terminal locales, loyalty saving, receipt filtering, and incentives.
+
+
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:------------|:-----------------------------|
+| 8697xggb8 | Site & Outlet Operator product sales reports |
+| 8698cjn3v | Average Transaction Wait Report |
+| 8696hq5ee | Improved permission logic on all stock movements |
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:------------|:-----------------------------|
+| 86984cv5q | Large terminal lists wouldn't load in voucher configuration |
+| 86987nbhx | Include/Exclude rules not loading correcly on Loyalty configuration |
+| 862jf2p14 | Product Group and Sessions not deleting correctly |
+| 862jr6p0w | All terminals shown in receipt finder terminal filter, ignoring the outlet filter |
+| 8698ad04j | Issues saving incentives on larger databases |
+| 8698e1j4h | Incorrect user permissions |
+| 8698bzjzr | Unable to set no Stock Order Prefix |
+| 8698byuwc | Removed unused user permission |
+| 8698eq14c | Locale configuration not being saved against terminals |
+| 8698b0m94 | Incorrect line endings used for product descriptions |
+| 8696hgw8b | Configured UoMs were not being saved on transfer templates |
+| 8698ekexb | Product price apply to all outlets only applying to those in view |
+| 8698c9pb6 | Pasting a value into the Product global price field would paste twice |
+| 8698e15ce | Session configuration not saving on price switching vouchers |
+| 8698kh5ap | Cost Price column missing from Product Pricing Import |
+| 8698p5wj6 | Dashboard Map view not populating when selecting a single day timeframe |
+
+---
+
+### March 19th
+
+Added Trading Day start time, new product signage options, receipt search by card details. With Bug fixes for menu restrictions, QR codes, and EFT configuration.
+
+
+#### ✨ Features
+
+| Internal Ticket ID | Description |
+|:------------|:-----------------------------|
+| 8696b7xqy | Added a Trading Day start time to the user profile (Default is 00:00 - 23:59) |
+| 8698af6cy | Added Adyen Payment Option to Terminals |
+
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:------------|:-----------------------------|
+| 869866prz/86986uxcn | Added new signage options to product configuration and import |
+| 8695bc9kq | Site Product Group Summary Performance |
+| 8695bc9kq | Terminal Average Transaction Value Performance |
+| 86989nd0w | Added the ability to search for reciepts via card number / expiry |
+| 869849zh8 | Added All option to the Terminal Export |
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:------------|:-----------------------------|
+| 8697wp45t | Menu restrictions not enforced on layout designers |
+| 86982cmqp | Incorrect tab title on Pay At Table QR Code Generator |
+| 86981kk4m | Removed mandatory asterisks from FreedomPay EFT configuration |
+| 869840t3f | QR Ordering QR code redirecting to the wrong URL |
+| 8695v1ban | Fixed error handling against long Member Token ID's |
+| 86986bweu | Missing Receipt footer and Change/Gratuity Lines from receipt report |
+| 86988ukqz | Updated Loyalty LUA code to fix issue where discount/promotion vouchers in the order would result in the wrong amount of points being awarded. ***EXISTING LOYALTY RECORDS MUST BE RE-SAVED!*** |
+| 8698efk64 | Fixed various issues with rejecting K-stock verifications/closes when product count sheets were paged |
+| 8698egbck | Fixed issue accepting K-stock requisitions when product count sheets were paged |
+
+---
+
+### February 26th
+
+Enhanced requisition requirements, support for 12-digit barcodes, automatic member balance refresh & updated Maintenance screen. Multiple bug fixes for report totals and various functionality issues.
+
+
+#### ✨ Features
+
+| Internal Ticket ID | Description |
+|:------------|:-----------------------------|
+| 8697kwmpp | Improved Maintenance Mode UI |
+
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:------------|:-----------------------------|
+| 869805e4n | Improved Requisition requirements |
+| 8696g2nra | Added support for 12 digit barcodes |
+| 8697cxfgw | Member balance now refreshes after top-up or refund |
+
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:------------|:-----------------------------|
+| 8697zxvx3 | Grand total and Sales totals being switched on End Of Day Report  |
+| 8695t78wu | Special characters wouldn't work on report search |
+| 8697zbq42 | Unable to copy members |
+| 8698158yv | Duplicated Quick Recieve Navigation element & Added Error handling to site receipt template configuration |
+| 86963ry4k | Incorrect error handling on Notification Templates |
+| 8697zmb8e | Times not saving on Online Events |
+| 8697ygk0u | Image Product list not populating on Self Service Menus |
+| 8697we67j | Unneccesary Member requirement on Member Terminal Product Totals |
+| 8696bdt6m | Removed unused "All" option from Future Order Close |
+| 8697wxjc3 | Stock Take summary improvements |
+| 86984fc3m | Accepting requisition populating incorrect data |
+
+---
+
+### February 10th
+
+Stock History, Product Insights & Kiosk Member ID enhancements are here! Plus, new UI improvements, better error handling, and key bug fixes for a smoother experience.
+
+
+#### ✨ Features
+
+| Internal Ticket ID | Description |
+|:------------|:-----------------------------|
+| 8695wmt5f | Stock History |
+| 8695wmxxq | Product Insights |
+| 86975qa2y | Cash management Notifications |
+| 8697ut3uy | Kiosk member identification type |
+
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:------------|:-----------------------------|
+| 8696hzywf | Added outlet name to the Par Level view title |
+| 8697v2xxn | Added download confirmation to Product export |
+| 8697uqpjr | Added sort arrows to Member Group Management |
+| 8696j5dd8 | Added error handling indicating no configured stock outlets |
+| 869743rmz | Added support for deleting Preparation Point Stock Templates |
+
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:------------|:-----------------------------|
+| 8697u3e8k | Added missing permissions to Cash Management pages |
+| 8696gbd0e | Issue preventing sending email campaign messages only |
+| 8697g11ud | Sales dashboard outlet breakdown quantity dissapearing upon refresh |
+| 8697rk3tr | Incorrect permissions on Sales Menus  |
+| 86976n589 | Incorrect permissions on Loyalty permissions |
+| 8694fpqew | Messy results from Member group search results |
+| 86969tgtg | Broken sort arrows on each stock movement report |
+| 8697v6g2u | Searching for Terminals via Hardware ID/ID failing |
+| 8697v6f4a | Terminal Background Resource not saving correctly |
+| 8697v2bx3 | Stock Analytics appearing in navigation bar |
+| 8697ung3v | Error handling on stock order rows |
+| 8697x05xa | Missing error handling on Stock Return |
+| 8697vrc87 | Missing error handling on Stock Verification |
+| 8696nyuf1 | Price scheduler name not updating |
+| 8697rnf56 | Product import delete button missing |
+| 8697xqrd4 | Terminal Background Resource overflow issue |
+| 1xrmjq3/8697wm6dq | Deliveries completed by multiple partials still appearing as available |
+| 8697r4r7x | Stock Report accuracy not used on Stock Order lines |
+| 8695x7j1u | Image is required missing from Board Configuration |
+| 86980huwg | User invite emails not populating link |
+
+---
+
+### February 5th
+
+Enhanced Cash Management tools, new Summary & End of Day reports, and improved search options. Plus, key bug fixes and UI refinements.
+
+
+#### ✨ Features
+
+| Internal Ticket ID | Description |
+|:-------------------|:----------------------------------------------|
+| 8696kg7cc | Cash Management - Allocate Floats |
+| 8696kg8k2 | Cash Management - Quick Declare |
+| 8696kg954 | Cash Management - Quick Bank |
+| 8696kg9y0 | Cash Management - Sales Tracker |
+| 8696kgafa | Cash Management - Outlet Hourly Sales |
+| 8695uvt8z | Added Summary Reports for Stock Verification and Closes |
+| 8697g17p7 | Added Download Data Only Option to Site, Outlet, and Terminal Product Tenders Report |
+| 8697g897e | Added End Of Day Report |
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|-------------------|:----------------------------------------------|
+| 8694h8y1m | Removed the Master Price field from Product Configuration |
+| 8697knc95 | Added the ability to search for Operators by Operator Key |
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|-------------------|:----------------------------------------------|
+| 86970dgk9 | Heatmap Image not being required during configuration |
+| 86976q0c0 | Unauthorized access to Self Checkout Menus |
+| 8697g8mx6 | Unauthorized stock page access |
+| 8697rmvja | Issue allowing bypass of required fields |
+| 8697e6r7e | Max Phone Number length exceeding 20 characters |
+| 8697eafcy | Unit Of Measure Conversion Factor not having a limit |
+| 8697nhv72 | Credit Card Reports quantity field displaying as a float instead of an integer |
+| 8696w66t9 | Incorrect Vision Scheduler Audit records |
+| 8697ebp6b | Incorrect Unit Of Measure Audit records |
+| 8697gqhtx | Incorrect Product Depletion Group Audit records |
+| 8697k3nmv | Incorrect date format in Revenue Event calendar |
+| 8697mehbu | Stock Adjustment Report showing incorrect created date |
+| 8697pvy1m | Incorrect French translations |
+
+---
+
+### January 30th
+
+#### 🎉 New Features & Improvements
+We’ve reimagined and enhanced the Management Portal to bring you a faster, more intuitive, and feature-rich experience. Below are just some of the improvements we’ve made.
+
+
+#### 🌑 Dark Mode
+Enjoy the new **Dark Mode** for the best experience in the Management Portal.
+
+####  📅 Enhanced Price Scheduling
+A redesigned UI with more options for easier and more flexible price scheduling.
+
+#### 📊 New & Improved Dashboards
+- Fresh **new charts** and modes.
+- **Live data loading** for real-time insights.
+
+#### 👤 New User Profile Page
+Now includes options for:
+- 🔑 **Changing your password**
+- 🔑 **API key generation**
+- 📢 **Notification preferences**
+
+#### 📁 Improved Report Generator
+- More reports available.
+- Faster report generation for handling large reporting needs.
+
+#### 💳 New "Pay at Table" Configuration
+Easier setup and management for **Pay at Table** functionality.
+
+#### 🔒 Enhanced SSO Support
+- Now supports **mandatory SSO sign-in**
+
+#### 🏢 Improved Terminal Management
+- Terminals now display their **connection status** with a colored icon:
+  - 🟢 **Green** – Online
+  - 🟡 **Yellow** – Offline for less than 24 hours
+  - 🔴 **Red** – Offline for more than 24 hours
+  - ⚪ **Grey** – No connection recorded
+- **Merged** "Copy to Terminal," "Move to Existing Terminal," and "Move to New Terminal" into one function.
+- Terminal **options** now have a dedicated tab for a cleaner layout.
+- Improved **Terminal Status UI** with faster performance.
+
+#### 📦 Reworked "Stock Take" Page
+A **sleeker, more user-friendly** design for improved stock management.
+
+#### 📦 Stock Withdraw & Replenish
+- Now supports **bulk actions** with a better UI.
+
+#### 📈 Improved Reporting Page
+- 🌂 **Tag filtering**
+- 🎨 **Better UI**
+- 🔍 **Search functionality**
+- 📊 Now includes **Stock & Event Reports** (if enabled & user has permission).
+
+#### 🔄 Improved Stock Period Assignment UI
+A more intuitive design for **stock period assignments**.
+
+#### 🔍 Global Page Search
+Use **CTRL + /** to **quickly search** across all pages.
+
+#### 📢 New Notification Center
+All notifications are now **merged into one place** for easy access.
+
+#### 💰 Account Balance Top-ups
+- New **animation** when topping up your balance.
+- **Instant saving** of your new balance.
+
+#### 🎨 Tons of UI Improvements!
+- **Faster searching**
+- **Better lazy loading**
+- **Cleaner layouts** across multiple pages
+
+---
+

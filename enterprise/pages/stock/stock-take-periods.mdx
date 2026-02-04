@@ -1,0 +1,183 @@
+---
+title: "Stock Take Periods"
+description: "Create periods and assign them to outlets for stock counting"
+---
+
+## Overview
+
+Stock Take Periods define when stock takes should occur and which count sheets they use. Once periods are created, they must be assigned to outlets before stock takes can be performed. This page covers creating stock take periods and assigning them to outlets.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Stock Take Periods | Stock Take Period | Stock Control (Stock Take) |
+| Period Assignment | Stock Take Period Assignment | Stock Control (Stock Take) |
+
+<Note>
+You can only assign periods to outlets you have permission to see through your User Role Outlets.
+</Note>
+
+## Creating Stock Take Periods
+
+### Accessing Stock Take Periods
+
+Navigate to **Stock > Stock Take > Stock Take Period**.
+
+### Creating a New Period
+
+<Steps>
+<Step title="Navigate to Stock Take Periods">
+  Go to **Stock > Stock Take > Stock Take Period**.
+</Step>
+
+<Step title="Create new period">
+  Click the **Create** button (plus icon).
+</Step>
+
+<Step title="Enter details">
+  Fill in the period details:
+  - **Name**: A descriptive name (e.g., "Monthly Stock Take - January 2024")
+  - **Count Sheet**: Select which count sheet determines the products to count
+  - **Date**: When the stock take should be completed
+</Step>
+
+<Step title="Save">
+  Click **Save** to create the period.
+</Step>
+</Steps>
+
+### Editing a Period
+
+1. Select the period from the dropdown list
+2. Click the **Edit** button (pencil icon)
+3. Modify the name, count sheet, or date as needed
+4. Click **Save**
+
+<Note>
+Periods that have been used (assigned to outlets and stock takes performed) cannot be deleted. Check usage by clicking the **Usage** button.
+</Note>
+
+### Deleting a Period
+
+1. Select the period from the dropdown list
+2. Click **Edit**
+3. If the period has not been used, a **Delete** button will be available
+4. Click **Delete** and confirm
+
+<Warning>
+Only periods that have never been assigned to outlets can be deleted.
+</Warning>
+
+### Understanding Period Date
+
+The date represents when the stock take should be completed. For example:
+
+- For a January 2025 month-end stock take, set the date to 01-02-2025
+- Once this date passes, the period can no longer be assigned to outlets
+- If a stock take is still in progress after the date passes, it must still be completed
+
+## Assigning Periods to Outlets
+
+### Single Outlet Assignment
+
+Navigate to **Stock > Stock Take > Stock Take Period Assignment**.
+
+<Steps>
+<Step title="Select outlet">
+  Browse or search for the outlet in the hierarchy tree.
+</Step>
+
+<Step title="Edit assignments">
+  Click on an outlet to select it, then click the **Edit** button.
+</Step>
+
+<Step title="Select periods">
+  The assignment page displays all available stock take periods as cards showing:
+  - Period name
+  - Date
+  - Current status (Pending, In Progress, or Complete)
+</Step>
+
+<Step title="Save">
+  Check the boxes for periods you want to assign, uncheck for periods to remove, then click **Save**.
+</Step>
+</Steps>
+
+**Period Status:**
+- **Valid periods** (Pending status, future date): Enabled checkboxes
+- **Invalid periods** (In Progress/Complete, or past date): Disabled checkboxes, grayed out
+
+Use the **Valid Only** checkbox to filter and show only assignable periods.
+
+### Bulk Period Assignment
+
+Navigate to **Stock > Stock Take > Bulk Period Assignment**.
+
+<Steps>
+<Step title="Select period">
+  Select a **Stock Take Period** from the dropdown.
+</Step>
+
+<Step title="Select outlets">
+  A hierarchy tree appears showing all available outlets. Use checkboxes to select outlets.
+  - Outlets already assigned are pre-checked
+  - Use search to filter outlets
+</Step>
+
+<Step title="Save">
+  Click **Save** to apply the assignments.
+</Step>
+</Steps>
+
+<Warning>
+Bulk assignment affects multiple outlets at once. Review your selections carefully before saving.
+</Warning>
+
+**Bulk Assignment Behavior:**
+- Newly checked outlets receive the period assignment
+- Newly unchecked outlets have the period assignment removed
+- Unchanged outlets are not affected
+- All changes are applied in a single operation
+
+## Stock take period fields reference
+
+| Field | Description |
+|-------|-------------|
+| **Name** | Descriptive name for the period. |
+| **Count Sheet** | The count sheet that determines which products are included. |
+| **Date** | When the stock take should be completed. |
+
+## Frequently asked questions
+
+**Can I assign the same period to multiple outlets?**
+
+Yes. Use the Bulk Period Assignment feature to assign one period to many outlets at once.
+
+**Why can't I uncheck some periods when editing an outlet?**
+
+Periods that are in progress or complete cannot be unassigned. Only periods with "Pending" status and future dates can be modified.
+
+**What happens if I assign a period with a past date?**
+
+Periods with past dates cannot be assigned to outlets. The system only allows assignment of periods with future dates and "Pending" status.
+
+**Can I delete a period that's been assigned to outlets?**
+
+No. Once assigned, a period cannot be deleted. Check usage by clicking the Usage button.
+
+**What's the difference between single and bulk assignment?**
+
+Single assignment allows you to assign multiple different periods to one outlet. Bulk assignment allows you to assign one period to multiple outlets at once.
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Stock Take" icon="clipboard-check" href="/enterprise/pages/stock/stock-take">
+  Perform stock takes using assigned periods.
+</Card>
+
+<Card title="Count Sheets" icon="file-lines" href="/enterprise/pages/stock/count-sheets">
+  Configure count sheets used in periods.
+</Card>
+</CardGroup>

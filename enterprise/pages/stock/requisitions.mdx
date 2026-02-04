@@ -1,0 +1,157 @@
+---
+title: "Requisitions"
+description: "Manually create requisitions from the back office"
+---
+
+## Overview
+
+The Requisition pages let you raise stock requisitions from the back office instead of using the point of sale. You can either:
+
+- **Requisition**: Request stock from a stock request outlet into a single outlet
+- **Outlet to Outlet Requisition**: Move stock directly between two stock-holding outlets
+
+These tools work with your existing stock take periods and count sheets, so requisitions fit naturally into your stock control process.
+
+<Note>
+If you wish to move stock from outlet to outlet without the full 3-stage process, use regular **Stock Transfer** instead.
+</Note>
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Requisition | Requisition | Stock Control (Stock Movements) |
+| Requisition Report | Requisition Report | Stock Control (Stock Movements) |
+
+<Note>
+Outlet lists are based on stock outlets you are assigned to. If you have no stock outlets, the requisition pages will show an information message.
+</Note>
+
+## Accessing Requisitions
+
+Navigate to **Stock > Stock Movements**, then select:
+
+- **Requisition**: For standard outlet requisitions
+- **Outlet to Outlet Requisition**: For direct transfers between outlets
+- **Requisition Report**: For requisition reporting
+
+## Standard Requisition
+
+The Requisition page creates a requisition from a stock request outlet into a chosen outlet, based on that outlet's current count sheet and stock take period.
+
+### Creating a Standard Requisition
+
+<Steps>
+<Step title="Open Requisition">
+  Navigate to **Stock > Stock Movements > Requisition**.
+</Step>
+
+<Step title="Select outlet">
+  Use the hierarchy tree to select an outlet at the **outlet level** (not a higher-level node).
+</Step>
+
+<Step title="Create requisition sheet">
+  Click **Create Requisition** to build a requisition sheet using:
+  - Products from the destination outlet's count sheet
+  - The current stock take period for that outlet
+</Step>
+
+<Step title="Enter quantities">
+  Enter the quantities to requisition for each product.
+</Step>
+
+<Step title="Save">
+  Save the requisition. A stock requisition event is created.
+</Step>
+</Steps>
+
+<Warning>
+The requisition is created but must still be approved/rejected in the Stock Alerts page, then accepted at the PoS.
+</Warning>
+
+### Requisition Help
+
+Click the **information (i)** icon in the header to open the Requisition Information modal explaining:
+
+- What is required for an outlet to be used for requisitions
+- How stock take periods affect requisitions
+- The importance of having a valid, current stock take period
+
+## Outlet to Outlet Requisition
+
+The Outlet to Outlet Requisition page moves stock directly from one stock-holding outlet to another.
+
+### Creating an Outlet to Outlet Requisition
+
+<Steps>
+<Step title="Open Outlet to Outlet Requisition">
+  Navigate to **Stock > Stock Movements > Outlet to Outlet Requisition**.
+</Step>
+
+<Step title="Select outlets">
+  Choose from the dropdowns:
+  - **Source outlet**: Where stock will be taken from
+  - **Destination outlet**: Where stock will be sent to
+  
+  <Warning>Source and destination must be different outlets.</Warning>
+</Step>
+
+<Step title="Create requisition sheet">
+  Click **Create** to build the requisition sheet.
+</Step>
+
+<Step title="Enter quantities">
+  Enter the quantities to move for each product.
+</Step>
+
+<Step title="Save">
+  Save to create the stock requisition event.
+</Step>
+</Steps>
+
+## Requisition Report
+
+Navigate to **Stock > Stock Movements > Requisition Report**.
+
+This report lists requisitions for your selected outlets and date range, including:
+
+- Outlet
+- Status
+- Operator
+- Total requested quantities
+
+Useful for reviewing recent requisitions and auditing stock movements initiated from back office.
+
+## Frequently asked questions
+
+**Why can't I see any outlets on the Requisition page?**
+
+The tree and dropdowns only include stock outlets you are assigned to. If you see a "No stock outlets" message, an administrator needs to update your outlet assignments.
+
+**Why is the Create Requisition button not appearing?**
+
+You must select an item at the **outlet level** in the hierarchy tree, not a higher-level node (such as site or area).
+
+**Why can't I create an outlet to outlet requisition with the same outlet for source and destination?**
+
+Outlet to outlet requisitions are designed to move stock between two different outlets. Selecting the same outlet for both sides is not allowed.
+
+**Why doesn't the requisition save?**
+
+Requisitions must be linked to a valid stock take period for the outlet. If there is no current stock take period, the requisition cannot be created.
+
+**Why are some products not included when I save?**
+
+Only products with a quantity of 1 or more on the requisition sheet are included. Products left at zero are treated as not requested.
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Stock Alerts" icon="bell" href="/enterprise/pages/stock/stock-alerts">
+  Approve or reject requisitions.
+</Card>
+
+<Card title="Stock Transfers" icon="arrows-left-right" href="/enterprise/pages/stock/transfers">
+  Alternative to requisitions for direct transfers.
+</Card>
+</CardGroup>

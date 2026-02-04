@@ -1,0 +1,183 @@
+---
+title: "Bulk Transfers"
+description: "Move stock quickly and automatically across locations"
+---
+
+## Overview
+
+The bulk transfer features provide automated ways to manage stock transfers between outlets:
+
+- **Bulk Transfer**: Transfer all products from a source outlet to a destination outlet based on current stock counts
+- **Replenish Stock**: Automatically create transfers to bring selected outlets up to their par levels
+- **Withdraw Stock**: Automatically create transfers to remove excess stock from selected outlets down to their par levels
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Bulk Transfer | Bulk Transfer | Stock Control (Stock Movements) |
+| Replenish Stock | Replenish | Stock Control (Stock Movements) |
+| Withdraw Stock | Withdraw | Stock Control (Stock Movements) |
+
+<Note>
+These features use your user role outlet assignments to determine which outlets you can access. Replenish and Withdraw functions require product par levels to be configured.
+</Note>
+
+## Accessing the Features
+
+Navigate to **Stock > Stock Movements > Transfer**, then select:
+
+- **Bulk Transfer**: For bulk transfers
+- **Replenish Stock**: For automatic stock replenishment
+- **Withdraw Stock**: For automatic stock withdrawal
+
+## Bulk Transfer
+
+Bulk Transfer allows you to transfer all products from a source outlet to a destination outlet using current stock counts.
+
+### Creating a Bulk Transfer
+
+<Steps>
+<Step title="Open Bulk Transfer">
+  Navigate to **Stock > Stock Movements > Transfer > Bulk Transfer**.
+</Step>
+
+<Step title="Select outlets">
+  In the modal, select:
+  - **Source Outlet**: The outlet transferring products out
+  - **Destination Outlet**: The outlet receiving the products
+</Step>
+
+<Step title="Review products">
+  A table displays all products available in the source outlet with their current stock quantities.
+</Step>
+
+<Step title="Adjust quantities">
+  Modify quantities as needed. Use the search box to find specific products.
+</Step>
+
+<Step title="Save">
+  Click **Save** to create and automatically authorise the transfer.
+</Step>
+</Steps>
+
+<Note>
+Only products with quantities greater than zero will be included in the transfer.
+</Note>
+
+## Replenish Stock
+
+Replenish Stock automatically creates transfers to bring selected outlets up to their configured par levels.
+
+<Info>
+When doing replenishments, you choose the destination outlet but the source outlet is automatically the configured stock request outlet from **Configuration > Terminal > Hierarchy > Stock Control**.
+</Info>
+
+### Creating Replenish Stock Transfers
+
+<Steps>
+<Step title="Open Replenish Stock">
+  Navigate to **Stock > Stock Movements > Transfer > Replenish Stock**.
+</Step>
+
+<Step title="Select par level type">
+  Choose the target level:
+  - **Minimum**: Replenish to minimum par level
+  - **Standard**: Replenish to standard par level (default)
+  - **Maximum**: Replenish to maximum par level
+</Step>
+
+<Step title="Select outlets">
+  Select one or more destination outlets from the outlet hierarchy tree.
+</Step>
+
+<Step title="Review status">
+  Click **Save** to see the status page showing results for each outlet.
+</Step>
+
+<Step title="Confirm">
+  Click **Confirm** to create the transfers.
+</Step>
+</Steps>
+
+### Status Indicators
+
+| Status | Meaning |
+|--------|---------|
+| **OK** (green) | Transfer can be created successfully. |
+| **Information** (blue) | Stock level already at or above par level. No transfer needed. |
+| **Error** (red) | No requisition outlet available. Configure a request outlet first. |
+
+## Withdraw Stock
+
+Withdraw Stock automatically creates transfers to remove excess stock from selected outlets down to their configured par levels. This is commonly used after events to return excess stock to a central store.
+
+<Info>
+When performing a withdraw, you choose the source outlet but the destination outlet is automatically the configured stock request outlet.
+</Info>
+
+### Creating Withdraw Stock Transfers
+
+<Steps>
+<Step title="Open Withdraw Stock">
+  Navigate to **Stock > Stock Movements > Transfer > Withdraw Stock**.
+</Step>
+
+<Step title="Select par level type">
+  Choose the target level:
+  - **All**: Remove all stock from the outlet
+  - **Minimum**: Remove stock above minimum par level
+  - **Standard**: Remove stock above standard par level
+  - **Maximum**: Remove stock above maximum par level
+</Step>
+
+<Step title="Select outlets">
+  Select one or more source outlets from the outlet hierarchy tree.
+</Step>
+
+<Step title="Review status">
+  Click **Save** to see the status page showing results for each outlet.
+</Step>
+
+<Step title="Confirm">
+  Click **Confirm** to create the transfers.
+</Step>
+</Steps>
+
+## Transfer Results Page
+
+After creating bulk transfers, replenish stock, or withdraw stock operations, a results page shows all created transfers including:
+
+- Transfer details (source outlet, destination outlet, transfer number)
+- Product lines with quantities, unit prices, and line totals
+- Print button (if you have Transfer Report permission)
+
+## Frequently asked questions
+
+**Why don't I see any outlets when trying to use these features?**
+
+Your user role may not have outlets assigned, or the outlets may not be configured as stock-holding outlets. Contact your system administrator.
+
+**What happens if an outlet doesn't have a requisition outlet configured?**
+
+For Replenish Stock and Withdraw Stock, outlets must have a requisition outlet configured. Without one, an error status appears and no transfer is created.
+
+**Can I edit the quantities before saving in Replenish or Withdraw Stock?**
+
+No, these features automatically calculate quantities based on par levels. For custom quantities, create a regular transfer manually. However, in Bulk Transfer, you can modify quantities before saving.
+
+**Can I cancel transfers created by these features?**
+
+Once created and saved, transfers are automatically authorised and cannot be cancelled. Use the Reverse Transfer feature to create new transfers with reversed quantities.
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Stock Transfers" icon="arrows-left-right" href="/enterprise/pages/stock/transfers">
+  Manual stock transfers between outlets.
+</Card>
+
+<Card title="Par Levels" icon="chart-line" href="/enterprise/pages/stock/par-levels">
+  Configure par levels for automatic transfers.
+</Card>
+</CardGroup>

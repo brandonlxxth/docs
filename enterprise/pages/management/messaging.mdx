@@ -5,54 +5,107 @@ description: "Send message templates, terminal message templates, send messages 
 
 ## Overview
 
-Under **Configuration > Management > Messaging** you can:
+Under **Configuration > Management > Messaging** there are four pages:
 
-- **Send Message Templates** — Create **server message templates** used for system notifications (e.g. server push messages to terminals or other systems).
-- **Terminal Message Templates** — Create **terminal message templates** used when sending messages to terminals (e.g. "Please see manager", "Break in 10 minutes"). You choose a template when sending a message to POS.
-- **Send Message to POS** — **Send messages directly to terminals** in real time. You select one or more terminals (or outlets), choose a **Terminal Message Template** or enter custom text, and send. The message appears on the selected terminals.
-- **Message History** — View **message history** and delivery status for messages sent to terminals (who sent what, when, to which terminals).
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Server Messages | Server Messages | Configuration (Management) |
+| Server Messages Subscription | Server Messages Subscription | Configuration (Management) |
+| Terminal Messages | Terminal Messages | Configuration (Management) |
+| Send Terminal Messages | Send Terminal Messages | Configuration (Management) |
+
+- **Send Message Templates** — Create **server message templates** (message **Content** only). Used by the system for server-initiated notifications to terminals or other systems.
+- **Terminal Message Templates** — Create **terminal message templates** (message **Content** only). Used when sending a message to POS: you pick a template to fill the message box so you can reuse text (e.g. "Please see manager", "Break in 10 minutes").
+- **Send Message to POS** — Send a message to terminals **in real time**. You choose an **Outlet** (which outlet’s terminals to send to), optionally pick a **Quick Message** (Terminal Message Template) and click **Select** to fill the **Message** field, enter or edit **Message** text, then Send. The message appears on the selected terminals (till screen or terminal inbox, depending on configuration).
+- **Message History** — List of messages sent to terminals: **Date/Time**, **Outlet**, **Operator** (who sent it), **Content** (message text). You can search and delete individual entries. Use it to confirm what was sent and to review past communications.
 
 This is separate from **Configuration > Campaign** (Messaging and Notification templates), which is for **member** messaging (push and email to members). Management Messaging is for **operator and terminal** communication.
 
-You need the **Server Message Template**, **Terminal Message Template**, or **Terminal Send Message** permission as appropriate for each page.
+**Permissions:** You need **Server Message Template**, **Terminal Message Template**, or **Terminal Send Message** permission as appropriate for each page.
 
 ## Using Management Messaging
 
 ### Accessing Messaging (Management)
 
-Navigate to **Configuration > Management > Messaging** in the navigation menu. The submenu has:
+Navigate to **Configuration > Management > Messaging**. The submenu has:
 
 - **Send Message Templates** — Create and edit server message templates.
 - **Terminal Message Templates** — Create and edit terminal message templates.
 - **Send Message to POS** — Send a message to terminals now.
-- **Message History** — View history of messages sent to terminals.
+- **Message History** — View (and search, delete) history of messages sent to terminals.
 
 ### Send Message Templates
 
-When you open **Configuration > Management > Messaging > Send Message Templates**, you see a list of server message templates. Click the **+** icon to create a new template. Enter a **Name** and the **message content** (and any variables or options as shown). Save. Server message templates are used by the system for server-initiated notifications to terminals or other systems.
+1. Open **Configuration > Management > Messaging > Send Message Templates**.
+2. You see a list of server message templates (selector at the top) and a **+** icon. Click **+** to create, or select one to edit.
+3. Enter **Content** (message text; character limit and rows as shown on the form). Save.
+4. Server message templates are used by the system for server-initiated notifications; they do not have a **Name** field—only **Content**.
 
 ### Terminal Message Templates
 
-When you open **Configuration > Management > Messaging > Terminal Message Templates**, you see a **selector at the top** and a **+** icon. Choose a template from the list; its details load below. Create or edit templates with a **Name** and **message content**. When you send a message to POS (Send Message to POS), you can choose one of these templates so the same message can be reused (e.g. "Please see manager", "Break in 10 minutes").
+1. Open **Configuration > Management > Messaging > Terminal Message Templates**.
+2. You see a list of terminal message templates (selector at the top) and a **+** icon. Click **+** to create, or select one to edit.
+3. Enter **Content** (message text; character limit and rows as shown on the form). Save.
+4. When you use **Send Message to POS**, you can choose one of these templates in **Quick Message** and click **Select** to populate the **Message** field—no **Name** field, only **Content**.
 
 ### Send Message to POS
 
-When you open **Configuration > Management > Messaging > Send Message to POS**, you see a form to send a message to terminals. Select the **terminals** (or outlets) you want to send to, choose a **Terminal Message Template** or enter **custom text**, and click Send. The message is delivered to the selected terminals in real time and appears on the till screen (or in the terminal inbox, depending on configuration).
+1. Open **Configuration > Management > Messaging > Send Message to POS**.
+2. **Outlet** — Select the outlet whose terminals will receive the message (required).
+3. **Quick Message** — Optionally select a **Terminal Message Template** from the dropdown (or **None**). Click **Select** to copy that template’s content into the **Message** field.
+4. **Message** — Enter or edit the message text (required; character limit as shown on the form).
+5. Click **Send**. The message is delivered to the terminals at the selected outlet in real time.
 
 ### Message History
 
-When you open **Configuration > Management > Messaging > Message History**, you see a list or table of messages sent to terminals: who sent the message, when, which terminals received it, and delivery status. Use it to confirm delivery and to review past communications.
+1. Open **Configuration > Management > Messaging > Message History**.
+2. You see a table of messages: **Date/Time**, **Outlet**, **Operator**, **Content**. Use the search box to filter. You can delete a row (Delete button) to remove it from the list.
+
+## Messaging (Management) fields reference
+
+### Send Message Templates
+
+| Field | What it does |
+|-------|----------------|
+| **Content** | The message text (multiline). Character limit and row count are shown on the form. Used by the system for server-initiated notifications. |
+
+### Terminal Message Templates
+
+| Field | What it does |
+|-------|----------------|
+| **Content** | The message text (multiline). Character limit and row count are shown on the form. Used when sending from **Send Message to POS** via **Quick Message**. |
+
+### Send Message to POS
+
+| Field | What it does |
+|-------|----------------|
+| **Outlet** | The outlet whose terminals will receive the message. Required. |
+| **Quick Message** | Dropdown of **Terminal Message Templates** (or **None**). Select a template and click **Select** to copy its content into **Message**. |
+| **Message** | The message text sent to the terminals. Required. Character limit as shown on the form. |
+
+### Message History
+
+| Column / action | What it does |
+|-----------------|----------------|
+| **Date/Time** | When the message was sent. |
+| **Outlet** | Outlet where the message was sent. |
+| **Operator** | User (operator) who sent the message. |
+| **Content** | The message text that was sent. |
+| **Delete** | Button to remove that message from the history list. |
+| **Search** | Search box to filter the table by text. |
 
 ## How Management Messaging links
 
-- **Terminals**: Messages are sent to **Terminals** (or to all terminals at selected outlets). Operators see the message on the till.
-- **Terminal Message Templates**: Templates are used when sending from **Send Message to POS** so you don’t have to retype common messages.
-- **Server Message Templates**: Used by the system for server-initiated notifications (e.g. system alerts, sync messages).
+- **Terminals**: Messages are sent to terminals at the **Outlet** you select on **Send Message to POS**. Operators see the message on the till (or in the terminal inbox).
+- **Terminal Message Templates**: Used in **Send Message to POS** via **Quick Message** so you don’t have to retype common messages.
+- **Server Message Templates**: Used by the system for server-initiated notifications (e.g. system alerts, sync messages); not selected by the user on Send Message to POS.
 
 ## Best practices
 
-- Create **Terminal Message Templates** for common messages (e.g. "Please see manager", "Break in 10 minutes") so staff can send them quickly from Send Message to POS.
-- Use **Message History** to verify that important messages were delivered.
+- Create **Terminal Message Templates** for common messages (e.g. "Please see manager", "Break in 10 minutes") and use **Quick Message** on **Send Message to POS** to send them quickly.
+- Use **Message History** to verify that important messages were sent and to review past communications.
 - Do not confuse this with **Configuration > Campaign > Messaging** (member messaging); Management Messaging is for operator/terminal communication only.
 
 ## Related documentation

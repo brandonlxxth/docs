@@ -1,0 +1,221 @@
+---
+title: "Home features"
+description: "News, accounts, vouchers, rewards, and loyalty in the mobile app"
+---
+
+## Overview
+
+The Home tab displays the member's dashboard with current order status, news, account balances, vouchers, loyalty points, and available rewards.
+
+All features on the Home tab are configured in the Management Portal.
+
+## Board (News feed)
+
+The Board displays news, announcements, and promotions configured in **Configuration > Mobile App > Board**.
+
+Each board item shows:
+- Banner image
+- Title
+- Rich text content
+- Publication date
+
+Board items can be targeted to specific member groups for personalized content.
+
+See [Board documentation](/enterprise/pages/mobile-app#board) for configuration details.
+
+## Current order status
+
+At the top of Home, members see their current active order (if any):
+- Order number
+- Preparation status
+- Tap to view full order details
+
+This displays the most recent pending or in-progress order.
+
+## Accounts
+
+The Accounts section shows member account balances and allows top-ups.
+
+### Account types
+
+Account types are configured in **Configuration > Member > Account**. Common account types:
+- Prepaid balance accounts
+- Credit accounts
+- Meal plan accounts
+- Gift card accounts
+
+### Account features in app
+
+For each account, members can:
+- View current balance
+- View recent transactions
+- Top up balance (via card payment)
+- Use balance at checkout
+
+Tap an account to see:
+- Transaction history
+- Top-up options
+- Account details
+
+### Configuration
+
+Account types are created in **Configuration > Member > Account** with settings for:
+- Account name and type
+- Balance limits
+- Transaction history
+- Top-up options
+- Restrictions
+
+## Cost centres
+
+Cost centres allow members to charge purchases to department or project codes.
+
+Cost centres are configured in **Configuration > Member > Cost Centre**.
+
+### Cost centre features
+
+Members can:
+- View assigned cost centres
+- See cost centre balance or limit
+- Enter cost centre code at checkout
+- View cost centre transaction history
+
+Cost centres are assigned to members in **Configuration > Member > Member** (under member details).
+
+## Vouchers
+
+Vouchers are discounts or offers that members can apply at checkout.
+
+Vouchers are configured in **Configuration > Incentives > Voucher**.
+
+### Voucher display
+
+Each voucher shows:
+- Voucher name
+- Description
+- Discount amount or percentage
+- Expiry date
+- Redemption status
+- Terms and conditions
+
+### Voucher types
+
+- **Allowance vouchers** - Redeemable once (e.g. "£5 off your next order")
+- **Redemption vouchers** - Can be used multiple times (e.g. "10% off all hot drinks")
+- **Promotional codes** - Enter code to redeem
+
+### Using vouchers
+
+1. Browse available vouchers in Home tab
+2. Tap voucher to view details
+3. Add items to cart
+4. At checkout, select voucher to apply
+5. Discount is applied to total
+
+Vouchers can have restrictions:
+- Minimum spend
+- Product categories
+- Days/times of use
+- Member groups
+- Outlet restrictions
+
+See [Voucher documentation](/enterprise/pages/incentives/voucher) for configuration.
+
+## Points (Loyalty)
+
+Loyalty points are earned on purchases and displayed in the Home tab.
+
+Loyalty programs are configured in **Configuration > Incentives > Loyalty**.
+
+### Point strategies
+
+Point strategies define how members earn points:
+- Points per £1 spent
+- Points on specific products
+- Points on specific days/times
+- Bonus point promotions
+
+Members can view:
+- Current point balance
+- Point earning strategies
+- Point history
+- Points about to expire
+
+### Point expiry
+
+Points can expire based on loyalty program rules:
+- Fixed expiry date
+- Rolling expiry (e.g. 12 months from earning)
+- No expiry
+
+The app displays points expiring soon.
+
+See [Loyalty documentation](/enterprise/pages/incentives/loyalty) for configuration.
+
+## Rewards
+
+Rewards are items members can redeem using loyalty points.
+
+Rewards are configured in **Configuration > Incentives > Reward**.
+
+### Reward display
+
+Each reward shows:
+- Reward name
+- Description
+- Point cost
+- Availability
+- Redemption status
+
+### Redeeming rewards
+
+1. Browse available rewards in Home tab
+2. Tap reward to view details
+3. Tap "Redeem" if enough points
+4. Reward is converted to voucher
+5. Use voucher at checkout
+
+When redeemed:
+- Points are deducted from balance
+- Voucher is added to Vouchers section
+- Voucher can be applied at checkout
+
+### Reward restrictions
+
+Rewards can have:
+- Point cost requirements
+- Member group restrictions
+- Availability dates
+- Redemption limits
+- Product restrictions
+
+See [Reward documentation](/enterprise/pages/incentives/reward) for configuration.
+
+## Configuration summary
+
+| Home feature | Management Portal location |
+|-------------|---------------------------|
+| Board items | **Configuration > Mobile App > Board** |
+| Account types | **Configuration > Member > Account** |
+| Cost centres | **Configuration > Member > Cost Centre** |
+| Vouchers | **Configuration > Incentives > Voucher** |
+| Loyalty points | **Configuration > Incentives > Loyalty** |
+| Rewards | **Configuration > Incentives > Reward** |
+| Member groups | **Configuration > Member > Member Group** |
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Board" icon="newspaper" href="/enterprise/pages/mobile-app">
+    Configure news and announcements.
+  </Card>
+  <Card title="Incentives" icon="gift" href="/enterprise/pages/incentives/overview">
+    Set up loyalty, vouchers, and rewards.
+  </Card>
+  <Card title="Accounts" icon="wallet" href="/enterprise/pages/member/account">
+    Configure account types.
+  </Card>
+  <Card title="Cost Centres" icon="building" href="/enterprise/pages/member/cost-centre">
+    Set up cost centres.
+  </Card>
+</CardGroup>

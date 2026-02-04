@@ -26,7 +26,8 @@
           {
             "group": "Overview",
             "pages": [
-              "index"
+              "index",
+              "contact"
             ]
           },
           {
@@ -35,85 +36,197 @@
               "enterprise/overview",
               "enterprise/getting-started",
               "enterprise/authentication",
+              "enterprise/pages/user-profile",
               "enterprise/navigation",
               {
-                "group": "Admin",
+                "group": "Configuration",
                 "pages": [
-                  "enterprise/pages/admin/audit",
-                  "enterprise/pages/admin/users",
-                  "enterprise/pages/admin/user-roles",
-                  "enterprise/pages/admin/restriction",
-                  "enterprise/pages/admin/connected-account",
-                  "enterprise/pages/admin/client-devices"
+                  "enterprise/pages/configuration",
+                  {
+                    "group": "Member",
+                    "pages": [
+                      "enterprise/pages/member/account",
+                      "enterprise/pages/member/member-import",
+                      "enterprise/pages/member/member",
+                      "enterprise/pages/member/member-group",
+                      "enterprise/pages/member/member-group-management",
+                      "enterprise/pages/member/cost-centre"
+                    ]
+                  },
+                  {
+                    "group": "Incentives",
+                    "pages": [
+                      "enterprise/pages/incentives/overview",
+                      "enterprise/pages/incentives/voucher",
+                      "enterprise/pages/incentives/loyalty",
+                      "enterprise/pages/incentives/reward",
+                      "enterprise/pages/incentives/game"
+                    ]
+                  },
+                  {
+                    "group": "Campaign",
+                    "pages": [
+                      "enterprise/pages/campaign/messaging",
+                      "enterprise/pages/campaign/notification-templates"
+                    ]
+                  },
+                  {
+                    "group": "Management",
+                    "pages": [
+                      "enterprise/pages/management/overview",
+                      "enterprise/pages/management/layouts",
+                      "enterprise/pages/management/table-layout",
+                      "enterprise/pages/management/menus",
+                      "enterprise/pages/management/self-service-menu",
+                      "enterprise/pages/management/tenders",
+                      "enterprise/pages/management/sessions",
+                      "enterprise/pages/management/products",
+                      "enterprise/pages/management/product-label",
+                      "enterprise/pages/management/product-prices",
+                      "enterprise/pages/management/price-bands",
+                      "enterprise/pages/management/price-band-scheduler",
+                      "enterprise/pages/management/price-band-groups",
+                      "enterprise/pages/management/product-groups",
+                      "enterprise/pages/management/product-challenge",
+                      "enterprise/pages/management/outlet-type",
+                      "enterprise/pages/management/operators",
+                      "enterprise/pages/management/operator-roles",
+                      "enterprise/pages/management/receipts",
+                      "enterprise/pages/management/resources",
+                      "enterprise/pages/management/allergens",
+                      "enterprise/pages/management/course",
+                      "enterprise/pages/management/product-tags",
+                      "enterprise/pages/management/waste-reason",
+                      "enterprise/pages/management/pay-at-table",
+                      "enterprise/pages/management/receipt-portal",
+                      "enterprise/pages/management/checklist",
+                      "enterprise/pages/management/messaging"
+                    ]
+                  },
+                  {
+                    "group": "Vision",
+                    "pages": [
+                      "enterprise/pages/vision/overview"
+                    ]
+                  },
+                  {
+                    "group": "Terminal",
+                    "pages": [
+                      "enterprise/pages/terminal/overview",
+                      "enterprise/pages/terminal/configuration"
+                    ]
+                  },
+                  {
+                    "group": "Mobile App",
+                    "pages": [
+                      "enterprise/pages/mobile-app"
+                    ]
+                  },
+                  {
+                    "group": "Admin",
+                    "pages": [
+                      "enterprise/pages/admin/audit",
+                      "enterprise/pages/admin/users",
+                      "enterprise/pages/admin/user-roles",
+                      "enterprise/pages/admin/restriction",
+                      "enterprise/pages/admin/connected-account",
+                      "enterprise/pages/admin/client-devices"
+                    ]
+                  }
                 ]
               },
               {
-                "group": "Incentives",
+                "group": "Analytics",
                 "pages": [
-                  "enterprise/pages/incentives/overview",
-                  "enterprise/pages/incentives/voucher",
-                  "enterprise/pages/incentives/loyalty",
-                  "enterprise/pages/incentives/reward",
-                  "enterprise/pages/incentives/game"
+                  "enterprise/pages/analytics/overview",
+                  "enterprise/pages/analytics/dashboard",
+                  "enterprise/pages/analytics/activity",
+                  "enterprise/pages/analytics/generated-reports",
+                  "enterprise/pages/analytics/events",
+                  "enterprise/pages/analytics/heatmaps",
+                  "enterprise/pages/analytics/report-images"
                 ]
               },
               {
-                "group": "Member Management",
+                "group": "Stock",
                 "pages": [
-                  "enterprise/pages/member/account",
-                  "enterprise/pages/member/member-import",
-                  "enterprise/pages/member/member",
-                  "enterprise/pages/member/member-group",
-                  "enterprise/pages/member/member-group-management",
-                  "enterprise/pages/member/cost-centre"
+                  "enterprise/pages/stock",
+                  "enterprise/pages/stock/stock-dashboard",
+                  "enterprise/pages/stock/stock-alerts",
+                  "enterprise/pages/stock/terminal-stock",
+                  {
+                    "group": "Stock Administration",
+                    "pages": [
+                      "enterprise/pages/stock/suppliers",
+                      "enterprise/pages/stock/unit-of-measure",
+                      "enterprise/pages/stock/reason-codes",
+                      "enterprise/pages/stock/count-sheets",
+                      "enterprise/pages/stock/count-sheet-groups",
+                      "enterprise/pages/stock/order-prefix",
+                      "enterprise/pages/stock/par-levels",
+                      "enterprise/pages/stock/depletion-rules",
+                      "enterprise/pages/stock/depletion-groups",
+                      "enterprise/pages/stock/requisition-groups",
+                      "enterprise/pages/stock/stock-validator"
+                    ]
+                  },
+                  {
+                    "group": "Stock Movements",
+                    "pages": [
+                      "enterprise/pages/stock/orders",
+                      "enterprise/pages/stock/deliveries",
+                      "enterprise/pages/stock/transfers",
+                      "enterprise/pages/stock/bulk-transfers",
+                      "enterprise/pages/stock/returns",
+                      "enterprise/pages/stock/adjustments",
+                      "enterprise/pages/stock/requisitions"
+                    ]
+                  },
+                  {
+                    "group": "Stock Take",
+                    "pages": [
+                      "enterprise/pages/stock/stock-take",
+                      "enterprise/pages/stock/stock-take-periods",
+                      "enterprise/pages/stock/stock-verification"
+                    ]
+                  },
+                  "enterprise/pages/stock/stock-scan-app"
                 ]
               },
               {
-                "group": "Campaign",
+                "group": "Ordering",
                 "pages": [
-                  "enterprise/pages/campaign/messaging",
-                  "enterprise/pages/campaign/notification-templates"
+                  "enterprise/pages/ordering"
                 ]
               },
               {
-                "group": "Vision",
+                "group": "Cash Management",
                 "pages": [
-                  "enterprise/pages/vision/overview"
+                  "enterprise/pages/cash-management"
                 ]
               },
               {
-                "group": "Management",
+                "group": "Parent Pay",
                 "pages": [
-                  "enterprise/pages/management/overview",
-                  "enterprise/pages/management/layouts",
-                  "enterprise/pages/management/table-layout",
-                  "enterprise/pages/management/menus",
-                  "enterprise/pages/management/self-service-menu",
-                  "enterprise/pages/management/tenders",
-                  "enterprise/pages/management/sessions",
-                  "enterprise/pages/management/products",
-                  "enterprise/pages/management/product-label",
-                  "enterprise/pages/management/product-prices",
-                  "enterprise/pages/management/price-bands",
-                  "enterprise/pages/management/price-band-scheduler",
-                  "enterprise/pages/management/price-band-groups",
-                  "enterprise/pages/management/product-groups",
-                  "enterprise/pages/management/product-challenge",
-                  "enterprise/pages/management/outlet-type",
-                  "enterprise/pages/management/operators",
-                  "enterprise/pages/management/operator-roles",
-                  "enterprise/pages/management/receipts",
-                  "enterprise/pages/management/resources",
-                  "enterprise/pages/management/allergens",
-                  "enterprise/pages/management/course",
-                  "enterprise/pages/management/product-tags",
-                  "enterprise/pages/management/waste-reason",
-                  "enterprise/pages/management/pay-at-table",
-                  "enterprise/pages/management/receipt-portal",
-                  "enterprise/pages/management/checklist",
-                  "enterprise/pages/management/messaging"
+                  "enterprise/pages/parent-pay"
                 ]
-              }
+              },
+              {
+                "group": "Fiscal",
+                "pages": [
+                  "enterprise/pages/fiscal"
+                ]
+              }            ]
+          },
+          {
+            "group": "Kappture App (Mobile)",
+            "pages": [
+              "mobile-app/overview",
+              "mobile-app/authentication",
+              "mobile-app/home-features",
+              "mobile-app/ordering",
+              "mobile-app/payment",
+              "mobile-app/settings"
             ]
           }
         ]
@@ -146,18 +259,7 @@
       }
     ],
     "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
+      "anchors": []
     }
   },
   "logo": {
@@ -166,16 +268,10 @@
     "href": "/"
   },
   "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
-      }
-    ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Need help?",
+      "href": "/contact"
     }
   },
   "contextual": {

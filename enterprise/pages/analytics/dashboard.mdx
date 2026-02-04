@@ -1,0 +1,231 @@
+---
+title: "Dashboard"
+description: "Real-time sales metrics, live data, and multiple breakdown views in the Management Portal"
+---
+
+## Overview
+
+The Dashboard (`/Dashboard`) provides a real-time overview of your business operations with live-updating metrics, interactive charts, and multiple breakdown views. Use it to monitor sales performance across sites, outlets, terminals, operators, and products.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Dashboard | Dashboard | Analytics |
+
+## Accessing the Dashboard
+
+Navigate to **Analytics > Dashboard** in the main navigation menu, or go directly to `/Dashboard`.
+
+## Live data and dynamic refresh
+
+The Dashboard displays **live data** that refreshes automatically. Key behaviours:
+
+- **Auto-refresh**: Metrics and charts update in real time without requiring a page reload.
+- **Live loading**: Data streams in as it becomes available, so you see transactions shortly after they occur.
+- **Caching**: Dashboard caching has been optimised for performance; previously viewed data loads faster on subsequent visits.
+- **Time zone**: Data is displayed in your configured time zone. You can update your time zone in your [User Profile](/enterprise/pages/user-profile#time-zone).
+
+<Tip>
+If you notice delays, check that your selected date range and filters aren't too broad. Narrower filters improve loading speed.
+</Tip>
+
+## Date and time selection
+
+Use the date picker at the top of the Dashboard to select the time period you want to analyse:
+
+| Option | Description |
+|--------|-------------|
+| **Today** | Current trading day based on your Trading Day start time (default 00:00–23:59). |
+| **Yesterday** | Previous trading day. |
+| **This week** | Current week (Monday to Sunday). |
+| **Last 7 days** | Rolling seven-day period. |
+| **This month** | Current calendar month. |
+| **Custom range** | Select specific start and end dates. |
+
+<Info>
+Your **Trading Day start time** is configured in your [User Profile](/enterprise/pages/user-profile#trading-day-start-time). This affects how "Today" and daily metrics are calculated. For example, if your trading day starts at 06:00, transactions at 02:00 count toward the previous day.
+</Info>
+
+## Filters
+
+Narrow down the data displayed using the filter options:
+
+| Filter | Description |
+|--------|-------------|
+| **Site** | Filter to one or more sites. Supports multi-selection. |
+| **Outlet** | Filter to specific outlets within selected sites. |
+| **Terminal** | Filter to specific terminals. |
+| **Operator** | Filter to transactions by specific operators. |
+| **Product Group** | Filter metrics to products in selected groups. |
+| **Tags** | Filter by product tags for more granular analysis. |
+
+<Tip>
+Combine filters for targeted insights—for example, view sales for a specific operator at a specific outlet during lunch hours.
+</Tip>
+
+## Dashboard metrics
+
+The Dashboard displays key performance indicators (KPIs) at the top of the page:
+
+| Metric | Description |
+|--------|-------------|
+| **Total Revenue** | Gross sales value for the selected period and filters. |
+| **Transaction Count** | Number of completed transactions. |
+| **Average Transaction Value** | Mean value per transaction. |
+| **Covers** | Number of covers (customers served), if configured. |
+| **Outlet Totals** | Aggregated totals broken down by outlet. |
+
+Metrics update dynamically as new transactions come in and as you change filters or date ranges.
+
+## Charts and visualisations
+
+The Dashboard includes several chart types:
+
+### Sales over time
+
+A line or bar chart showing revenue and/or transaction count over the selected period. Hover over data points to see exact values for each time interval.
+
+### Revenue breakdown
+
+Pie or donut charts showing revenue distribution by:
+- Site
+- Outlet
+- Product Group
+- Tender type
+
+### Trend comparison
+
+Compare current period performance against previous periods (e.g. today vs. yesterday, this week vs. last week).
+
+## Dashboard views
+
+Switch between different breakdown views using the view selector. Each view shows the same core metrics but grouped by a different dimension.
+
+### Site view
+
+Breaks down metrics by **site**. Use this to compare performance across locations.
+
+| Column | Description |
+|--------|-------------|
+| Site | Site name. |
+| Revenue | Total revenue for the site. |
+| Transactions | Number of transactions. |
+| Avg. Transaction | Average transaction value. |
+
+### Outlet view
+
+Breaks down metrics by **outlet** within sites.
+
+| Column | Description |
+|--------|-------------|
+| Outlet | Outlet name. |
+| Site | Parent site. |
+| Revenue | Total revenue for the outlet. |
+| Transactions | Number of transactions. |
+| Avg. Transaction | Average transaction value. |
+
+### Terminal view
+
+Breaks down metrics by **terminal**.
+
+| Column | Description |
+|--------|-------------|
+| Terminal | Terminal name or ID. |
+| Outlet | Parent outlet. |
+| Revenue | Total revenue for the terminal. |
+| Transactions | Number of transactions. |
+
+### Operator view
+
+Breaks down metrics by **operator** (staff member).
+
+| Column | Description |
+|--------|-------------|
+| Operator | Operator name. |
+| Revenue | Total revenue for transactions served by this operator. |
+| Transactions | Number of transactions. |
+| Avg. Transaction | Average transaction value. |
+
+Use this view to monitor individual staff performance and identify top performers.
+
+### Product view
+
+Breaks down metrics by **product**.
+
+| Column | Description |
+|--------|-------------|
+| Product | Product name. |
+| Quantity | Number of units sold. |
+| Revenue | Total revenue from this product. |
+| Avg. Price | Average selling price. |
+
+### Product Group view
+
+Breaks down metrics by **product group**.
+
+| Column | Description |
+|--------|-------------|
+| Product Group | Group name. |
+| Quantity | Total units sold in this group. |
+| Revenue | Total revenue from products in this group. |
+
+## Map view
+
+The Dashboard includes a **map view** that displays site locations geographically. Each site marker shows:
+
+- Site name
+- Current revenue
+- Transaction count
+
+Click a marker to see more detail or to filter the dashboard to that site.
+
+<Note>
+The map view requires site location data to be configured. If locations are missing, markers won't appear.
+</Note>
+
+## Product frequency
+
+The **Product Frequency** metric shows how often products are sold together or how frequently individual products appear in transactions. Use this to identify popular items and potential upsell opportunities.
+
+<Warning>
+When filtering by future dates, the Product Frequency metric returns no data (as expected). Ensure your date range includes past or current dates.
+</Warning>
+
+## Performance tips
+
+| Tip | Why it helps |
+|-----|--------------|
+| **Use specific date ranges** | Narrower ranges load faster than broad ranges. |
+| **Filter by site or outlet** | Reduces the dataset size for quicker rendering. |
+| **Check your time zone** | Ensure your [User Profile](/enterprise/pages/user-profile#time-zone) time zone matches your operating region. |
+
+<Tip>
+To export data for offline analysis, use **Analytics > Reports**. Reports support CSV and Excel exports with customisable filters and date ranges.
+</Tip>
+
+## Troubleshooting
+
+| Issue | Solution |
+|-------|----------|
+| Data not updating | Check your internet connection; try refreshing the page. If you are expecting new sales data, ensure connection is stable to any terminals |
+| Incorrect time shown | Update your time zone in [User Profile](/enterprise/pages/user-profile#time-zone). |
+| Map not displaying sites | Ensure site location data is configured. |
+| Slow loading | Narrow your date range and filters; try a different browser. |
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Analytics" icon="chart-line" href="/enterprise/pages/analytics/overview">
+    Reports, activity tracking, and other analytics features.
+  </Card>
+  <Card title="Reports" icon="file-chart-line" href="/enterprise/pages/analytics/overview#reports">
+    Generate detailed reports on sales, inventory, and performance.
+  </Card>
+  <Card title="Operators" icon="user" href="/enterprise/pages/management/operators">
+    Configure operators whose performance appears in Operator view.
+  </Card>
+  <Card title="Products" icon="box" href="/enterprise/pages/management/products">
+    Manage products that appear in Product view.
+  </Card>
+</CardGroup>

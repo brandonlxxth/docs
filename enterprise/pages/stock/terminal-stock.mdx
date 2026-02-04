@@ -1,0 +1,177 @@
+---
+title: "Terminal Stock Management"
+description: "How PoS terminals manage and control stock"
+---
+
+## Overview
+
+When stock control is enabled, PoS terminals reduce stock through **SALE** and **WASTE** transactions. K-Stock enables outlets to perform daily stock operations directly on the PoS including stock verification, requisitions, transfers, and stock queries.
+
+<Note>
+**REFUND** and **CANCEL** orders do not modify stock levels.
+</Note>
+
+Any Kappture device that can place **SALE** orders will deplete stock, including standard PoS, Kiosks, Quickserve, Self Checkouts, and Ordering Servers (QR ordering, App, API).
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Stock Alerts | Stock Alerts | Stock Control (Stock Movements) |
+
+<Note>
+Each K-Stock function is controlled by **Operator Role** permissions. Operators in **Training Mode** cannot access stock functions, and stock depletion does not occur for training sales.
+</Note>
+
+## Stock Depletion Configuration
+
+### Stock-Holding Outlet
+
+Enable **Stock Holding** in: **Configuration > Terminal > Hierarchy > Outlet > Stock Control**
+
+<Warning>
+Once an outlet is set as Stock Holding, it cannot be reverted. If done in error, the outlet must be recreated.
+</Warning>
+
+### Stock Request Outlet
+
+A stock-holding outlet must define where stock is depleted from:
+
+| Option | Description |
+|--------|-------------|
+| **Self** | The outlet uses its own stock (e.g., a bar). |
+| **Another Outlet** | Stock is drawn from a different outlet (e.g., a mobile unit drawing from a nearby bar). |
+| **Mixed Sources** | Use Product Depletion Groups to define different source outlets per product. |
+
+### Product Setup
+
+A product will only deplete stock when **all** of the following are configured:
+
+- **UoM**: Stock Control Unit of Measure
+- **Stock Supplier Price**: Required for stock valuation
+- **Depletion Rule**: Defines which stock item is reduced on sale
+
+## K-Stock Configuration
+
+### Terminal Configuration
+
+- **Terminal Operation Type** must be set to **Bar with stock**
+- Stock status is managed **per outlet**, not per terminal
+- It is recommended to have **one designated stock terminal per outlet**
+- Multiple terminals can be enabled but may cause operational conflicts
+
+### Stock Take Period
+
+- A **Stock Take Period** must be assigned to the outlet
+- K-Stock always uses the **most recent active** stock take period
+
+### Product Configuration for K-Stock
+
+A product must meet **all** of the following to appear in PoS stock functions:
+
+| Requirement | Description |
+|-------------|-------------|
+| **Product Price** | An outlet price is required, even if not sold at PoS. 0.00 is acceptable. |
+| **Product Type** | Must be **Terminal & Stock**. |
+| **Availability** | The product must be available in the outlet. |
+| **Count Sheet** | Products appear grouped by Count Sheet Group. |
+
+## K-Stock Functions
+
+When enabled, operators see a **Stock** panel on the PoS home screen:
+
+| Function | Description |
+|----------|-------------|
+| **Verify** | Perform opening stock count. |
+| **Requisition** | Request stock from the request outlet. |
+| **Transfer** | Move stock to another outlet. |
+| **Accept** | Sign for and finalize approved requisitions. |
+| **Query** | View real-time stock levels. |
+| **Close** | Perform closing stock count. |
+
+## Stock Status States
+
+| Status | Description |
+|--------|-------------|
+| **No period available** | No stock take period exists. Verification cannot begin. |
+| **Period Closed** | A stock period is assigned and ready to start verification. |
+| **Verify Pending** | Opening count submitted and awaiting approval. |
+| **Verify Rejected** | Opening count rejected. Review and resubmit. |
+| **Period (Name) Open** | Verification approved. Requisition, transfer, and close are available. |
+| **Close Pending** | Closing count submitted and awaiting approval. |
+| **Close Rejected** | Closing count rejected. Review and resubmit. |
+
+### Rejections
+
+- Rejected counts include details explaining what must be rechecked
+- Rejected products appear **red** in the Verify/Close screens
+- Rejection messages appear in **Alerts** and on the **Stock** panel
+
+## Requisition
+
+When selecting **Requisition** or **Transfer**, operators can choose:
+
+- **Standard Products**: Products included in the current count sheet
+- **All Products**: All stock products in the database
+
+The **All Products** view includes a **Search** function.
+
+## Accepting Requisitions
+
+Once a requisition is approved:
+
+1. The Accept screen displays a list of transfer numbers
+2. Select a transfer to view approved products and quantities
+3. Select **OK** to open the signature screen
+4. Sign and confirm acceptance
+5. The transfer is finalized and stock is updated
+
+## Transfer Process
+
+When performing a transfer:
+
+1. The system displays a list of stock-holding outlets
+2. The operator selects an outlet and adds products
+3. On confirmation, the transfer is completed automatically
+
+<Note>
+Transfers are completed immediately and do not require back-office approval. If this functionality is not required, it can be disabled via operator permissions.
+</Note>
+
+## Stock Only Terminal Mode
+
+For devices dedicated solely to stock tasks:
+
+1. Create a standard terminal in **Configuration > Terminal > Hierarchy**
+2. Edit the terminal
+3. Change the **Type** to **Stock Only**
+4. Save the record
+
+Operators can perform stock functions but cannot make sales.
+
+## Device Support
+
+| Device Type | Stock Panel Support |
+|-------------|---------------------|
+| Windows, K1, K2 (landscape) | Full support |
+| Mobile devices (portrait) | No Stock panel, but still deplete stock through sales/waste |
+
+## Out of Stock Enforcement
+
+<Note>
+If a product's current stock quantity is zero or below, terminals are **not restricted** from selling the item. This ensures system issues or operator errors do not interrupt trading.
+</Note>
+
+For self-service terminals, a separate **preparation point stock system** is available to set product limits and prevent orders once limits are reached. This system is independent of the Kappture Stock system.
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Stock Alerts" icon="bell" href="/enterprise/pages/stock/stock-alerts">
+  Process stock verifications and requisitions.
+</Card>
+
+<Card title="Depletion Rules" icon="chart-pie" href="/enterprise/pages/stock/depletion-rules">
+  Configure product depletion.
+</Card>
+</CardGroup>

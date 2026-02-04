@@ -1,0 +1,132 @@
+---
+title: "Mobile app overview"
+description: "Overview of the Kappture mobile app for iOS and Android"
+---
+
+## What is the Kappture mobile app?
+
+The Kappture mobile app is a customer-facing iOS and Android application that allows members to order food and beverages, manage loyalty programs, view rewards, check account balances, and track orders in real time.
+
+The app connects to your Kappture system configured in the Management Portal and provides a branded mobile experience for your customers.
+
+## Key features
+
+### Ordering
+- Browse menus and products
+- Add items to cart with modifiers and options
+- Select collection/delivery time slots
+- Choose tables for dine-in
+- Scan barcodes for quick ordering (Scan & Go)
+- Track preparation progress at preparation points
+- View order status in real time
+
+### Payment
+- Pay with credit/debit cards via Stripe
+- Save cards for faster checkout
+- Top up account balance
+- Use account credit for purchases
+- Apply cost centre codes
+- Platform pay support (Apple Pay, Google Pay)
+
+### Loyalty & rewards
+- View and redeem vouchers
+- Track loyalty points
+- Browse available rewards
+- View point earning strategies
+- Apply vouchers at checkout
+
+### Account management
+- View account balance and transaction history
+- Manage payment cards
+- View and use cost centres
+- Track order history
+- Check current order status
+- Update profile and preferences
+
+### Communication
+- Read news and announcements (Board)
+- Receive push notifications for orders
+- Get allergen information
+- View promotions and campaigns
+
+## How it works
+
+1. **Member signs up** - Users create an account with email/password or sign in with existing credentials
+2. **Browse & order** - Members browse products, add to cart, and checkout
+3. **Payment** - Pay with saved cards, account credit, or cost centre
+4. **Track order** - View real-time preparation status
+5. **Collect** - Pick up order when ready or have it delivered to table
+
+## Configuration in Management Portal
+
+The mobile app displays content and features configured in the Management Portal:
+
+| App feature | Management Portal location |
+|-------------|---------------------------|
+| Products & menus | **Configuration > Management > Products**, **Menus**, **Self-Service Menu** |
+| Pricing | **Configuration > Management > Price Bands**, **Product Prices** |
+| Outlets & sessions | **Configuration > Sites** (outlets), **Management > Sessions** |
+| Loyalty programs | **Configuration > Incentives** (Loyalty, Rewards, Vouchers, Games) |
+| Account types | **Configuration > Member > Account** |
+| Cost centres | **Configuration > Member > Cost Centre** |
+| Member groups | **Configuration > Member > Member Group** |
+| Board (news) | **Configuration > Mobile App > Board** |
+| Payment options | **Configuration > Terminal** (Payment options tab on ordering terminals) |
+| Allergens | **Configuration > Management > Allergens** |
+| Preparation points | **Configuration > Sites** (preparation points) |
+| Resources (images) | **Configuration > Management > Resources** |
+
+## App structure
+
+The app uses a tab-based navigation with four main sections:
+
+### Home tab
+- Current order status
+- Board (news feed)
+- Accounts
+- Cost centres
+- Vouchers
+- Points (loyalty)
+- Rewards
+
+### Scan tab
+- QR code scanner for quick ordering
+- Barcode scanner for Scan & Go
+
+### Preparation Points tab
+- Real-time order tracking
+- Preparation status by station
+- Estimated completion times
+
+### Settings tab
+- Profile management
+- Security settings
+- Order history
+- Order status
+- Notifications
+- Appearance (theme)
+- Legal information
+
+## Requirements
+
+- iOS 13.0 or later / Android 5.0 or later
+- Active internet connection
+- Valid member account in Kappture system
+- Outlets configured with ordering terminals in Management Portal
+
+## Related documentation
+
+<CardGroup cols={2}>
+  <Card title="Board (News)" icon="newspaper" href="/enterprise/pages/mobile-app">
+    Configure news and announcements for the app.
+  </Card>
+  <Card title="Members" icon="users" href="/enterprise/pages/member/member">
+    Manage member accounts.
+  </Card>
+  <Card title="Incentives" icon="gift" href="/enterprise/pages/incentives/overview">
+    Configure loyalty, vouchers, and rewards.
+  </Card>
+  <Card title="Products" icon="utensils" href="/enterprise/pages/management/products">
+    Configure products that appear in the app.
+  </Card>
+</CardGroup>

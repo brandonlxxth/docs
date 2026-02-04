@@ -43,8 +43,8 @@ Once you're logged in, you'll see the main Management Portal interface:
 
 The left sidebar contains the main navigation menu organized into sections. The menu items you see depend on your permissions. The main sections include:
 
-- **Analytics**: Dashboards, reports, and activity tracking
-- **Configuration**: System configuration including members, incentives, campaigns, management settings, vision, terminals, and administration
+- **Analytics**: Dashboards, reports, and activity tracking (including checklist completion detail at **Activity > Checklist**)
+- **Configuration**: System configuration. Under Configuration you’ll find **Member**, **Incentives**, **Campaign**, **Management** (layouts, products, pricing, sessions, operators, tenders, receipts, checklist, messaging, pay-at-table, receipt portal), **Vision**, **Terminal**, and **Admin**
 - **Stock**: Inventory management, stock takes, and stock movements
 - **Ordering**: Online events, preparation point dashboards, and self-service ordering
 - **Cash Management**: Financial operations and cash handling
@@ -74,16 +74,20 @@ The center of the screen displays the current page content. This area changes ba
   Start by checking your dashboard to see an overview of your business operations and key metrics.
 </Card>
 
+<Card title="Configure day-to-day operations" icon="diagram-project" href="/enterprise/pages/management/overview">
+  Go to **Configuration > Management** for layouts, products, pricing, sessions, operators, tenders, receipts, checklist, messaging, and more. The Management overview explains how these pieces link together.
+</Card>
+
 <Card title="Check Stock Levels" icon="boxes">
-  Navigate to Stock Management to view current inventory levels across your locations.
+  Navigate to Stock to view current inventory levels across your locations.
 </Card>
 
-<Card title="Browse Products" icon="shopping-bag">
-  Explore your product catalog to see what products are available and their current pricing.
+<Card title="Browse Products" icon="shopping-bag" href="/enterprise/pages/management/products">
+  Go to **Configuration > Management > Products** to explore your product catalog and see what products are available (pricing is set per outlet and price band under Product Prices).
 </Card>
 
-<Card title="View Reports" icon="chart-line">
-  Access reports to analyze your business performance and generate insights.
+<Card title="View Reports" icon="chart-line" href="/enterprise/pages/analytics/overview">
+  Go to **Analytics** to run reports and analyze your business performance. Use **Activity > Checklist** for checklist completion detail.
 </Card>
 </CardGroup>
 
@@ -125,22 +129,26 @@ On most pages in the Management Portal, you'll see a **search box at the top**. 
 
 ## Next Steps
 
-Now that you're familiar with logging in and navigating the portal, explore the key features:
+Now that you're familiar with logging in and navigating the portal, explore the key areas:
 
 <CardGroup cols={2}>
-<Card title="Stock Management" icon="boxes" href="/enterprise/features/stock-management">
+<Card title="Configuration" icon="cog" href="/enterprise/pages/configuration">
+  Overview of Configuration: Member, Incentives, Campaign, Management, Vision, Terminal, and Admin.
+</Card>
+
+<Card title="Management" icon="diagram-project" href="/enterprise/pages/management/overview">
+  How day-to-day operations link together: layouts, products, pricing, sessions, operators, tenders, receipts, checklist, messaging, pay-at-table, receipt portal.
+</Card>
+
+<Card title="Stock" icon="boxes" href="/enterprise/pages/stock">
   Learn how to manage your inventory and stock operations.
 </Card>
 
-<Card title="Product Management" icon="shopping-bag" href="/enterprise/features/product-management">
-  Discover how to manage your product catalog and pricing.
+<Card title="Analytics" icon="chart-line" href="/enterprise/pages/analytics/overview">
+  Dashboards, reports, and activity tracking (including checklist completion at Activity > Checklist).
 </Card>
 
-<Card title="Site Management" icon="store" href="/enterprise/features/site-management">
-  Understand how to configure sites, outlets, and preparation points.
-</Card>
-
-<Card title="User Management" icon="users" href="/enterprise/features/user-management">
+<Card title="Admin" icon="users" href="/enterprise/pages/admin/users">
   Learn how to manage users, roles, and permissions.
 </Card>
 </CardGroup>

@@ -1,0 +1,193 @@
+---
+title: "Stock Deliveries"
+description: "Deliver your stock into locations via supplier orders"
+---
+
+## Overview
+
+Stock Deliveries allow you to record the receipt of goods from suppliers against previously authorised orders. When you receive a delivery, you enter the quantities received for each product, and the system automatically updates your stock levels. The Delivery Report provides a comprehensive view of all deliveries.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Deliveries | Delivery | Stock Control (Stock Movements) |
+| Delivery Report | Delivery Report | Stock Control (Stock Movements) |
+| Authorise Delivery | Delivery Authorise | Stock Control (Stock Movements) |
+
+<Note>
+You cannot make a delivery without a stock order. You or another user must have created and authorised an order first.
+</Note>
+
+## Accessing Stock Deliveries
+
+Navigate to **Stock > Stock Movements > Deliveries > Deliveries**.
+
+## Creating a Stock Delivery
+
+<Steps>
+<Step title="Click Create">
+  Click the **Create** button (plus icon).
+</Step>
+
+<Step title="Select an order">
+  In the modal, select an **Order** from the dropdown.
+  - Only orders with status "Authorised" or "Partially Delivered" are available
+  - Orders are filtered to show only those for outlets you have access to
+</Step>
+
+<Step title="Create delivery">
+  Click **Create** in the modal. The delivery form opens with all products from the selected order.
+</Step>
+</Steps>
+
+## Understanding Delivery Quantities
+
+The delivery form shows three key quantity columns:
+
+| Column | Description |
+|--------|-------------|
+| **Quantity Ordered** | The total quantity that was ordered for each product. |
+| **Previously Delivered** | The quantity already delivered from the ordered total (only shown if there are previous deliveries). |
+| **Delivery Quantity** | The quantity that has arrived and will be delivered into the system (this is what you enter). |
+
+<Tip>
+Click the **Help** button (question mark icon) to see detailed descriptions of each quantity type.
+</Tip>
+
+## Entering Delivery Quantities
+
+1. For each product, enter the **Delivery Quantity** in the input field
+2. Quantities can include decimal values (up to 2 decimal places)
+3. Quantities are limited to a maximum of 1,000,000.00
+4. The **Line Total** is calculated automatically (Delivery Quantity × Unit Price)
+5. The total delivery value is calculated and displayed
+
+<Warning>
+- You must enter at least one product with a delivery quantity greater than zero
+- If you enter a delivery quantity that exceeds the outstanding order quantity, a warning message appears
+- You can still save deliveries that exceed ordered quantities, but the warning helps identify potential discrepancies
+</Warning>
+
+## Delivery Details
+
+| Field | Description |
+|-------|-------------|
+| **Date** | The delivery date (defaults to today, can be set up to one year in the future). |
+| **Reference** | Optional reference number for the delivery (max 50 characters). |
+| **Notes** | Optional notes about the delivery (max 500 characters). |
+| **Order Number** | Displays the related order number (read-only). |
+| **Order Reference** | Displays the order reference (read-only). |
+
+## Saving a Delivery
+
+<Steps>
+<Step title="Enter quantities">
+  Enter all delivery quantities for products received.
+</Step>
+
+<Step title="Add details">
+  Optionally add a reference and notes.
+</Step>
+
+<Step title="Set date">
+  Set the delivery date.
+</Step>
+
+<Step title="Save">
+  Click **Save**. The delivery is automatically authorised and saved.
+</Step>
+</Steps>
+
+Upon saving:
+- Stock levels are immediately updated with the delivered quantities
+- You'll be redirected to print the delivery note
+- The delivery number is assigned automatically
+
+<Warning>
+Once saved, deliveries cannot be edited.
+</Warning>
+
+## Partial Deliveries
+
+If an order has been partially delivered:
+
+- The **Previously Delivered** column shows how much has already been received
+- You can create additional deliveries for the same order
+- Each delivery only records the quantities received in that specific delivery
+- The order status updates to "Partially Delivered" until fully delivered
+- There is no limit to how many deliveries can be made on a single order
+
+## Delivery Report
+
+Navigate to **Stock > Stock Movements > Deliveries > Delivery Report**.
+
+### Filtering deliveries
+
+| Filter | Description |
+|--------|-------------|
+| **Date Range** | Filter deliveries by delivery date. |
+| **Outlet** | Filter by specific outlet. |
+| **Supplier** | Filter by specific supplier. |
+| **Created By** | Filter by the user who created the delivery. |
+| **Authorised By** | Filter by the user who authorised the delivery. |
+
+### Report columns
+
+| Column | Description |
+|--------|-------------|
+| **Delivery Number** | The unique delivery number assigned by the system. |
+| **Order Number** | The related order number. |
+| **Outlet** | The outlet that received the delivery. |
+| **Supplier** | The supplier who delivered the goods. |
+| **Date** | The delivery date. |
+| **Created By** | The user who created the delivery. |
+| **Authorised By** | The user who authorised the delivery. |
+| **Total** | The total monetary value of the delivery. |
+
+### Printing Delivery Notes
+
+1. Use the filters to find the delivery
+2. Click the **Print** button (printer icon)
+3. A printable delivery note opens in a new window
+
+The delivery note includes:
+- Delivery number and date
+- Supplier and outlet information
+- Order number and reference
+- All products delivered with quantities and prices
+- Total delivery value
+
+## Additional Reports
+
+In **Analytics > Reports**:
+
+- **Stock on Hand**: Delivered items are reflected by Delivered Qty and Delivered Value
+- **Stock Deliveries Summary**: Historical report of products delivered per outlet
+- **Supplier Orders Delivered**: Historical report of orders vs deliveries against each supplier and product
+
+## Frequently asked questions
+
+**Why can't I select an order to create a delivery?**
+
+Only orders with status "Authorised" or "Partially Delivered" can have deliveries created. If an order is "Unauthorised", it must be authorised first. If an order is "Complete" or "Cancelled", no deliveries can be created.
+
+**What happens if I enter a delivery quantity greater than what was ordered?**
+
+The system shows a warning message, but you can still save the delivery. This allows you to record over-deliveries while identifying potential errors.
+
+**Can I edit a delivery after saving it?**
+
+No. Once saved and authorised, deliveries cannot be edited. If you need to correct a delivery, create an adjustment to correct the stock levels.
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Stock Orders" icon="shopping-cart" href="/enterprise/pages/stock/orders">
+  Create orders before deliveries.
+</Card>
+
+<Card title="Stock Adjustments" icon="sliders" href="/enterprise/pages/stock/adjustments">
+  Correct stock levels if needed.
+</Card>
+</CardGroup>
