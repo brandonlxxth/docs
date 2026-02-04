@@ -1,0 +1,96 @@
+---
+title: "QR Code Generator"
+description: "Generate QR codes for self-service ordering"
+---
+
+## Overview
+
+The QR Code Generator creates QR codes that customers scan to open the ordering experience on their phone. You must select a **Preparation Point** and a **Price Band**; you can then set an optional table number, default language, cost centre, and order type (collection only, manual table entry, or seat order). The page shows the ordering URL and an OpenID login URL, and you can download the QR code image or copy the URLs to use on signage, table tents, or digital displays.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| QR Code Generator | QR Code Generator | Online Ordering (Catalog Ordering) |
+
+## Accessing QR Code Generator
+
+Navigate to **Ordering > Self Service Ordering > QR Code Generator**.
+
+## Generating a QR code
+
+<Steps>
+<Step title="Open QR Code Generator">
+  Go to **Ordering > Self Service Ordering > QR Code Generator**.
+</Step>
+
+<Step title="Choose preparation point">
+  Select the **Preparation Point** that will receive orders from this QR code (required).
+</Step>
+
+<Step title="Choose price band">
+  Select the **Price Band** used for pricing in the ordering session (required).
+</Step>
+
+<Step title="Optional settings">
+  Set any of the following as needed:
+  - **Table Number**: For table-specific QR codes (e.g. printed on table tents). Leave at 0 if not used.
+  - **Default Language**: Language for the ordering experience.
+  - **Cost Centre**: Cost centre to assign to orders (if used). The list of cost centres depends on the preparation point.
+</Step>
+
+<Step title="Order type options">
+  Tick one of the following if it applies:
+  - **Collection Only**: Orders are for collection only (no table/delivery).
+  - **Manual Table Entry**: Customer enters the table number when ordering.
+  - **Seat Order**: For seat-based ordering. When you use Manual Table Entry or Seat Order, Table Number may be disabled or set automatically.
+</Step>
+
+<Step title="Use the QR code or URL">
+  The **URL** and **Open Id URL** fields update automatically. Copy either URL with **Copy**, or use **Download** to save the QR code image (e.g. for printing).
+</Step>
+</Steps>
+
+<Note>
+Order type options (Collection Only, Manual Table Entry, Seat Order) can affect each other: enabling one may disable or clear another. The table number field is disabled when Manual Table Entry is ticked.
+</Note>
+
+## What the page shows
+
+| Field or control | Description |
+|------------------|-------------|
+| **Preparation Point** | Required. The preparation point that receives orders when customers scan this QR code. |
+| **Price Band** | Required. The price band used for pricing in the ordering session. |
+| **Table Number** | Optional. Used for table-specific QR codes; set to 0 when not needed. Disabled when Manual Table Entry is on. |
+| **Default Language** | Language shown to the customer in the ordering experience. |
+| **Cost Centre** | Optional cost centre for orders. The list depends on the selected preparation point. |
+| **Collection Only** | When ticked, orders are for collection only. |
+| **Manual Table Entry** | When ticked, the customer is prompted to enter a table number. |
+| **Seat Order** | When ticked, ordering is seat-based. |
+| **URL** | The ordering URL encoded in the QR code. Copy to use in links or signage. |
+| **Open Id URL** | The OpenID login URL for the same configuration. Copy if you need the login link. |
+| **Download** | Downloads the QR code as a PNG image for printing or digital use. |
+
+## Using the QR code
+
+- **Print**: Download the QR code and add it to table tents, posters, or signage so customers can scan to order.
+- **Digital**: Use the URL on a website, app, or screen so customers can tap to open ordering.
+- **OpenID**: Use the Open Id URL where you need the login/authentication link for the same configuration.
+
+Changing preparation point, price band, table number, language, cost centre, or any of the order type options updates the URL and QR code immediately.
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Kiosk Menu" icon="list" href="/enterprise/pages/ordering/kiosk-menu">
+  Configure menus shown when customers scan the QR code.
+</Card>
+
+<Card title="Kiosk Menu Group" icon="layer-group" href="/enterprise/pages/ordering/kiosk-menu-group">
+  Group menus for the ordering experience.
+</Card>
+
+<Card title="Ordering Overview" icon="cart-shopping" href="/enterprise/pages/ordering">
+  Return to the Ordering section overview.
+</Card>
+</CardGroup>

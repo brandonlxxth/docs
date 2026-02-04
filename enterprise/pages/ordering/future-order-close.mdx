@@ -1,0 +1,70 @@
+---
+title: "Future Order Close"
+description: "Close all orders against selected preparation points and optionally reset the future order sequence"
+---
+
+## Overview
+
+**Future Order Close** closes all orders against the selected preparation points. Use it when you want to close orders at those preparation points—for example at the end of a service period (e.g. half-time, interval, or day). You can also optionally **reset the future order sequence**, which resets the collection numbers used for future orders so the next orders start from a fresh sequence.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Future Order Close | Future Order Close | Online Ordering (Catalog Ordering) |
+
+## Accessing Future Order Close
+
+Navigate to **Ordering > Future Order Close**.
+
+## Closing orders at preparation points
+
+<Steps>
+<Step title="Open Future Order Close">
+  Go to **Ordering > Future Order Close**.
+</Step>
+
+<Step title="Select preparation points">
+  In **Preparation Points**, select one or more preparation points. All orders against those preparation points will be closed. This is required.
+</Step>
+
+<Step title="Optional: reset sequence">
+  If you want to reset the future order sequence (e.g. collection numbers) so the next future orders start from a new sequence, tick **Reset Sequence**.
+</Step>
+
+<Step title="Save">
+  Click **Save**. A confirmation message appears; confirm to close the orders (and reset the sequence, if selected).
+</Step>
+</Steps>
+
+<Warning>
+Closing all orders against the selected preparation points takes effect when you save. Only users with **Future Order Close** permission can access this page.
+</Warning>
+
+## What the page shows
+
+| Field | Description |
+|-------|-------------|
+| **Preparation Points** | Multi-select list of preparation points. Select all preparation points whose orders you want to close. Required. |
+| **Reset Sequence** | When ticked, the future order sequence is reset (e.g. collection numbers start again from the beginning). Use when starting a new period or session. |
+
+## When to use it
+
+- **End of service** — Close all orders at the selected preparation points when a service period (e.g. half-time, interval, or day) has ended.
+- **New sequence** — Tick **Reset Sequence** when you want the next future orders to use a new collection number sequence (e.g. for a new match or performance).
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Ordering Dashboard" icon="layout-dashboard" href="/enterprise/pages/ordering/dashboard">
+  View preparation point orders and status.
+</Card>
+
+<Card title="Ordering Overview" icon="cart-shopping" href="/enterprise/pages/ordering">
+  Return to the Ordering section overview.
+</Card>
+
+<Card title="Terminal overview" icon="desktop" href="/enterprise/pages/terminal/overview">
+  Kiosks, KMS, and preparation point ordering.
+</Card>
+</CardGroup>

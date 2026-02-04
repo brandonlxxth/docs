@@ -196,7 +196,19 @@
               {
                 "group": "Ordering",
                 "pages": [
-                  "enterprise/pages/ordering"
+                  "enterprise/pages/ordering",
+                  "enterprise/pages/ordering/online-events",
+                  "enterprise/pages/ordering/dashboard",
+                  "enterprise/pages/ordering/product-stock",
+                  "enterprise/pages/ordering/future-order-close",
+                  {
+                    "group": "Self Service Ordering",
+                    "pages": [
+                      "enterprise/pages/ordering/kiosk-menu",
+                      "enterprise/pages/ordering/kiosk-menu-group",
+                      "enterprise/pages/ordering/qr-code-generator"
+                    ]
+                  }
                 ]
               },
               {

@@ -1,0 +1,106 @@
+---
+title: "Kiosk Menu"
+description: "Configure menus for kiosk and QR ordering"
+---
+
+## Overview
+
+Kiosk Menu lets you create and edit the menus that appear on self-service kiosks and in QR ordering. Each menu has a name and optional reference, uses a linked product only to supply the menu’s image, and contains sub-product options with display names and minimum/maximum selection rules. You can restrict who sees a menu by user role and choose whether the menu is a standard menu or used inside a Kiosk Menu Group.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Kiosk Menu | Kiosk Menu | Online Ordering (Catalog Ordering) |
+
+## Accessing Kiosk Menu
+
+Navigate to **Ordering > Self Service Ordering > Kiosk Menu**.
+
+The page shows a dropdown of existing menus. Use **Create** to add a new menu, or select a menu and **Edit** or **Copy**.
+
+## Creating a Kiosk Menu
+
+<Steps>
+<Step title="Open Kiosk Menu">
+  Go to **Ordering > Self Service Ordering > Kiosk Menu**.
+</Step>
+
+<Step title="Create new menu">
+  Click **Create** (or **Copy** from an existing menu to duplicate it).
+</Step>
+
+<Step title="Enter details">
+  Fill in:
+  - **Name**: Display name for the menu (e.g. "Drinks", "Main meals").
+  - **Reference** (optional): Your own reference.
+  - **Restriction** (optional): User role restriction so only certain users see this menu.
+  - **Product**: A product whose image is used as the menu image (required). The product’s image is displayed for the menu; it does not define the menu’s options.
+  - **Menu Type**: Default or Kiosk Menu Group. Choose Kiosk Menu Group if this menu will be used inside a [Kiosk Menu Group](/enterprise/pages/ordering/kiosk-menu-group). Menu type cannot be changed after the menu is saved.
+</Step>
+
+<Step title="Add sub-product options">
+  In **Sub Product Options**, add rows for each option: select **Product**, set **Display Name**, and set **Minimum Selection** and **Maximum Selection** as needed. Use the add button to add more rows. You can reorder rows by dragging.
+</Step>
+
+<Step title="Save">
+  Click **Save** to create the menu.
+</Step>
+</Steps>
+
+## Editing a Kiosk Menu
+
+1. Go to **Ordering > Self Service Ordering > Kiosk Menu**.
+2. Select the menu from the dropdown.
+3. Click **Edit**.
+4. Change name, reference, restriction, linked product (for the menu image), or sub-product options.
+5. Click **Save**.
+
+<Note>
+Menu Type (Default vs Kiosk Menu Group) cannot be changed after the menu is created.
+</Note>
+
+## Copying a Kiosk Menu
+
+Use **Copy** to duplicate an existing menu. You can then change the name and adjust options before saving.
+
+## Deleting a Kiosk Menu
+
+1. Select the menu and click **Edit**.
+2. Click the **Delete** button (trash icon) in the card toolbar.
+3. Confirm the deletion.
+
+If the menu is in use (e.g. in a Kiosk Menu Group or on products), check **Usage** first to see where it is used.
+
+## Sub-product options
+
+Each option row has:
+
+| Field | Description |
+|-------|-------------|
+| **Product** | The product that appears as an option. |
+| **Display Name** | Name shown to the customer on the kiosk or QR ordering. |
+| **Minimum Selection** | Minimum number of this option the customer must select (if applicable). |
+| **Maximum Selection** | Maximum number of this option the customer can select (if applicable). |
+
+Rows can be reordered by dragging. Add rows with the add button; remove a row with the delete button on that row.
+
+## Usage
+
+Before deleting a menu, click **Usage** to see where it is used (e.g. which Kiosk Menu Groups or products reference it).
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Kiosk Menu Group" icon="layer-group" href="/enterprise/pages/ordering/kiosk-menu-group">
+  Group kiosk menus and set min/max selection per menu.
+</Card>
+
+<Card title="QR Code Generator" icon="qrcode" href="/enterprise/pages/ordering/qr-code-generator">
+  Generate QR codes for customer ordering.
+</Card>
+
+<Card title="Ordering Overview" icon="cart-shopping" href="/enterprise/pages/ordering">
+  Return to the Ordering section overview.
+</Card>
+</CardGroup>

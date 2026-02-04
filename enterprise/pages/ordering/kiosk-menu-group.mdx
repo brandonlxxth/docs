@@ -1,0 +1,226 @@
+---
+title: "Kiosk Menu Group"
+description: "Organize multiple Kiosk Menus with selection rules for self-service kiosk ordering"
+---
+
+## Overview
+
+Kiosk Menu Groups let you organize multiple [Kiosk Menus](/enterprise/pages/ordering/kiosk-menu) and assign selection rules for how customers interact with them when ordering on self-service kiosks. A Kiosk Menu Group defines a sequence of menus that appear when a product is selected, along with minimum and maximum selection requirements for each step.
+
+Example: a coffee with multiple choices on different screens:
+
+- Customer selects a Latte
+- Customer selects a size (small, medium, large)
+- Customer selects a milk type (semi skimmed, oat, coconut)
+- Customer selects a syrup type (vanilla, caramel, none)
+
+<Warning>
+**Self Service Kiosk only**: Kiosk Menu Group selection is supported only on **Self Service Kiosk** terminals. Quickserve, App Ordering, and QR ordering do not support kiosk menu groups. Using a Kiosk Menu Group on layouts assigned to those devices will show all menus in a single level, which can cause operational confusion.
+</Warning>
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Kiosk Menu Group | Kiosk Menu Group | Online Ordering (Catalog Ordering) |
+| Kiosk Menu | Kiosk Menu | Online Ordering (Catalog Ordering) |
+| Product | Product | Configuration (Management) |
+
+## Accessing Kiosk Menu Group
+
+Navigate to **Ordering > Self Service Ordering > Kiosk Menu Group**.
+
+The page shows a dropdown of existing groups. Use **Create** to add a new group, or select a group and **Edit** or **Copy**.
+
+## Relationships
+
+**Kiosk Menu Group** — An ordered collection of Kiosk Menus that defines the customer ordering flow. Menus are displayed sequentially and selection rules are enforced at each step.
+
+**Kiosk Menu** — A single selection screen shown to the customer. Each menu can define minimum and maximum selection requirements.
+
+**Product** — The trigger for the journey. If a product has a Kiosk Menu Group assigned, selecting it on the kiosk launches that group. Assign the group in the product’s [Details tab](/enterprise/pages/management/products) (**Kiosk Menu Group** dropdown).
+
+## Kiosk Menu types
+
+When creating a [Kiosk Menu](/enterprise/pages/ordering/kiosk-menu), you must select a type. This cannot be changed after saving.
+
+| Type | Use |
+|------|-----|
+| **Default** | Standard one-level menu. Can contain products and sub-products. Can be used directly on kiosk layouts or as a **child** menu inside a Kiosk Menu Group. |
+| **Kiosk Menu Group** | Acts as a **parent** or launcher menu. Contains products only (no sub-products). When a product has a Kiosk Menu Group assigned, selecting it launches that group. The info icon on a product line previews the customer journey. |
+
+Default menus answer *“What do you want?”*  
+Kiosk Menu Group (parent) menus answer *“Which ordering journey should start?”*
+
+## Creating a Kiosk Menu Group
+
+<Steps>
+<Step title="Open Kiosk Menu Group">
+  Go to **Ordering > Self Service Ordering > Kiosk Menu Group**.
+</Step>
+
+<Step title="Create new group">
+  Click **Create**.
+</Step>
+
+<Step title="Enter name">
+  Enter a **Name** for the group.
+</Step>
+
+<Step title="Add menus">
+  Add Kiosk Menus to define the customer journey:
+  - Click **Add**
+  - Select a **Kiosk Menu**
+  - Set **Minimum** (required selections) and **Maximum** (allowed selections) for that step
+  Repeat for each step. Use the handle (up/down arrows) to arrange menus in the order customers should see them.
+</Step>
+
+<Step title="Save">
+  Click **Save**.
+</Step>
+</Steps>
+
+**Behavior:** Each menu is a step in the journey. Menus are shown in sequence and selection rules are enforced per step. Menu order matters.
+
+<Note>
+**Rules:** You must add at least one menu before saving. Minimum must be less than Maximum (unless 0, which is treated as off). Minimum and Maximum cannot be the same (unless 0). Set Minimum or Maximum to 0 for optional or unlimited selections. If a **Default** type Kiosk Menu has products with sub-product configuration, sub-product options are ignored when that menu is used inside a Kiosk Menu Group; they still apply when the menu is assigned directly to a layout.
+</Note>
+
+## Parent and child Kiosk Menus
+
+**Child Kiosk Menus** — Any Kiosk Menu included in a Kiosk Menu Group. They are the sequential steps in the ordering flow and can be reordered at any time.
+
+**Parent Kiosk Menu** — A Kiosk Menu with **Type: Kiosk Menu Group**. It shows top-level products and launches the Kiosk Menu Group assigned to the selected product. Typically one parent menu is used per kiosk layout.
+
+## Assigning a Kiosk Menu Group to a product
+
+<Steps>
+<Step title="Open the product">
+  Go to **Configuration > Management > Products** and open the product you want to configure.
+</Step>
+
+<Step title="Set Kiosk Menu Group">
+  In the **Details** tab, find the **Kiosk Menu Group** dropdown and select the appropriate group.
+</Step>
+
+<Step title="Save">
+  Save the product.
+</Step>
+</Steps>
+
+When the product is selected on a kiosk, the configured menu group is displayed in order. If no group is assigned, the product behaves as a standard product.
+
+## Recommended configuration flow
+
+1. **Create products** — Define name, prices, and enable **Send to Order Screen**. For sub-products attached to a parent, enable **Preparator**. Optionally add descriptions and allergens.
+2. **Create Kiosk Menus** — Define selectable items for each step and configure min/max selection rules. See [Kiosk Menu](/enterprise/pages/ordering/kiosk-menu).
+3. **Create a Kiosk Menu Group** — Add menus in the order customers should experience and set selection limits per step.
+4. **Assign the Kiosk Menu Group to products** — In each product’s Details tab, set **Kiosk Menu Group** so those products trigger the journey.
+5. **Create a parent Kiosk Menu** — Create a menu with type **Kiosk Menu Group**, add the top-level products, and assign this menu to the kiosk layout (in [Configuration > Management > Layouts](/enterprise/pages/management/layouts)).
+6. **Test the journey** — Select a product on the kiosk and confirm menus appear in order and selection limits work as expected.
+
+## Editing a Kiosk Menu Group
+
+<Steps>
+<Step title="Open and select">
+  Go to **Ordering > Self Service Ordering > Kiosk Menu Group** and select the group from the dropdown.
+</Step>
+
+<Step title="Edit">
+  Click **Edit**. Update the name, add/remove/reorder menus, or change Minimum and Maximum values.
+</Step>
+
+<Step title="Save">
+  Click **Save**.
+</Step>
+</Steps>
+
+You can edit a group even if it is assigned to products; changes apply to all products using that group. You cannot delete a group that is in use. Use **Usage** (information icon) to see which products use it; remove the assignment from all products before deleting.
+
+## Copying a Kiosk Menu Group
+
+1. Go to **Ordering > Self Service Ordering > Kiosk Menu Group** and select the group from the dropdown.
+2. Click **Copy**.
+3. Enter a new name, adjust menus and selection values if needed, then click **Save**.
+
+## Deleting a Kiosk Menu Group
+
+1. Go to **Ordering > Self Service Ordering > Kiosk Menu Group** and select the group from the dropdown.
+2. Click **Edit**, then the **Delete** button (trash icon).
+3. Confirm the deletion.
+
+You can only delete groups that are not assigned to any products. If a group is in use, delete is not available. Use **Usage** to see which products use the group.
+
+## Checking usage
+
+To see which products use a Kiosk Menu Group:
+
+1. Go to **Ordering > Self Service Ordering > Kiosk Menu Group** and select the group from the dropdown.
+2. Click **Usage** (information icon).
+3. A modal lists all products that have this Kiosk Menu Group assigned.
+
+## Use case examples
+
+### Stadia: burger meal customization
+
+A stadium creates a Kiosk Menu Group **"Burger Meal Customization"** with three menus:
+
+1. **Side Selection** — Minimum: 1, Maximum: 1. A Kiosk Menu **Burger Sides** (Fries, Onion Rings, Salad).
+2. **Drink Options** — Minimum: 1, Maximum: 1. A Kiosk Menu **Burger Drink Choices** (Coke, Sprite, Fanta, Water).
+3. **Extra Items** — Minimum: 0, Maximum: 3. A Kiosk Menu **Burger Extras** (e.g. nuggets, wings, tenders, mac & cheese bites).
+
+When a customer selects a burger product with this group assigned, they choose side, then drink, then optional extras, with rules enforced at each step.
+
+<Tip>
+**Single item vs meal:** In **Product → Options**, enable **Kiosk Meal Deal** so customers can choose *Item only* (add parent product with no extra menus) or *Make it a meal* (start the Kiosk Menu Group flow). This supports both quick orders and full meal journeys from one product.
+</Tip>
+
+### B&I: salad bowl builder
+
+A B&I caterer creates **"Salad Bowl Builder"** with two menus:
+
+1. **Base Selection** — Minimum: 1, Maximum: 1. A Kiosk Menu **Salad Base Choices** (e.g. Mixed Green Base, Spinach Base).
+2. **Add-ons** — Minimum: 2, Maximum: 6. A Kiosk Menu **Salad Base Add-Ons** (e.g. chicken, sweetcorn, falafel, egg).
+
+Customers select a base, then must choose at least two add-ons (up to six).
+
+## Frequently asked questions
+
+**Can I change the order of menus in a Kiosk Menu Group?**  
+Yes. Reorder by dragging rows using the handle icon. The order sets the sequence shown to customers.
+
+**What if I set both minimum and maximum to 0?**  
+The menu step becomes optional; customers are not required to select anything. Ensure at least one menu in the group has selection requirements so the journey makes sense.
+
+**Can I use the same Kiosk Menu Group for multiple products?**  
+Yes. Assign the same group to any number of products when they share the same customization flow.
+
+**What happens to products if I delete a Kiosk Menu Group?**  
+You cannot delete a group that is assigned to any products. Remove the Kiosk Menu Group from all products first (use **Usage** to find them), then delete the group.
+
+**Can I edit a Kiosk Menu Group that is already assigned to products?**  
+Yes. Edits apply to all products using that group, so changes affect the experience for every associated product.
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Kiosk Menu" icon="list" href="/enterprise/pages/ordering/kiosk-menu">
+  Create the menus used as steps or parent launchers in a group.
+</Card>
+
+<Card title="QR Code Generator" icon="qrcode" href="/enterprise/pages/ordering/qr-code-generator">
+  Generate QR codes for customer ordering (QR ordering does not support menu groups).
+</Card>
+
+<Card title="Products" icon="box" href="/enterprise/pages/management/products">
+  Assign a Kiosk Menu Group to products in the Details tab.
+</Card>
+
+<Card title="Layouts" icon="layout-dashboard" href="/enterprise/pages/management/layouts">
+  Assign the parent Kiosk Menu to a Kiosk-type layout.
+</Card>
+
+<Card title="Ordering Overview" icon="cart-shopping" href="/enterprise/pages/ordering">
+  Return to the Ordering section overview.
+</Card>
+</CardGroup>

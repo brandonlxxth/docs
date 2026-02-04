@@ -1,0 +1,100 @@
+---
+title: "Ordering Dashboard"
+description: "View preparation point orders and fulfillment status"
+---
+
+## Overview
+
+The Ordering Dashboard (Preparation Point Dashboard) gives you a single view of preparation point orders across your outlets. You can see how many orders are in each stage—Received, In Progress, Ready, and Collected/Delivered—both in total and per preparation point. From the dashboard you can open the Order Status view for a preparation point to see individual orders, or open Product Stock for preparation points that use it.
+
+The dashboard is **view-only**. To change order status (e.g. mark courses as done or collected), staff use the **Kitchen Management Screen (KMS)** on a terminal.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Ordering Dashboard | Dashboard | Online Ordering (Catalog Ordering) |
+| Order Status (per prep point) | Order Status | Online Ordering (Catalog Ordering) |
+| Product Stock (per prep point) | Preparation Point Stock | Online Ordering (Catalog Ordering) |
+
+You need **Dashboard** to see the dashboard. **Order Status** controls whether you can open the orders list for a preparation point. **Preparation Point Stock** controls whether you can open Product Stock from a preparation point card (and only appears when that preparation point has product stock configured).
+
+## Accessing the Ordering Dashboard
+
+Navigate to **Ordering > Dashboard**.
+
+## What the dashboard shows
+
+### Summary cards (top of page)
+
+Four cards show totals across all preparation points you have access to:
+
+| Card | What it shows |
+|------|----------------|
+| **Received** | Number and value of orders received, plus percentage of total. |
+| **In Progress** | Number and value of orders in progress, plus percentage of total. |
+| **Ready** | Number and value of orders ready for collection/delivery, plus percentage of total. |
+| **Collected / Delivered** | Number and value of orders collected or delivered, plus percentage of total. |
+
+Each card has a progress bar for the percentage. Count is number of orders; value is the order total.
+
+### Preparation point cards
+
+Below the summary, each preparation point has its own card showing:
+
+- **Preparation point name**
+- The same four statuses (Received, In Progress, Ready, Collected/Delivered) with count and value for that preparation point only
+- **Orders** button (utensils icon): opens the Order Status view for that preparation point (if you have Order Status permission)
+- **Product Stock** button (boxes icon): opens the Product Stock view for that preparation point (if you have Preparation Point Stock permission and the preparation point has product stock configured)
+
+Only preparation points for outlets you have access to appear.
+
+## Order Status view (per preparation point)
+
+When you click **Orders** on a preparation point card, you see the Order Status page for that preparation point.
+
+### Filters
+
+- **Date**: Choose the date to view. Default is today.
+- **Status checkboxes**: Show or hide orders by status—Received, In Progress, Ready, Collected/Delivered. All are selected by default.
+
+Click **Go** after changing the date to load orders for that date.
+
+### Order list
+
+The table lists orders for the selected date and preparation point. Each row shows:
+
+- **Date**
+- **Member**
+- **Course**
+- **Order Status**
+- **Order Number**
+- **Total**
+
+Click a row to expand it and see the order lines (product, quantity, net, tax, gross). Click again to collapse.
+
+### Auto-refresh
+
+The Order Status view refreshes automatically every 5 minutes so the list stays up to date. A countdown shows when the next refresh will happen.
+
+## Updating order status
+
+<Warning>
+You cannot change order status from the Management Portal. The dashboard and Order Status view are for monitoring only. To mark orders as in progress, ready, or collected/delivered, use the **Kitchen Management Screen (KMS)** on a terminal at the preparation point.
+</Warning>
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Ordering Overview" icon="cart-shopping" href="/enterprise/pages/ordering">
+  Return to the Ordering section overview.
+</Card>
+
+<Card title="Product Stock" icon="boxes-stacked" href="/enterprise/pages/ordering/product-stock">
+  Preparation point stock levels (Catalog Ordering).
+</Card>
+
+<Card title="Terminal Overview" icon="desktop" href="/enterprise/pages/terminal/overview">
+  Kitchen Management Screen (KMS) for updating order status.
+</Card>
+</CardGroup>

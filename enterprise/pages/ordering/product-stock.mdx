@@ -1,0 +1,131 @@
+---
+title: "Product Stock"
+description: "Configure and view preparation point stock for order fulfillment"
+---
+
+## Overview
+
+**Product Stock** (Preparation Point Stock) lets you define and monitor stock levels at preparation points used for order fulfillment. It is separate from the main [Stock](/enterprise/pages/stock) (inventory) system.
+
+You create **Product Stock templates** that list products and a **quantity** (limit) per product. When a template is assigned to a preparation point, QR ordering, kiosks, and the mobile app use that limit: as orders are placed, the system tracks how many have been “sold” at that preparation point. When sold reaches the configured quantity, the product will be disabled in QR ordering, kiosks, and the mobile app so customers cannot buy it. If you later update the template to give that product a higher quantity, it becomes available again.
+
+There are two parts:
+
+1. **Ordering > Product Stock** — Create and maintain templates (name, optional reference and restriction, list of products with quantity). Assign templates to preparation points when you configure those preparation points (under the outlet).
+2. **Ordering > Dashboard** — Open **Product Stock** on a preparation point card to **view** current stock for that preparation point (remaining, sold, and limit per product; read-only).
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Product Stock (templates and view) | Preparation Point Stock | Online Ordering (Catalog Ordering) |
+
+## Accessing Product Stock
+
+**Templates (create/edit):** Navigate to **Ordering > Product Stock**. The page shows a dropdown of existing Product Stock templates. Use **Create** to add a new template, or select one and **Edit** or **Copy**.
+
+**View stock at a preparation point:** Go to **Ordering > Dashboard**. On a preparation point card, click the **Product Stock** button (boxes icon). That button only appears when the preparation point has a Product Stock template assigned and you have Preparation Point Stock permission.
+
+## Creating a Product Stock template
+
+<Steps>
+<Step title="Open Product Stock">
+  Go to **Ordering > Product Stock**.
+</Step>
+
+<Step title="Create new template">
+  Click **Create** (or **Copy** from an existing template to duplicate it).
+</Step>
+
+<Step title="Enter details">
+  - **Name**: Name for the template (e.g. "Stadium Kiosk Stock", "Bar Prep Point").
+  - **Reference** (optional): Your own reference.
+  - **Restriction** (optional): User role restriction so only certain users can use or see this template.
+</Step>
+
+<Step title="Add product lines">
+  In the table, add one or more rows. For each row:
+  - **Product**: Select the product.
+  - **Quantity**: The stock limit for that product at any preparation point using this template (e.g. 50 portions).
+  Use **Add** to add more rows. Remove a row with the delete button on that row. You cannot add the same product twice in one template.
+</Step>
+
+<Step title="Save">
+  Click **Save**.
+</Step>
+</Steps>
+
+<Note>
+The **Quantity** in each line is the limit (cap) for that product at preparation points that use this template. The system tracks how many have been sold at each preparation point; when sold reaches this quantity, the product will be disabled in QR ordering, kiosks, and the mobile app so customers cannot buy it. Updating the template to a higher quantity for that product makes it available again.
+</Note>
+
+## Assigning a template to a preparation point
+
+A Product Stock template only applies where it is assigned. When you create or edit a **preparation point** (under the outlet in your configuration), set the **Preparation Point Stock** (or Product Stock) dropdown to the template you want. Only preparation points that have a template assigned will show the Product Stock button on the [Ordering Dashboard](/enterprise/pages/ordering/dashboard) and will enforce the product limits for kiosk, QR, and app ordering.
+
+## Viewing stock at a preparation point
+
+1. Go to **Ordering > Dashboard**.
+2. Find the preparation point card and click the **Product Stock** button (boxes icon).
+3. The Product Stock view for that preparation point opens. It shows each product in the template with:
+   - **Remaining Quantity** — How many are left (limit minus sold).
+   - **Sold Quantity** — How many have been ordered/sold at that preparation point (for the period shown, typically today).
+   - **Stock Quantity** — The configured limit from the template.
+   - A **progress bar** and percentage: green when a low proportion is sold (e.g. ≤75%), yellow as it gets closer to the limit (e.g. 75–100%), red when at or over the limit (depleted).
+
+This view is **read-only**. It helps you monitor availability; ordering and depletion are driven by orders placed via kiosk, QR ordering, or app. Resetting or changing limits is done by editing the template or by any reset/update flows provided in your environment.
+
+## Editing a Product Stock template
+
+1. Go to **Ordering > Product Stock** and select the template from the dropdown.
+2. Click **Edit**.
+3. Change the name, reference, restriction, or product lines (add, remove, or change product or quantity).
+4. Click **Save**.
+
+## Copying a Product Stock template
+
+Select the template from the dropdown and click **Copy**. A new template is created with the same product lines and quantities; the name is cleared so you can enter a new one. Adjust as needed and **Save**.
+
+## Deleting a Product Stock template
+
+1. Select the template and click **Edit**.
+2. Click the **Delete** button (trash icon) in the card toolbar.
+3. Confirm the deletion.
+
+You cannot delete a template that is assigned to one or more preparation points. Use **Usage** to see which preparation points use it; remove the assignment from those preparation points first (by editing each preparation point and clearing the Product Stock field), then delete the template.
+
+## Checking usage
+
+Before deleting a template, click **Usage** (information icon) to see which preparation points have this Product Stock template assigned. You must unassign it from all of them before deletion is allowed.
+
+## Table fields (template)
+
+| Column | Description |
+|--------|-------------|
+| **Product** | The product included in this template. Each product can appear only once per template. |
+| **Quantity** | The stock limit for this product at any preparation point using this template. When “sold” at a preparation point reaches this number, the product will be disabled in QR ordering, kiosks, and the mobile app so customers cannot buy it. Updating the template to a higher quantity makes it available again. |
+
+## Relationship to other stock
+
+- **Product Stock (Ordering)** — Limits and visibility of products at preparation points for **order fulfillment** (kiosk, QR, app). Configured per preparation point via templates. See [Terminal stock](/enterprise/pages/stock/terminal-stock#out-of-stock-enforcement) for how this differs from POS stock.
+- **Stock (inventory)** — Full inventory, movements, stock takes, and depletion rules. See [Stock](/enterprise/pages/stock).
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Ordering Dashboard" icon="layout-dashboard" href="/enterprise/pages/ordering/dashboard">
+  View orders and open Product Stock per preparation point.
+</Card>
+
+<Card title="Ordering Overview" icon="cart-shopping" href="/enterprise/pages/ordering">
+  Ordering section and preparation point setup.
+</Card>
+
+<Card title="Terminal stock" icon="boxes-stacked" href="/enterprise/pages/stock/terminal-stock">
+  How preparation point stock differs from POS/terminal stock.
+</Card>
+
+<Card title="Stock" icon="boxes" href="/enterprise/pages/stock">
+  Inventory and stock management.
+</Card>
+</CardGroup>

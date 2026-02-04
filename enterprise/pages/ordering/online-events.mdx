@@ -1,0 +1,131 @@
+---
+title: "Online Events"
+description: "Create and configure online ordering events"
+---
+
+## Overview
+
+Online Events define when and where customers can place orders via QR ordering. Each event has a name, date and time window, optional pre-order settings, an event banner image, and is linked to a site, session, and preparation points. Customers see and use these events when ordering via QR Ordering.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Online Events | Order Event | Online Ordering |
+
+## Accessing Online Events
+
+Navigate to **Ordering > Online Events**.
+
+The page shows a dropdown list of existing events. Use **Create** to add a new event, or select an event and **Edit** or **Copy**.
+
+## Creating an Online Event
+
+<Steps>
+<Step title="Open Online Events">
+  Go to **Ordering > Online Events**.
+</Step>
+
+<Step title="Create new event">
+  Click **Create** (or **Copy** from an existing event to duplicate it).
+</Step>
+
+<Step title="Details tab">
+  On the **Details** tab, fill in:
+  - **Name**: A clear name for the event (e.g. "Matchday 1", "Summer BBQ").
+  - **Start Time** and **End Time**: When the event runs (start must be before end).
+  - **Show From**: When the event becomes visible to customers.
+  - **Enable Pre-Orders**: Tick to allow pre-orders.
+  - **Pre Order From** (when pre-orders enabled): From when customers can place pre-orders.
+  - **Description**: Optional text (max 250 characters).
+</Step>
+
+<Step title="Event banner (optional)">
+  Under **Event Banner**, optionally tick **Show Event Banner** and upload an image (PNG, JPEG, JPG; max 128KB). You can delete the image with the trash icon.
+</Step>
+
+<Step title="Where tab">
+  On the **Where** tab, select **Site** and **Session**, then tick the **Preparation Points** that will fulfill orders for this event.
+</Step>
+
+<Step title="Save">
+  Click **Save** to create the event.
+</Step>
+</Steps>
+
+<Note>
+When using events, the session must be applied to the appropriate outlet and have a self-service layout assigned.
+</Note>
+
+## Editing an Online Event
+
+1. Go to **Ordering > Online Events**.
+2. Select the event from the dropdown.
+3. Click **Edit**.
+4. Change any details, dates, banner, or preparation points.
+5. Click **Save**.
+
+## Copying an Online Event
+
+Use **Copy** to duplicate an existing event. The name is cleared so you can enter a new one; all other settings (times, banner, site, session, preparation points) are copied. Adjust as needed and **Save**.
+
+## Deleting an Online Event
+
+1. Select the event and click **Edit**.
+2. Click the **Delete** button (trash icon) in the card toolbar.
+3. Confirm the deletion.
+
+## Details tab – fields
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| **Name** | Yes | Display name for the event. |
+| **Start Time** | Yes | Date and time when the event starts. Must be before End Time. |
+| **End Time** | Yes | Date and time when the event ends. |
+| **Show From** | Yes | Date and time when the event becomes visible to customers. |
+| **Enable Pre-Orders** | No | When ticked, allows customers to place pre-orders for the event. |
+| **Pre Order From** | When pre-orders enabled | Date and time from which pre-orders are accepted. |
+| **Description** | No | Optional event description (max 250 characters). |
+| **Show Event Banner** | No | When ticked, the event banner image is shown to customers. |
+| **Event Banner image** | No | Image file (PNG, JPEG, JPG; max 128KB). Optional when Show Event Banner is on. |
+
+## Where tab – fields
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| **Site** | Yes | Site the event is for. Determines which preparation points are listed. |
+| **Session** | Yes | Session linked to the event. Must be applied to the outlet and have a self-service layout. |
+| **Preparation Points** | Yes (at least one) | Tick the preparation points that will fulfill orders for this event. |
+
+<Warning>
+If the selected site has no preparation points, the UI shows: "No Preparation Points Available for this Site". Add or assign preparation points for that site before configuring the event.
+</Warning>
+
+## Preparation points behaviour
+
+- The list of preparation points is loaded when you select a **Site** on the **Where** tab.
+- Changing the site reloads the list; previously ticked preparation points for other sites are not kept.
+- At least one preparation point should be selected so orders can be routed correctly.
+
+## Event banner image
+
+- **Formats**: PNG, JPEG, JPG.
+- **Max size**: 128KB.
+- Upload via the dropzone; remove with the trash icon.
+- Shown to customers only when **Show Event Banner** is ticked.
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Ordering Overview" icon="cart-shopping" href="/enterprise/pages/ordering">
+  Return to the Ordering section overview.
+</Card>
+
+<Card title="Sessions" icon="clock" href="/enterprise/pages/management/sessions">
+  Configure sessions used by online events.
+</Card>
+
+<Card title="Terminal Configuration" icon="desktop" href="/enterprise/pages/terminal/configuration">
+  Outlets, sites, and preparation points.
+</Card>
+</CardGroup>
