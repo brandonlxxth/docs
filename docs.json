@@ -214,7 +214,26 @@
               {
                 "group": "Cash Management",
                 "pages": [
-                  "enterprise/pages/cash-management"
+                  "enterprise/pages/cash-management",
+                  "enterprise/pages/cash-management/allocate-floats",
+                  "enterprise/pages/cash-management/reason-codes",
+                  "enterprise/pages/cash-management/cash-movements",
+                  "enterprise/pages/cash-management/sessions-declaration",
+                  "enterprise/pages/cash-management/sessions-banking",
+                  "enterprise/pages/cash-management/cash-vault",
+                  "enterprise/pages/cash-management/quick-declare",
+                  "enterprise/pages/cash-management/quick-bank",
+                  "enterprise/pages/cash-management/quick-receive",
+                  "enterprise/pages/cash-management/cash-summary",
+                  {
+                    "group": "Revenue Tracker",
+                    "pages": [
+                      "enterprise/pages/cash-management/sales-tracker",
+                      "enterprise/pages/cash-management/risk-summary",
+                      "enterprise/pages/cash-management/outlet-hourly-sales",
+                      "enterprise/pages/cash-management/drawer-totals"
+                    ]
+                  }
                 ]
               },
               {
