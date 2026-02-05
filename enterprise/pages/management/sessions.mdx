@@ -44,12 +44,12 @@ You can use the **Usage** button to see where the session is used before deletin
 |-------|-----|----------------|
 | **Name** | Details | Display name of the session (e.g. Breakfast, Lunch, Evening). |
 | **Price Band** | Details | Price band for this session; the till uses this price band’s product prices when in this session. |
-| **External reference** | Details | — |
-| **Availability** | Self Checkout Availability | — |
+| **External reference** | Details | Used for a 3rd party integration |
+| **Availability** | Self Checkout Availability | The days that the terminal will be available to trade |
 | **Days of the week** | Self Checkout Availability | Which days the session is available for self-checkout/ordering. |
 | **Start time**, **End time** | Self Checkout Availability | When the session is available. |
-| **First order time**, **Last order time** | Self Checkout Availability | — |
-| **Slot interval**, **Delay minutes**, **Timeslot maximum order count** | Self Checkout Availability | — |
+| **First order time**, **Last order time** | Self Checkout Availability | The first and last order time that users can order with the mobile app and QR ordering application. |
+| **Slot interval**, **Delay minutes**, **Timeslot maximum order count** | Self Checkout Availability | Slot interval is the time between each available time slot, delay minutes is the time from when the user opens there order to the first time slot they can select and the maximum order count is the maximum orders that can be placed against a time slot, all require "Show times in ordering" |
 | **Show times in ordering** | Self Checkout Availability | When ticked, ordering shows these times. |
 
 ## How sessions link
@@ -73,7 +73,13 @@ You can use the **Usage** button to see where the session is used before deletin
   <Card title="Price Bands" icon="tags" href="/enterprise/pages/management/price-bands">
     Define the price bands assigned to sessions.
   </Card>
-  <Card title="Layouts" icon="th-large" href="/enterprise/pages/management/layouts">
+  <Card title="Layouts" icon="layout-dashboard" href="/enterprise/pages/management/layouts">
     Layouts assigned per outlet per session.
+  </Card>
+  <Card title="Product Prices" icon="dollar-sign" href="/enterprise/pages/management/product-prices">
+    Prices per price band (session determines which band is active).
+  </Card>
+  <Card title="Online Events" icon="calendar" href="/enterprise/pages/ordering/online-events">
+    Ordering events use session availability.
   </Card>
 </CardGroup>

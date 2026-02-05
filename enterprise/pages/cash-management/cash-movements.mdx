@@ -1,0 +1,66 @@
+---
+title: "Cash Movements"
+description: "View status of cash movements by date and outlet"
+---
+
+## Overview
+
+**Cash Movements** shows the status of cash movements (e.g. lifts, drops, or transfers) across outlets for a selected date range. Use it to see which movements have been completed, are in progress, or are pending, and to drill into terminal-level detail. The page is view-only; it helps you monitor and reconcile cash flow between the cash office and terminals.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Cash Movements | Cash Events | Cash Management |
+
+## Accessing Cash Movements
+
+Navigate to **Cash Management > Cash Movements**.
+
+## Using the page
+
+<Steps>
+<Step title="Set date range">
+  Use the **date range** picker in the card toolbar to set the start and end date (and time) for the movements you want to see. The default is typically the current day.
+</Step>
+
+<Step title="Filter by outlet">
+  Use the **outlet** filter (e.g. radio buttons or dropdown) to show movements for a specific outlet or for all outlets. The list of options depends on your hierarchy and permissions.
+</Step>
+
+<Step title="Review movement status">
+  The main area shows outlets (and optionally terminals) with movement status. Expand or click through to see terminal-level detail where available. Use the information to reconcile cash and follow up on any movements that are not in the expected state.
+</Step>
+</Steps>
+
+## What the page shows
+
+- **Date range** — Start and end date/time for the movements displayed.
+- **Outlet filter** — Restrict results to one outlet or view all.
+- **Outlet / terminal list** — Status of cash movements per outlet (and per terminal). Details depend on your configuration (e.g. lift/drop status, counts, amounts).
+
+This page is **informational**. It does not create or complete movements; it shows the current status so you can monitor and reconcile.
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Cash Management" icon="dollar-sign" href="/enterprise/pages/cash-management">
+  Cash Management overview and all pages.
+</Card>
+
+<Card title="Quick Declare" icon="qrcode" href="/enterprise/pages/cash-management/quick-declare">
+  Declare cash via QR scan.
+</Card>
+
+<Card title="Quick Bank" icon="building-columns" href="/enterprise/pages/cash-management/quick-bank">
+  Bank cash via QR scan.
+</Card>
+
+<Card title="Quick Receive" icon="hand-holding-dollar" href="/enterprise/pages/cash-management/quick-receive">
+  Record received cash by bag and scan.
+</Card>
+
+<Card title="Sessions Declaration" icon="list-check" href="/enterprise/pages/cash-management/sessions-declaration">
+  Session list and manual declaration.
+</Card>
+</CardGroup>

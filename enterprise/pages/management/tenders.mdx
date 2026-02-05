@@ -48,21 +48,21 @@ You can use the **Usage** button to see where the tender is used (layouts, vouch
 |-------|-----|----------------|
 | **Name** | Details | Display name of the tender (e.g. Cash, Card). |
 | **Type** | Details | Tender type: Cash, Cash Foreign Currency, EFT, Account, Other, etc. Determines which overpayment options appear in Options. |
-| **Reference** | Details | — |
-| **Name (alt)** | Details | — |
+| **Reference** | Details | Internal reference for a tender |
+| **Name (alt)** | Details | Additional receipt text that will appear under the tender on sales receipts |
 | **Layout tile colour** | Details | Fill and text colour of the tender button on the layout. |
-| **External reference** | Details | — |
-| **Minimum value**, **Maximum value** | Details | — |
+| **External reference** | Details | External reference used for 3rd party integrations |
+| **Minimum value**, **Maximum value** | Details | The minimum and maximum value that can be processed with this tender |
 | **Exchange rate** | Details | For foreign currency tenders. |
 | **Overpayments** | Options | What happens when the customer pays more than the total: Change, Gratuity, Forfeit, or Not allowed. Options shown depend on Type. |
-| **Cash drawer** | Options | — |
-| **Session close declare** | Options | — |
-| **Session close include variance** | Options | — |
+| **Cash drawer** | Options | Whether the tender should open the cash draw when pressed |
+| **Session close declare** | Options | Enables declaration when closing the sales session |
+| **Session close include variance** | Options | If enabled, the Z-report will show variance between expected and declared tender values |
 | **Exclude from tender total** | Options | — |
 | **Override print** | Options | — |
-| **Email receipt** | Options | (Not shown for Portugal.) — |
-| **Report taxable** | Options | — |
-| **Cost centre** | Options | — |
+| **Email receipt** | Options | (Not shown for Portugal.) Allows keyboard entry for a customer name and email for a e-receipt |
+| **Report taxable** | Options | Separates the tender into a taxable section in the Z-report |
+| **Cost centre** | Options | Should be enabled when creating a cost centre tender |
 | **Allow empty order** | Options | For Account type; allows tendering with no order lines. |
 
 ## How tenders link
@@ -84,7 +84,13 @@ You can use the **Usage** button to see where the tender is used (layouts, vouch
   <Card title="Management" icon="diagram-project" href="/enterprise/pages/management/overview">
     How tenders fit with layouts and terminals.
   </Card>
-  <Card title="Layouts" icon="th-large" href="/enterprise/pages/management/layouts">
+  <Card title="Layouts" icon="layout-dashboard" href="/enterprise/pages/management/layouts">
     Add tender tiles to a layout.
+  </Card>
+  <Card title="Sessions" icon="clock" href="/enterprise/pages/management/sessions">
+    Sessions and session close (declare options).
+  </Card>
+  <Card title="Incentives" icon="ticket" href="/enterprise/pages/incentives/overview">
+    Vouchers can reference tenders.
   </Card>
 </CardGroup>

@@ -1,0 +1,62 @@
+---
+title: "Quick Declare"
+description: "Complete cash declarations quickly by scanning a QR code"
+---
+
+## Overview
+
+**Quick Declare** lets you complete a cash declaration without going through the full [Sessions Declaration](/enterprise/pages/cash-management/sessions-declaration) list. You **scan a QR code** that identifies the session or cash lift. The system then opens the declaration form for that session so you can enter the **Declared at Cash Office** amount and any **Variance Reason**. This is useful when you have many sessions and want to process them quickly with a scanner.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Quick Declare | Cash Declaration | Cash Management |
+
+## Accessing Quick Declare
+
+Navigate to **Cash Management > Quick Declare**.
+
+## How to use Quick Declare
+
+<Steps>
+<Step title="Open Quick Declare">
+  Go to **Cash Management > Quick Declare**. The page shows a scan zone with the instruction to scan a QR code.
+</Step>
+
+<Step title="Scan the code">
+  Use a QR scanner to scan the code that represents the session or cash lift you want to declare. The code is typically generated at the terminal or on a printed label. Ensure the scanner focus is in the browser window so the scan is captured.
+</Step>
+
+<Step title="Complete the declaration">
+  If the scan is recognised, the system opens the declaration form for that session. Enter the **Declared at Cash Office** amount (the physically counted amount) and, if there is a variance, select a **Variance Reason**. Save the declaration.
+</Step>
+
+<Step title="Handle errors">
+  If the scan is not recognised or the session is not valid for declaration, the page shows an error or warning message. Check the code and try again, or complete the declaration via **Sessions > Declaration** instead.
+</Step>
+</Steps>
+
+<Note>
+Quick Declare relies on QR codes that identify the session or cash lift. These are generated from the terminal and can be viewed in the slips menu on terminals for reprinting.
+</Note>
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Cash Management" icon="dollar-sign" href="/enterprise/pages/cash-management">
+  Cash Management overview and all pages.
+</Card>
+
+<Card title="Sessions Declaration" icon="list-check" href="/enterprise/pages/cash-management/sessions-declaration">
+  Full list and manual declaration.
+</Card>
+
+<Card title="Quick Bank" icon="building-columns" href="/enterprise/pages/cash-management/quick-bank">
+  Bank cash via scan.
+</Card>
+
+<Card title="Quick Receive" icon="hand-holding-dollar" href="/enterprise/pages/cash-management/quick-receive">
+  Record received cash via scan.
+</Card>
+</CardGroup>

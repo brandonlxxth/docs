@@ -1,0 +1,96 @@
+---
+title: "Sessions Declaration"
+description: "Complete and view terminal session cash declarations"
+---
+
+## Overview
+
+**Sessions Declaration** (Cash Management > Sessions > Declaration) lists terminal sessions and their cash declaration status. When an operator closes a session on a POS terminal, any tender with **Session Declaration** enabled (usually **Cash**) must be declared in the Management Portal. You use this page to find sessions with status **Declaration Required**, enter the physically counted amount (**Declared at Cash Office**), and optionally select a **Variance Reason** if the count differs from the terminal amount. Once saved, the session can be banked in [Sessions Banking](/enterprise/pages/cash-management/sessions-banking).
+
+Only tenders that have **Session Declaration** enabled appear for declaration. Non-declared tenders (e.g. EFT/card) do not require a cash declaration and are not shown in the declaration form.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Sessions Declaration | Terminal Session Cash | Cash Management |
+
+## Accessing Sessions Declaration
+
+Navigate to **Cash Management > Sessions > Declaration**.
+
+## Table columns
+
+The session list shows:
+
+| Column | Description |
+|--------|-------------|
+| **Outlet** | The outlet the terminal belongs to. |
+| **Terminal** | The terminal that had the session. |
+| **Opened At** | Date and time the session was opened. |
+| **Opened By** | Operator who opened the session. |
+| **Closed At** | Date and time the session was closed. |
+| **Closed By** | Operator who closed the session. |
+| **Decl. Terminal** | Amount declared at the terminal when the session was closed. |
+| **Decl. Office** | Amount you enter after counting at the cash office (when completing the declaration). |
+| **Var.** | Variance (difference between terminal and office). |
+| **Status** | **Session In Progress** (blue) — session still open; **Declaration Required** (amber) — declaration pending; **Banked** (green) — declaration done and session banked. |
+| **Actions** | **Eye** — view read-only details; **Pencil** — complete or edit declaration. |
+
+## Completing a declaration
+
+<Steps>
+<Step title="Filter sessions">
+  Set **Session Open Date Range** to the date range you want. Optionally filter by **Outlet**. The table lists sessions in that range.
+</Step>
+
+<Step title="Find sessions that need declaration">
+  Locate rows with status **Declaration Required**.
+</Step>
+
+<Step title="Open the declaration form">
+  Click the **Pencil** icon on the session row. The declaration form opens with session details (outlet, terminal, session name, open/close date and time, open/close operator).
+</Step>
+
+<Step title="Enter counted amount">
+  For each tender that requires declaration (e.g. Cash), you see **Declared at Terminal** (from the terminal). Enter **Declared at Cash Office** — the amount you physically counted and verified at the cash office.
+</Step>
+
+<Step title="Add variance reason if needed">
+  If the two amounts differ, the **Variance** is shown. Select a **Variance Reason** from the dropdown (the list comes from [Reason Codes](/enterprise/pages/cash-management/reason-codes)). This is optional but recommended for auditing.
+</Step>
+
+<Step title="Save">
+  Click the **green tick** to save. The session then becomes available for banking. If you need to correct the declaration, open it again with the Pencil and change the value or reason; you can edit until the session is banked.
+</Step>
+</Steps>
+
+## Viewing a declaration (read-only)
+
+Click the **Eye** icon on a session row to open the declaration in **read-only** mode. Use this to review completed or banked sessions (e.g. for auditing). If the session has already been banked, the form also shows **Banked At**, **Banked By**, **Bag Number**, **Reference**, and **Reference 2**.
+
+## Notes
+
+- Sessions with status **Session In Progress** cannot be declared until the operator has closed the session on the terminal.
+- Complete all **Declaration Required** sessions promptly so they can be banked.
+- After banking, declaration fields are read-only; use the Eye icon to view details.
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Cash Management" icon="dollar-sign" href="/enterprise/pages/cash-management">
+  Cash Management overview and all pages.
+</Card>
+
+<Card title="Sessions Banking" icon="building-columns" href="/enterprise/pages/cash-management/sessions-banking">
+  Mark declared sessions as banked.
+</Card>
+
+<Card title="Quick Declare" icon="qrcode" href="/enterprise/pages/cash-management/quick-declare">
+  Declare cash via QR scan.
+</Card>
+
+<Card title="Reason Codes" icon="tags" href="/enterprise/pages/cash-management/reason-codes">
+  Maintain variance reason codes used here.
+</Card>
+</CardGroup>

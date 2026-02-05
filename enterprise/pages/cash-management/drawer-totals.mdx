@@ -1,0 +1,71 @@
+---
+title: "Drawer Totals"
+description: "View cash floats, lifts, drops, and cash totals by outlet and terminal"
+---
+
+## Overview
+
+**Drawer Totals** shows a summary of cash-related totals per **outlet** and **terminal**: typically **Cash Floats** (starting float), **Cash Lift** (cash lifted/collected), **Cash Drops** (cash dropped into the till), and **Cash** (current or total cash). Counts (e.g. number of lifts or drops) may be shown as well. Use it to see at a glance how much float is out, how much has been lifted or dropped, and total cash by drawer/terminal for reconciliation and oversight. The page may auto-refresh so the figures stay current.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Drawer Totals | Drawer Totals | Cash Management |
+
+## Accessing Drawer Totals
+
+Navigate to **Cash Management > Revenue Tracker > Drawer Totals**.
+
+## Using the page
+
+<Steps>
+<Step title="Open Drawer Totals">
+  Go to **Cash Management > Revenue Tracker > Drawer Totals**. The table loads with one row per terminal (or outlet) and columns for the cash totals.
+</Step>
+
+<Step title="Search or filter (if available)">
+  Use the **Search** box to filter by outlet or terminal name if the list is long. The table updates to show only matching rows.
+</Step>
+
+<Step title="Review totals">
+  Review **Cash Floats**, **Cash Lift** (and lift count), **Cash Drops** (and drop count), and **Cash** for each terminal. Use the data to reconcile floats, lifts, and drops and to spot any terminals that need attention.
+</Step>
+
+<Step title="Refresh">
+  If the page has a timer or refresh, the data may update automatically. Otherwise reload the page to get the latest figures.
+</Step>
+</Steps>
+
+## What the table shows
+
+| Column | Description |
+|--------|-------------|
+| **Outlet** | Outlet the terminal belongs to. |
+| **Terminal** | Terminal (drawer) name. |
+| **Cash Floats** | Float amount allocated or at the terminal. |
+| **Cash Lift** | Amount lifted (collected) from the terminal, often with a **count** of lift events. |
+| **Cash Drops** | Amount dropped (added) to the terminal, often with a **count** of drop events. |
+| **Cash** | Current or total cash (e.g. expected cash in drawer). |
+
+Exact column names and whether counts are shown depend on your configuration. Drawer Totals is **read-only** and is for monitoring and reconciliation.
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Cash Management" icon="dollar-sign" href="/enterprise/pages/cash-management">
+  Cash Management overview and all pages.
+</Card>
+
+<Card title="Sales Tracker" icon="chart-line" href="/enterprise/pages/cash-management/sales-tracker">
+  Sales and revenue tracking.
+</Card>
+
+<Card title="Outlet Hourly Sales" icon="clock" href="/enterprise/pages/cash-management/outlet-hourly-sales">
+  Sales by hour per outlet.
+</Card>
+
+<Card title="Risk Summary" icon="chart-pie" href="/enterprise/pages/cash-management/risk-summary">
+  Variance and risk reporting.
+</Card>
+</CardGroup>

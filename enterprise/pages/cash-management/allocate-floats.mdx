@@ -1,0 +1,72 @@
+---
+title: "Allocate Floats"
+description: "Allocate cash floats to outlets by site"
+---
+
+## Overview
+
+**Allocate Floats** lets you assign cash floats to outlets so operators have starting cash for their tills. You choose a **site**, then set the float amount for each outlet under that site. The page shows the **Cash Office Floats Total** (total float available for the site), **Allocated to Outlets** (sum of what you have allocated), and **Unallocated** (remaining). You cannot allocate more than the total available; the system will warn you and block save if the allocated total exceeds the cash office total.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Allocate Floats | Cash Events | Cash Management |
+
+## Accessing Allocate Floats
+
+Navigate to **Cash Management > Allocate Floats**.
+
+## Allocating floats
+
+<Steps>
+<Step title="Select a site">
+  Use the **Site** dropdown at the top to select the site whose outlets you want to allocate floats for.
+</Step>
+
+<Step title="Open the allocation form">
+  Click **Create** (for a new allocation) or **Edit** (if the site already has float data). The form opens with the site name and three summary values: **Cash Office Floats Total**, **Allocated to Outlets**, and **Unallocated**.
+</Step>
+
+<Step title="Set outlet float amounts">
+  In **Allocate Outlet Floats**, each row shows an **Outlet**, an **Allocate Floats** input (the amount to allocate to that outlet), and **Total Allocated**. Enter the float value for each outlet as needed. The summary totals update as you type.
+</Step>
+
+<Step title="Save">
+  Click **Save**. If the total allocated exceeds the cash office floats total, an error message appears and save is blocked. Adjust the values so that **Allocated to Outlets** does not exceed **Cash Office Floats Total**, then save again.
+</Step>
+</Steps>
+
+## What the page shows
+
+| Element | Description |
+|--------|-------------|
+| **Cash Office Floats Total** | Total float available for the site (source of truth for allocation). |
+| **Allocated to Outlets** | Sum of all float amounts currently entered for outlets. |
+| **Unallocated** | Cash Office Floats Total minus Allocated to Outlets. Shown in red if over-allocated. |
+| **Allocate Outlet Floats** | Table of outlets with an input for the float amount per outlet. |
+| **Floats Allocation Activity** | History of float allocations (date/time, outlet, user, value) for auditing. |
+
+<Note>
+Allocated amounts cannot exceed the **Cash Office Floats Total**. Ensure your site or organisation has the correct total configured so you can distribute floats to outlets as needed.
+</Note>
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Cash Management" icon="dollar-sign" href="/enterprise/pages/cash-management">
+  Cash Management overview and all pages.
+</Card>
+
+<Card title="Sessions Declaration" icon="list-check" href="/enterprise/pages/cash-management/sessions-declaration">
+  Complete session cash declarations after floats are used at the till.
+</Card>
+
+<Card title="Sessions Banking" icon="building-columns" href="/enterprise/pages/cash-management/sessions-banking">
+  Mark declared sessions as banked.
+</Card>
+
+<Card title="User Roles" icon="user-shield" href="/enterprise/pages/admin/user-roles">
+  Cash Management tab: allocate floats permission.
+</Card>
+</CardGroup>

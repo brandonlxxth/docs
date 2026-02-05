@@ -1,0 +1,62 @@
+---
+title: "Quick Receive"
+description: "Record cash received quickly by entering a bag number and scanning a QR code"
+---
+
+## Overview
+
+**Quick Receive** lets you record that cash has been received without going through a full movements list. You enter a **Bag Number** and **scan a QR code** that identifies the session or cash lift. The system links the scan to the bag and records the receive. This is useful when you have many bags or sessions and want to process them quickly with a scanner.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Quick Receive | Cash Receive | Cash Management |
+
+## Accessing Quick Receive
+
+Navigate to **Cash Management > Quick Receive**.
+
+## How to use Quick Receive
+
+<Steps>
+<Step title="Open Quick Receive">
+  Go to **Cash Management > Quick Receive**. The page shows a bag number field and a scan zone with the instruction to scan a QR code.
+</Step>
+
+<Step title="Enter bag number">
+  In the **Bag Number** field, enter the bag number (or reference) for the cash you are receiving. Click **Continue** (or the equivalent) so the page is ready to accept a scan.
+</Step>
+
+<Step title="Scan the code">
+  Use a QR scanner to scan the code that represents the session or cash lift you want to receive. The code is typically generated at the terminal or on a printed label. Ensure the scanner focus is in the browser window so the scan is captured.
+</Step>
+
+<Step title="Confirm result or handle errors">
+  If the scan is recognised, the system links it to the bag number and records the receive; a success message is shown. If the scan is not recognised or the session is not valid, the page shows an error or warning message. Check the code and try again, or record the receive via **Cash Movements** or the relevant list instead.
+</Step>
+</Steps>
+
+<Note>
+Quick Receive relies on QR codes that identify the session or cash lift. These are generated from the terminal and can be viewed in the slips menu on terminals for reprinting. Always enter the bag number before scanning so the receive is linked correctly.
+</Note>
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Cash Management" icon="dollar-sign" href="/enterprise/pages/cash-management">
+  Cash Management overview and all pages.
+</Card>
+
+<Card title="Cash Movements" icon="arrows-left-right" href="/enterprise/pages/cash-management/cash-movements">
+  Full list and status of cash movements.
+</Card>
+
+<Card title="Quick Declare" icon="qrcode" href="/enterprise/pages/cash-management/quick-declare">
+  Declare cash via scan.
+</Card>
+
+<Card title="Quick Bank" icon="building-columns" href="/enterprise/pages/cash-management/quick-bank">
+  Bank cash via scan.
+</Card>
+</CardGroup>

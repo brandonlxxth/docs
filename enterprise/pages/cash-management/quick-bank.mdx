@@ -1,0 +1,62 @@
+---
+title: "Quick Bank"
+description: "Complete cash banking quickly by scanning a QR code"
+---
+
+## Overview
+
+**Quick Bank** lets you mark cash as banked without going through the full [Sessions Banking](/enterprise/pages/cash-management/sessions-banking) list. You **scan a QR code** that identifies the session or cash lift. The system then processes the banking for that session and shows a success message. This is useful when you have many sessions and want to process them quickly with a scanner.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Quick Bank | Cash Banking | Cash Management |
+
+## Accessing Quick Bank
+
+Navigate to **Cash Management > Quick Bank**.
+
+## How to use Quick Bank
+
+<Steps>
+<Step title="Open Quick Bank">
+  Go to **Cash Management > Quick Bank**. The page shows a scan zone with the instruction to scan a QR code.
+</Step>
+
+<Step title="Scan the code">
+  Use a QR scanner to scan the code that represents the session or cash lift you want to bank. The code is typically generated at the terminal or on a printed label. Ensure the scanner focus is in the browser window so the scan is captured.
+</Step>
+
+<Step title="Confirm the result">
+  If the scan is recognised, the system processes the banking and shows a success message (and may show details such as session or amount). No further action is required.
+</Step>
+
+<Step title="Handle errors">
+  If the scan is not recognised or the session is not valid for banking, the page shows an error or warning message. Check the code and try again, or complete banking via **Sessions > Banking** instead.
+</Step>
+</Steps>
+
+<Note>
+Quick Bank relies on QR codes that identify the session or cash lift. These are generated from the terminal and can be viewed in the slips menu on terminals for reprinting.
+</Note>
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Cash Management" icon="dollar-sign" href="/enterprise/pages/cash-management">
+  Cash Management overview and all pages.
+</Card>
+
+<Card title="Sessions Banking" icon="building-columns" href="/enterprise/pages/cash-management/sessions-banking">
+  Full list and manual banking.
+</Card>
+
+<Card title="Quick Declare" icon="qrcode" href="/enterprise/pages/cash-management/quick-declare">
+  Declare cash via scan.
+</Card>
+
+<Card title="Quick Receive" icon="hand-holding-dollar" href="/enterprise/pages/cash-management/quick-receive">
+  Record received cash via scan.
+</Card>
+</CardGroup>

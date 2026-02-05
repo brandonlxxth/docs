@@ -1,50 +1,92 @@
 ---
 title: "Fiscal"
-description: "Fiscal reporting and compliance features in the Management Portal"
+description: "France NF525 fiscal reporting, period closing, and tax archive in the Management Portal"
 ---
 
 ## Overview
 
-The Fiscal section provides fiscal reporting and compliance features for organisations that require detailed fiscal documentation and reporting.
+The **Fiscal** section in the Management Portal provides tools for **France NF525** fiscal compliance. It is only available when your organisation has French NF525 certification enabled. Use it to run fiscal reports, close fiscal periods (month or year) for terminals, manage signing keys, and generate or view tax archives.
+
+Terminal-level fiscal configuration (e.g. NF525 certificate number, SIRET, company details for France; or Portugal/Sweden fiscal settings) is done in **Configuration > Management > Terminals** on each terminal’s **Fiscalisation** tab, not in this section.
 
 <Warning>
-**Requires Fiscal Module**: This section requires fiscal features to be enabled for your organization and appropriate permissions. If you don't see this section in your navigation, contact your administrator or [Kappture Sales](/contact).
+**Requires France NF525**: The Fiscal section and its menu item only appear when your organisation has the Fiscal module enabled for **France NF525**. If you don’t see Fiscal in the navigation, contact your administrator or [Kappture Sales](/contact).
 </Warning>
 
 ## Required permissions
 
-Fiscal permissions are configured in **Admin > User Roles** under the **Fiscal** tab (only visible for France NF525).
+Fiscal permissions are configured in **Admin > User Roles** under the **Fiscal** tab. The Fiscal tab is only visible when your organisation uses France NF525.
 
 | Feature | User Role Permission | Tab in User Role Config |
 |---------|---------------------|------------------------|
-| Configuration | Configuration | Fiscal |
-| Reports | Reports | Fiscal |
-| Tax Archive | Tax Archive | Fiscal |
-| Signing Key | Signing Key | Fiscal |
-| Period Closing | Period Closing | Fiscal |
+| Access Fiscal Management (overview) | Configuration or Reports | Fiscal |
+| Reports (terminal config, JET, period close reports, user roles) | Reports | Fiscal |
+| Signing Keys report | Signing Key | Fiscal |
+| Period Closing (close month / close year) | Period Closing | Fiscal |
+| Tax Archive (generate, view, verify, download) | Tax Archive | Fiscal |
 
-## Features
+## Accessing Fiscal
 
-The Fiscal section includes tools for:
+Navigate to **Fiscal > Management** in the main menu. The Fiscal section only appears when France NF525 is enabled for your organisation. The Management page is the fiscal hub: it shows cards for **Reports**, **Period Closing**, and **Tax Archive**; each card lists the actions or reports you can open, depending on your permissions.
 
-- Fiscal reporting and documentation
-- Compliance reporting
-- Tax reporting and summaries
-- Fiscal printer integration
-- Regulatory compliance
+## What the Management page shows
 
-<Info>
-Contact your administrator for the list of fiscal pages and features available for your region.
-</Info>
+### Reports
 
-## Related Documentation
+When you have **Reports** or **Signing Key** permission, a **Reports** card appears with links to:
+
+- **Terminal Configuration Report** — Fiscal configuration of terminals (e.g. NF525 certificate, SIRET, company details).
+- **JET Viewer - System** — View JET (Journal des Encaissements Terminaux) data by date range, code, and user.
+- **JET Viewer - Terminal** — View JET data by date range, code, and terminal.
+- **Signing Keys** — View signing keys used for fiscal compliance (requires **Signing Key** permission).
+- **Period Close - Month** — Report of monthly period close data by terminal.
+- **Period Close - Annual** — Report of annual period close data by terminal.
+- **User Roles** — Report of user roles relevant to fiscal access.
+
+Use these reports for auditing, compliance checks, and period summaries. Each report or viewer may have filters (e.g. date range, terminal, user); run or export as needed for your records.
+
+### Period Closing
+
+When you have **Period Closing** permission, a **Period Closing** card appears with:
+
+- **Period Close - Month** — Close the fiscal month for a selected terminal. You choose the terminal and complete the month close; this is required for NF525 compliance when moving to the next month.
+- **Period Close - Annual** — Close the fiscal year for a selected terminal. You choose the terminal and complete the year close.
+
+Period closing is a formal step that finalises the fiscal period for that terminal. Do not close a period until the period’s transactions are complete and verified.
+
+### Tax Archive
+
+When you have **Tax Archive** permission, a **Tax Archive** card appears with:
+
+- **Generate** — Generate a tax archive for a terminal and fiscal period. You select the terminal and the period; the system produces the archive (e.g. for storage or submission as required by NF525).
+- **View** — View existing tax archives. You can open, verify, or download archived files as needed for compliance or audits.
+
+Tax archives preserve fiscal data in the format required by French NF525 rules. Generate archives after the relevant period is closed; use View to access or verify them later.
+
+## Summary
+
+| Area | Purpose |
+|------|---------|
+| **Reports** | Terminal configuration report, JET viewers (system and terminal), signing keys, period close reports (month/annual), user roles report. |
+| **Period Closing** | Close fiscal month or fiscal year for a terminal (required for NF525). |
+| **Tax Archive** | Generate, view, verify, and download tax archives for terminals and periods. |
+
+## Related documentation
 
 <CardGroup cols={2}>
-<Card title="Navigation Guide" icon="map" href="/enterprise/navigation">
-  Return to the navigation overview.
+<Card title="Navigation" icon="map" href="/enterprise/navigation">
+  Where to find Fiscal in the portal.
 </Card>
 
-<Card title="Analytics" icon="chart-line" href="/enterprise/pages/analytics/overview">
-  View reports and analytics.
+<Card title="Terminal configuration" icon="desktop" href="/enterprise/pages/terminal/configuration">
+  Configure fiscalisation per terminal (Fiscalisation tab).
+</Card>
+
+<Card title="User Roles" icon="user-shield" href="/enterprise/pages/admin/user-roles">
+  Configure Fiscal permissions (Fiscal tab).
+</Card>
+
+<Card title="Configuration" icon="cog" href="/enterprise/pages/configuration">
+  Configuration overview.
 </Card>
 </CardGroup>

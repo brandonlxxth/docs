@@ -1,55 +1,77 @@
 ---
 title: "Cash Management"
-description: "Financial operations and cash handling in the Management Portal"
+description: "Session declarations, banking, cash vault, and revenue tracking in the Management Portal"
 ---
 
 ## Overview
 
-The Cash Management section provides tools for handling financial operations, cash management, and revenue tracking.
+The **Cash Management** section helps you manage cash and revenue across terminals and outlets. It is split into two areas in the menu:
+
+1. **Cash Management** — Floats, reason codes, cash movements, session declarations and banking, cash vault, quick declare/bank/receive, and cash summary.
+2. **Revenue Tracker** — Sales Tracker, Risk Summary, Outlet Hourly Sales, and Drawer Totals.
 
 <Warning>
-**Requires Revenue Module**: This section requires the Revenue module, which is charged separately. If you don't see this section in your navigation, contact your administrator or [Kappture Sales](/contact) to enable the Revenue module.
+**Requires Revenue module**: Cash Management is only available when the Revenue module is enabled for your organisation. If you don't see Cash Management in the navigation, contact your administrator or [Kappture Sales](/contact) to enable the Revenue module.
 </Warning>
 
 ## Required permissions
 
-Cash Management permissions are configured in **Admin > User Roles** under the **Cash Management** tab.
+Cash Management permissions are configured in **Admin > User Roles** under the **Cash Management** tab. The tab is only visible when the Revenue module is enabled. Each page has its own permission; see the dedicated page for the exact permission name.
 
-| Feature | User Role Permission | Tab in User Role Config |
-|---------|---------------------|------------------------|
-| Cash Declaration | Cash Declaration | Cash Management |
-| Cash Events | Cash Events | Cash Management |
-| Drawer Totals | Drawer Totals | Cash Management |
-| Outlet Hourly Sales | Outlet Hourly Sales | Cash Management |
-| Quick Bank | Quick Bank | Cash Management |
-| Quick Receive | Quick Receive | Cash Management |
-| Received Bank Summary | Received Bank Summary | Cash Management |
-| Revenue Tracker | Revenue Tracker | Cash Management |
-| Reason Code | Reason Code | Cash Management |
-| Cash Vault | Cash Vault | Cash Management |
-| Terminal Session Cash | Terminal Session Cash | Cash Management |
+## Cash Management pages
 
-## Features
+| Page | Description |
+|------|-------------|
+| [Allocate Floats](/enterprise/pages/cash-management/allocate-floats) | Allocate cash floats to outlets by site. |
+| [Reason Codes](/enterprise/pages/cash-management/reason-codes) | Maintain variance reason codes used when declaration count differs from terminal. |
+| [Cash Movements](/enterprise/pages/cash-management/cash-movements) | View status of cash movements by date and outlet. |
+| [Sessions Declaration](/enterprise/pages/cash-management/sessions-declaration) | Complete and view terminal session cash declarations. |
+| [Sessions Banking](/enterprise/pages/cash-management/sessions-banking) | Mark declared sessions as banked (reference, bag number). |
+| [Cash Vault](/enterprise/pages/cash-management/cash-vault) | Create and view terminal cash vault declarations. |
+| [Quick Declare](/enterprise/pages/cash-management/quick-declare) | Complete declarations by scanning a QR/barcode. |
+| [Quick Bank](/enterprise/pages/cash-management/quick-bank) | Bank cash by scanning a QR/barcode. |
+| [Quick Receive](/enterprise/pages/cash-management/quick-receive) | Record received cash by bag number and scan. |
+| [Cash Summary](/enterprise/pages/cash-management/cash-summary) | View summary status of received and banked cash. |
 
-The Cash Management section includes tools for:
+## Revenue Tracker pages
 
-- Revenue tracking and reporting
-- Cash handling and reconciliation
-- Financial operations management
-- Transaction monitoring
+| Page | Description |
+|------|-------------|
+| [Sales Tracker](/enterprise/pages/cash-management/sales-tracker) | Track sales by date range for revenue monitoring. |
+| [Risk Summary](/enterprise/pages/cash-management/risk-summary) | View risk and variance summary by site and outlet. |
+| [Outlet Hourly Sales](/enterprise/pages/cash-management/outlet-hourly-sales) | View sales by hour per outlet. |
+| [Drawer Totals](/enterprise/pages/cash-management/drawer-totals) | View cash floats, lifts, drops, and cash totals by outlet and terminal. |
 
-<Info>
-Contact your administrator for the list of pages and features available in the Revenue module.
-</Info>
+## Typical session and banking flow
 
-## Related Documentation
+1. **Allocate Floats** — Ensure outlets have starting float.
+2. **Operators** close sessions on the terminal; Cash (and other declared tenders) require a declaration in the portal.
+3. **Sessions Declaration** — Enter **Declared at Cash Office** and **Variance Reason** for each session with status **Declaration Required**.
+4. **Sessions Banking** — Select declared sessions, enter reference and bag number, and mark as **Banked**.
+5. **Cash Summary** and **Drawer Totals** — Use for reconciliation and oversight.
+
+For quick workflows, use **Quick Declare**, **Quick Bank**, and **Quick Receive** with QR/barcode scanning where configured.
+
+## Related documentation
 
 <CardGroup cols={2}>
-<Card title="Navigation Guide" icon="map" href="/enterprise/navigation">
-  Return to the navigation overview.
+<Card title="Sessions Declaration" icon="list-check" href="/enterprise/pages/cash-management/sessions-declaration">
+  Complete session cash declarations before banking.
+</Card>
+
+<Card title="Sessions Banking" icon="building-columns" href="/enterprise/pages/cash-management/sessions-banking">
+  Mark declared sessions as banked.
+</Card>
+
+<Card title="Navigation" icon="map" href="/enterprise/navigation">
+  Where to find Cash Management in the portal.
+</Card>
+
+<Card title="User Roles" icon="user-shield" href="/enterprise/pages/admin/user-roles">
+  Configure Cash Management permissions (Cash Management tab).
 </Card>
 
 <Card title="Analytics" icon="chart-line" href="/enterprise/pages/analytics/overview">
-  View reports and analytics related to revenue.
+  Reports and revenue analytics.
 </Card>
 </CardGroup>

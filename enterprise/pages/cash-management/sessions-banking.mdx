@@ -1,0 +1,77 @@
+---
+title: "Sessions Banking"
+description: "Mark declared terminal sessions as banked"
+---
+
+## Overview
+
+**Sessions Banking** (Cash Management > Sessions > Banking) lets you mark one or more **declared** terminal sessions as **Banked**. You select the sessions, enter a **Reference** and **Bag Number** (and optionally **Reference 2**), then confirm. Once banked, those sessions show status **Banked** on the [Sessions Declaration](/enterprise/pages/cash-management/sessions-declaration) page and the declaration form becomes read-only.
+
+A session appears on the Banking page only after its cash declaration has been completed in Sessions > Declaration (for tenders that use session declaration). If a session has only non-declared tenders (e.g. card only), it may appear for banking as soon as the session is closed, depending on configuration.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Sessions Banking | Terminal Session Cash | Cash Management |
+
+## Accessing Sessions Banking
+
+Navigate to **Cash Management > Sessions > Banking**. You can also use the **Banking** link or icon from the Sessions Declaration page.
+
+## Banking sessions
+
+<Steps>
+<Step title="Open Banking">
+  Go to **Cash Management > Sessions > Banking**.
+</Step>
+
+<Step title="Select sessions">
+  The table lists sessions that are declared and ready to bank. Tick the checkbox for each session you are banking in this batch (e.g. same bag or same run). You can select a single session or multiple sessions.
+</Step>
+
+<Step title="Enter reference and bag number">
+  Enter **Reference** (e.g. internal reference or run number) and **Bag Number** for the banked cash. **Reference 2** is optional (e.g. second reference for your own tracking).
+</Step>
+
+<Step title="Confirm banking">
+  Click the **green tick** (Save) to confirm. The selected sessions are marked as **Banked**. They will no longer be editable in Sessions Declaration and will show **Banked** status there.
+</Step>
+</Steps>
+
+## What the table shows
+
+| Column | Description |
+|--------|-------------|
+| **Checkbox** | Tick to include the session in this banking batch. |
+| **Terminal** | Terminal that made the declaration. |
+| **Session** | Session name (e.g. "All Day"). |
+| **Open Operator** | Operator who opened the session. |
+| **Open Date** | Date and time the session opened. |
+| **Close Operator** | Operator who closed the session. |
+| **Close Date** | Date and time the session closed. |
+
+## Notes
+
+- Variances on declarations should be justified with a [Variance Reason](/enterprise/pages/cash-management/reason-codes) before banking; a variance of 0.00 indicates exact reconciliation.
+- After banking, return to **Sessions Declaration** and confirm the session status is **Banked** and that Banked At, Banked By, Bag Number, and Reference are correct.
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Cash Management" icon="dollar-sign" href="/enterprise/pages/cash-management">
+  Cash Management overview and all pages.
+</Card>
+
+<Card title="Sessions Declaration" icon="list-check" href="/enterprise/pages/cash-management/sessions-declaration">
+  Complete declarations before banking.
+</Card>
+
+<Card title="Quick Bank" icon="building-columns" href="/enterprise/pages/cash-management/quick-bank">
+  Bank cash via QR scan.
+</Card>
+
+<Card title="Cash Summary" icon="chart-pie" href="/enterprise/pages/cash-management/cash-summary">
+  Summary of received and banked cash.
+</Card>
+</CardGroup>

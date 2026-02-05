@@ -54,9 +54,9 @@ The following lists **non-required** product fields by tab. Use this as a glossa
 |-------|----------------|
 | **Name** | Display name of the product (required). |
 | **Product Group** | The group this product belongs to; used in layouts, menus, and to filter the outlet price grid when editing prices. |
-| **Reporting Name** | — |
-| **Long Name** | — |
-| **Description** | — |
+| **Reporting Name** | The name that will be used on reports for this product in place of the actual name |
+| **Long Name** | A long name used in select reporting |
+| **Description** | A description of the product |
 | **Image** | Product image (e.g. for till or kiosk); upload via the dropzone. |
 | **Restriction** | Restriction label; users who have this restriction cannot see this product. |
 | **Product Tags** | Tags attached to the product; used in filtering and reporting. |
@@ -72,26 +72,26 @@ The following lists **non-required** product fields by tab. Use this as a glossa
 | **Popup Menu** | The menu that opens when an operator taps this product on the till (e.g. milk options for coffee). |
 | **Product Challenge** | Product restriction rule; controls who can sell or see this product. |
 | **Reference** | Code or SKU for the product; used in imports, reporting, and identification. |
-| **External Reference 1**, **External Reference 2** | — |
+| **External Reference 1**, **External Reference 2** | External reference fields that are used with 3rd party integrations |
 | **Product Type** | Terminal, Stock, or Terminal and Stock (when Stock is enabled); controls where the product is available. |
 | **Deposit Return Product** | Links to another product used for deposit/return schemes. |
-| **Popup List Group** (Kiosk Menu Group) | — |
+| **Popup List Group** (Kiosk Menu Group) | The Kiosk menu group that should appear when this product is pressed |
 | **Tax Exemption Reason** | (Portugal only.) Required when the selected tax/price band has a zero tax rate. |
 
 ### Options tab
 
 | Field | What it does |
 |-------|----------------|
-| **Weighed** | — |
-| **Tare Weight** | — |
-| **Kitchen Print** | — |
-| **Open Price** | — |
-| **Open Price Percentage** | — |
-| **Kiosk Meal Deal** | — |
-| **Use as Cover** (Cover Indicator) | — |
-| **Preparator** | — |
-| **Ordering Hide Price** | — |
-| **Send to Order Screen** | — |
+| **Weighed** | When enabled supported scales will be prompted to wait for a weight measurement |
+| **Tare Weight** | Tare weight of the packaging of the product |
+| **Kitchen Print** | This product will send to kitchen printers if the terminal is configured to do so |
+| **Open Price** | Opens a price dialogue where you can enter a custom price |
+| **Open Price Percentage** | Opens a price dialogue that will add the percentage of the order price entered to the order total |
+| **Kiosk Meal Deal** | When on a self ordering kiosk, if sub-menus are enabled it will showc a choice for the customer for "make this a meal" or "item only" |
+| **Use as Cover** (Cover Indicator) | Will increase the cover count on tables or tabs by 1 when added to an order |
+| **Preparator** | Marks the product as a preparator and will be displayed as such on all terminal types, useful for "Oat Milk" types of products |
+| **Ordering Hide Price** | When on QR ordering the price for this product will be hidden. |
+| **Send to Order Screen** | This product will send to KMS screens if a preparation point is configured |
 | **Top Up** (Account Top Up) | — |
 | **Exclude External Export** | When set, this product is excluded from external exports. |
 | **Deposit Return Scheme** (Use as Deposit) | — |
@@ -137,9 +137,6 @@ The following lists **non-required** product fields by tab. Use this as a glossa
   <Card title="Management" icon="diagram-project" href="/enterprise/pages/management/overview">
     How products link to pricing, layouts, and sessions.
   </Card>
-  <Card title="Stock" icon="boxes" href="/enterprise/pages/stock">
-    Learn about inventory and stock management.
-  </Card>
   <Card title="Product Prices" icon="dollar-sign" href="/enterprise/pages/management/product-prices">
     Set prices per product, outlet, and price band.
   </Card>
@@ -148,5 +145,14 @@ The following lists **non-required** product fields by tab. Use this as a glossa
   </Card>
   <Card title="Menus" icon="list" href="/enterprise/pages/management/menus">
     Popup menus on layouts and assigned to products.
+  </Card>
+  <Card title="Layouts" icon="layout-dashboard" href="/enterprise/pages/management/layouts">
+    Add products and product groups to layouts.
+  </Card>
+  <Card title="Stock" icon="boxes" href="/enterprise/pages/stock">
+    Inventory and stock (Stock Control tab on products).
+  </Card>
+  <Card title="Kiosk Menu" icon="list" href="/enterprise/pages/ordering/kiosk-menu">
+    Self-service and kiosk menus (ordering).
   </Card>
 </CardGroup>

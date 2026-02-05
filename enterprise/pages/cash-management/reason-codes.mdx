@@ -1,0 +1,87 @@
+---
+title: "Reason Codes"
+description: "Maintain variance reason codes for cash declaration differences"
+---
+
+## Overview
+
+**Reason Codes** (variance reason codes) are used when the **Declared at Cash Office** amount does not match the amount **Declared at Terminal** for a session. Staff select a reason from this list when completing a [Sessions Declaration](/enterprise/pages/cash-management/sessions-declaration) so that variances are justified and auditable. You maintain the list of reason codes here: create new codes, edit names, and delete codes that are not in use.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Reason Codes | Reason Code | Cash Management |
+
+## Accessing Reason Codes
+
+Navigate to **Cash Management > Reason Codes**.
+
+## Managing reason codes
+
+The page shows a dropdown of existing reason codes. Use **Create** to add a new code, or select a code and **Edit** to change it.
+
+### Creating a reason code
+
+<Steps>
+<Step title="Open Reason Codes">
+  Go to **Cash Management > Reason Codes**.
+</Step>
+
+<Step title="Create new">
+  Click **Create**.
+</Step>
+
+<Step title="Enter name">
+  Enter a **Name** for the reason (e.g. "Counting error", "Short drop", "Overage - extra cash found"). This is the text shown in the variance reason dropdown when completing declarations.
+</Step>
+
+<Step title="Save">
+  Click **Save**.
+</Step>
+</Steps>
+
+### Editing a reason code
+
+1. Select the reason code from the dropdown.
+2. Click **Edit**.
+3. Change the **Name** as needed.
+4. Click **Save**.
+
+### Deleting a reason code
+
+1. Select the reason code and click **Edit**.
+2. Click the **Delete** button (trash icon) in the card toolbar.
+3. Confirm the deletion.
+
+You cannot delete a reason code that is **in use** (e.g. already selected on one or more declarations). Remove or change those declarations first, or leave the code in place for historical accuracy.
+
+## Reason code fields reference
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| **Name** | Yes | Label shown in the variance reason dropdown when completing a declaration (e.g. "Counting error", "Short drop", "Overage"). |
+
+## When reason codes are used
+
+When a user completes a cash declaration in **Cash Management > Sessions > Declaration**, they enter the **Declared at Cash Office** amount (the physically counted amount). If it differs from the **Declared at Terminal** amount, the system shows a **Variance**. The user can select a **Variance Reason** from the dropdown; the options in that dropdown are the reason codes you maintain here. Selecting a reason helps with reconciliation and auditing.
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Cash Management" icon="dollar-sign" href="/enterprise/pages/cash-management">
+  Cash Management overview and all pages.
+</Card>
+
+<Card title="Sessions Declaration" icon="list-check" href="/enterprise/pages/cash-management/sessions-declaration">
+  Where variance reasons are selected when declaring cash.
+</Card>
+
+<Card title="Sessions Banking" icon="building-columns" href="/enterprise/pages/cash-management/sessions-banking">
+  Mark declared sessions as banked.
+</Card>
+
+<Card title="User Roles" icon="user-shield" href="/enterprise/pages/admin/user-roles">
+  Cash Management tab: reason code permission.
+</Card>
+</CardGroup>

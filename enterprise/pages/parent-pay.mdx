@@ -1,15 +1,25 @@
 ---
 title: "Parent Pay"
-description: "Parent payment features in the Management Portal"
+description: "View and resolve unmatched diners from the Parent Pay integration"
 ---
 
 ## Overview
 
-The Parent Pay section provides features for managing parent payment accounts and transactions.
+**Parent Pay** integrates Kappture with an external school and catering payment system (ParentPay). Parents or guardians top up **diner** accounts for pupils or students; those diners then use their balance when making purchases at the till (e.g. school canteen). The integration is run by an external application (e.g. on an IIS server) that syncs diner data, account balances, and payments into Kappture so that sales apply to the correct diner account.
+
+For each diner received from the external system, Kappture must link them to a **member** so that till purchases and balance updates apply to the right account. When a diner cannot be matched automatically (e.g. by roll number, UPN, or MIS ID), they appear as **unmatched**. The Management Portal’s Parent Pay section shows this list so you can see who still needs to be resolved.
 
 <Warning>
-**Requires Parent Pay Module**: This section requires the Parent Pay module, which is charged separately. If you don't see this section in your navigation, contact your administrator or [Kappture Sales](/contact) to enable the Parent Pay module.
+**Requires Parent Pay module**: The Parent Pay section is only available when the Parent Pay module is enabled for your organisation. If you don’t see Parent Pay in the navigation, contact your administrator or [Kappture Sales](/contact) to enable the module.
 </Warning>
+
+## Unmatched diners
+
+**Unmatched diners** are diners that have been received from the external Parent Pay system but are **not yet linked** to a member in Kappture. Until they are matched, their purchases and balances cannot be applied to the correct account.
+
+- The external integration sends diner records (pupil/student details such as name, roll number, UPN, MIS ID, diner type, free school meal dates). Kappture stores them and tries to match each diner to an existing member (typically by roll number, UPN, or MIS ID, depending on how the integration is configured).
+- When no matching member is found, the diner stays **unmatched** and appears on the **Diner Matching** page in the Management Portal.
+- Resolving them usually means ensuring the right **member** exists in Kappture with the correct identifier (roll number, UPN, or MIS ID). Once a match is possible, the integration can link the diner to that member and the diner disappears from the Unmatched Diners list.
 
 ## Required permissions
 
@@ -17,30 +27,48 @@ Parent Pay permissions are configured in **Admin > User Roles** under the **Pare
 
 | Feature | User Role Permission | Tab in User Role Config |
 |---------|---------------------|------------------------|
-| Diner Matching | Diner Matching | Parent Pay |
+| Diner Matching (Unmatched Diners) | Diner Matching | Parent Pay |
 
-## Features
+## Accessing Diner Matching
 
-The Parent Pay section includes tools for:
+Navigate to **Parent Pay > Diner Matching** in the main menu. The Parent Pay section only appears when the Parent Pay module is enabled. The Diner Matching page is also referred to as **Unmatched Diners**.
 
-- Parent account management
-- Payment processing
-- Account balance tracking
-- Transaction history
-- Payment settings and configuration
+## What the table shows
 
-<Info>
-Contact your administrator for the list of pages and features available in the Parent Pay module.
-</Info>
+The table lists one row per unmatched diner, with details that came from the external system and help you identify the pupil or student:
 
-## Related Documentation
+| Column | Description |
+|--------|-------------|
+| **Site** | The site (e.g. school) the diner belongs to. |
+| **Forename** | First name. |
+| **Surname** | Surname. |
+| **Account ID** | Account identifier from the external system. |
+| **Roll Number** | Roll number (often used for matching to a member). |
+| **UPN** | Unique Pupil Number. |
+| **MIS ID** | Management Information System identifier. |
+| **Diner Type** | Type of diner (e.g. pupil, student). |
+| **FSM Start** | Free School Meals period start date (if applicable). |
+| **FSM End** | Free School Meals period end date (if applicable). |
+| **Kappture ID** | Internal identifier for the diner record in Kappture. |
+
+This page is **informational**. Use it to see who is unmatched; resolving them is done by ensuring the corresponding member exists in Kappture with the correct roll number, UPN, or MIS ID so that the integration can link them.
+
+## Related documentation
 
 <CardGroup cols={2}>
-<Card title="Navigation Guide" icon="map" href="/enterprise/navigation">
-  Return to the navigation overview.
+<Card title="Member" icon="user" href="/enterprise/pages/member/member">
+  Member records (roll number, UPN, MIS ID) for matching diners.
+</Card>
+
+<Card title="Navigation" icon="map" href="/enterprise/navigation">
+  Where to find Parent Pay in the portal.
+</Card>
+
+<Card title="User Roles" icon="user-shield" href="/enterprise/pages/admin/user-roles">
+  Configure Parent Pay permissions (Parent Pay tab).
 </Card>
 
 <Card title="Configuration" icon="cog" href="/enterprise/pages/configuration">
-  Configure parent pay settings and accounts.
+  General configuration and hierarchy.
 </Card>
 </CardGroup>

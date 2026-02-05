@@ -1,0 +1,90 @@
+---
+title: "Cash Vault"
+description: "Create and view terminal cash vault declarations"
+---
+
+## Overview
+
+**Cash Vault** is used to record and view **terminal cash vault** declarations — the cash stored in the vault at a terminal (e.g. a safe or locked drawer). You can **create** a new declaration (terminal, value, and references) and **view** historical declarations with filters by date, outlet, and user. The view shows whether each declaration has been **Processed**, so you can track vault cash for reconciliation and auditing.
+
+## Required permissions
+
+| Feature | User Role Permission | Tab in User Role Config |
+|---------|---------------------|------------------------|
+| Cash Vault | Cash Vault | Cash Management |
+
+## Accessing Cash Vault
+
+Navigate to **Cash Management > Cash Vault**. The main page is the **view** (list of declarations with filters). Use the **Add** (plus) button in the card toolbar to open the **create declaration** form.
+
+## Creating a cash vault declaration
+
+<Steps>
+<Step title="Open Cash Vault">
+  Go to **Cash Management > Cash Vault**.
+</Step>
+
+<Step title="Start new declaration">
+  Click the **Add** (plus) button in the card toolbar.
+</Step>
+
+<Step title="Enter details">
+  - **Terminal**: Select the terminal where the cash vault declaration is being made.
+  - **Value**: Enter the monetary value being declared for the terminal cash vault (the amount stored in the vault at that moment).
+  - **Reference 1**: Primary reference (e.g. bag number or unique reference code). Recommended for tracking.
+  - **Reference 2** (optional): Secondary reference.
+  - **Reference 3** (optional): Tertiary reference.
+</Step>
+
+<Step title="Save">
+  Click the **green tick** to save. The declaration appears in the vault list and can be filtered and reviewed in the view.
+</Step>
+</Steps>
+
+<Note>
+The **Value** must reflect the accurate amount in the vault at the time of declaration. Use at least one reference so the declaration can be matched to operational or banking documentation.
+</Note>
+
+## Viewing cash vault declarations
+
+The main Cash Vault page shows a table of declarations. Use the filters to narrow the list:
+
+| Filter | Description |
+|--------|-------------|
+| **Date** | Select a single date or date range. Only declarations within that range are shown. |
+| **Outlet** | Restrict to declarations for terminals in the selected outlet. |
+| **User** | Restrict to declarations created by the selected operator. |
+
+### Table columns
+
+| Column | Description |
+|--------|-------------|
+| **Terminal** | Terminal where the declaration was recorded. |
+| **Date** | Date and time of the declaration. |
+| **User** | Operator who made the declaration. |
+| **Value** | Declared cash amount. |
+| **Reference** | Primary reference (e.g. Reference 1). |
+| **Processed** | Whether the declaration has been processed (for your workflow or integration). |
+| **Actions** | View or manage the record as provided by the UI. |
+
+Use the view to audit vault declarations, verify values and references, and check processed status.
+
+## Related documentation
+
+<CardGroup cols={2}>
+<Card title="Cash Management" icon="dollar-sign" href="/enterprise/pages/cash-management">
+  Cash Management overview and all pages.
+</Card>
+
+<Card title="Sessions Declaration" icon="list-check" href="/enterprise/pages/cash-management/sessions-declaration">
+  Session cash declarations at the till.
+</Card>
+
+<Card title="Sessions Banking" icon="building-columns" href="/enterprise/pages/cash-management/sessions-banking">
+  Mark declared sessions as banked.
+</Card>
+
+<Card title="Cash Movements" icon="arrows-left-right" href="/enterprise/pages/cash-management/cash-movements">
+  View status of cash movements.
+</Card>
+</CardGroup>
