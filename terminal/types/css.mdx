@@ -1,0 +1,144 @@
+---
+title: "Customer Status Screen (CSS)"
+description: "Customer-facing display terminal showing order numbers and preparation status at a preparation point"
+---
+
+## Overview
+
+The **Customer Status Screen (CSS)** is a customer-facing display terminal that shows order numbers and their preparation status. Customers use the CSS to track whether their order is being prepared or is ready to collect. The CSS is display-only — it does not take orders or payments.
+
+The CSS displays orders for a preparation point. When kitchen staff update an order's status on the KMS, the CSS updates automatically. The CSS and KMS are linked by being assigned to the same preparation point — they both read from and write to the same order data.
+
+The CSS operates in one of two layout modes:
+
+- **Grid** — order numbers displayed as colour-coded tiles in a grid, with an amber/green legend and estimated wait time
+- **List** — split-screen layout with two columns: **"BEING PREPARED"** on the left and **"READY TO COLLECT"** on the right
+
+## Required Configuration
+
+Before the CSS is operational, configure the following in the Management Portal:
+
+- **Terminal** created as **Customer Status Screen** type and assigned to an **Outlet** in [Hierarchy](https://admin.kappture.com/Hierarchy)
+- **Preparation Point** assigned to the terminal in [Hierarchy](https://admin.kappture.com/Hierarchy) under the terminal's **Configuration** tab. The CSS displays orders for this preparation point
+- **Type** set to **Grid** or **List** in [Hierarchy](https://admin.kappture.com/Hierarchy) under the terminal's **CSS** tab
+- **A KMS terminal** configured and operational at the same preparation point, with orders flowing to it. See [Kitchen Management Screen (KMS)](/terminal/types/kms) for KMS setup
+
+### Optional Configuration
+
+- **Order Complete Timeout (minutes)** — minutes before completed orders are removed from the display. Default is 3 minutes. Configured in the **CSS** tab
+- **Open Order Timeout (minutes)** — minutes before open orders are flagged as overdue. Default is 3 minutes. Configured in the **CSS** tab
+
+### Designer Settings
+
+The CSS tab includes a **Designer** section for customising the screen appearance:
+
+- **Background Colour** — hex colour code for the screen background (for example, `#000000` for black). A colour picker is provided
+- **Text Colour Option** — **White Text** or **Black Text**. A preview shows the selected text and background colour combination
+- **Logo** — a logo resource displayed on the screen. Logo resources are managed in [Resources](https://admin.kappture.com/Resource)
+
+## Display Modes
+
+The **Type** field in the CSS tab determines the layout mode:
+
+<Tabs>
+<Tab title="Grid Mode">
+
+Grid mode displays order numbers as colour-coded tiles in a grid layout. The screen includes:
+
+**Header area:**
+- Colour legend showing an amber square with **"In progress"** and a green square with **"Order ready"**
+- **"Order status"** heading
+- Estimated wait time (for example, **"Estimated waiting time is 5 minute(s)"**) — calculated from average preparation times of recently completed orders
+- Collection instructions: **"Proceed to preparation point to collect your order / Bring your receipt with you"**
+
+**Order grid:**
+- Order numbers displayed as tiles with colour-coded backgrounds:
+  - **Amber** — order is being prepared
+  - **Green** — order is ready to collect
+- Grid displays 4 columns on screens up to 1024px wide, or 5 columns on wider screens
+- When no active orders exist, the screen displays **"No orders"**
+
+</Tab>
+<Tab title="List Mode">
+
+List mode displays a split-screen with two columns:
+
+- **Left column: "BEING PREPARED"** — order numbers currently in preparation
+- **Right column: "READY TO COLLECT"** — order numbers that are complete and ready for the customer
+
+Each column displays order sequence numbers in a grid with 3 columns on screens up to 1024px wide, or 4 columns on wider screens. Each column shows up to 5 rows of orders at a time.
+
+The configured logo is displayed at the bottom-right corner of the screen.
+
+</Tab>
+</Tabs>
+
+## Order Status Lifecycle
+
+The CSS tracks orders through the following states:
+
+1. **Future** — the order has a target time in the future and is not yet displayed
+2. **Open** — the order is visible and waiting to be prepared. Displayed as "being prepared" (List mode) or amber (Grid mode)
+3. **Completed** — the KMS has marked the order as complete. Displayed as "ready to collect" (List mode) or green (Grid mode)
+4. **Expired** — the completed order has exceeded the **Order Complete Timeout (minutes)** threshold and is automatically removed from the display
+5. **Fulfilled** — the order has been fulfilled on the KMS and is no longer displayed
+
+The CSS refreshes order data every 5 seconds.
+
+## Staff Access
+
+A hidden button provides access to the home screen for staff. Press and hold the hidden button to trigger a security challenge. After completing the challenge, the home screen displays:
+
+- **Power** button — shuts down the terminal (requires the shutdown permission on the operator role)
+- **Support** button — opens the support information screen
+
+## Offline Handling
+
+If the CSS loses its network connection, the screen displays a disconnect icon and **"Offline"**. The CSS automatically reconnects when the network is restored.
+
+The home screen (accessible via the hidden button) shows a server connection LED indicating connection status.
+
+## Troubleshooting
+
+### No Orders Appearing
+
+- **Preparation point not assigned** — check that the terminal has a **Preparation Point** assigned in [Hierarchy](https://admin.kappture.com/Hierarchy) under the terminal's **Configuration** tab
+- **KMS not operational** — the KMS at the same preparation point must be running and receiving orders. See [Kitchen Management Screen (KMS)](/terminal/types/kms) for KMS troubleshooting
+- **All orders expired** — if orders were completed but the **Order Complete Timeout (minutes)** has passed, they are automatically removed. Adjust the timeout in the **CSS** tab if orders are disappearing too quickly
+
+### Orders Not Updating
+
+- **Network disconnection** — check whether the screen shows **"Offline"**. Verify the network connection
+- **KMS not updating status** — order status changes on the CSS depend on kitchen staff updating orders on the KMS. Check that the KMS is being used to start and complete orders
+
+### Wrong Display Mode
+
+- **Type setting** — the layout mode (Grid or List) is set by the **Type** field in the **CSS** tab in [Hierarchy](https://admin.kappture.com/Hierarchy). Change it and restart the terminal
+
+### Text Hard to Read
+
+- **Background and text colour mismatch** — check the **Background Colour** and **Text Colour Option** in the CSS tab's Designer section. Use the preview to verify the combination is readable before saving
+
+## Related Documentation
+
+<CardGroup cols={2}>
+<Card title="Terminal Overview" icon="desktop" href="/terminal/overview">
+  Terminal architecture and types, including CSS overview.
+</Card>
+
+<Card title="Terminal Configuration" icon="cog" href="/enterprise/pages/terminal/configuration">
+  CSS tab fields, preparation point setup, and designer settings.
+</Card>
+
+<Card title="Kitchen Management Screen (KMS)" icon="kitchen-set" href="/terminal/types/kms">
+  The KMS terminal that feeds orders to the CSS display.
+</Card>
+
+<Card title="Ordering" icon="cart-shopping" href="/enterprise/pages/ordering">
+  Preparation point configuration and the ordering dashboard.
+</Card>
+
+<Card title="Resources" icon="image" href="/enterprise/pages/management/resources">
+  Manage logo resources for the CSS designer settings.
+</Card>
+</CardGroup>

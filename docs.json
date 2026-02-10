@@ -258,7 +258,8 @@
                 "pages": [
                   "terminal/types/terminal",
                   "terminal/types/kiosk",
-                  "terminal/types/kms"
+                  "terminal/types/kms",
+                  "terminal/types/css"
                 ]
               }
             ]

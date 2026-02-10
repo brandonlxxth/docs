@@ -27,7 +27,7 @@ Before the KMS is operational, configure the following in the Management Portal:
 
 ### Optional Configuration
 
-- **Product Groups** for filtering which orders the KMS displays — configured in the **KMS** tab under **Product Groups**. When set, the KMS only shows orders containing products in the selected groups. This is useful for station specialisation (for example, a grill station KMS only shows grill products). Product groups are configured in [Product Groups](https://admin.kappture.com/ProductGroup)
+- **Product Groups** for filtering which orders the KMS displays (Course mode only) — configured in the **KMS** tab under **Product Groups**. When set, the KMS only shows orders containing products in the selected groups. This is useful for station specialisation (for example, a grill station KMS only shows grill products). Product group filtering is not applied in Legacy mode. Product groups are configured in [Product Groups](https://admin.kappture.com/ProductGroup)
 - **Order Button Location** to position action buttons at the **Top** or **Bottom** of order cards — configured in the **KMS** tab
 - **Future Orders Delay (Minutes)** to control when future orders appear — configured in the **KMS** tab. Orders with a target time further ahead than this threshold remain hidden. Default is 15 minutes. Range is 1–720 minutes
 - **Kitchen printing** for physical ticket printing alongside the KMS display
@@ -172,7 +172,7 @@ The notification header shows the total count: **"Messages (X)"**.
 
 - **Preparation point not assigned** — check that the terminal has a preparation point assigned in [Hierarchy](https://admin.kappture.com/Hierarchy) under the terminal's **Configuration** tab
 - **Products not flagged for kitchen screen** — ensure products have the **Send to Kitchen Screen** checkbox enabled in [Products](https://admin.kappture.com/Product) under the **Options** tab
-- **Product group filter too restrictive** — if **Product Groups** are configured in the **KMS** tab, only orders containing products in those groups appear. Remove the filter or add the relevant product groups
+- **Product group filter too restrictive** — if **Product Groups** are configured in the **KMS** tab and the display type is set to **Course**, only orders containing products in those groups appear. Product group filtering does not apply in Legacy mode. Remove the filter or add the relevant product groups
 - **Future orders delay too high** — if orders have a future target time, they remain hidden until the **Future Orders Delay** threshold is reached. Check the delay value in the **KMS** tab
 
 ### Orders Not Updating Status
