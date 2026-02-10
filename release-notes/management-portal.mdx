@@ -7,6 +7,27 @@ These release notes list upcoming and recent changes to the Management Portal.
 
 ## 2026
 
+### February 10th
+
+This release introduces major testing infrastructure improvements with Playwright automated tests, async database optimizations for better performance under high concurrency, and new Pay at Table default gratuity options. Bug fixes address cash management status labels and preparation point dashboard product ID handling.
+
+#### 🚀 Enhancements
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869bgx8r0 | Added default gratuity option to Pay at Table QR code configuration, allowing admins to pre-select a gratuity percentage for customers |
+| 869c3dbww | Implemented Playwright automated testing infrastructure with TypeScript for improved test reliability and parallel execution |
+| 869c3dbww | Optimized database access layer with async methods (KapptureSqlCommand.CreateAsync, DataReader async methods) to prevent thread pool starvation under high concurrency |
+
+#### 🐞 Bug Fixes
+
+| Internal Ticket ID | Description |
+|:-------------------|:------------|
+| 869bte6dv | Fixed cash management declaration status label display and corrected variance calculation (now shows Decl. Office minus Decl. Terminal) |
+| 869bxtw9q | Fixed preparation point dashboard orders to correctly handle products with IDs greater than SMALLINT MAX (32,767) by changing ProductId from SMALLINT to INT |
+
+---
+
 ### January 28th
 
 This release improves navigation and user experience with sidebar menu loading fixes, Kiosk Menu Group reorganization, and enhanced Kiosk Menu configuration options. It also adds performance optimizations for enterprise applications, new Self Checkout terminal options, and disables the BRISK tab to prevent accidental configuration changes. Bug fixes address Account Flash Report conversion calculations for doubles and 2-pint servings.
