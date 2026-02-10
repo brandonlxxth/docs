@@ -250,6 +250,20 @@
               }            ]
           },
           {
+            "group": "Terminal",
+            "pages": [
+              "terminal/overview",
+              {
+                "group": "Terminal Types",
+                "pages": [
+                  "terminal/types/terminal",
+                  "terminal/types/kiosk",
+                  "terminal/types/kms"
+                ]
+              }
+            ]
+          },
+          {
             "group": "Kappture App (Mobile)",
             "pages": [
               "mobile-app/overview",

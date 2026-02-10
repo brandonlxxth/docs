@@ -1,0 +1,256 @@
+---
+title: "Kiosk"
+description: "Self-service ordering kiosk for customers: browsing products, customising orders, and completing payments without staff assistance"
+---
+
+## Overview
+
+The **Kiosk** is a customer-facing self-service terminal that runs in portrait mode. Customers browse products, build orders, customise items, and pay — without staff assistance. The kiosk operates unattended with a guest operator and manages sessions automatically based on configured time windows.
+
+This page documents the full customer journey on the kiosk, from the attract screen through to payment and receipt collection.
+
+## Required Configuration
+
+Before the kiosk is operational, it must be configured in the Management Portal:
+
+- **Terminal** created as **Self-Service Kiosk** type and assigned to an **Outlet** in [Hierarchy](https://admin.kappture.com/Hierarchy)
+- **Sessions** configured with availability days and times under the **Self Checkout Availability** tab in [Sessions](https://admin.kappture.com/Session)
+- **Layout** created using the **Kiosk Portrait** resolution type in [Layouts](https://admin.kappture.com/Layout), with products and categories assigned
+- **Products** configured with prices and images in [Products](https://admin.kappture.com/Product)
+- **Tenders** configured for at least one payment method (card, Kappture account, or cryptocurrency) in [Layouts](https://admin.kappture.com/Layout) under the **Kiosk Options** tab
+- **Guest operator** available in the outlet — the kiosk logs in as a guest operator automatically. Create an operator with the **Self Ordering** checkbox enabled in [Operators](https://admin.kappture.com/Operator) and assign it to the outlet in [Hierarchy](https://admin.kappture.com/Hierarchy)
+- **Vision themes** configured for the attract screen slideshow and sales banners (configured in the terminal's **Designer** tab in [Hierarchy](https://admin.kappture.com/Hierarchy))
+
+### Optional Configuration
+
+- **Price bands** for eat-in and takeaway pricing — configured in [Layouts](https://admin.kappture.com/Layout) under the **Kiosk Options** tab
+- **Order collection periods** for future order times (for example, "Now", "12:30pm", "1:00pm") — configured in [Layouts](https://admin.kappture.com/Layout) under the **Kiosk Options** tab
+- **Kiosk Menus** for multi-step product customisation (for example, choose size, then milk type, then syrup) — configured in [Kiosk Menu](https://admin.kappture.com/PopupList) and [Kiosk Menu Group](https://admin.kappture.com/PopupListGroup)
+- **Kiosk Meal Deal** enabled on products that offer both "item only" and "make it a meal" options — configured in [Products](https://admin.kappture.com/Product) under the **Options** tab
+- **Allergen and nutritional data** on products for customer information — configured in [Products](https://admin.kappture.com/Product)
+- **Preparation point** for stock availability checks and kitchen routing — configured in the terminal settings in [Hierarchy](https://admin.kappture.com/Hierarchy)
+- **Kitchen printing or KMS** for sending orders to preparation areas
+
+## Getting Started
+
+### Attract Screen
+
+When the kiosk is open and waiting for customers, the attract screen displays:
+
+- A rotating slideshow of promotional images from the configured home vision theme
+- The outlet logo (if configured)
+- A **"Touch to order"** prompt
+
+The slideshow transitions between images using either a zoom or slide animation, based on the terminal's **Home Transition Type** setting. The transition speed is set by the **Home Transition Delay**.
+
+Tap anywhere on the screen to start ordering.
+
+### Closed Screen
+
+When the kiosk is outside its availability window, the screen displays **"This terminal is closed"**. If a future session is scheduled, the next opening time is shown. If no upcoming session is scheduled, the screen displays **"Please try again later"**.
+
+The kiosk's availability is controlled by the **Self Checkout Availability** tab on the session in [Sessions](https://admin.kappture.com/Session). This tab sets which days of the week the kiosk is active and the start and end times for each session. The kiosk automatically opens when the current time falls within a configured availability window and closes when the window ends.
+
+### Automatic Session Management
+
+The kiosk opens and closes sessions automatically — no staff intervention is required. When the current time enters a session's availability window, the kiosk opens the session, logs in a guest operator, and activates the attract screen. When the time leaves the window, the kiosk closes the session and displays the closed screen.
+
+Sessions must have a layout assigned to the outlet session in [Hierarchy](https://admin.kappture.com/Hierarchy) under the outlet's **Session** tab for the kiosk to open.
+
+### Staff Access
+
+A hidden button in the bottom-right corner of the screen opens the operator login screen. Staff must log in with their operator credentials before accessing the Home screen. Once logged in, the Home screen provides access to sessions, orders, reports, and terminal settings — the same as other terminal types.
+
+## Ordering
+
+### Price Band Selection
+
+If the layout has price bands configured (for example, eat-in and takeaway), the kiosk displays **"How are you dining with us today?"** with large buttons for each option.
+
+Price bands support two levels of selection. For example, the first level offers "Eat In" or "Take Away", and a second level offers "Hot" or "Cold" within that selection.
+
+If no price bands are configured, this screen is skipped.
+
+### Collection Time Selection
+
+If order collection periods are configured, the kiosk displays **"When would you like to collect your order?"** with time options (for example, **"Now"**, **"12:30pm"**, **"1:00pm"**).
+
+The **"Now"** option appears when **Is Kiosk Show Order Now** is enabled in the layout's Kiosk Options tab in [Layouts](https://admin.kappture.com/Layout).
+
+If no periods are configured, this screen is skipped and all items are added to the current order.
+
+### Browsing Products
+
+The main ordering screen has four areas:
+
+1. **Banner** (top) — rotating promotional images from the configured sales vision theme
+2. **Category sidebar** (left) — vertical list of product categories. Tap a category to view its products
+3. **Product grid** (centre) — product cards showing the product image, name, and price. Each card has an info icon if the product has allergen or nutritional data
+4. **Order bar** (bottom) — shows **START AGAIN** on the left, the order total in the centre, and **CHECKOUT** with an item count badge on the right
+
+### Adding Products
+
+Tap a product card to add it to the order. A brief **"ADDED TO BASKET"** animation confirms the addition.
+
+If the product has a [Kiosk Menu Group](/enterprise/pages/ordering/kiosk-menu-group) assigned, the customisation flow launches (see Product Customisation below).
+
+If the product has **Kiosk Meal Deal** enabled (configured in [Products](https://admin.kappture.com/Product) under the **Options** tab), a prompt asks **"Meal or item only?"** — choosing "Meal" launches the menu group flow, and choosing "Item only" adds the product without customisation.
+
+### Product Information
+
+Tap the info icon on a product card to view the product description, allergen information, and nutritional data in a full-screen overlay.
+
+### Product Customisation
+
+When a product has a Kiosk Menu Group, a customisation panel slides up from the bottom showing the product name and a grid of option tiles (each with an image, name, and price).
+
+The panel header shows the number of selections remaining (for example, **"2 selections remaining..."**). Options that meet the minimum requirement enable the **CONTINUE** button. If no selections are made, the button shows **SKIP**.
+
+For multi-step menus, the kiosk advances through each menu in sequence (for example, choose size, then choose milk type, then choose syrup). When the maximum number of selections is reached for a step, the kiosk automatically advances to the next step.
+
+### Product Availability
+
+Products are disabled (greyed out) when:
+- The current time is outside the product's configured start and end time window
+- The product is out of stock at the kiosk's configured preparation point
+
+### Reviewing the Order
+
+Tap **CHECKOUT** to open the full order review screen. This displays:
+
+- **"YOUR ORDER"** heading
+- Each item with its name, quantity controls (**-** and **+** buttons), and price
+- Course indicators if collection periods are configured (for example, "Now", "Later")
+- The order **TOTAL**
+- **ORDER MORE** button to return to the product grid
+- **PAY** button to proceed to payment
+
+Tap **-** to reduce an item's quantity (removing it at zero). Tap **+** to add another.
+
+Tap **START AGAIN** at any point to cancel the order. A confirmation dialog asks **"Cancel order / Are you sure?"** before clearing the basket.
+
+### Collection Time Upsell
+
+If collection periods are configured and the customer has not added items for all available periods, a prompt asks **"Add items for [period]?"** before proceeding to payment. Tap a period button to return to the product grid for that period, or tap **"No thanks"** to continue to payment.
+
+## Payment Processing
+
+The kiosk determines which payment screen to show based on the tenders configured in the layout's **Kiosk Options** tab in [Layouts](https://admin.kappture.com/Layout).
+
+<Tabs>
+<Tab title="Card Payment">
+
+The screen displays the order total and a **"Pay by card"** button. After tapping, a card icon appears with **"Please follow the instructions on the PIN pad"**.
+
+On success, the screen shows **"Thank you for using the kiosk"**, the order number, and the bank authorisation code. A **"Print receipt"** button is available if collection periods are configured.
+
+On failure, the screen shows **"Your payment was not successful"** with a **"Cancel"** button to return to the order review.
+
+</Tab>
+<Tab title="Kappture Account">
+
+The screen displays a tap icon with **"Scan your QR code or tap your pass"**. The customer taps their NFC card or scans their QR code.
+
+On success, the screen shows **"Thank you for using the kiosk"**, the order number, and the remaining account balance. A **"Print receipt"** button is available.
+
+If the account balance is insufficient, the screen shows **"We were unable to complete your order"** with the current balance. The customer must cancel and reduce their order.
+
+</Tab>
+<Tab title="Kappture Account + Card">
+
+The screen displays a tap icon with **"Scan your QR code or tap your pass"** and an **"Or"** divider followed by a **"Pay by card"** button.
+
+If the customer scans their pass and has sufficient balance, the order is paid from their account. If the balance is insufficient, the screen shows the shortfall and asks **"Additional payment via card is required. Proceed to card payment?"** with a **"Pay by card"** button to pay the remaining amount by card.
+
+</Tab>
+</Tabs>
+
+### Order Numbers
+
+After successful payment, the kiosk displays the order number in large text for the customer to reference when collecting their order:
+
+- Single order: **"Order 123"**
+- Multiple orders (when collection periods are used): **"Orders 123, 124, 125"** — one per period
+
+## Printing
+
+### Receipt Printing
+
+A **"Print receipt"** button appears after successful payment when collection periods are configured or when **Is Kiosk Show Order Now** is enabled. Tap to print a customer receipt. The button can only be tapped once per order.
+
+After a brief display, the kiosk automatically returns to the attract screen.
+
+### Kitchen Printing
+
+When a product has kitchen printing enabled, a kitchen receipt prints automatically when the order is completed. Products are assigned to specific preparation points and kitchen printers in the Management Portal.
+
+## Idle Timeout
+
+If no interaction occurs during ordering, the kiosk displays a warning: **"Do you need more time? Touch screen to continue"** with a spinning icon.
+
+If the customer does not respond within the idle close timeout period, the kiosk cancels the order and returns to the attract screen. The idle timeout and idle close timeout are configured in the terminal settings in [Hierarchy](https://admin.kappture.com/Hierarchy).
+
+The idle timer pauses during product customisation popups and is disabled during payment.
+
+## Offline Handling
+
+If the kiosk loses its network connection, a full-screen overlay displays **"Terminal closed"** and **"Please try again later"**. The kiosk automatically reconnects when the network is restored.
+
+## Kitchen Display System (KMS) Alerts
+
+If an order fails to send to the Kitchen Management Screen, an alert displays the order number and **"There was a problem sending the order to the kitchen"** with **"Please contact a member of staff for assistance"**. The alert dismisses automatically after 60 seconds or when a staff member taps **"OK"**.
+
+## Troubleshooting
+
+### Kiosk Shows "This terminal is closed"
+
+- **Session not configured** — check that the session has availability days and times configured under the **Self Checkout Availability** tab in [Sessions](https://admin.kappture.com/Session)
+- **Outside availability window** — the kiosk automatically opens and closes based on the configured availability times. Wait for the next scheduled window
+- **No guest operator** — the kiosk requires a guest operator. Check that an operator with the **Self Ordering** checkbox enabled exists in [Operators](https://admin.kappture.com/Operator) and is assigned to the outlet in [Hierarchy](https://admin.kappture.com/Hierarchy)
+- **Session not assigned to terminal** — ensure the terminal has a layout assigned to the outlet's session
+
+### Products Not Showing
+
+- **No layout assigned** — check that a kiosk layout is assigned to the outlet session in [Hierarchy](https://admin.kappture.com/Hierarchy) under the outlet's **Session** tab
+- **No products on layout** — add products and categories to the kiosk layout in [Layouts](https://admin.kappture.com/Layout)
+- **Price band mismatch** — ensure products have prices configured for the session's price band in [Products](https://admin.kappture.com/Product)
+- **Product images missing** — product images are loaded from the product configuration in [Products](https://admin.kappture.com/Product). Products without images display the outlet logo as a fallback
+
+### Payment Not Working
+
+- **No tenders configured** — configure at least one tender (card or Kappture account) in the layout's **Kiosk Options** tab in [Layouts](https://admin.kappture.com/Layout)
+- **Card reader not connected** — check the card reader connection and configuration in [Hierarchy](https://admin.kappture.com/Hierarchy) under the terminal's **Payment Options** tab
+- **Network offline** — card payments and Kappture account payments require a network connection
+
+### Kiosk Offline
+
+- **Check network** — verify the network connection (Ethernet or Wi-Fi)
+- **Server indicator** — the home screen (accessible via the hidden staff button) shows connection status LEDs: green (connected), amber (online but not synced), red (offline)
+
+## Related Documentation
+
+<CardGroup cols={2}>
+<Card title="Terminal Overview" icon="desktop" href="/terminal/overview">
+  Terminal architecture and types.
+</Card>
+
+<Card title="Terminal Configuration" icon="cog" href="/enterprise/pages/terminal/configuration">
+  Configure terminals in the Management Portal.
+</Card>
+
+<Card title="Kiosk Menu" icon="list" href="/enterprise/pages/ordering/kiosk-menu">
+  Create menus for kiosk product customisation.
+</Card>
+
+<Card title="Kiosk Menu Group" icon="layer-group" href="/enterprise/pages/ordering/kiosk-menu-group">
+  Group kiosk menus into multi-step ordering flows.
+</Card>
+
+<Card title="Layouts" icon="table-layout" href="/enterprise/pages/management/layouts">
+  Create and manage kiosk layouts.
+</Card>
+
+<Card title="Products" icon="box" href="/enterprise/pages/management/products">
+  Product configuration including images and allergens.
+</Card>
+</CardGroup>

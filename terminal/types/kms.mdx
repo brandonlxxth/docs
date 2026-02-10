@@ -1,0 +1,220 @@
+---
+title: "Kitchen Management Screen (KMS)"
+description: "Kitchen and bar display terminal for managing preparation point orders: viewing, starting, completing, and fulfilling orders organised by course"
+---
+
+## Overview
+
+The **Kitchen Management Screen (KMS)** is a display terminal used by kitchen and bar staff to manage orders at a preparation point. The KMS displays orders sent from other terminals (PoS, kiosk, QR ordering, app, pay at table, or the ordering API) and is the only terminal type that can update order status — marking orders as started, completed, and fulfilled.
+
+The KMS operates in one of two display modes:
+
+- **Course** — orders are organised by course tabs (for example, "Starters", "Mains", "Desserts") with a summary view showing aggregated quantities
+- **Legacy** — orders are split into three tabs: **Open**, **Future**, and **Completed**
+
+This page documents the full KMS workflow, from configuration through to order fulfilment.
+
+## Required Configuration
+
+Before the KMS is operational, configure the following in the Management Portal:
+
+- **Terminal** created as **Kitchen Management Screen** type and assigned to an **Outlet** in [Hierarchy](https://admin.kappture.com/Hierarchy)
+- **Preparation Point** created and assigned to the terminal in [Hierarchy](https://admin.kappture.com/Hierarchy) under the terminal's **Configuration** tab. The KMS displays orders for this preparation point. See [Terminal Configuration](/enterprise/pages/terminal/configuration) for preparation point setup
+- **Display type** set to **Course** or **Legacy** in [Hierarchy](https://admin.kappture.com/Hierarchy) under the terminal's **KMS** tab
+- **Warning thresholds** configured for amber and red timing alerts in the **KMS** tab — see [Terminal Configuration](/enterprise/pages/terminal/configuration) for field details
+- **Products** must have the **Send to Kitchen Screen** checkbox enabled in [Products](https://admin.kappture.com/Product) under the **Options** tab for orders to appear on the KMS
+- **Courses** configured in [Course](https://admin.kappture.com/Course) for course-based order organisation (required for Course display mode)
+
+### Optional Configuration
+
+- **Product Groups** for filtering which orders the KMS displays — configured in the **KMS** tab under **Product Groups**. When set, the KMS only shows orders containing products in the selected groups. This is useful for station specialisation (for example, a grill station KMS only shows grill products). Product groups are configured in [Product Groups](https://admin.kappture.com/ProductGroup)
+- **Order Button Location** to position action buttons at the **Top** or **Bottom** of order cards — configured in the **KMS** tab
+- **Future Orders Delay (Minutes)** to control when future orders appear — configured in the **KMS** tab. Orders with a target time further ahead than this threshold remain hidden. Default is 15 minutes. Range is 1–720 minutes
+- **Kitchen printing** for physical ticket printing alongside the KMS display
+
+## Getting Started
+
+### Home Screen
+
+When the KMS starts, the home screen displays the **Power** and **Support** buttons. The home screen also shows server connection status LEDs:
+
+- **Green** — connected to the server
+- **Amber** — online but not synchronised
+- **Red** — offline
+
+Tap the screen to enter the order management view.
+
+### Display Modes
+
+The KMS has two display modes, configured by the **Display type** field in the **KMS** tab in [Hierarchy](https://admin.kappture.com/Hierarchy):
+
+<Tabs>
+<Tab title="Course Mode">
+
+Course mode organises orders into tabs based on the course assigned to each order. Each tab shows the course name and order count (for example, **"Starters (5)"**).
+
+The top of the screen includes:
+
+- A **Summary/Orders** toggle button to switch between the order card view and the summary view
+- A **Print all** button to print all visible orders
+- A **Server** connection LED
+
+Orders within each course tab display as cards (see Order Cards below).
+
+**Summary View**
+
+The summary view aggregates all products across orders in the selected course, showing two columns:
+
+- **Required** — the total quantity needed
+- **Prepared** — the quantity already completed
+
+This view helps staff see at a glance how many of each product are still needed.
+
+</Tab>
+<Tab title="Legacy Mode">
+
+Legacy mode splits orders into three tabs:
+
+- **Open (X)** — orders that are ready to prepare, with the count of open orders
+- **Future (X)** — orders scheduled for a future time, with the count
+- **Completed (X)** — orders that have been completed, with the count
+
+A fourth tab, **Search**, provides order lookup (see Searching Orders below).
+
+The top of the screen includes:
+
+- A **Print all** button to print all visible orders
+- A **Server** connection LED
+
+Orders within each tab display as cards (see Order Cards below).
+
+</Tab>
+</Tabs>
+
+## Order Management
+
+### Order Cards
+
+Each order displays as a card showing the order details and products. The card background colour indicates the order status:
+
+| Colour | Status |
+|--------|--------|
+| Default (no highlight) | New order — not yet started |
+| Yellow | Started — staff has begun preparing |
+| Amber | Warning — the amber target threshold has been reached |
+| Red | Critical — the red target threshold has been reached. The card flashes to draw attention |
+| Green | Completed or fulfilled |
+
+Each card includes action buttons (displayed as icons) and a **Print** button:
+
+| Icon | Action | When it appears |
+|------|--------|----------------|
+| Play | **Start** — marks the order as started | Order is new (not yet started) |
+| Tick | **Complete** — marks the order as completed | Order has been started |
+| Remove | **Fulfill** — marks the order as fulfilled and removes it from the active view | Order has been completed |
+
+### Order Lifecycle
+
+Orders progress through five states:
+
+1. **Future** — the order has a target time in the future and is not yet visible (controlled by the **Future Orders Delay** setting)
+2. **Open** — the order is visible and waiting to be prepared
+3. **Started** — a staff member has tapped the Play button to indicate preparation has begun. The card turns yellow
+4. **Completed** — a staff member has tapped the Tick button to indicate the order is ready. The card turns green
+5. **Fulfilled** — a staff member has tapped the Remove button to clear the order from the display. The card turns green briefly before being removed
+
+### Warning Timers
+
+The KMS uses configurable time thresholds to alert staff when orders are taking too long:
+
+- **Amber Target Warning** — when the elapsed time since the order was placed reaches this threshold (in minutes), the card turns amber. Default is 1 minute. Configured as **Amber Target Warning (minutes)** in the **KMS** tab in [Hierarchy](https://admin.kappture.com/Hierarchy)
+- **Red Target Warning** — when the elapsed time reaches this threshold, the card turns red and flashes. Default is 3 minutes. Configured as **Red Target Warning (minutes)** in the **KMS** tab
+
+Both thresholds are configured in a range of 0–60 minutes.
+
+### Searching Orders
+
+Both display modes include a **Search** tab for looking up orders by number:
+
+- **Order number** — enter the sequence number to find a specific order
+- **Table number** — toggle to search by table number instead
+
+In Course mode, the search tab is available alongside the course tabs. In Legacy mode, it is the fourth tab after Open, Future, and Completed.
+
+When no results are found, the screen displays **"No orders"**.
+
+### Printing
+
+Each order card has a **Print** button (printer icon) to print a kitchen ticket for that order.
+
+Both display modes include a **Print all** button at the top of the screen to print tickets for all currently visible orders.
+
+## Notifications
+
+The KMS receives real-time notifications from the ordering system. The notification panel displays messages with the following columns:
+
+- **Date Time**
+- **Outlet**
+- **Terminal**
+- **Order**
+- **Table**
+
+Notification types include:
+
+- **Service request** — a customer or front-of-house terminal has requested service (indicated by an operator icon)
+- **Payment request** — a payment-related notification (indicated by a cash icon)
+
+The notification header shows the total count: **"Messages (X)"**.
+
+## Troubleshooting
+
+### No Orders Appearing
+
+- **Preparation point not assigned** — check that the terminal has a preparation point assigned in [Hierarchy](https://admin.kappture.com/Hierarchy) under the terminal's **Configuration** tab
+- **Products not flagged for kitchen screen** — ensure products have the **Send to Kitchen Screen** checkbox enabled in [Products](https://admin.kappture.com/Product) under the **Options** tab
+- **Product group filter too restrictive** — if **Product Groups** are configured in the **KMS** tab, only orders containing products in those groups appear. Remove the filter or add the relevant product groups
+- **Future orders delay too high** — if orders have a future target time, they remain hidden until the **Future Orders Delay** threshold is reached. Check the delay value in the **KMS** tab
+
+### Orders Not Updating Status
+
+- **Only KMS can update order status** — Preparation Point terminals (a separate terminal type) display orders but cannot mark them as started, completed, or fulfilled. Ensure the terminal is created as a **Kitchen Management Screen** type
+- **Network disconnection** — check the **Server** LED on the home screen. Red indicates the terminal is offline
+
+### Warning Colours Not Showing
+
+- **Thresholds set to 0** — if the **Amber Target Warning** or **Red Target Warning** is set to 0 minutes, the warning triggers immediately when the order is placed. Adjust the thresholds in the **KMS** tab in [Hierarchy](https://admin.kappture.com/Hierarchy)
+- **Thresholds not configured** — verify the warning thresholds are set in the **KMS** tab
+
+### Server Connection Issues
+
+- **Green LED** — connected and synchronised
+- **Amber LED** — online but not fully synchronised with the server
+- **Red LED** — offline. Check the network connection (Ethernet or Wi-Fi)
+
+## Related Documentation
+
+<CardGroup cols={2}>
+<Card title="Terminal Overview" icon="desktop" href="/terminal/overview">
+  Terminal architecture and types, including KMS overview.
+</Card>
+
+<Card title="Terminal Configuration" icon="cog" href="/enterprise/pages/terminal/configuration">
+  KMS tab fields, preparation point setup, and display type configuration.
+</Card>
+
+<Card title="Courses" icon="utensils" href="/enterprise/pages/management/course">
+  Configure courses for course-based order organisation.
+</Card>
+
+<Card title="Products" icon="box" href="/enterprise/pages/management/products">
+  Product configuration including the Send to Kitchen Screen option.
+</Card>
+
+<Card title="Product Groups" icon="layer-group" href="/enterprise/pages/management/product-groups">
+  Create product groups for KMS station filtering.
+</Card>
+
+<Card title="Ordering" icon="cart-shopping" href="/enterprise/pages/ordering">
+  Preparation point configuration and the ordering dashboard.
+</Card>
+</CardGroup>

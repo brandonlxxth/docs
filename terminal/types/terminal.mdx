@@ -1,0 +1,1497 @@
+---
+title: "Terminal (Operator POS)"
+description: "Complete workflows for the standard operator POS terminal: login, sessions, taking orders, payments, refunds, table service, and all operations"
+---
+
+## Overview
+
+The **Terminal (Operator POS)** is the standard till used by staff to take orders and process payments. Operators log in, open sessions, take orders from customers, process payments, and manage day-to-day operations.
+
+This page documents all workflows operators use on the terminal, from login through completing transactions, managing tables, handling refunds, and closing sessions.
+
+## Required Configuration
+
+Before operators can use the terminal, it must be configured in the Management Portal:
+
+- **Terminal** created and assigned to an **Outlet** ([Terminal Configuration](/enterprise/pages/terminal/configuration))
+- **Outlet Sessions** configured with **Layouts** and **Price Bands** ([Management Overview](/enterprise/pages/management/overview))
+- **Operators** and **Operator Roles** created ([Operators](/enterprise/pages/management/operators), [Operator Roles](/enterprise/pages/management/operator-roles))
+- **Products** configured with prices ([Products](/enterprise/pages/management/products), [Product Prices](/enterprise/pages/management/product-prices))
+- **Tenders** configured for payment types ([Tenders](/enterprise/pages/management/tenders))
+- **Receipt** template assigned (if printing receipts) ([Receipts](/enterprise/pages/management/receipts))
+- **Checklist** assigned (if operators must complete checklists) ([Checklist](/enterprise/pages/management/checklist))
+
+## Getting Started
+
+### First Login
+
+When you first start the terminal or when no operator is logged in, the screen displays **"No operators logged in"**.
+
+#### Login Methods
+
+You can log in using one of two methods:
+
+**1. Identification Device (automatic login)**
+
+Scan or present your identification device. The terminal automatically logs you in:
+- **NFC cards** — Tap your NFC card on the reader (Mifare Ultralight, Mifare Classic 1K/4K, Mifare Mini, Mifare DESFire, HID iCLASS, or Generic Prox)
+- **Magnetic stripe cards** — Swipe your card through the MSR (reads Track 2 data)
+- **Dallas iButton keys** — Touch your iButton to the reader
+
+**2. Manual Entry**
+
+Enter your operator code using the numeric keypad:
+
+<Steps>
+<Step title="Enter operator code">
+  Type your operator ID on the numeric keypad. The screen displays **"Logon code"** above the entry area. Tap **Enter** when complete.
+</Step>
+
+<Step title="Enter PIN (if required)">
+  If your operator's **Security type** is set to **PIN**, enter your PIN using the numeric keypad. The screen displays **"PIN"** with asterisks masking your entry. Tap **Enter** when complete.
+
+  If the PIN is incorrect, an error appears and the screen returns to the logon code entry.
+</Step>
+
+<Step title="Home screen">
+  After successful login, you see the **Home screen** with tiles for Sales, Sessions, Orders, Slips, Reports, Functions, Cash, Stock (if Stock module is enabled), and Training (if Training mode is enabled).
+</Step>
+</Steps>
+
+<Note>
+If your identification device doesn't work or you don't see your operator account, contact your administrator. Operators and their identification tokens are configured in [**Operators**](https://admin.kappture.com/Operator).
+</Note>
+
+## Session Management
+
+### Opening a Session
+
+Before you can take orders, you must **open a session**. Sessions track your shift and link to the outlet's price bands and layouts.
+
+<Steps>
+<Step title="Go to Sessions">
+  From the Home screen, tap the **Sessions** tile. The Sessions screen opens.
+</Step>
+
+<Step title="Select session">
+  Choose the session you want to open (e.g. "Breakfast", "Lunch", "Evening"). The list shows sessions configured for this outlet.
+</Step>
+
+<Step title="Complete checklist (if configured)">
+  If a **Checklist** is assigned to this terminal (configured in **Terminal > Configuration tab**), you must complete it before the session opens. Review each checklist item and mark it complete. Tap **Continue** when done.
+
+  This step is skipped when no checklist is assigned to the terminal.
+</Step>
+
+<Step title="Enter cash float (if configured)">
+  If the terminal has **Cash float entry** enabled (configured in **Terminal > Options section**), enter the starting cash amount in the drawer. Use the numeric keypad to enter the amount, then tap **Enter**.
+
+  This step is skipped when cash float entry is disabled on the terminal.
+</Step>
+
+<Step title="Session opens">
+  The session opens and you return to the Home screen. The terminal now uses the session's **Price Band** for product prices and the session's **Layout** for the sales screen.
+</Step>
+</Steps>
+
+<Warning>
+You cannot take orders until a session is open. When no session is open, the following Home screen buttons are disabled:
+- **Sales** — Cannot take orders
+- **Orders** — Cannot view order history
+- **Slips** — Cannot view slip history
+- **Cash** — Cannot perform cash operations (lifts, drops, drawer totals)
+- **Functions** — Cannot access functions (except Terminal Switch when configured)
+- **Invoice** — Cannot accept invoices
+
+The **Sessions**, **Reports**, **Stock** (if enabled), and **Training** (if enabled) buttons remain available when no session is open.
+</Warning>
+
+### Closing a Session
+
+At the end of your shift, close the session to finalize your sales and cash totals.
+
+<Steps>
+<Step title="Tap Close session">
+  From the Home screen, tap the **Sessions** tile. Since a session is open, the tile displays "Close session".
+</Step>
+
+<Step title="System checks for open orders">
+  The terminal checks for open orders:
+  - If you have open orders, the system prompts you to close them first. You cannot close the session until all orders are paid or cancelled.
+  - If other operators have open orders, the system either blocks the session close or transfers their orders to you (depending on whether the operator is still logged in).
+</Step>
+
+<Step title="System checks for other terminals (network selling mode only)">
+  If the terminal is operating in network selling mode and other terminals are in the same session and haven't closed yet, a warning appears listing those terminals. You can **Override** to continue or **Cancel** to wait for other terminals to close first.
+
+  This check is skipped when the terminal is in standalone mode.
+</Step>
+
+<Step title="Cash drawer opens (if applicable)">
+  If any tenders used during the session have the **Cash drawer** option enabled (configured in the tender's Options section), the cash drawer opens automatically. Count the payment methods displayed on screen.
+</Step>
+
+<Step title="Declare tenders screen">
+  The **Declare all tenders** screen appears, showing each tender that requires declaration (configured with **Session close declare** enabled). For each tender with a checkmark icon:
+  1. Tap the tender name
+  2. Enter the physical amount counted using the numeric keypad
+  3. Confirm the entry
+  4. A tick appears next to the tender
+
+  Continue until all tenders are declared.
+</Step>
+
+<Step title="Tap Finished">
+  When all tenders are declared, tap **Finished**.
+
+  The session closes immediately. If **Print Z report** is enabled on the terminal (configured in **Terminal > Printing tab**), a Z Report prints automatically showing session totals, tender breakdowns, and any variances (declared amounts compared to system totals).
+</Step>
+
+<Step title="Log off all operators prompt">
+  After the session closes, a prompt appears asking **"Logoff all operators now?"**
+  - Tap **Yes** to log off all operators and return to the operator selection screen
+  - Tap **No** to keep operators logged in and return to the Home screen
+
+  You can now log off manually or another operator can log in.
+</Step>
+</Steps>
+
+<Warning>
+You cannot close a session while orders are open. The system checks for:
+- **Your open orders** — Complete payment or cancel before closing
+- **Other operators' open orders** — If the operator is logged off, their orders transfer to you. If they're still logged in, they must close their orders first.
+- **Other terminals in session** — You can override the warning but should ensure other terminals have closed first to avoid discrepancies.
+</Warning>
+
+### Logging Off
+
+To log off and allow another operator to use the terminal:
+
+<Steps>
+<Step title="Open operator selection">
+  Tap the **operator button** in the bottom-right corner of the Home screen (displays your operator name and the operator icon). The operator selection dialog expands, showing all currently logged-in operators.
+</Step>
+
+<Step title="Tap log off icon">
+  Next to your operator name, tap the **door icon** (log off icon).
+</Step>
+
+<Step title="Confirm">
+  A confirmation prompt appears asking **"Logoff '[Your Name]'? Are you sure?"** Tap **Yes** to confirm or **No** to cancel.
+
+  If you have open orders, the system warns you that they will remain open for the next operator.
+</Step>
+
+<Step title="Operator logged off">
+  You are logged off. If no other operators remain logged in, the terminal returns to the **"No operators logged in"** screen. If other operators are still logged in, the terminal remains on the Home screen.
+</Step>
+</Steps>
+
+<Note>
+After closing a session, the system automatically prompts to log off all operators. The manual log off process described here is for logging off at any other time during your session.
+</Note>
+
+## Sales Workflows
+
+### Starting a Sale
+
+<Steps>
+<Step title="Go to Sales">
+  From the Home screen, tap the **Sales** tile. The screen that opens depends on the terminal's **Sales view type** setting (configured in **Terminal > Configuration tab**):
+  - **Bar** — Opens to the sales layout (product buttons)
+  - **Tables** — Opens to the table view (table buttons)
+</Step>
+
+<Step title="View layout">
+  The screen displays the layout configured for the current session. The layout contains product buttons, product groups, menus, and tenders. The **order panel** is positioned on the left side (landscape) or top (portrait) showing the current order.
+</Step>
+
+<Step title="Start adding products">
+  Tap product buttons to add items to the order. The order panel displays items as you add them, showing product name, quantity, price, and line total.
+</Step>
+</Steps>
+
+<Note>
+When the outlet has a table layout assigned, you can swipe left or right at any time to switch between the sales layout (product buttons) and table view (table buttons). The **Sales view type** setting determines which screen opens first when you tap **Sales** from the Home screen.
+</Note>
+
+### Working with Tables
+
+When a table layout is assigned to the outlet, the terminal operates in multi-order mode where each table maintains its own independent order.
+
+<Steps>
+<Step title="Select a table">
+  From the table view, tap a table number button. If the table has no active order and **Enter covers** is enabled on the terminal (configured in [**Terminal Hierarchy**](https://admin.kappture.com/Hierarchy), terminal **Options section**), the **Enter covers** screen appears. Enter the number of people using the numeric keypad, then tap **Enter**.
+</Step>
+
+<Step title="Enter order name (if configured)">
+  If **Order enter name** is enabled on the terminal (configured in [**Terminal Hierarchy**](https://admin.kappture.com/Hierarchy), terminal **Options section**), the **Enter order name** screen appears. Enter a name for the order (for collection or identification), or leave it blank, then tap **OK** to proceed.
+
+  If the table already has an active order, it opens immediately without prompting for covers or name.
+</Step>
+
+<Step title="Add products to the table">
+  The sales layout appears showing product buttons. The **order panel** displays items for this specific table, with the table number shown in the order panel header.
+
+  Tap product buttons to add items to the table's order.
+</Step>
+
+<Step title="Switch between tables">
+  To work on a different table, swipe right to access the table view and tap another table number button. Each table maintains its own order independently.
+</Step>
+</Steps>
+
+### Adding Products to an Order
+
+<Steps>
+<Step title="Tap product button">
+  Tap a product button on the layout. The product is added to the current order with quantity 1.
+</Step>
+
+<Step title="Product popup (if configured)">
+  If the product has a **Popup Menu** assigned (e.g., milk options for coffee), a popup menu appears. Tap the options you want (e.g., "Whole milk", "Skim milk").
+
+  If the popup has a **maximum selection limit** (e.g., "Select 2 options"), the popup closes automatically when you reach that limit. If there's no selection limit, tap anywhere outside the popup options to close it and add the product with your selections.
+</Step>
+
+<Step title="Quantity adjustment">
+  To change the quantity before adding:
+  - Enter the quantity using the numeric keypad
+  - Then tap the product button
+  - The product is added with that quantity
+</Step>
+
+<Step title="View order">
+  The order panel shows all items you've added, with product name, quantity, price per item, and line total. The order total is shown at the bottom.
+</Step>
+</Steps>
+
+<Note>
+Products configured with weight-based pricing are weighed at the point of sale (e.g., produce sold by weight). When you tap a weighed product, the system prompts you to place the item on the scale. The weight is read automatically and the price is calculated based on weight × unit price.
+</Note>
+
+### Product Modifiers and Options
+
+Products configured with **Popup Menus** display option screens when you tap them:
+
+<Steps>
+<Step title="Tap product with options">
+  Tap a product that has a popup menu (e.g. coffee with milk choices, burger with add-ons).
+</Step>
+
+<Step title="Select options">
+  A popup menu appears showing available choices. Tap the options you want (e.g. size, milk type, extras).
+
+  If the popup has a **maximum selection limit** (indicated by selection indicators at the top), the popup closes automatically when you reach that limit. If there's no selection limit, tap anywhere outside the popup options to close it.
+
+  The product is added to the order with the selected options shown.
+</Step>
+</Steps>
+
+<Note>
+This section describes the same popup menu functionality covered in "Adding Products to an Order". Products with popup menus behave the same whether added initially or modified during order building.
+</Note>
+
+### Adjusting Order Items
+
+You can modify items in an order before payment:
+
+<Steps>
+<Step title="Enter edit mode">
+  Tap anywhere in the order panel area. The terminal enters edit mode and displays adjustment buttons next to each item.
+</Step>
+
+<Step title="Change quantity">
+  Use the **+ (add)** and **- (subtract)** buttons next to each product to increase or decrease the quantity. The quantity updates immediately.
+
+  The quantity buttons are disabled (greyed out) when:
+  - The product has **Kitchen Print** or **Kitchen Screen** enabled and has already been sent (configured in [**Products**](https://admin.kappture.com/Product), **Options section**)
+  - The order is being **split**
+  - The quantity is already at 1 (subtract button only - cannot go below 1)
+  - The order type is **Refund** (add button only)
+</Step>
+
+<Step title="Remove item">
+  Tap the **Void button** (trash icon) next to the item you want to remove. A confirmation prompt appears showing the item. Tap **Yes** to confirm removal.
+
+  If removing the last product in the order, the system prompts to cancel the entire order.
+</Step>
+
+<Step title="Price adjustment (if permitted)">
+  If your operator role has the **Order price adjustment** permission enabled, tap the **Edit button** (pencil icon) next to the item. Enter the new price using the numeric keypad, then tap **OK**. Price adjustments are used for discounts or special pricing.
+
+  If you don't have permission, a security promotion prompt appears asking for a manager PIN.
+</Step>
+
+<Step title="Exit edit mode">
+  Tap anywhere in the order panel area again to exit edit mode. The adjustment buttons disappear.
+</Step>
+</Steps>
+
+### Member Selection
+
+If the terminal has **Member select type** configured (configured in **Terminal > Configuration tab**), you can link a member to the order for loyalty points, vouchers, or account payments.
+
+<Steps>
+<Step title="Open member selection">
+  Access member selection using one of these methods:
+  - Tap the **member area** to the right of the order panel (grey bar) - this appears when **Member select type** is configured
+  - Tap a **Member button** on the sales layout (if a Member button has been added to the layout)
+
+  The member selection screen opens showing available selection methods.
+</Step>
+
+<Step title="Choose selection method">
+  The terminal's **Member select type** setting determines the available methods:
+  - **Member List** — Tap **Member select** to browse and select from a list of members
+  - **Token Entry** — Tap **Member ID** to enter a member token ID (card number, barcode)
+  - **Member PIN** — Tap **Member PIN select** to enter member PIN to search
+
+  You can also tap **Skip** to proceed without selecting a member.
+</Step>
+
+<Step title="Select member">
+  Find and tap the member you want. The member's name appears in a **blue bar** in the order panel, and any member-linked pricing, vouchers, or accounts become available.
+</Step>
+
+<Step title="Member allergen conflicts (if configured)">
+  If the member has allergen restrictions configured and the order contains products with those allergens, a warning appears. You can **Proceed** (ignore the conflict) or **Cancel** to remove conflicting items.
+</Step>
+</Steps>
+
+<Note>
+Member selection is required when the customer pays with their **Account** tender. To clear a selected member, tap the **blue member bar** in the order panel (shows the member's name). This removes the member from the order.
+</Note>
+
+## Payment Processing
+
+### Payment Flow Overview
+
+After adding products to an order, you can process payment using two methods:
+
+**Method 1: Tap tender button on sales layout**
+
+If tender buttons are placed on the sales layout using the **Layout Designer** (configured in [**Layouts**](https://admin.kappture.com/Layout)), tap the tender button (e.g., **Cash**, **Card**). The system processes payment for the configured amount or prompts you to enter an amount. If the payment doesn't cover the full order total, the tender selection screen opens automatically, allowing you to select another tender to pay the remainder.
+
+See [Layouts documentation](/enterprise/pages/management/layouts) for details on adding tenders to layouts.
+
+**Method 2: Tap the grey bar in the order panel**
+
+Tap the grey bar to the right of the order panel (shows the order total). If **Member select type** is configured, the member selection screen appears first. After member selection (or if not configured), the tender selection screen opens showing all available tenders. Tap the tender you want to use and follow the payment workflow.
+
+<Note>
+The tender selection screen shows all configured tenders (Cash, Card, Account, Voucher, etc.). Once opened, you can select any tender to process payment. If the first payment doesn't cover the full total, the screen remains open for additional payments.
+</Note>
+
+### Cash Payment
+
+<Steps>
+<Step title="Select Cash tender">
+  Tap a **Cash** tender button from the sales layout, or tap the grey bar in the order panel to open the tender selection screen and select **Cash**.
+</Step>
+
+<Step title="Enter amount tendered">
+  The numeric keypad appears for amount entry. Enter the amount the customer is paying, then confirm the entry. You can tap **Exact amount** to pay the full remaining balance without manually entering the amount.
+
+  The keypad is skipped when:
+  - The tender button on the layout has a **custom amount** configured (e.g., £5, £10, £20) - it attempts to pay that amount
+  - The tender button has **Full amount** enabled in the Layout Designer - it automatically pays the full remaining balance
+
+  See [**Layouts**](https://admin.kappture.com/Layout) for tender button configuration.
+</Step>
+
+<Step title="Calculate change">
+  The system calculates **Change** (amount tendered minus order total). If change is due, it's shown on screen.
+</Step>
+
+<Step title="Open cash drawer">
+  The cash drawer opens automatically (if a cash drawer is connected and the tender has the **Cash drawer** option enabled in [**Tenders**](https://admin.kappture.com/Tender), **Options section**). Place the cash in the drawer.
+</Step>
+
+<Step title="Complete payment">
+  Complete the payment. The order is closed, receipt prints (if configured), and you return to sales.
+
+  If the payment doesn't cover the full order total, the tender selection screen remains open. Select another tender to pay the remainder.
+</Step>
+</Steps>
+
+### Card Payment (EFT)
+
+<Steps>
+<Step title="Select Card tender">
+  Tap a card tender button from the sales layout, or tap the grey bar in the order panel to open the tender selection screen and select the card tender. The tender name is configured in [**Tenders**](https://admin.kappture.com/Tender) (e.g., "Card", "Contactless", "Credit Card").
+</Step>
+
+<Step title="Enter amount">
+  The numeric keypad appears for amount entry. Enter the amount to charge to the card, then confirm the entry. You can tap **Exact amount** to charge the full remaining balance without manually entering the amount.
+
+  The keypad is skipped when:
+  - The tender button on the layout has a **custom amount** configured (e.g., £5, £10, £20) - it attempts to charge that amount
+  - The tender button has **Full amount** enabled in the Layout Designer - it automatically charges the full remaining balance
+
+  See [**Layouts**](https://admin.kappture.com/Layout) for tender button configuration.
+</Step>
+
+<Step title="Process card">
+  The system communicates with the payment terminal. Follow the prompts on the payment terminal:
+  - **Insert card** (chip) or **Tap card** (contactless)
+  - Enter PIN if required
+  - Wait for authorization
+</Step>
+
+<Step title="Payment result">
+  If successful, the payment is approved and confirmation appears on screen. If declined, an error message appears. The tender selection screen remains open so you can try another tender.
+</Step>
+
+<Step title="Complete payment">
+  Complete the payment. If the card payment covered the full order total, the order closes, receipt prints, and you return to sales.
+
+  If the payment doesn't cover the full order total, the tender selection screen remains open. Select another tender to pay the remainder.
+</Step>
+</Steps>
+
+### Account Payment
+
+Account payments use a member's account balance (e.g. prepaid account, meal account).
+
+<Steps>
+<Step title="Select member">
+  Ensure a **Member** is selected for the order (see Member Selection above). Account payment requires a member. If no member is selected and you tap the grey bar to open tender selection, member selection appears first.
+</Step>
+
+<Step title="Select Account tender">
+  Tap an account tender button from the sales layout, or tap the grey bar in the order panel to open the tender selection screen and select the account tender (configured in [**Tenders**](https://admin.kappture.com/Tender)).
+</Step>
+
+<Step title="Check balance">
+  The system checks the member's account balance. If the balance is sufficient to cover the order total (or remaining balance), payment proceeds automatically and the account is debited.
+</Step>
+
+<Step title="Insufficient balance">
+  If the account balance is less than the order total, you see the available balance displayed. You can:
+  - Process a partial payment using the available account balance, then the tender selection screen remains open to select another tender for the remainder
+  - Cancel and select a different payment method from the tender selection screen
+</Step>
+
+<Step title="Complete payment">
+  Complete the payment. The account balance is deducted. If the payment covered the full order total, the order closes, receipt prints, and you return to sales.
+
+  If the account payment was partial, the tender selection screen remains open. Select another tender to pay the remainder.
+</Step>
+</Steps>
+
+### Voucher Payment
+
+Vouchers are discount vouchers, meal deals, or promotional offers assigned to members.
+
+<Steps>
+<Step title="Select member">
+  Ensure a **Member** is selected for the order. Vouchers are linked to members. Select the member using:
+  - The member button on the layout (if configured) - some customers configure a specific "Voucher Member" button for voucher accounts
+  - The grey bar to the right of the order panel to open member selection
+
+  If no member is selected when you proceed to payment, member selection appears first.
+</Step>
+
+<Step title="Select Voucher tender">
+  Tap the grey bar in the order panel to open the tender selection screen and select the voucher tender (configured in [**Tenders**](https://admin.kappture.com/Tender)). The system checks for eligible vouchers for this member and automatically applies any eligible voucher to the order.
+</Step>
+
+<Step title="Voucher applied">
+  The eligible voucher is automatically activated and applied to the order. The order total is reduced by the voucher value, or voucher rules are applied (e.g. BOGOF, percentage discount, free product).
+</Step>
+
+<Step title="Complete payment">
+  If the voucher covers the full order amount, payment is complete. The order closes, receipt prints, and you return to sales.
+
+  If there's a remaining balance after applying the voucher, the tender selection screen remains open. Select another tender to pay the difference.
+</Step>
+</Steps>
+
+### Split Payments
+
+You can split payment across multiple tenders (e.g. part cash, part card).
+
+<Steps>
+<Step title="Open tender selection">
+  Tap the grey bar in the order panel to open the tender selection screen (e.g., order total is £50.00). If **Member select type** is configured, complete member selection first.
+</Step>
+
+<Step title="First tender">
+  From the tender selection screen, select the first tender (e.g. **Cash**). The numeric keypad appears for amount entry. Enter the partial amount for this tender (e.g. £20.00), then confirm. The keypad is skipped when the tender button has **Full amount** enabled or a **custom amount** configured (see [**Layouts**](https://admin.kappture.com/Layout)). Process the payment.
+</Step>
+
+<Step title="Remaining balance">
+  After the first payment is processed, the **Remaining balance** is shown (e.g. £30.00). The tender selection screen remains open with all tenders still available.
+</Step>
+
+<Step title="Second tender">
+  Select another tender from the tender selection screen (e.g. **Card**). The numeric keypad appears for amount entry. You can:
+  - Tap **Exact amount** to pay the full remaining balance
+  - Enter a specific amount using the numeric keypad (for further splitting)
+
+  The keypad is skipped when the tender button has **Full amount** enabled or a **custom amount** configured—it automatically attempts to charge that amount (see [**Layouts**](https://admin.kappture.com/Layout) for tender configuration). Process the second payment.
+</Step>
+
+<Step title="Complete">
+  Once the total is fully paid (balance reaches zero), the payment is complete. The order closes and receipts print.
+</Step>
+</Steps>
+
+<Note>
+You can split across any combination of available tenders (cash, card, account, vouchers) as long as the total equals the order amount. The tender selection screen remains open after each partial payment until the full amount is paid. Use the **Exact amount** button on the numeric keypad to quickly pay the full remaining balance without manual entry.
+</Note>
+
+### Overpayments
+
+If a customer pays more than the order total, the system handles it based on the tender's **Overpayments** setting:
+
+- **Change**: The excess is returned as change (cash)
+- **Gratuity**: The excess is treated as a tip/gratuity
+- **Forfeit**: The excess is forfeited (not returned)
+- **Not allowed**: Payment is rejected if amount exceeds total
+
+The behavior is configured per tender in the Management Portal and cannot be changed at the terminal.
+
+## Refunds
+
+You can process refunds using two methods, each requiring a different operator permission:
+
+### Method 1: Refund from Order History
+
+Refund a previous order by locating it in the order history. This method requires the **Refund Order** permission.
+
+<Steps>
+<Step title="Go to Orders">
+  From the Home screen, tap **Orders**. The Orders screen opens.
+</Step>
+
+<Step title="Find the order">
+  Search for the order to refund by date range or order number. Tap the order to view its details.
+</Step>
+
+<Step title="Tap Refund">
+  With the order details displayed, tap the **Refund** button in the order functions panel.
+</Step>
+
+<Step title="Confirm refund">
+  Confirm that you want to refund this order. The order is loaded as a refund with all original items.
+</Step>
+
+<Step title="Select items to refund">
+  All items from the original order appear in the refund. You can refund all items or remove specific ones. Adjust quantities if refunding partial amounts.
+</Step>
+
+<Step title="Process refund payment">
+  The refund amount is processed using any valid tender:
+  - **Cash refund**: Cash drawer opens; return cash to customer
+  - **Card refund**: Card is refunded via EFT. The refund appears in the customer's account within 3-5 business days (timing depends on the card issuer and payment provider)
+  - **Account refund**: Balance is added back to member account
+</Step>
+
+<Step title="Refund complete">
+  The refund is processed and a receipt prints. The refund order is linked to the original order via the source order ID.
+</Step>
+</Steps>
+
+### Method 2: Create New Refund
+
+Create a new refund order without referencing a previous order. This method requires the **Refund Mode** permission.
+
+<Steps>
+<Step title="Start with empty order">
+  From the Sales screen, ensure you have an empty order (no items in the order panel).
+</Step>
+
+<Step title="Open order functions">
+  Tap the **white order box** (the panel showing order items). The order functions menu appears on the right showing available functions (Refund, Cancel, Print, etc.).
+</Step>
+
+<Step title="Tap Refund">
+  In the order functions panel, tap **Refund**. The order switches to refund mode.
+</Step>
+
+<Step title="Add products to refund">
+  Add products from the layout just like a normal order. Product prices are negated (shown as negative values) for the refund.
+</Step>
+
+<Step title="Complete refund">
+  Once all refund items are added, proceed to payment. Select any valid tender from the tender selection or layout to process the refund.
+</Step>
+
+<Step title="Process refund payment">
+  The refund amount is processed:
+  - **Cash refund**: Cash drawer opens; return cash to customer
+  - **Card refund**: Card is refunded via EFT
+  - **Account refund**: Balance is added back to member account
+</Step>
+
+<Step title="Refund complete">
+  The refund is processed and a receipt prints. This refund is not linked to a specific original order.
+</Step>
+</Steps>
+
+<Warning>
+- **Method 1** (Refund from Order History) requires the **Refund Order** permission in [**Operator Roles**](https://admin.kappture.com/OperatorRole)
+- **Method 2** (Create New Refund) requires the **Refund Mode** permission in [**Operator Roles**](https://admin.kappture.com/OperatorRole)
+- Refunds can be processed using any valid tender type (Cash, EFT, Account, etc.) configured in [**Tenders**](https://admin.kappture.com/Tender)
+- Fiscalisation rules may apply additional constraints on refunds (e.g., France NF525, Sweden control unit requirements)
+</Warning>
+
+## Table Service Workflows
+
+### Opening a Table Order
+
+<Steps>
+<Step title="Go to Sales (Tables view)">
+  From Home, tap **Sales**. If the outlet has a **table layout** assigned (configured in the Management Portal when you set up the outlet's sessions), table buttons are available. Table layouts are created in [**Table Layout**](https://admin.kappture.com/Layout/TableIndex) and assigned per session on the outlet configuration.
+</Step>
+
+<Step title="Select table">
+  Tap a **table number** button. If the table is closed (no active order), the table opening prompts appear.
+</Step>
+
+<Step title="Enter covers (if configured)">
+  If **Enter covers** is enabled on the terminal (configured in [**Terminal Hierarchy**](https://admin.kappture.com/Hierarchy), terminal **Options section**), the **Enter covers** screen appears. Enter the number of **covers** (people at the table) using the numeric keypad, then tap **OK**.
+</Step>
+
+<Step title="Enter order name (if configured)">
+  If **Order enter name** is enabled on the terminal (configured in [**Terminal Hierarchy**](https://admin.kappture.com/Hierarchy), terminal **Options section**), the **Enter order name** screen appears. Enter a name for the order (e.g., customer name, collection reference), or leave it blank, then tap **OK** to proceed. Entering an order name helps identify the order later (especially for collection orders).
+</Step>
+
+<Step title="Table opens">
+  The table order opens. You can now add products to this table's order.
+</Step>
+</Steps>
+
+### Managing Multiple Tables
+
+<Steps>
+<Step title="Switch between tables">
+  Tap different **table buttons** to switch between table orders. Each table maintains its own order.
+</Step>
+
+<Step title="View table status">
+  Table buttons show status by color:
+  - **Gray**: No active order
+  - **Pink**: Active order, not paid
+  - **Amber**: Order in active state
+  - **Green**: Order paid (e.g., via Pay at Table)
+</Step>
+
+<Step title="Add items to table">
+  Select a table, then add products as normal. Items are added to that table's order.
+</Step>
+</Steps>
+
+### Merging Tables
+
+You can merge orders from one table to another (e.g. when customers move tables) by dragging and dropping table buttons.
+
+<Steps>
+<Step title="Tap and hold source table">
+  Tap and hold the **table button** for the table you want to move (the source table).
+</Step>
+
+<Step title="Drag to destination table">
+  While holding, drag the table button onto the **destination table button** (where you want to move the order).
+</Step>
+
+<Step title="Confirm merge">
+  Release to drop. A confirmation prompt appears asking if you want to merge the tables. Confirm the merge.
+</Step>
+
+<Step title="Merge complete">
+  All items from the source table are transferred to the destination table. The source table order is closed and the table becomes available.
+</Step>
+</Steps>
+
+<Note>
+You cannot merge a table order with a bar order (table number 0). Bar orders are separate from table orders.
+</Note>
+
+### Splitting Orders
+
+You can split a table order into multiple orders (e.g. separate bills for different customers). There are four split types available:
+
+#### Empty Split
+
+Creates multiple empty orders (2-20 splits). No items are assigned — you manually add items to each split after creation.
+
+<Steps>
+<Step title="Open table order">
+  Open the table whose order you want to split.
+</Step>
+
+<Step title="Open order functions">
+  Tap the **white order box** (the panel showing order items). The order functions menu appears on the right.
+</Step>
+
+<Step title="Select Split">
+  Tap **Split**. The split options menu appears.
+</Step>
+
+<Step title="Select Empty split">
+  Tap **Empty split**.
+</Step>
+
+<Step title="Enter number of splits">
+  Enter the number of splits to create (2-20). If the order has covers entered, the system shows the number of covers as a reference. Tap **Enter**.
+</Step>
+
+<Step title="Splits created">
+  The splits are created immediately as separate empty orders. Add items to each split manually.
+</Step>
+</Steps>
+
+#### Equal Split
+
+Divides all order items equally by value across multiple splits (2-20). The system calculates the total value and divides it equally, assigning partial quantities where needed.
+
+<Steps>
+<Step title="Open table order">
+  Open the table order.
+</Step>
+
+<Step title="Open order functions">
+  Tap the **white order box**. The order functions menu appears on the right.
+</Step>
+
+<Step title="Select Split">
+  Tap **Split**. The split options menu appears.
+</Step>
+
+<Step title="Select Equal split">
+  Tap **Equal split**.
+</Step>
+
+<Step title="Enter number of splits">
+  Enter the number of splits to create (2-20). Tap **Enter**.
+</Step>
+
+<Step title="Review splits">
+  The split screen appears showing:
+  - **Original order** panel on the left (all items should be empty after the split)
+  - **N equal splits: Please check** header
+  - Grid of splits on the right with items distributed equally by value
+
+  Review the splits. Each split has equal value with quantities divided proportionally (e.g. 3 items split 2 ways = 1.5 items per split).
+</Step>
+
+<Step title="Confirm or cancel">
+  - Tap **OK** to commit the splits (only enabled when all items are assigned and splits are valid)
+  - Tap **Cancel** to discard the split and return to the order
+</Step>
+</Steps>
+
+<Note>
+Equal split divides by **value**, not by item count. Items are assigned fractional quantities to ensure each split has equal monetary value. The original order panel must be empty (all items distributed) before you can commit.
+</Note>
+
+#### Line Split (Manual)
+
+Creates multiple empty splits (2-20) and lets you manually assign items by dragging them between splits.
+
+<Steps>
+<Step title="Open table order">
+  Open the table order.
+</Step>
+
+<Step title="Open order functions">
+  Tap the **white order box**. The order functions menu appears on the right.
+</Step>
+
+<Step title="Select Split">
+  Tap **Split**. The split options menu appears.
+</Step>
+
+<Step title="Select Line split">
+  Tap **Line split**.
+</Step>
+
+<Step title="Enter number of splits">
+  Enter the number of splits to create (2-20). Tap **Enter**.
+</Step>
+
+<Step title="Assign items to splits">
+  The split screen appears showing:
+  - **Original order** panel on the left with all items
+  - **N splits: Move lines as required** header
+  - Grid of empty splits on the right
+
+  Drag items from the original order panel to the split panels. Assign each item to one of the splits.
+</Step>
+
+<Step title="Confirm or cancel">
+  - Tap **OK** to commit the splits (only enabled when all items are assigned and no splits are empty)
+  - Tap **Cancel** to discard and return to the order
+</Step>
+</Steps>
+
+<Warning>
+Line split requires at least 2 items in the order (excluding items already sent to preparation points). You cannot commit the split if any split is empty or if items remain in the original order panel.
+</Warning>
+
+#### Line Auto Split
+
+Automatically creates splits based on **cover indicator products** in the order. Each cover indicator product (and any linked products with the same key) creates a separate split.
+
+<Steps>
+<Step title="Open table order">
+  Open the table order. The order must contain cover indicator products.
+</Step>
+
+<Step title="Open order functions">
+  Tap the **white order box**. The order functions menu appears on the right.
+</Step>
+
+<Step title="Select Split">
+  Tap **Split**. The split options menu appears.
+</Step>
+
+<Step title="Select Line auto split">
+  Tap **Line auto split**.
+
+  <Note>
+  Line auto split is only available when:
+  - The order has at least 2 items (excluding prep lines)
+  - **Enter covers** is **disabled** in the terminal configuration ([Hierarchy](https://admin.kappture.com/Hierarchy) > terminal **Options** section)
+  - The order contains multiple cover indicator products
+  </Note>
+</Step>
+
+<Step title="Review auto splits">
+  The split screen appears showing splits automatically created based on cover indicator products:
+  - Each cover indicator product creates one split
+  - Products linked to a cover indicator (same key) are grouped in that split
+  - Other products remain in the original order
+
+  Review and adjust if needed by dragging items between splits.
+</Step>
+
+<Step title="Confirm or cancel">
+  - Tap **OK** to commit the splits
+  - Tap **Cancel** to discard and return to the order
+</Step>
+</Steps>
+
+<Info>
+**Cover indicator products** are products configured in [Product](https://admin.kappture.com/Product) (Management Portal) with the **Use as Cover** option enabled (Edit Product > Options section). These are typically main dishes that represent one "cover" (e.g. burger, steak, salad). Products can be linked together using product keys — linked products (e.g. sides, drinks) will be grouped with their associated cover indicator in the auto split.
+</Info>
+
+#### Processing Split Orders
+
+After splitting an order:
+- Each split becomes a separate order
+- The table status changes to **Pink**
+- You can process payment for each split separately
+- Tap each split in the order list to pay individually
+
+## Pay at Table
+
+If **Pay at Table** is enabled, customers can pay for table orders using QR codes. The terminal handles Pay at Table payments automatically.
+
+<Steps>
+<Step title="Table order created">
+  When a table order is created (either by you or via QR ordering), it appears in the system.
+</Step>
+
+<Step title="Customer scans QR code">
+  Customer scans the Pay at Table QR code at their table and completes payment on their phone.
+</Step>
+
+<Step title="Payment notification">
+  When payment is received, you see a notification: **"Table X paid"** with the order number and payment time.
+</Step>
+
+<Step title="Order marked as paid">
+  The table order is automatically marked as paid. You can close the table or leave it open for additional items.
+</Step>
+</Steps>
+
+<Note>
+Pay at Table payments are processed externally (via the Pay at Table service). The terminal receives notification when payment completes. You don't need to manually process these payments.
+</Note>
+
+## Cash Management
+
+### Cash Drop
+
+Record when cash is added to the drawer (e.g. from a safe, float top-up).
+
+<Steps>
+<Step title="Tap Cash Drop icon">
+  From the Home screen, tap the **plus icon (+)** at the bottom left of the Cash tile.
+</Step>
+
+<Step title="Enter amount">
+  Enter the amount being added to the drawer using the numeric keypad. Tap **Enter**.
+</Step>
+
+<Step title="Confirm">
+  A confirmation dialog appears: "Cash drop of [amount]" / "Are you sure?" Tap **Yes** to confirm.
+</Step>
+
+<Step title="Complete">
+  The cash drawer opens automatically. Place the cash in the drawer. A cash drop slip prints (two copies — one for records, one for the operator).
+</Step>
+</Steps>
+
+### Cash Lift
+
+Record when cash is removed from the drawer (e.g. bank deposit, safe storage).
+
+<Steps>
+<Step title="Tap Cash Lift icon">
+  From the Home screen, tap the **minus icon (-)** at the bottom right of the Cash tile.
+</Step>
+
+<Step title="Enter amount">
+  Enter the amount being removed from the drawer. Tap **Enter**.
+</Step>
+
+<Step title="Confirm">
+  A confirmation dialog appears: "Cash lift of [amount]" / "Are you sure?" Tap **Yes** to confirm.
+
+  <Note>
+  If the amount exceeds the current drawer total, a warning appears: "Warning: Value is higher than drawer total"
+  </Note>
+</Step>
+
+<Step title="Complete">
+  The cash drawer opens automatically. Remove the cash. A cash lift slip prints (two copies).
+</Step>
+</Steps>
+
+### Gratuity Declaration
+
+If gratuities are collected (tips), you can declare them:
+
+<Steps>
+<Step title="Go to Functions">
+  From Home, tap **Functions**.
+</Step>
+
+<Step title="Select Gratuity declaration">
+  Tap **Gratuity declaration**.
+</Step>
+
+<Step title="Enter amount">
+  Enter the total gratuity amount collected. Tap **Enter**.
+</Step>
+
+<Step title="Confirm">
+  Tap **Confirm**. The gratuity is recorded for the session.
+</Step>
+</Steps>
+
+### No Sale
+
+Open the cash drawer without recording a sale (e.g. to give change, check drawer).
+
+<Steps>
+<Step title="Tap No Sale icon">
+  From the Home screen, tap the **eject icon (⏏)** in the upper-right corner of the Cash tile. The cash drawer opens immediately without recording a transaction.
+</Step>
+
+<Step title="Close drawer">
+  Close the drawer manually or tap **Close Drawer** on screen.
+</Step>
+</Steps>
+
+<Warning>
+No Sale events are logged and can be audited in [Terminal Session Activity](https://admin.kappture.com/TerminalSessionActivity). Use only when necessary (e.g., giving change, checking drawer).
+</Warning>
+
+## Order Management
+
+### Viewing Order History
+
+<Steps>
+<Step title="Go to Orders">
+  From the Home screen, tap **Orders**. The Orders screen opens.
+</Step>
+
+<Step title="Select a session period">
+  The top of the screen displays tabs for recent session periods. Tap a tab to view orders from that period. A search tab (magnifying glass icon) allows you to search for orders by order number or table number.
+</Step>
+
+<Step title="Browse orders">
+  Scroll through the list of orders. Each order displays a receipt preview showing order number, date, items, and total amount. Tap an order to select it.
+</Step>
+
+<Step title="Order actions">
+  When an order is selected, the following buttons appear on the right:
+  - **Refund** — Refund the selected order (requires **Refund Order** permission)
+  - **Print** — Reprint the receipt for the selected order (requires **Order Print** permission)
+  - **Paperless** — Display the receipt on the customer-facing screen (requires a secondary display)
+</Step>
+</Steps>
+
+### Reprinting Receipts
+
+<Steps>
+<Step title="Find order">
+  Go to **Orders** and find the order whose receipt you want to reprint.
+</Step>
+
+<Step title="Select order">
+  Tap the order to select it.
+</Step>
+
+<Step title="Print receipt">
+  Tap **Print**. The receipt prints on the configured receipt printer.
+</Step>
+</Steps>
+
+### Viewing Slips
+
+**Slips** are printed records of cash events (cash drops, cash lifts, session opens):
+
+<Steps>
+<Step title="Go to Slips">
+  From Home, tap **Slips**. The Slips screen opens.
+</Step>
+
+<Step title="Select a session period">
+  The top of the screen displays tabs for recent session periods. Tap a tab to view slips from that period.
+</Step>
+
+<Step title="View and reprint slip">
+  Tap a slip to select it. To reprint the slip, tap the **Print icon** in the top-right corner.
+</Step>
+</Steps>
+
+## Stock Operations
+
+The **Stock** tile is available when the Stock module is enabled for the terminal. Stock operations follow a **period-based workflow** — you verify (open) a stock period, perform operations during the period, then close it.
+
+The Stock tile displays the current period state (for example, "Period closed" or "Period 'Monday AM' open").
+
+<Note>
+Stock operations are disabled in Training mode.
+</Note>
+
+### Verify (Open Stock Period)
+
+Opening a stock period lets you count current stock levels and begin a new period. This button is available when the stock period is closed.
+
+**Requires:** Verify Stock permission
+
+<Steps>
+<Step title="Tap Verify">
+  On the Stock tile, tap **Verify**. The product sheet opens showing products with stock movements.
+</Step>
+
+<Step title="Count stock">
+  Enter the physical quantity for each product using the numeric keypad. Tap **Set** to set the value or **Add** to add to the existing value.
+</Step>
+
+<Step title="Submit verification">
+  Tap **Finished** when complete. If you have not counted all product lines, a confirmation dialog displays: "You have counted X of Y lines — The remainder will be treated as zero stock. Proceed with stock verify?" Tap to confirm or go back and continue counting.
+</Step>
+</Steps>
+
+### Requisition
+
+Request stock from another outlet. This button is available when the stock period is open.
+
+**Requires:** Stock Requisition permission
+
+Requisitions are sent to the **Stock Request Outlet** configured in [Hierarchy](https://admin.kappture.com/Hierarchy) under the outlet's **Stock Control** tab. Individual products can override this destination if they are assigned to a [Product Requisition Group](https://admin.kappture.com/ProductRequisitionGroup) — each group maps requesting outlets to specific source outlets, allowing different products to be requisitioned from different locations.
+
+When you tap **Requisition**, a submenu displays two options:
+- **Standard products** — shows the standard product sheet for your outlet
+- **All products** — shows all available products with a search function
+
+<Steps>
+<Step title="Tap Requisition">
+  On the Stock tile, tap **Requisition**, then select **Standard products** or **All products**.
+</Step>
+
+<Step title="Enter quantities">
+  Enter the quantity needed for each product. When using **All products**, use the **Search** button to find products by name.
+</Step>
+
+<Step title="Submit requisition">
+  Tap **Request stock**. A confirmation dialog displays: "You are requesting X of Y lines. Proceed with stock requisition?" Tap to confirm. The system routes each product to the correct source outlet based on the outlet's default Stock Request Outlet and any Product Requisition Group overrides.
+</Step>
+</Steps>
+
+### Transfer
+
+Transfer stock to another outlet. This button is available when the stock period is open.
+
+**Requires:** Stock Transfer permission
+
+When you tap **Transfer**, a submenu displays two options:
+- **Standard products** — shows the standard product sheet for your outlet
+- **All products** — shows all available products with a search function
+
+<Steps>
+<Step title="Tap Transfer">
+  On the Stock tile, tap **Transfer**, then select **Standard products** or **All products**.
+</Step>
+
+<Step title="Select destination outlet">
+  The outlet selection screen opens. Tap the outlet you want to transfer stock to.
+</Step>
+
+<Step title="Enter quantities">
+  Enter the quantity to transfer for each product. When using **All products**, use the **Search** button to find products by name. To cancel the transfer, tap **Cancel transfer**.
+</Step>
+
+<Step title="Submit transfer">
+  Tap **Transfer stock**. A confirmation dialog displays: "You are transferring stock to [outlet name]. Proceed with stock transfer?" Tap to confirm.
+</Step>
+</Steps>
+
+<Warning>
+If the network is offline when you submit a transfer, a warning displays: "WARNING: Network is offline — Any transfers made now will sync later once network is back online." You can proceed or cancel.
+</Warning>
+
+### Accept
+
+Accept incoming stock from requisitions that have been authorised in the Management Portal. When a requisition is submitted from the terminal, it is reviewed and authorised in the Management Portal before the stock is dispatched. Once authorised, the delivery appears here as a pending transfer for you to accept. This button is available when the stock period is open.
+
+**Requires:** Accept Stock Transfer permission
+
+<Steps>
+<Step title="Tap Accept">
+  On the Stock tile, tap **Accept**. The list of pending transfers displays. If no requisitions have been authorised, the message "No transfers pending" displays.
+</Step>
+
+<Step title="Select a delivery">
+  Tap a transfer from the list. The delivery lines display showing products, quantities, and units of measure.
+</Step>
+
+<Step title="Review and sign">
+  Tap **OK** to review. A signature panel opens. Sign to confirm receipt of the delivery.
+</Step>
+
+<Step title="Complete acceptance">
+  Tap **Finished** to accept the delivery. If more deliveries are pending, the list displays again.
+</Step>
+</Steps>
+
+### Query
+
+View stock counts per outlet for a product. This button is available regardless of whether the stock period is open or closed.
+
+**Requires:** Stock Query permission
+
+<Steps>
+<Step title="Tap Query">
+  On the Stock tile, tap **Query**. The query screen opens with a product list on the left and a chart area on the right. A server connection indicator displays the current connection status.
+</Step>
+
+<Step title="Select a product">
+  Tap a product from the list. A chart displays stock counts per outlet for the selected product.
+</Step>
+</Steps>
+
+### Close (Close Stock Period)
+
+Close the current stock period. This button is available when the stock period is open.
+
+**Requires:** Close Stock permission
+
+<Steps>
+<Step title="Tap Close">
+  On the Stock tile, tap **Close**. The product sheet opens showing products with stock movements.
+</Step>
+
+<Step title="Count stock">
+  Enter the closing quantities for each product.
+</Step>
+
+<Step title="Submit close">
+  Tap **Close period**. If you have not counted all lines, a confirmation dialog displays: "The remainder will be treated as zero stock. Proceed with close period?"
+</Step>
+</Steps>
+
+<Warning>
+You must accept all pending transfers before closing a stock period. If transfers are pending, the terminal displays "There are transfers waiting to be accepted" and navigates to the Accept Transfer screen.
+</Warning>
+
+## Functions
+
+The **Functions** tile provides additional operations. Tap the tile to flip it and display the available functions. The functions displayed depend on operator permissions and whether a session is active. Permissions for each function are configured in [Operator Roles](https://admin.kappture.com/OperatorRole) under the **Options** section.
+
+### Change Sales Layout
+
+Change the active sales layout for the terminal. The available layouts are assigned per session in [Hierarchy](https://admin.kappture.com/Hierarchy) under the outlet's **Session** tab, where each session has a **Sales Screen Layout** and optional **Available Sales Screen Layouts**. Layouts are created in [Layouts](https://admin.kappture.com/Layout).
+
+**Requires:** Change Layout permission (configured in [Operator Roles](https://admin.kappture.com/OperatorRole) > **Options** > **Change Layout**)
+
+<Steps>
+<Step title="Open Functions">
+  On the Home screen, tap the **Functions** tile. The tile flips to show the available functions.
+</Step>
+
+<Step title="Tap Change sales layout">
+  Tap **Change sales layout**. The list of available layouts displays.
+</Step>
+
+<Step title="Select a layout">
+  Tap the layout you want to use, then tap **Select**. The sales screen updates to show the new layout.
+</Step>
+</Steps>
+
+### Gratuity Declaration
+
+Declare gratuity (tip) amounts received by the operator.
+
+**Requires:** Declare Gratuity permission (configured in [Operator Roles](https://admin.kappture.com/OperatorRole) > **Options** > **Declare Gratuity**)
+
+<Steps>
+<Step title="Open Functions">
+  On the Home screen, tap the **Functions** tile.
+</Step>
+
+<Step title="Tap Gratuity declaration">
+  Tap **Gratuity declaration**. A numeric entry screen displays with the prompt "Enter gratuity".
+</Step>
+
+<Step title="Enter amount">
+  Enter the gratuity amount using the keypad and confirm. The declaration is recorded and the terminal returns to the Home screen.
+</Step>
+</Steps>
+
+### Wastage Declaration
+
+Record product wastage (spoiled, damaged, or expired items). Wastage reasons are configured in [Waste Reason](https://admin.kappture.com/WasteReason).
+
+<Steps>
+<Step title="Open Functions">
+  On the Home screen, tap the **Functions** tile.
+</Step>
+
+<Step title="Tap Wastage declaration">
+  Tap **Wastage declaration**. The list of configured wastage reasons displays with the prompt "Select a wastage reason".
+</Step>
+
+<Step title="Select a reason and start">
+  Tap a wastage reason from the list, then tap **Start declaration**. The sales screen opens in wastage mode — the vertical bar next to the order panel turns **red** and the total label changes to **"Waste"**.
+</Step>
+
+<Step title="Add products">
+  Add products to the wastage order using the layout buttons or product search. Enter quantities for each item. You can remove items by tapping the void button, which is always visible in wastage mode.
+</Step>
+
+<Step title="Complete the wastage">
+  Tap the **red bar** next to the order panel to submit the wastage. A confirmation dialog displays: "Waste entire order — Are you sure?" Tap to confirm. The wastage is recorded and stock levels are adjusted.
+</Step>
+</Steps>
+
+### Mode Switch
+
+Switch this terminal to its linked terminal mode — for example, converting a standard operator POS into a Self-Checkout terminal. This allows a single physical device to operate as different terminal types without manual reconfiguration.
+
+The linked terminal is configured in [Hierarchy](https://admin.kappture.com/Hierarchy) under the terminal's **Configuration** tab. This function is available when a linked terminal is configured, regardless of whether other functions are restricted.
+
+**Requires:** Switch Terminal permission (configured in [Operator Roles](https://admin.kappture.com/OperatorRole) > **Options** > **Switch Terminal**)
+
+<Warning>
+You must close all orders and your session before switching. If a session is active, the terminal displays: "You must close all orders and session before performing this operation."
+</Warning>
+
+<Steps>
+<Step title="Open Functions">
+  On the Home screen, tap the **Functions** tile.
+</Step>
+
+<Step title="Tap Mode switch">
+  Tap **Mode switch**. The name of the linked terminal displays under "Switch terminal mode" (for example, "Self-Checkout Terminal").
+</Step>
+
+<Step title="Switch terminal">
+  Tap **Switch terminal**. The terminal reboots and loads the linked terminal's interface and configuration. This takes a few moments while the device restarts.
+</Step>
+</Steps>
+
+To switch back, repeat the same process — open **Functions**, tap **Mode switch**, and tap **Switch terminal**. The terminal reboots and returns to its original mode.
+
+## Reports
+
+The **Reports** tile displays terminal reports for the current and previous sessions. Reports are navigated by session period tabs along the top of the screen.
+
+The following report types are available:
+- **X Report** — current session summary (sales, tenders, cash, VAT)
+- **Z Report** — end-of-session summary with declared vs actual variances
+- **Product Mix Report** — product sales breakdown by product
+- **Profit Report** — gross profit and wastage analysis
+- **Price Band Report** — sales grouped by price band and product group
+- **Timeslot Report** — hourly sales breakdown
+- **Price List Report** — all product prices for the current session
+
+<Steps>
+<Step title="Open Reports">
+  On the Home screen, tap the **Reports** tile. The tile flips to show session period tabs and the report list.
+</Step>
+
+<Step title="Select a session period">
+  Tap a session period tab to view reports for that period.
+</Step>
+
+<Step title="Browse and select a report">
+  Scroll through the available reports. Tap a report to view it in full.
+</Step>
+
+<Step title="Print a report">
+  Tap the **Print icon** in the top-right corner to print the selected report. The print button is available when a receipt printer is configured.
+</Step>
+</Steps>
+
+### X Report
+
+The **X Report** is a running summary of the current session. Use this to check session progress and the expected drawer total during a shift. It includes:
+
+- **Summary** — sales count, refunds, cancels, average order value, and covers
+- **Tenders** — breakdown of sales by tender type (taxable and non-taxable)
+- **Foreign Currency** — foreign currency transactions with converted values (if applicable)
+- **Vouchers** — voucher discounts applied
+- **Cash** — cash float, cash drops, cash lifts, and expected cash total
+- **Gratuities** — declared gratuity totals by tender
+- **VAT** — tax breakdown by rate with product group detail (quantity, gross, and net values)
+
+### Z Report
+
+The **Z Report** is generated at session close. It contains all the same sections as the X Report, plus **declared vs actual variance columns** for each tender — showing the expected amount, the declared amount, and the difference. The Z Report includes a signature section for operator sign-off.
+
+### Product Mix Report
+
+Shows each product sold during the period with quantity, total value, and percentage of total sales. Refunded products are listed in a separate section.
+
+### Profit Report
+
+Shows gross profit per product — displaying quantity, net value (excluding tax), and GP%. Only products with a cost price are included. If wastage is enabled, a separate **Wastage** section shows wasted products with quantity, cost, and percentage of total wastage.
+
+### Price Band Report
+
+Groups sales by price band, showing product group, quantity, and value within each band. Useful for comparing sales across different pricing tiers.
+
+### Timeslot Report
+
+Shows an hourly breakdown of sales — displaying start time, end time, quantity of items sold, and total value for each hour. Useful for identifying peak trading periods.
+
+### Price List Report
+
+Lists all products and their prices for the current session's price band. Products with mandatory price bands are shown in separate sections.
+
+## Printing
+
+### Receipt Printing
+
+The receipt printer status is shown in the bottom bar of the Home screen. Operators with the Printer Change permission (configured in [Operator Roles](https://admin.kappture.com/OperatorRole)) can cycle through print modes by tapping the printer icon:
+
+- **Printer off** — receipts do not print
+- **Printer on** — receipts print on the local printer
+- **On > [printer name]** — receipts print on a remote printer
+
+Receipts print automatically after payment completes when the printer is enabled.
+
+### Reprinting Receipts
+
+To reprint a receipt, open the **Orders** tile, select the order, and tap **Print**.
+
+### Paperless Receipts
+
+If the terminal has a second customer-facing screen attached, you can show a digital receipt instead of printing. Open the **Orders** tile, select the order, and tap **Paperless**. The second screen displays the receipt preview alongside a QR code that the customer can scan to view and download their receipt online. The **Paperless** button is available only when a second screen is connected and the terminal is online.
+
+### Bill Printing
+
+For table service, you can print a bill before payment:
+
+<Steps>
+<Step title="Open the order">
+  Open the table order you want to print a bill for.
+</Step>
+
+<Step title="Tap Bill">
+  Tap the order panel to open order functions, then tap **Bill**. The bill prints showing all items and the total.
+</Step>
+</Steps>
+
+### Kitchen Printing
+
+When a product has **Kitchen Print** or **Kitchen Screen** enabled (configured in [Products](https://admin.kappture.com/Product) under the **Options** section), a kitchen receipt prints automatically when the product is sent to the kitchen. Products are assigned to specific preparation points and kitchen printers in the Management Portal.
+
+## Troubleshooting
+
+### Connection Status
+
+The top bar displays LED indicators showing the terminal's connection state:
+
+- **Server** indicator:
+  - **Green** — online and connected to the server
+  - **Amber** — online but not synced with the server
+  - **Red** — offline
+
+### Terminal Won't Start
+
+- **Check power** — ensure the terminal is powered on and connected
+- **Check network** — verify the network connection (Ethernet or Wi-Fi)
+- **Restart terminal** — power cycle the terminal
+- **Error screen** — if the terminal displays a red error screen with the message "[error] - please restart. Please contact support if this issue persists", note the error and contact support
+
+### Can't Log In
+
+- **"No operators logged in"** — no operators are configured for this terminal. Add operators in [Hierarchy](https://admin.kappture.com/Hierarchy) under the terminal or outlet configuration
+- **Operator not in list** — contact your administrator to add your operator account
+- **Wrong PIN** — check your PIN; contact your administrator to reset it
+
+### Can't Open Session
+
+- **No sessions configured** — check that sessions are configured in [Hierarchy](https://admin.kappture.com/Hierarchy) under the outlet's **Session** tab
+- **Session already open** — another operator has this session open. Close the existing session first
+- **Checklist incomplete** — complete all required checklist items before opening the session
+
+### Products Not Showing
+
+- **Wrong session** — ensure the correct session is open. Products are available only in sessions where they have prices configured via the session's price band
+- **Layout not assigned** — check that a layout is assigned to the outlet session in [Hierarchy](https://admin.kappture.com/Hierarchy) under the outlet's **Session** tab
+- **Product availability** — products are hidden when outside their configured start/end time windows or when availability rules exclude them
+- **Price band** — ensure products have prices set for the current session's price band in [Products](https://admin.kappture.com/Product)
+
+### Payment Fails
+
+- **Card reader issue** — check the card reader connection; try inserting the card instead of tapping
+- **Network issue** — card payments require a network connection. Check the Server indicator in the top bar
+- **Insufficient funds** — the customer's card was declined by their bank. Ask the customer to use a different payment method
+- **EFT configuration** — verify the EFT/payment provider is configured correctly in [Hierarchy](https://admin.kappture.com/Hierarchy) under the terminal's **Configuration** tab
+
+### Receipt Won't Print
+
+- **Printer off** — check the printer status in the bottom bar. Tap the printer icon to enable printing
+- **Printer connection** — check the printer is connected (USB or network) and has paper
+- **Print failure** — check the printer connection and try again
+- **Reprint** — reprint from the **Orders** tile by selecting the order and tapping **Print**
+
+## Related Documentation
+
+<CardGroup cols={2}>
+<Card title="Terminal Overview" icon="desktop" href="/terminal/overview">
+  Terminal architecture and types.
+</Card>
+
+<Card title="Terminal Configuration" icon="cog" href="/enterprise/pages/terminal/configuration">
+  Configure terminals in the Management Portal.
+</Card>
+
+<Card title="Management" icon="diagram-project" href="/enterprise/pages/management/overview">
+  Products, layouts, sessions, and pricing.
+</Card>
+
+<Card title="Operators" icon="user" href="/enterprise/pages/management/operators">
+  Operator accounts and roles.
+</Card>
+
+<Card title="Tenders" icon="credit-card" href="/enterprise/pages/management/tenders">
+  Payment types and options.
+</Card>
+
+<Card title="Checklist" icon="list-check" href="/enterprise/pages/management/checklist">
+  Operational checklists.
+</Card>
+</CardGroup>

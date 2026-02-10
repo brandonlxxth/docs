@@ -1,0 +1,110 @@
+---
+title: "Terminal Overview"
+description: "Overview of terminal types, architecture, and how terminals work in the Kappture system"
+---
+
+## Overview
+
+**Terminals** are the point-of-sale (PoS) devices used by operators and customers at your outlets. Each terminal runs specialized software that connects to the Management Portal to receive configuration, sync data, and send orders and transactions.
+
+Terminals come in different **types**, each designed for a specific purpose:
+- **Terminal (Operator POS)** — Standard till for staff to take orders and process payments
+- **Self-Checkout (SCO)** — Customer-operated checkout terminals
+- **Self-Service** — Self-service terminals for customer ordering
+- **Kiosk** — Self-service kiosk ordering terminals
+- **Kitchen Management Screen (KMS)** — Displays and manages orders at preparation points
+- **Customer Status Screen** — Shows order status to customers
+- **Pay at Table** — Restaurant ordering terminals
+- **Stock Count** — Stock counting terminals
+- **Stock Manager** — Stock management terminals
+
+## Terminal Architecture
+
+Terminals consist of three main components:
+
+1. **Terminal Host EPOS** — The main application layer that provides the user interface (QML/Qt). This handles all operator interactions, displays layouts, manages orders, and coordinates with the other components.
+
+2. **Terminal Logic** — The business logic layer that processes transactions, applies vouchers, manages accounts, calculates loyalty points, and handles order validation. This runs on the terminal and communicates with the server.
+
+3. **Terminal EFT** — The payment processing layer that handles all payment provider integrations (card payments, contactless, etc.). This communicates with payment terminals and gateways.
+
+## How Terminals Work
+
+### Configuration
+
+Terminals are configured in the **Management Portal** under **Configuration > Terminal > Hierarchy**. Each terminal:
+- Belongs to an **Outlet**
+- Has a **Terminal type** that determines its role and features
+- Uses **Layouts** assigned to the outlet's **Sessions** (the layout shown depends on which session is active)
+- Uses **Product Prices** from the session's **Price Band**
+- Has **Operators** and **Operator Roles** that control what staff can do
+- Uses **Tenders** for payment processing
+- Can have **Receipts**, **Checklist**, **Pay at Table**, and other settings configured
+
+### Data Synchronization
+
+Terminals sync data from the Management Portal:
+- **Products** — Product catalog, prices, images
+- **Layouts** — Button layouts and screen configurations
+- **Sessions** — Active sessions and price bands
+- **Operators** — Operator accounts and roles
+- **Tenders** — Payment types and options
+- **Members** — Member accounts and vouchers
+- **Stock** — Stock levels and movements (when Stock module is enabled)
+
+Changes made in the Management Portal are pushed to terminals automatically.
+
+### Order Processing
+
+When an operator takes an order:
+1. Products are added to the order (from layout buttons or search)
+2. The order is processed by **Terminal Logic** (applies vouchers, calculates totals, validates)
+3. Payment is processed via **Terminal EFT** (if card payment) or handled directly (if cash/account)
+4. The order is sent to the server and can be forwarded to **Preparation Points** (kitchens, bars)
+5. Receipts are printed (if configured)
+6. The transaction is recorded and synced back to the Management Portal
+
+### Sessions
+
+Terminals operate within **sessions** — named operational periods (e.g. "Breakfast", "Lunch", "Evening"). Each session:
+- Has a **Price Band** that determines which product prices are used
+- Uses specific **Layouts** configured for that outlet and session
+- Can have different operators, opening/closing times, and availability
+
+Operators **open a session** at the start of their shift and **close it** at the end. Kitchen Management Screen (KMS) terminals do not require sessions.
+
+## Terminal Types
+
+Each terminal type has its own documentation page covering all workflows:
+
+| Terminal Type | Documentation | Use Case |
+|---------------|---------------|----------|
+| **Terminal (Operator POS)** | [Terminal](/terminal/types/terminal) | Standard till for staff-operated sales |
+| **Self-Checkout (SCO)** | [Self-Checkout](/terminal/types/self-checkout) | Customer-operated checkout |
+| **Self-Service** | [Self-Service](/terminal/types/self-service) | Self-service customer ordering |
+| **Kiosk** | [Kiosk](/terminal/types/kiosk) | Self-service kiosk ordering |
+| **Kitchen Management Screen (KMS)** | [KMS](/terminal/types/kms) | Order management at preparation points |
+| **Customer Status Screen** | [Customer Status Screen](/terminal/types/customer-status-screen) | Order status displays |
+| **Pay at Table** | [Pay at Table](/terminal/types/pay-at-table) | Restaurant table ordering |
+| **Stock Count** | [Stock Count](/terminal/types/stock-count) | Stock counting operations |
+| **Stock Manager** | [Stock Manager](/terminal/types/stock-manager) | Stock management operations |
+
+## Related Documentation
+
+<CardGroup cols={2}>
+<Card title="Terminal Configuration" icon="cog" href="/enterprise/pages/terminal/configuration">
+  Configure terminals in the Management Portal.
+</Card>
+
+<Card title="Terminal Overview (Management Portal)" icon="desktop" href="/enterprise/pages/terminal/overview">
+  Terminal management and monitoring.
+</Card>
+
+<Card title="Management" icon="diagram-project" href="/enterprise/pages/management/overview">
+  Products, layouts, sessions, and pricing.
+</Card>
+
+<Card title="Ordering" icon="cart-shopping" href="/enterprise/pages/ordering">
+  Preparation points and ordering workflows.
+</Card>
+</CardGroup>
