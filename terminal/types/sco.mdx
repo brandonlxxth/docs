@@ -1,0 +1,277 @@
+---
+title: "Self-Checkout (SCO)"
+description: "Customer-operated self-checkout terminal for scanning items, building an order, and completing card payment"
+---
+
+## Overview
+
+The **Self-Checkout (SCO)** terminal is a customer-operated checkout terminal. Customers scan items or select products from the on-screen layout, build an order, and pay by card using an integrated payment terminal. Staff are not required to process the transaction, but the terminal includes an assistance light and remote assistance features to alert staff when help is needed.
+
+The SCO terminal supports:
+
+- **Barcode scanning** — customers scan product barcodes to add items
+- **On-screen product selection** — customers browse categories and tap products on the touchscreen
+- **Product search** — customers search for products by name or barcode
+- **Membership card scanning** — customers scan a membership card for discounts and account payments
+- **Bag charging** — customers select the number of bags at checkout (when a bag product is configured)
+- **Age verification** — restricted products trigger an assistance request for staff approval
+- **Card payment** — payment is processed on a separate payment terminal (PED device)
+
+This page documents the full customer journey on the SCO terminal, from the welcome screen through to order completion.
+
+## Required Configuration
+
+Before the SCO terminal is operational, configure the following in the Management Portal:
+
+- **Terminal** created as **Self-Checkout (SCO)** type and assigned to an **Outlet** in [Hierarchy](https://admin.kappture.com/Hierarchy)
+- **Outlet Sessions** configured with **Layouts** and **Price Bands** in [Hierarchy](https://admin.kappture.com/Hierarchy) under the outlet's **Session** tab
+- **Layout** assigned to the outlet session with products and categories configured in [Layouts](https://admin.kappture.com/Layout)
+- **Products** configured with prices in [Products](https://admin.kappture.com/Product)
+- **Tenders** configured for EFT payment in [Tenders](https://admin.kappture.com/Tender)
+- **Operators** and **Operator Roles** created for staff access to the home screen in [Operators](https://admin.kappture.com/Operator) and [Operator Roles](https://admin.kappture.com/OperatorRole)
+
+### Optional Configuration
+
+The following settings are configured in [Hierarchy](https://admin.kappture.com/Hierarchy) under the terminal's **Configuration** tab:
+
+- **Member Identification Type** — how membership cards are identified: **Kappture**, **External**, or **None**. Default is Kappture
+- **Consolidation Type** — how order lines are consolidated: **Automatic** or **None**
+- **Order Timeout (Seconds)** — seconds before a completed order automatically returns to the welcome screen (range 0–60). Default is 10 seconds
+- **Idle Timeout (Seconds)** — seconds of inactivity before the idle warning displays (range 0–300). Default is 60 seconds
+- **Idle Close Timeout (Seconds)** — seconds after the idle warning before the terminal cancels the order and returns to the welcome screen (range 0–60). Default is 10 seconds
+
+The following settings are configured in [Hierarchy](https://admin.kappture.com/Hierarchy) under the terminal's **SCO** tab:
+
+- **Bag Product** — the product added to the order when a customer selects bags. Products are searched and selected from [Products](https://admin.kappture.com/Product). When not set, the bag selection screen is skipped
+- **Assistance Resource** — image displayed on the assistance screen (left half). Resources are managed in [Resources](https://admin.kappture.com/Resource)
+- **Order Complete Resource** — image displayed on the order completion screen (right half). Resources are managed in [Resources](https://admin.kappture.com/Resource)
+- **Assistance Light Type** — the physical assistance light hardware: **None** or **Boxtec**. Default for new terminals is Boxtec
+- **Member Card Prompt** — custom text displayed when prompting customers to scan their membership card. Default is **"Have you scanned your membership card?"**
+- **Remote Assistance Terminal** — the PoS terminal that receives remote assistance notifications when a customer requests help or age verification is required
+- **Show Account Balance** — when enabled, the account balance screen is displayed during payment for all member transactions. When disabled, the account balance screen is only displayed when the member has a non-zero account balance
+
+### Designer Settings
+
+The terminal's **Designer** tab in [Hierarchy](https://admin.kappture.com/Hierarchy) controls the screen appearance:
+
+- **Background Colour** — hex colour code for the screen background and button accent colour
+- **Text Colour Option** — **White Text** or **Black Text** for buttons that use the background colour
+
+## Getting Started
+
+### Welcome Screen
+
+When the terminal is idle and waiting for customers, the welcome screen displays:
+
+- **"Welcome"** — heading text
+- **"Scan item or touch screen to begin"** — instruction text
+- The outlet logo (if configured)
+- A hidden operator icon (person silhouette) in the top-right corner — press and hold to access the home screen
+
+Scan a barcode or tap the screen to start shopping.
+
+### Terminal Closed
+
+When no session is active, the screen displays **"This terminal is closed. Please try again later"**. If the next session start time is known, the screen displays **"This terminal is closed. We're opening again at [time]"**.
+
+### Home Screen (Staff Access)
+
+A hidden operator button in the top-right corner of the welcome screen provides staff access. Press and hold the operator icon to open the authentication dialog. After logging in with operator credentials, the home screen displays:
+
+- **Sales** button — enters the customer-facing ordering screen
+- **Manage Order** button — opens the order management screen for the current order (only enabled when an order is active)
+- **Orders** button — view order history
+- **Reports** button — view reports
+- **Server** and **Network** connection LEDs
+- **Power** button — shut down the terminal (requires the shutdown permission on the operator role)
+- **Support** button — open support information
+
+## Shopping
+
+### Browsing Products
+
+The shopping screen has three areas:
+
+1. **Header** (top) — the instruction text **"Scan, select a category or search"**
+2. **Product grid** (left, 60% width) — product tiles arranged in a 3-column grid showing categories and products from the assigned layout
+3. **Order basket** (right, 40% width) — shows **"Items:"** with the item count, each line item with quantity, name, and price, the discount (if applicable), the total, and a **"PAY"** button
+
+A footer bar at the bottom shows three buttons: **"BACK"** (left), **"SEARCH"** and **"ASSISTANCE"** (right).
+
+### Adding Products
+
+**Barcode scanning** — scan a product barcode to add it directly to the order.
+
+**Touchscreen selection** — tap a product tile on the grid. The quantity selection screen displays **"Enter quantity of [product name]"** with a numeric keypad (0–9), a **"CLEAR"** button, and an **"OK"** button. Enter the quantity and tap **"OK"** to add the product.
+
+**Product search** — tap the **"SEARCH"** button to open the search screen. The screen displays **"Enter item name or barcode"** with an on-screen keyboard. Type a product name or barcode to see matching results. Tap a result to go to the quantity selection screen. The keyboard can switch between alphabetic and numeric input.
+
+### Restricted Products
+
+When a product with age restrictions is added to the order, the basket displays **"Approval needed"** and the assistance light turns orange.
+
+### Order Basket
+
+The order basket on the right side of the screen displays:
+
+- **"Items:"** with the item count
+- Each line item with quantity, name, and price
+- **"Discount"** label with the discount amount (when a discount is applied)
+- **"Total"** label with the order total
+- **"PAY"** button — proceeds to checkout. The button is enabled when the order total is greater than zero
+
+## Checkout
+
+When the customer taps **"PAY"**, the terminal processes the checkout in sequence. Each step is only shown when applicable:
+
+### Membership Card Prompt
+
+If the customer has not scanned a membership card, the screen displays the configured **Member Card Prompt** text (default: **"Have you scanned your membership card?"**). The customer can scan their card or tap **"PAY"** again to continue without a membership card.
+
+If a custom prompt is configured in the **SCO** tab, that text is displayed instead. If a member processing message is available from the account provider, that message takes priority.
+
+If a member card error occurs, the screen displays the error message followed by **"Please contact a member of staff for assistance if issue persists"** with an **"OK"** button.
+
+### Discount Display
+
+If a discount is applied to the order (through a membership card or promotion), the discount screen displays:
+
+- **"Offers Applied"** (for guest customers) or **"Member card accepted"** (for members)
+- **"Today you have saved"** with the savings amount highlighted in green
+- **"Order Total:"** — the original total
+- **"Discount:"** — the discount amount
+- **"Total to Pay:"** — the final total after discount
+- **"BACK"** button (left) and **"CONTINUE"** button (right)
+
+### Age Verification
+
+If the order contains restricted products, the assistance screen displays **"You are purchasing items that require age verification, we will be with you shortly"** alongside the configured assistance image. The assistance light turns red and a remote age check notification is sent to the configured **Remote Assistance Terminal**.
+
+A staff member approves the restricted products from the Remote Assistance Terminal or from the operator access on the SCO. Once approved, the checkout continues automatically.
+
+### Bag Selection
+
+If a **Bag Product** is configured in the **SCO** tab, the bag selection screen displays **"Please select number of bags"** with number buttons (1–8) arranged in a 4-column grid and a **"NO BAGS"** button below. A **"BACK"** button in the footer returns to the shopping screen.
+
+Selecting a number adds that quantity of bag products to the order. The **"PAY"** button appears in the basket after a selection is made.
+
+If no Bag Product is configured, this screen is skipped.
+
+### Payment
+
+The payment screen displays **"Follow the instructions on the payment terminal"** alongside the order basket. The customer completes the card payment on the connected PED device.
+
+If the member has an account balance and either the **Show Account Balance** setting is enabled or the account balance is non-zero, the account balance screen displays first: **"Account Balance: [amount]. Additional payment via card is required."** with **"OK"** and **"BACK"** buttons. Tapping **"OK"** deducts the available account balance and proceeds to card payment for the remaining amount.
+
+If the order is fully covered by vouchers, allowances, or account balance, payment is skipped and the terminal proceeds directly to the receipt screen.
+
+**Payment failure** — if the card transaction fails, the screen displays **"Card transaction failed"** with **"RETRY"** and **"CANCEL"** buttons. **"RETRY"** resubmits the payment. **"CANCEL"** returns to the shopping screen.
+
+### Order Completion
+
+After successful payment, the receipt screen displays:
+
+- **"Thank you!"**
+- **"Your account balance is [amount]"** (when the customer used an account and has a remaining balance)
+- **"Would you like a receipt?"** with **"No"** and **"Yes"** buttons
+
+If the customer taps **"Yes"**, the screen displays **"Printing receipt..."**. If printing fails, the screen displays **"Sorry, your receipt failed to print. Retry?"** with **"Yes"** and **"No"** buttons and an **"ASSISTANCE"** button.
+
+The terminal automatically returns to the welcome screen after the configured **Order Timeout (Seconds)** (default 10 seconds) if the customer does not interact with the receipt screen.
+
+## Assistance
+
+### Requesting Assistance
+
+Tap the **"ASSISTANCE"** button on the shopping screen footer to request help. The screen displays **"Assistance is on the way, we will be with you shortly"** alongside the configured assistance image. The assistance light turns red and a notification is sent to the configured **Remote Assistance Terminal**.
+
+A hidden operator icon (person silhouette) in the top-right corner of the assistance image allows staff to press and hold to authenticate and access the terminal directly.
+
+### Assistance Light
+
+The SCO terminal controls a physical assistance light (when configured as **Boxtec** in the **SCO** tab):
+
+| Light Colour | Meaning |
+|---|---|
+| Green | Normal operation — customer is shopping |
+| Orange | Restricted products in the basket — age verification needed |
+| Red | Assistance requested, age verification in progress, or terminal closed |
+
+## Order Management (Staff Access)
+
+From the home screen, staff can tap **"Manage Order"** to manage the current customer order. The order management screen displays the full basket with editing controls:
+
+- **"Void"** (bin icon) — removes the entire line item (displays a confirmation: **"Void [qty] x [product name]"** / **"Are you sure?"**)
+- **"Remove"** (minus circle icon) — decreases the quantity by one (enabled when quantity is greater than 1)
+- **"Add"** (plus circle icon) — increases the quantity by one
+- **"Warning"** (amber diamond icon) — indicates a restricted product that needs approval
+
+The footer displays three buttons:
+
+- **"Cancel Order"** — cancels the entire order with a confirmation prompt (**"Cancel order"** / **"Are you sure?"**)
+- **"Approve All"** — approves all restricted products in the order (only visible when restricted products are present)
+- **"OK"** — returns to the shopping screen
+
+## Idle Timeout
+
+If no interaction occurs during shopping, the terminal displays **"Do you need more time? Touch screen to continue"**.
+
+If the customer does not touch the screen within the **Idle Close Timeout (Seconds)** threshold (default 10 seconds), the terminal cancels the order and returns to the welcome screen. The idle warning displays after the **Idle Timeout (Seconds)** threshold (default 60 seconds) of inactivity.
+
+## Troubleshooting
+
+### Terminal Shows Welcome Screen but Shopping Does Not Start
+
+- **No session active** — check that an outlet session is active and has a layout assigned in [Hierarchy](https://admin.kappture.com/Hierarchy) under the outlet's **Session** tab
+- **No products on layout** — add products and categories to the layout in [Layouts](https://admin.kappture.com/Layout)
+
+### Payment Not Working
+
+- **EFT tender not configured** — ensure an EFT tender is assigned in the terminal's **Configuration** tab in [Hierarchy](https://admin.kappture.com/Hierarchy)
+- **PED device not connected** — check the payment terminal connection
+- **Network offline** — EFT payments require a network connection. Check the **Server** LED on the home screen
+
+### Assistance Light Not Working
+
+- **Assistance Light Type set to None** — change to **Boxtec** in the terminal's **SCO** tab in [Hierarchy](https://admin.kappture.com/Hierarchy)
+- **Hardware not connected** — check the physical Boxtec light connection
+
+### Bag Selection Screen Not Appearing
+
+- **Bag Product not set** — configure the **Bag Product** in the terminal's **SCO** tab in [Hierarchy](https://admin.kappture.com/Hierarchy). Search for and select the product that represents a bag charge
+
+### Age Verification Requests Not Received
+
+- **Remote Assistance Terminal not set** — configure the **Remote Assistance Terminal** in the terminal's **SCO** tab to point to the PoS terminal that should receive notifications
+
+### Membership Card Not Recognised
+
+- **Member Identification Type** — check the **Member Identification Type** setting in the terminal's **Configuration** tab. Set to **Kappture** for Kappture-issued cards, **External** for third-party cards, or **None** to disable member scanning
+
+## Related Documentation
+
+<CardGroup cols={2}>
+<Card title="Terminal Overview" icon="desktop" href="/terminal/overview">
+  Terminal architecture and types.
+</Card>
+
+<Card title="Terminal Configuration" icon="cog" href="/enterprise/pages/terminal/configuration">
+  SCO tab fields and designer settings.
+</Card>
+
+<Card title="Layouts" icon="table-layout" href="/enterprise/pages/management/layouts">
+  Create and manage product layouts for the shopping screen.
+</Card>
+
+<Card title="Products" icon="box" href="/enterprise/pages/management/products">
+  Product configuration including prices and barcodes.
+</Card>
+
+<Card title="Tenders" icon="credit-card" href="/enterprise/pages/management/tenders">
+  Configure EFT payment tenders.
+</Card>
+
+<Card title="Operators" icon="user" href="/enterprise/pages/management/operators">
+  Operator accounts for staff access to the home screen.
+</Card>
+</CardGroup>

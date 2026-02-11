@@ -1,0 +1,526 @@
+---
+title: 'Ordering Workflow'
+description: 'Complete guide to placing orders through the Kappture API'
+---
+
+## Overview
+
+The ordering workflow allows you to place orders from your ordering channel (mobile app, web, kiosk, delivery platform) to Kappture terminals. Orders are validated, authorized, and then committed after payment.
+
+## Two-Stage Order Process
+
+Orders follow a two-stage process to ensure data integrity:
+
+1. **Authorization** - Validate the order and apply vouchers
+2. **Commitment** - Finalize the order after payment is confirmed
+
+<Warning>
+Never skip the authorization stage. Always call `/order/authorize` before `/order/commit` to ensure order validity.
+</Warning>
+
+## Prerequisites
+
+Before placing orders, ensure these are configured in the Management Portal:
+
+- **Ordering Server** terminal configured
+- **Preparation Point** created (kitchen/collection point)
+- **Terminal** assigned to the preparation point
+- **Operator** configured
+- **Menu** created with products
+- **Pricing** configured (price bands and sessions)
+- **Session** active at the preparation point
+
+## Step-by-Step Workflow
+
+### Step 1: Get Preparation Points
+
+Retrieve the available preparation points where orders can be sent:
+
+```bash
+GET /preparation-point
+Authorization: Bearer YOUR_JWT_TOKEN
+x-api-key: YOUR_API_KEY
+```
+
+**Response:**
+```json
+{
+  "preparationPoints": [
+    {
+      "id": 5,
+      "name": "Main Kitchen",
+      "outletId": 12,
+      "outletName": "Restaurant Bar",
+      "isActive": true
+    },
+    {
+      "id": 6,
+      "name": "Bar Station",
+      "outletId": 12,
+      "outletName": "Restaurant Bar",
+      "isActive": true
+    }
+  ]
+}
+```
+
+### Step 2: Get Active Sessions
+
+Retrieve the sessions available at the preparation point:
+
+```bash
+GET /preparation-point/{preparationPointId}/session
+Authorization: Bearer YOUR_JWT_TOKEN
+x-api-key: YOUR_API_KEY
+```
+
+**Response:**
+```json
+{
+  "sessions": [
+    {
+      "id": 3,
+      "name": "Lunch Service",
+      "priceBandId": 1,
+      "priceBandName": "Standard Pricing",
+      "isActive": true
+    },
+    {
+      "id": 4,
+      "name": "Dinner Service",
+      "priceBandId": 2,
+      "priceBandName": "Evening Pricing",
+      "isActive": true
+    }
+  ]
+}
+```
+
+### Step 3: Get Menu and Pricing
+
+Retrieve the menu with current pricing for the session:
+
+```bash
+GET /preparation-point/{preparationPointId}/session/{sessionId}/menu
+Authorization: Bearer YOUR_JWT_TOKEN
+x-api-key: YOUR_API_KEY
+```
+
+**Response:**
+```json
+{
+  "menu": {
+    "id": 10,
+    "name": "Main Menu",
+    "groups": [
+      {
+        "id": 5,
+        "name": "Burgers",
+        "products": [
+          {
+            "id": 123,
+            "name": "Classic Burger",
+            "price": 12.50,
+            "isAvailable": true,
+            "allergens": ["Gluten", "Dairy"]
+          },
+          {
+            "id": 124,
+            "name": "Veggie Burger",
+            "price": 11.00,
+            "isAvailable": true,
+            "allergens": ["Gluten", "Soy"]
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+### Step 4: Authorize Order
+
+Validate the order and apply vouchers:
+
+```bash
+POST /order/authorize
+Authorization: Bearer YOUR_JWT_TOKEN
+x-api-key: YOUR_API_KEY
+Content-Type: application/json
+
+{
+  "priceBandId": 1,
+  "sessionId": 3,
+  "terminalId": 42,
+  "orderDateTime": "2025-02-11T12:30:00Z",
+  "operatorId": 15,
+  "memberId": 0,
+  "lines": [
+    {
+      "product": "Classic Burger",
+      "productId": 123,
+      "productGroupId": 5,
+      "quantity": 2,
+      "price": 12.50,
+      "taxRate": 20.0,
+      "taxValue": 2.08,
+      "priceBandId": 1
+    },
+    {
+      "product": "Veggie Burger",
+      "productId": 124,
+      "productGroupId": 5,
+      "quantity": 1,
+      "price": 11.00,
+      "taxRate": 20.0,
+      "taxValue": 1.83,
+      "priceBandId": 1
+    }
+  ]
+}
+```
+
+**Required Fields:**
+- `priceBandId` - Price band for this order
+- `sessionId` - Session ID
+- `terminalId` - Terminal where order is placed
+- `orderDateTime` - UTC timestamp (format: yyyy-MM-ddThh:mm:ssZ)
+- `lines` - Array of product lines
+
+**Product Line Required Fields:**
+- `product` - Product name
+- `productId` - Product ID
+- `productGroupId` - Product group ID
+- `quantity` - Quantity ordered
+- `price` - Price per item (including tax)
+- `taxRate` - Tax rate percentage
+- `taxValue` - Tax amount per item
+- `priceBandId` - Price band ID
+
+**Response:**
+```json
+{
+  "isValid": true,
+  "issues": "",
+  "authedResponse": {
+    "priceBandId": 1,
+    "sessionId": 3,
+    "terminalId": 42,
+    "orderDateTime": "2025-02-11T12:30:00Z",
+    "lines": [
+      {
+        "product": "Classic Burger",
+        "productId": 123,
+        "productGroupId": 5,
+        "quantity": 2,
+        "price": 12.50,
+        "taxRate": 20.0,
+        "taxValue": 2.08,
+        "priceBandId": 1
+      },
+      {
+        "product": "Veggie Burger",
+        "productId": 124,
+        "productGroupId": 5,
+        "quantity": 1,
+        "price": 11.00,
+        "taxRate": 20.0,
+        "taxValue": 1.83,
+        "priceBandId": 1
+      }
+    ],
+    "tenders": []
+  }
+}
+```
+
+**Response Fields:**
+- `isValid` - Indicates if the order is valid
+- `issues` - Description of any validation issues
+- `authedResponse` - The validated order object
+
+<Note>
+The authorize response returns the complete order object in `authedResponse`. Use this entire object when calling the commit endpoint.
+</Note>
+
+### Step 5: Collect Payment
+
+Process payment through your payment system. Once payment is confirmed, proceed to commit the order.
+
+### Step 6: Commit Order
+
+Finalize the order after successful payment:
+
+```bash
+POST /order/commit
+Authorization: Bearer YOUR_JWT_TOKEN
+x-api-key: YOUR_API_KEY
+Content-Type: application/json
+
+{
+  "priceBandId": 1,
+  "sessionId": 3,
+  "terminalId": 42,
+  "orderDateTime": "2025-02-11T12:30:00Z",
+  "operatorId": 15,
+  "memberId": 0,
+  "lines": [
+    {
+      "product": "Classic Burger",
+      "productId": 123,
+      "productGroupId": 5,
+      "quantity": 2,
+      "price": 12.50,
+      "taxRate": 20.0,
+      "taxValue": 2.08,
+      "priceBandId": 1
+    },
+    {
+      "product": "Veggie Burger",
+      "productId": 124,
+      "productGroupId": 5,
+      "quantity": 1,
+      "price": 11.00,
+      "taxRate": 20.0,
+      "taxValue": 1.83,
+      "priceBandId": 1
+    }
+  ],
+  "tenders": [
+    {
+      "tenderId": 2,
+      "value": 36.91
+    }
+  ]
+}
+```
+
+<Note>
+Use the complete order object from the `authedResponse` returned by `/order/authorize`, and add the `tenders` array with payment information.
+</Note>
+
+**Response:**
+```json
+{
+  "orderSequenceNumber": 1234
+}
+```
+
+**Commit Actions:**
+- Creates order in Kappture system
+- Sends order to preparation point (KMS display)
+- Generates receipt
+- Creates transaction record
+- Sends to kitchen printers (if configured)
+
+## Use Cases
+
+### Mobile App Ordering
+
+```
+Customer browses menu → Adds items → Proceeds to checkout →
+App calls /order/authorize → Customer pays →
+App calls /order/commit → Order sent to kitchen
+```
+
+### Kiosk Ordering
+
+```
+Customer taps products on kiosk → Reviews order →
+Kiosk calls /order/authorize → Customer pays at terminal →
+Kiosk calls /order/commit → Order prints in kitchen
+```
+
+### Delivery Platform Integration
+
+```
+Platform receives order → Platform calls /order/authorize →
+Platform confirms pickup → Platform calls /order/commit →
+Order appears in restaurant's KMS
+```
+
+### Web Ordering
+
+```
+Customer shops online → Adds to cart → Checks out →
+Website calls /order/authorize → Payment gateway processes →
+Website calls /order/commit → Confirmation email sent
+```
+
+## Handling Vouchers
+
+Vouchers are applied as product lines in the order. Add the voucher as a product line with negative pricing:
+
+```json
+{
+  "priceBandId": 1,
+  "sessionId": 3,
+  "terminalId": 42,
+  "orderDateTime": "2025-02-11T12:30:00Z",
+  "memberId": 789,
+  "lines": [
+    {
+      "product": "Classic Burger",
+      "productId": 123,
+      "productGroupId": 5,
+      "quantity": 1,
+      "price": 12.50,
+      "taxRate": 20.0,
+      "taxValue": 2.08,
+      "priceBandId": 1
+    },
+    {
+      "voucher": "10% Off Voucher",
+      "voucherId": 456,
+      "product": "10% Off Voucher",
+      "productId": 0,
+      "productGroupId": 0,
+      "quantity": 1,
+      "price": -1.25,
+      "taxRate": 0.0,
+      "taxValue": 0.0,
+      "priceBandId": 1
+    }
+  ]
+}
+```
+
+The voucher appears as a line item with negative pricing to apply the discount.
+
+## Handling Member Accounts
+
+To charge a member's account, include the `memberId` in both authorize and commit:
+
+**Authorize:**
+```json
+{
+  "priceBandId": 1,
+  "sessionId": 3,
+  "terminalId": 42,
+  "orderDateTime": "2025-02-11T12:30:00Z",
+  "memberId": 789,
+  "lines": [...]
+}
+```
+
+**Commit with Account tender:**
+```json
+{
+  "priceBandId": 1,
+  "sessionId": 3,
+  "terminalId": 42,
+  "orderDateTime": "2025-02-11T12:30:00Z",
+  "memberId": 789,
+  "lines": [...],
+  "tenders": [
+    {
+      "tender": "Account",
+      "tenderId": 5,
+      "value": 36.91
+    }
+  ]
+}
+```
+
+## Error Handling
+
+### Common Errors
+
+**401 Unauthorized**
+```json
+{
+  "code": 401,
+  "message": "Invalid or expired JWT token"
+}
+```
+→ Generate a new JWT token
+
+**400 Bad Request - Invalid Product**
+```json
+{
+  "code": 400,
+  "message": "Product ID 123 not found",
+  "fields": "lines[0].productId"
+}
+```
+→ Verify product exists in the menu
+
+**400 Bad Request - Session Closed**
+```json
+{
+  "code": 400,
+  "message": "Session 3 is not currently active"
+}
+```
+→ Check session availability before ordering
+
+**422 Validation Error**
+```json
+{
+  "code": 422,
+  "message": "Invalid authorization ID",
+  "fields": "authorizationId"
+}
+```
+→ Ensure you're using the correct authorization ID from the authorize response
+
+## Best Practices
+
+### Authorization Timeout
+
+- Authorization is valid for **15 minutes**
+- If payment takes longer, re-authorize before committing
+- Don't store authorization IDs long-term
+
+### Idempotency
+
+- Use unique `orderReference` values for each order
+- Store authorization ID with your order record
+- Implement retry logic with the same authorization ID
+
+### Error Recovery
+
+- Implement retry logic for network failures
+- Store order state locally before committing
+- Provide customer feedback on order status
+
+### Testing
+
+- Test in dev/staging environments first
+- Test voucher application
+- Test member account charging
+- Test multiple tender types
+
+## Related Endpoints
+
+<CardGroup cols={2}>
+  <Card title="GET /preparation-point" icon="kitchen-set">
+    List preparation points
+  </Card>
+
+  <Card title="GET /preparation-point/{id}/session" icon="clock">
+    Get active sessions
+  </Card>
+
+  <Card title="GET /preparation-point/{id}/session/{id}/menu" icon="utensils">
+    Get menu with pricing
+  </Card>
+
+  <Card title="POST /order/authorize" icon="shield-check">
+    Validate and authorize order
+  </Card>
+
+  <Card title="POST /order/commit" icon="check-circle">
+    Finalize order after payment
+  </Card>
+
+  <Card title="GET /transaction" icon="receipt">
+    Query completed orders
+  </Card>
+</CardGroup>
+
+## Next Steps
+
+- [Third-Party Transactions](/api-reference/workflows/third-party-transactions) - Post sales from external systems
+- [Layout Creation](/api-reference/workflows/layout-creation) - Create and manage POS layouts
+- [API Reference](/api-reference/introduction) - Browse all available endpoints

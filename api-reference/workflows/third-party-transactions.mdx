@@ -1,0 +1,581 @@
+---
+title: 'Third-Party Transactions'
+description: 'Post sales from external POS systems to Kappture for consolidated reporting'
+---
+
+## Overview
+
+The third-party transaction workflow allows you to post sales from external POS systems, legacy tills, or other ordering platforms into Kappture for consolidated reporting and analytics.
+
+This is ideal for:
+- **Multi-POS environments** - Consolidate sales from multiple POS systems
+- **Legacy system migration** - Import historical sales data
+- **Franchise operations** - Aggregate sales across different systems
+- **Event reporting** - Combine sales from temporary or external systems
+
+<Info>
+Third-party transactions appear in Kappture reports but do not trigger stock depletion, kitchen printing, or order management workflows. They are purely for reporting purposes.
+</Info>
+
+## Prerequisites
+
+Before posting transactions, ensure these are configured in the Management Portal:
+
+- **Session** created and assigned to outlet
+- **Terminal** configured at the outlet
+- **Price Band** assigned to the session
+- **Products** configured with valid IDs or PLUs
+- **Tenders** (payment methods) configured
+
+## Bulk Transaction Upload
+
+You can post up to **50 transactions** in a single API call for efficient batch processing.
+
+### Step 1: Prepare Product Data
+
+Products can be referenced by **Product ID** or **PLU (barcode)**:
+
+**By Product ID:**
+```json
+{
+  "id": 123,
+  "quantity": 2,
+  "price": 12.50
+}
+```
+
+**By PLU:**
+```json
+{
+  "plu": "5012345678901",
+  "quantity": 1,
+  "price": 8.99
+}
+```
+
+<Note>
+If a product doesn't exist in Kappture, it will be automatically created using the provided details. The response will include the new product ID.
+</Note>
+
+### Step 2: Prepare Tender Data
+
+Tenders (payment methods) must reference existing tender IDs:
+
+```json
+{
+  "id": 2,
+  "amount": 25.00
+}
+```
+
+**Common Tender IDs:**
+- `1` - Cash
+- `2` - Card
+- `3` - Mobile Wallet
+- `4` - Account
+- `5` - Voucher
+
+<Warning>
+Verify tender IDs in your Kappture environment. Use `GET /tender` to retrieve available tenders.
+</Warning>
+
+### Step 3: Build Transaction Array
+
+Prepare an array of orders (max 50 per request):
+
+```bash
+PUT /transaction
+Authorization: Bearer YOUR_JWT_TOKEN
+x-api-key: YOUR_API_KEY
+Content-Type: application/json
+
+{
+  "orders": [
+    {
+      "sessionId": 3,
+      "priceBandId": 1,
+      "reference": 1234,
+      "openDateTime": "2025-02-11T10:30:00Z",
+      "terminalId": 42,
+      "tableNumber": 0,
+      "products": [
+        {
+          "productId": 123,
+          "productGroupId": 5,
+          "price": 12.50,
+          "taxValue": 2.08,
+          "quantity": 2,
+          "taxRate": 20,
+          "priceBandId": 1
+        },
+        {
+          "plu": 5012345678901,
+          "productId": 0,
+          "productGroupId": 0,
+          "productName": "Fries",
+          "price": 8.99,
+          "taxValue": 1.50,
+          "quantity": 1,
+          "taxRate": 20,
+          "priceBandId": 1
+        }
+      ],
+      "tenders": [
+        {
+          "tenderId": 2,
+          "value": 33.99
+        }
+      ]
+    },
+    {
+      "sessionId": 3,
+      "priceBandId": 1,
+      "reference": 1235,
+      "openDateTime": "2025-02-11T10:35:00Z",
+      "terminalId": 42,
+      "products": [
+        {
+          "productId": 124,
+          "productGroupId": 5,
+          "price": 11.00,
+          "taxValue": 1.83,
+          "quantity": 1,
+          "taxRate": 20,
+          "priceBandId": 1
+        }
+      ],
+      "tenders": [
+        {
+          "tenderId": 1,
+          "value": 11.00
+        }
+      ]
+    }
+  ]
+}
+```
+
+**Required Fields per Order:**
+- `sessionId` - Session ID
+- `priceBandId` - Price band ID
+- `reference` - External reference number (your system's transaction ID)
+- `openDateTime` - Transaction date/time in ISO 8601
+- `terminalId` - Terminal ID
+- `products` - Array of products (minimum 1)
+- `tenders` - Array of tenders (minimum 1)
+
+**Required Fields per Product:**
+- `productId` - Product ID (0 if using PLU)
+- `productGroupId` - Product group ID (0 if using PLU)
+- `price` - Unit price including tax
+- `taxValue` - Tax amount per unit
+- `quantity` - Quantity sold
+- `taxRate` - Tax rate percentage
+- `priceBandId` - Price band ID
+
+**Optional Fields per Product:**
+- `plu` - PLU/barcode (for auto-creating products)
+- `productName` - Product name (used when auto-creating from PLU)
+
+### Step 4: Verify Response
+
+The API returns a simple response:
+
+```json
+{
+  "processCount": 2,
+  "createdProductIds": [456]
+}
+```
+
+**Response Fields:**
+- `processCount` - Number of transactions processed
+- `createdProductIds` - Array of product IDs created from PLUs (empty if no products were auto-created)
+
+### Step 5: Query Posted Transactions (Optional)
+
+Verify transactions appear in the system:
+
+```bash
+GET /transaction?startDate=2025-02-11T00:00:00Z&endDate=2025-02-11T23:59:59Z&outletId=12
+Authorization: Bearer YOUR_JWT_TOKEN
+x-api-key: YOUR_API_KEY
+```
+
+**Response:**
+```json
+{
+  "transactions": [
+    {
+      "id": 78901,
+      "orderNumber": "5678",
+      "outletId": 12,
+      "outletName": "Restaurant Bar",
+      "terminalId": 42,
+      "sessionId": 3,
+      "sessionName": "Lunch Service",
+      "transactionDate": "2025-02-11T10:30:00Z",
+      "total": 33.99,
+      "tax": 5.10,
+      "externalReference": "EXT-POS-001234",
+      "products": [
+        {
+          "productId": 123,
+          "productName": "Classic Burger",
+          "quantity": 2,
+          "price": 12.50,
+          "lineTotal": 25.00
+        },
+        {
+          "productId": 456,
+          "productName": "Fries",
+          "quantity": 1,
+          "price": 8.99,
+          "lineTotal": 8.99
+        }
+      ],
+      "tenders": [
+        {
+          "tenderId": 2,
+          "tenderName": "Card",
+          "amount": 33.99
+        }
+      ]
+    }
+  ],
+  "totalCount": 2,
+  "pageCount": 1,
+  "currentPage": 1
+}
+```
+
+## Product Handling
+
+### Existing Products
+
+Reference products by ID for products already in Kappture:
+
+```json
+{
+  "productId": 123,
+  "productGroupId": 5,
+  "price": 12.50,
+  "taxValue": 2.08,
+  "quantity": 2,
+  "taxRate": 20,
+  "priceBandId": 1
+}
+```
+
+### New Products (Auto-Creation)
+
+Products not in Kappture can be created automatically using PLU:
+
+```json
+{
+  "plu": 5012345678901,
+  "productId": 0,
+  "productGroupId": 0,
+  "productName": "Fries",
+  "price": 8.99,
+  "taxValue": 1.50,
+  "quantity": 1,
+  "taxRate": 20,
+  "priceBandId": 1
+}
+```
+
+**Required Fields for Auto-Creation:**
+- `plu` - Unique barcode/PLU (integer)
+- `productId` - Set to 0 when using PLU
+- `productGroupId` - Set to 0 when using PLU
+- `price` - Unit price including tax
+- `taxValue` - Tax amount per unit
+- `quantity` - Quantity sold
+- `taxRate` - Tax rate percentage
+- `priceBandId` - Price band ID
+
+**Optional Fields:**
+- `productName` - Product name (recommended for auto-creation)
+
+The API will return the new product ID in the response:
+
+```json
+{
+  "processCount": 1,
+  "createdProductIds": [456]
+}
+```
+
+## Transaction Fields
+
+### Required Fields
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `sessionId` | integer | Session ID |
+| `priceBandId` | integer | Price band ID |
+| `reference` | integer | External reference (your transaction ID) |
+| `openDateTime` | string | ISO 8601 timestamp |
+| `terminalId` | integer | Terminal ID |
+| `products` | array | Array of products (min 1) |
+| `tenders` | array | Array of tenders (min 1) |
+
+### Optional Fields
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `tableNumber` | integer | Table number |
+
+## Use Cases
+
+### Legacy POS Migration
+
+Import historical sales data from an old POS system:
+
+```javascript
+// Read sales data from legacy system
+const legacySales = readLegacyDatabase();
+
+// Transform to Kappture format
+const orders = legacySales.map(sale => ({
+  outletId: getOutletMapping(sale.storeId),
+  terminalId: getTerminalMapping(sale.tillId),
+  sessionId: getSessionMapping(sale.dayPart),
+  operatorId: getOperatorMapping(sale.staffId),
+  transactionDate: sale.timestamp,
+  externalReference: `LEGACY-${sale.saleId}`,
+  products: sale.items.map(item => ({
+    plu: item.barcode,
+    quantity: item.qty,
+    price: item.price,
+    name: item.description
+  })),
+  tenders: sale.payments.map(payment => ({
+    id: getTenderMapping(payment.type),
+    amount: payment.amount
+  }))
+}));
+
+// Post in batches of 50
+for (let i = 0; i < orders.length; i += 50) {
+  const batch = orders.slice(i, i + 50);
+  await postTransactions(batch);
+}
+```
+
+### Multi-Location Consolidation
+
+Aggregate sales from franchise locations using different POS systems:
+
+```javascript
+// Collect sales from multiple sources
+const location1Sales = await fetchFromPOS_A();
+const location2Sales = await fetchFromPOS_B();
+const location3Sales = await fetchFromPOS_C();
+
+// Normalize and combine
+const allSales = [
+  ...normalizePOS_A(location1Sales, outlet: 10),
+  ...normalizePOS_B(location2Sales, outlet: 11),
+  ...normalizePOS_C(location3Sales, outlet: 12)
+];
+
+// Post to Kappture
+await postTransactions(allSales);
+```
+
+### Event or Pop-Up Sales
+
+Post sales from temporary venues or external systems:
+
+```javascript
+const eventSales = {
+  outletId: 15, // Festival Food Stand
+  terminalId: 99, // External POS
+  sessionId: 20, // Event Session
+  operatorId: 50,
+  transactionDate: "2025-02-11T14:30:00Z",
+  externalReference: "FESTIVAL-2025-001",
+  products: [
+    { plu: "EVENT-BURGER", quantity: 1, price: 15.00, name: "Festival Burger" },
+    { plu: "EVENT-DRINK", quantity: 1, price: 5.00, name: "Festival Drink" }
+  ],
+  tenders: [
+    { id: 2, amount: 20.00 }
+  ]
+};
+```
+
+## Error Handling
+
+### Common Errors
+
+**400 Bad Request - Missing Required Field**
+```json
+{
+  "code": 400,
+  "message": "Missing required field: outletId",
+  "fields": "orders[0].outletId"
+}
+```
+→ Ensure all required fields are provided
+
+**400 Bad Request - Invalid Outlet**
+```json
+{
+  "code": 400,
+  "message": "Outlet ID 999 not found",
+  "fields": "orders[0].outletId"
+}
+```
+→ Verify outlet exists in Kappture
+
+**400 Bad Request - Invalid Tender**
+```json
+{
+  "code": 400,
+  "message": "Tender ID 99 not found",
+  "fields": "orders[0].tenders[0].id"
+}
+```
+→ Use `GET /tender` to verify available tenders
+
+**400 Bad Request - Invalid Date**
+```json
+{
+  "code": 400,
+  "message": "Invalid date format. Use RFC3339: 2025-02-11T10:30:00Z",
+  "fields": "orders[0].transactionDate"
+}
+```
+→ Use RFC3339 format for dates
+
+**413 Payload Too Large**
+```json
+{
+  "code": 413,
+  "message": "Maximum 50 orders per request"
+}
+```
+→ Split into multiple requests of 50 orders each
+
+### Partial Success Handling
+
+If some transactions succeed and others fail:
+
+```json
+{
+  "processCount": 10,
+  "successCount": 8,
+  "failedCount": 2,
+  "transactions": [...],
+  "errors": [
+    {
+      "externalReference": "EXT-009",
+      "error": "Invalid product ID 999"
+    },
+    {
+      "externalReference": "EXT-010",
+      "error": "Session 5 not active"
+    }
+  ]
+}
+```
+
+**Best Practice:** Log errors and retry failed transactions separately.
+
+## Best Practices
+
+### Batching
+
+- Post transactions in batches of **50** (maximum)
+- Implement retry logic for failed batches
+- Process batches sequentially to avoid rate limits
+
+### External References
+
+- Use unique, trackable external references
+- Include source system identifier: `POS1-2025-001234`
+- Store mapping between your IDs and Kappture transaction IDs
+
+### Product Mapping
+
+- Pre-create products in Kappture when possible
+- Maintain a mapping table: `externalPLU → kapptureProductId`
+- Use auto-creation sparingly for truly unknown products
+
+### Date Handling
+
+- Always use RFC3339 format with timezone
+- Post transactions in chronological order
+- Handle timezone conversions correctly
+
+### Validation
+
+- Validate data before sending to reduce errors
+- Check outlet, terminal, session, and operator IDs exist
+- Verify tender IDs are valid
+- Ensure transaction totals match product + tender totals
+
+### Monitoring
+
+- Log all API requests and responses
+- Track `createdProductIds` to update your mapping table
+- Monitor `failedCount` for integration health
+
+### Testing
+
+- Test with small batches first (1-5 transactions)
+- Verify transactions appear in Kappture reports
+- Test product auto-creation with PLUs
+- Test error handling for invalid data
+
+## Limitations
+
+<Warning>
+**Important Limitations:**
+
+- Maximum **50 transactions** per API call
+- Third-party transactions **do not**:
+  - Trigger stock depletion
+  - Send orders to KMS/kitchen screens
+  - Print kitchen receipts
+  - Create customer-facing receipts
+- Transactions are **write-only** (cannot be updated or deleted via API)
+- Transaction dates must be **within the last 90 days**
+</Warning>
+
+## Related Endpoints
+
+<CardGroup cols={2}>
+  <Card title="PUT /transaction" icon="upload">
+    Post third-party transactions
+  </Card>
+
+  <Card title="GET /transaction" icon="receipt">
+    Query posted transactions
+  </Card>
+
+  <Card title="GET /product" icon="box">
+    List products for mapping
+  </Card>
+
+  <Card title="GET /tender" icon="credit-card">
+    List available payment methods
+  </Card>
+
+  <Card title="GET /session" icon="clock">
+    List sessions for outlets
+  </Card>
+
+  <Card title="GET /outlet" icon="store">
+    List outlets
+  </Card>
+</CardGroup>
+
+## Next Steps
+
+- [Ordering Workflow](/api-reference/workflows/ordering) - Place live orders through the API
+- [Layout Creation](/api-reference/workflows/layout-creation) - Create and manage POS layouts
+- [API Reference](/api-reference/introduction) - Browse all available endpoints

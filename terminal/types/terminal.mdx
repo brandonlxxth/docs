@@ -3,7 +3,7 @@ title: "Terminal (Operator POS)"
 description: "Complete workflows for the standard operator POS terminal: login, sessions, taking orders, payments, refunds, table service, and all operations"
 ---
 
-## Overview
+## What the Operator POS Does
 
 The **Terminal (Operator POS)** is the standard till used by staff to take orders and process payments. Operators log in, open sessions, take orders from customers, process payments, and manage day-to-day operations.
 
@@ -59,7 +59,7 @@ Enter your operator code using the numeric keypad:
 </Steps>
 
 <Note>
-If your identification device doesn't work or you don't see your operator account, contact your administrator. Operators and their identification tokens are configured in [**Operators**](https://admin.kappture.com/Operator).
+If the terminal does not recognize your identification device (unregistered token, disabled account) or you cannot find your operator code (operator not configured for this outlet), contact your administrator. Operators and their identification tokens are configured in [**Operators**](https://admin.kappture.com/Operator).
 </Note>
 
 ## Session Management
@@ -270,28 +270,6 @@ When a table layout is assigned to the outlet, the terminal operates in multi-or
 Products configured with weight-based pricing are weighed at the point of sale (e.g., produce sold by weight). When you tap a weighed product, the system prompts you to place the item on the scale. The weight is read automatically and the price is calculated based on weight × unit price.
 </Note>
 
-### Product Modifiers and Options
-
-Products configured with **Popup Menus** display option screens when you tap them:
-
-<Steps>
-<Step title="Tap product with options">
-  Tap a product that has a popup menu (e.g. coffee with milk choices, burger with add-ons).
-</Step>
-
-<Step title="Select options">
-  A popup menu appears showing available choices. Tap the options you want (e.g. size, milk type, extras).
-
-  If the popup has a **maximum selection limit** (indicated by selection indicators at the top), the popup closes automatically when you reach that limit. If there's no selection limit, tap anywhere outside the popup options to close it.
-
-  The product is added to the order with the selected options shown.
-</Step>
-</Steps>
-
-<Note>
-This section describes the same popup menu functionality covered in "Adding Products to an Order". Products with popup menus behave the same whether added initially or modified during order building.
-</Note>
-
 ### Adjusting Order Items
 
 You can modify items in an order before payment:
@@ -365,19 +343,19 @@ Member selection is required when the customer pays with their **Account** tende
 
 ## Payment Processing
 
-### Payment Flow Overview
+### How Payment Works
 
 After adding products to an order, you can process payment using two methods:
 
 **Method 1: Tap tender button on sales layout**
 
-If tender buttons are placed on the sales layout using the **Layout Designer** (configured in [**Layouts**](https://admin.kappture.com/Layout)), tap the tender button (e.g., **Cash**, **Card**). The system processes payment for the configured amount or prompts you to enter an amount. If the payment doesn't cover the full order total, the tender selection screen opens automatically, allowing you to select another tender to pay the remainder.
+If tender buttons are placed on the sales layout using the **Layout Designer** (configured in [**Layouts**](https://admin.kappture.com/Layout)), tap the tender button (e.g., **Cash**, **Card**). The system processes payment for the configured amount or prompts you to enter an amount. If the payment doesn't cover the full order total, the tender selection screen opens automatically. You can then select another tender to pay the remainder.
 
 See [Layouts documentation](/enterprise/pages/management/layouts) for details on adding tenders to layouts.
 
 **Method 2: Tap the grey bar in the order panel**
 
-Tap the grey bar to the right of the order panel (shows the order total). If **Member select type** is configured, the member selection screen appears first. After member selection (or if not configured), the tender selection screen opens showing all available tenders. Tap the tender you want to use and follow the payment workflow.
+Tap the grey bar to the right of the order panel (shows the order total). If **Member select type** is configured, the member selection screen appears first. After member selection (or if not configured), the tender selection screen opens. The screen shows all available tenders. Tap the tender you want to use and follow the payment workflow.
 
 <Note>
 The tender selection screen shows all configured tenders (Cash, Card, Account, Voucher, etc.). Once opened, you can select any tender to process payment. If the first payment doesn't cover the full total, the screen remains open for additional payments.
@@ -585,7 +563,7 @@ Refund a previous order by locating it in the order history. This method require
 <Step title="Process refund payment">
   The refund amount is processed using any valid tender:
   - **Cash refund**: Cash drawer opens; return cash to customer
-  - **Card refund**: Card is refunded via EFT. The refund appears in the customer's account within 3-5 business days (timing depends on the card issuer and payment provider)
+  - **Card refund**: Card is refunded via EFT. The refund timing is controlled by the card issuer and payment provider
   - **Account refund**: Balance is added back to member account
 </Step>
 
@@ -876,7 +854,9 @@ Automatically creates splits based on **cover indicator products** in the order.
 </Steps>
 
 <Info>
-**Cover indicator products** are products configured in [Product](https://admin.kappture.com/Product) (Management Portal) with the **Use as Cover** option enabled (Edit Product > Options section). These are typically main dishes that represent one "cover" (e.g. burger, steak, salad). Products can be linked together using product keys — linked products (e.g. sides, drinks) will be grouped with their associated cover indicator in the auto split.
+**Cover indicator products** are products configured in [Product](https://admin.kappture.com/Product) with the **Use as Cover** option enabled (Edit Product > Options section). These are typically main dishes that represent one "cover" (e.g. burger, steak, salad).
+
+Products can be linked together using product keys. Linked products (e.g. sides, drinks) will be grouped with their associated cover indicator in the auto split.
 </Info>
 
 #### Processing Split Orders
@@ -1098,7 +1078,9 @@ Request stock from another outlet. This button is available when the stock perio
 
 **Requires:** Stock Requisition permission
 
-Requisitions are sent to the **Stock Request Outlet** configured in [Hierarchy](https://admin.kappture.com/Hierarchy) under the outlet's **Stock Control** tab. Individual products can override this destination if they are assigned to a [Product Requisition Group](https://admin.kappture.com/ProductRequisitionGroup) — each group maps requesting outlets to specific source outlets, allowing different products to be requisitioned from different locations.
+Requisitions are sent to the **Stock Request Outlet** configured in [Hierarchy](https://admin.kappture.com/Hierarchy) under the outlet's **Stock Control** tab.
+
+Individual products can override this destination if they are assigned to a [Product Requisition Group](https://admin.kappture.com/ProductRequisitionGroup). Each group maps requesting outlets to specific source outlets. This allows different products to be requisitioned from different locations.
 
 When you tap **Requisition**, a submenu displays two options:
 - **Standard products** — shows the standard product sheet for your outlet
@@ -1424,9 +1406,9 @@ When a product has **Kitchen Print** or **Kitchen Screen** enabled (configured i
 The top bar displays LED indicators showing the terminal's connection state:
 
 - **Server** indicator:
-  - **Green** — online and connected to the server
-  - **Amber** — online but not synced with the server
-  - **Red** — offline
+  - **Green** — Connected to the Sync Service and receiving updates
+  - **Amber** — Terminal has internet connectivity but cannot communicate with the Sync Service (data sync paused)
+  - **Red** — Terminal is offline (no internet connection)
 
 ### Terminal Won't Start
 

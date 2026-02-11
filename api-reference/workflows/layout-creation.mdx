@@ -1,0 +1,631 @@
+---
+title: 'Layout Creation'
+description: 'Create and manage POS screen layouts through the Kappture API'
+---
+
+## Overview
+
+The layout creation workflow allows you to programmatically create and manage POS screen layouts - the button configurations that operators see on their terminals. Layouts control which products, menus, tenders, and functions appear on the sales screen.
+
+This is useful for:
+- **Dynamic layout generation** - Create layouts based on inventory or promotions
+- **Multi-location deployment** - Roll out consistent layouts across sites
+- **Seasonal updates** - Automate layout changes for events or seasons
+- **A/B testing** - Experiment with different layout configurations
+
+## Prerequisites
+
+Before creating layouts, ensure these are configured in the Management Portal:
+
+- **Resources** (background images) uploaded
+- **Outlet** created
+- **Products** configured with images
+- **Menus** created (for self-service layouts)
+- **Sessions** configured at the outlet
+- **Tenders** (payment methods) configured
+
+## Layout Components
+
+A layout consists of:
+
+1. **Layout Metadata** - Name, size, background
+2. **Layout Keys** - Buttons positioned on the screen
+3. **Session Assignment** - Which sessions use this layout
+
+### Key Types
+
+| Key Type | Description | Example |
+|----------|-------------|---------|
+| **Product** | Product button | "Burger", "Fries", "Coke" |
+| **Menu** | Submenu button | "Starters", "Mains", "Desserts" |
+| **Tender** | Payment button | "Cash", "Card", "Mobile Pay" |
+| **Member** | Member functions | "Scan Card", "Member Lookup" |
+| **Course** | Course selector | "Starter", "Main", "Dessert" |
+| **Function** | Terminal function | "Void", "Discount", "Manager" |
+
+## Step-by-Step Workflow
+
+### Step 1: Get Background Resources
+
+Retrieve available background images:
+
+```bash
+GET /resource?type=background
+Authorization: Bearer YOUR_JWT_TOKEN
+x-api-key: YOUR_API_KEY
+```
+
+**Response:**
+```json
+{
+  "resources": [
+    {
+      "id": 10,
+      "name": "Dark Background",
+      "type": "background",
+      "url": "https://cdn.kappture.com/resources/bg-dark.png",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "id": 11,
+      "name": "Light Background",
+      "type": "background",
+      "url": "https://cdn.kappture.com/resources/bg-light.png",
+      "width": 1920,
+      "height": 1080
+    }
+  ]
+}
+```
+
+### Step 2: Create Layout
+
+Create a new layout (use `id: 0` for new layouts):
+
+```bash
+PUT /layout
+Authorization: Bearer YOUR_JWT_TOKEN
+x-api-key: YOUR_API_KEY
+Content-Type: application/json
+
+{
+  "id": 0,
+  "name": "Main Sales Layout - Spring 2025",
+  "layoutResolutionType": 1,
+  "backgroundResourceId": 10,
+  "reference": "SPRING2025"
+}
+```
+
+**Layout Resolution Types:**
+
+| Type | Name | Grid | Positions |
+|------|------|------|-----------|
+| 1 | PoS 1366x768 (Standard) | 12x9 | 108 |
+| 2 | PoS 1024x600 | 8x7 | 56 |
+| 3 | PoS 1024x768 | 8x3 | 72 |
+| 4 | Self Checkout Image | 3x3 | 9 |
+| 5 | Kiosk | 1x10 | 10 |
+| 6 | PoS 720x1280 (Portrait) | 6x6 | 66 |
+| 7 | Self Checkout 1366x768 | 3x3 | 9 |
+| 8 | PoS 720x1280 (Portrait) Large Buttons | 3x3 | 9 |
+| 9 | PoS 720x1440 (Portrait) Large Buttons | 3x3 | 9 |
+| 10 | PoS 1366x768 Image Small Buttons | 12x6 | 76 |
+| 11 | PoS 1366x768 Image Medium Buttons | 9x5 | 45 |
+| 12 | PoS 1366x768 Image Large Buttons | 5x3 | 15 |
+
+**Response:**
+```json
+{
+  "id": 156,
+  "name": "Main Sales Layout - Spring 2025",
+  "layoutResolutionType": 1,
+  "backgroundResourceId": 10,
+  "reference": "SPRING2025"
+}
+```
+
+<Note>
+Save the returned `id` (156 in this example) - you'll need it to add keys to the layout. The `layoutResolutionType` determines the grid size and number of available positions.
+</Note>
+
+### Step 3: Add Keys to Layout
+
+Add buttons to the layout using grid positions. The request body is an array of layout detail objects:
+
+```bash
+PUT /layout/{layoutId}/detail
+Authorization: Bearer YOUR_JWT_TOKEN
+x-api-key: YOUR_API_KEY
+Content-Type: application/json
+
+[
+  {
+    "id": 123,
+    "type": 1,
+    "position": 1,
+    "name": "Classic Burger"
+  },
+  {
+    "id": 124,
+    "type": 1,
+    "position": 2,
+    "name": "Veggie Burger"
+  },
+  {
+    "id": 125,
+    "type": 1,
+    "position": 3,
+    "name": "Coke"
+  },
+  {
+    "id": 5,
+    "type": 2,
+    "position": 13,
+    "name": "Burgers",
+    "colorFill": "#b81d5f"
+  },
+  {
+    "id": 6,
+    "type": 2,
+    "position": 14,
+    "name": "Drinks",
+    "colorFill": "#e62177"
+  }
+]
+```
+
+**Key Types:**
+- `1` = Product
+- `2` = Menu
+- `3` = Tender
+- `4` = Member
+- `5` = Course
+
+**Required Fields:**
+- `id` - Entity ID (product ID, menu ID, etc.)
+- `type` - Key type (1-5)
+- `position` - Grid position (1 to max positions for layout resolution type)
+
+**Optional Fields:**
+- `name` - Display name (overrides default)
+- `colorFill` - Hex color code (required for Menu and Course types)
+- `tenderValue` - Tender amount (required for Tender type: -1=Full, 0=Custom, other=Preset)
+- `override` - Force override if key exists at position (boolean)
+
+**Position Calculation:**
+
+For a 12x9 grid (layoutResolutionType 1):
+- Position 1 = Row 1, Column 1
+- Position 2 = Row 1, Column 2
+- Position 13 = Row 2, Column 1
+- Position 108 = Row 9, Column 12
+
+<Note>
+Positions are 1-indexed and fill left-to-right, top-to-bottom. The maximum position depends on the layout resolution type (e.g., 108 for type 1, 56 for type 2).
+</Note>
+
+**Response:**
+
+The endpoint returns HTTP 200 on success with no response body.
+
+### Step 4: Add Tender Keys (Optional)
+
+Add payment buttons to the layout:
+
+```bash
+PUT /layout/{layoutId}/tenders
+Authorization: Bearer YOUR_JWT_TOKEN
+x-api-key: YOUR_API_KEY
+Content-Type: application/json
+
+{
+  "tenders": [
+    {
+      "tenderId": 1,
+      "x": 1650,
+      "y": 50,
+      "width": 200,
+      "height": 150,
+      "label": "Cash",
+      "backgroundColor": "#4CAF50",
+      "textColor": "#ffffff",
+      "fontSize": 24,
+      "fullAmount": true
+    },
+    {
+      "tenderId": 2,
+      "x": 1650,
+      "y": 220,
+      "width": 200,
+      "height": 150,
+      "label": "Card",
+      "backgroundColor": "#2196F3",
+      "textColor": "#ffffff",
+      "fontSize": 24,
+      "fullAmount": true
+    }
+  ]
+}
+```
+
+### Step 6: Assign Layout to Session
+
+Assign the layout to a session at the outlet:
+
+```bash
+PUT /outlet/{outletId}/session/{sessionId}/layout/{layoutId}
+Authorization: Bearer YOUR_JWT_TOKEN
+x-api-key: YOUR_API_KEY
+```
+
+**Response:**
+```json
+{
+  "outletId": 12,
+  "sessionId": 3,
+  "sessionName": "Lunch Service",
+  "layoutId": 156,
+  "layoutName": "Main Sales Layout - Spring 2025",
+  "assigned": true
+}
+```
+
+<Info>
+Layouts become active immediately. Terminals will sync the new layout within seconds via the Sync Service.
+</Info>
+
+## Layout Positioning
+
+### Coordinate System
+
+Layouts use absolute positioning with pixel coordinates:
+
+- **Origin (0, 0)** - Top-left corner
+- **X axis** - Horizontal (left to right)
+- **Y axis** - Vertical (top to bottom)
+
+### Standard Resolutions
+
+| Device Type | Resolution | Aspect Ratio |
+|-------------|------------|--------------|
+| Desktop Terminal | 1920 × 1080 | 16:9 |
+| Tablet Terminal | 1024 × 768 | 4:3 |
+| Kiosk Portrait | 1080 × 1920 | 9:16 |
+| Kiosk Landscape | 1920 × 1080 | 16:9 |
+
+### Key Sizing Best Practices
+
+**Recommended Key Sizes:**
+- **Product buttons**: 150-250px square
+- **Menu buttons**: 200-300px wide, 80-120px tall
+- **Tender buttons**: 150-250px square
+- **Function buttons**: 80-150px square
+
+**Spacing:**
+- **Gap between keys**: 10-20px
+- **Edge margin**: 30-50px from screen edges
+
+**Example Grid Layout:**
+```
+Product Grid: 5 columns × 4 rows
+Key size: 200px × 150px
+Gap: 20px
+Starting position: (50, 50)
+
+Key positions:
+Row 1: (50, 50), (270, 50), (490, 50), (710, 50), (930, 50)
+Row 2: (50, 220), (270, 220), (490, 220), (710, 220), (930, 220)
+Row 3: (50, 390), (270, 390), (490, 390), (710, 390), (930, 390)
+Row 4: (50, 560), (270, 560), (490, 560), (710, 560), (930, 560)
+```
+
+## Key Styling
+
+### Colors
+
+Use hex color codes for styling:
+
+```json
+{
+  "backgroundColor": "#e62177",
+  "textColor": "#ffffff",
+  "borderColor": "#b81d5f"
+}
+```
+
+**Kappture Brand Colors:**
+- Primary: `#e62177`
+- Light: `#f073a3`
+- Dark: `#b81d5f`
+
+### Fonts
+
+Recommended font sizes:
+
+- **Product names**: 16-20px
+- **Menu buttons**: 18-24px
+- **Tender buttons**: 20-28px
+- **Function buttons**: 14-18px
+
+### Images
+
+Product images should be:
+- **Format**: PNG or JPEG
+- **Size**: 200-400px square
+- **Aspect ratio**: 1:1 (square) or 4:3
+- **File size**: < 500KB
+
+## Advanced Features
+
+### Multi-Layout Strategy
+
+Create different layouts for different scenarios:
+
+```javascript
+// Peak hour layout - popular items only
+const peakLayout = {
+  id: 0,
+  name: "Lunch Rush - Fast Items",
+  products: fastCookingProducts
+};
+
+// Full menu layout - all items
+const fullLayout = {
+  id: 0,
+  name: "Full Menu - Evening Service",
+  products: allProducts
+};
+
+// Assign peak layout to lunch session
+PUT /outlet/12/session/3/layout/{peakLayoutId}
+
+// Assign full layout to dinner session
+PUT /outlet/12/session/4/layout/{fullLayoutId}
+```
+
+### Dynamic Layout Updates
+
+Update layouts based on inventory or promotions:
+
+```javascript
+// Check stock levels
+const lowStockProducts = await checkInventory();
+
+// Remove out-of-stock products from layout
+const availableProducts = currentLayout.products
+  .filter(p => !lowStockProducts.includes(p.id));
+
+// Update layout
+await updateLayout(layoutId, availableProducts);
+```
+
+### Seasonal Layouts
+
+Create and schedule seasonal layouts:
+
+```javascript
+const springLayout = {
+  name: "Spring Menu 2025",
+  products: springProducts,
+  backgroundResourceId: springBackgroundId
+};
+
+const summerLayout = {
+  name: "Summer Menu 2025",
+  products: summerProducts,
+  backgroundResourceId: summerBackgroundId
+};
+
+// Deploy based on date
+if (currentSeason === "spring") {
+  await deployLayout(springLayout);
+} else if (currentSeason === "summer") {
+  await deployLayout(summerLayout);
+}
+```
+
+## Common Use Cases
+
+### Franchise Rollout
+
+Deploy consistent layouts across multiple locations:
+
+```javascript
+const outlets = [10, 11, 12, 13, 14]; // 5 franchise locations
+const masterLayout = await createLayout({
+  name: "Franchise Standard Layout Q1 2025",
+  products: standardProductSet
+});
+
+// Clone layout for each outlet
+for (const outletId of outlets) {
+  const layoutCopy = await cloneLayout(masterLayout, outletId);
+  await assignToSessions(outletId, layoutCopy.id);
+}
+```
+
+### Promotion Integration
+
+Automatically add promotional products to layouts:
+
+```javascript
+// Start promotion
+const promoProducts = [789, 790, 791]; // Promo product IDs
+
+// Add promo keys to existing layout
+const promoKeys = promoProducts.map((productId, index) => ({
+  keyType: "product",
+  productId,
+  x: 1650,
+  y: 50 + (index * 200),
+  width: 200,
+  height: 150,
+  backgroundColor: "#FF5722", // Promo color
+  label: "LIMITED TIME"
+}));
+
+await addKeysToLayout(layoutId, promoKeys);
+```
+
+### Event Layouts
+
+Create temporary layouts for events:
+
+```javascript
+const eventLayout = {
+  name: "Summer Festival 2025",
+  products: festivalProducts,
+  backgroundResourceId: festivalBrandingId,
+  isActive: true
+};
+
+// Deploy on event start
+await createAndDeployLayout(eventLayout, eventOutletId);
+
+// Revert after event
+await revertToLayout(standardLayoutId, eventOutletId);
+```
+
+## Error Handling
+
+### Common Errors
+
+**400 Bad Request - Invalid Product**
+```json
+{
+  "code": 400,
+  "message": "Product ID 999 not found",
+  "fields": "keys[0].productId"
+}
+```
+→ Verify product exists using `GET /product`
+
+**400 Bad Request - Overlapping Keys**
+```json
+{
+  "code": 400,
+  "message": "Key at position (50, 50) overlaps with existing key",
+  "fields": "keys[0]"
+}
+```
+→ Adjust key positions to avoid overlap
+
+**400 Bad Request - Out of Bounds**
+```json
+{
+  "code": 400,
+  "message": "Key position (2000, 1200) exceeds layout bounds (1920, 1080)",
+  "fields": "keys[0]"
+}
+```
+→ Ensure keys fit within layout dimensions
+
+**404 Not Found - Layout**
+```json
+{
+  "code": 404,
+  "message": "Layout ID 999 not found"
+}
+```
+→ Verify layout was created successfully
+
+**409 Conflict - Layout Name**
+```json
+{
+  "code": 409,
+  "message": "Layout name 'Main Sales' already exists for outlet 12"
+}
+```
+→ Use unique layout names per outlet
+
+## Best Practices
+
+### Layout Design
+
+- **Consistent grid** - Use consistent spacing and sizing
+- **Visual hierarchy** - Place popular items prominently
+- **Color coding** - Use colors to group related items
+- **Clear labels** - Short, descriptive button text
+- **Touch targets** - Minimum 100px for easy tapping
+
+### Performance
+
+- **Optimize images** - Compress product images
+- **Limit complexity** - Avoid layouts with 100+ keys
+- **Cache data** - Cache product/menu lists locally
+- **Batch updates** - Use single API call to add multiple keys
+
+### Maintenance
+
+- **Version layouts** - Include date/version in layout name
+- **Test before deployment** - Test layouts in staging first
+- **Monitor sync** - Verify terminals receive layout updates
+- **Document mappings** - Track which layouts are used where
+
+### Testing
+
+- Test on actual device resolutions
+- Verify all keys are tappable (no overlap)
+- Test with different product image sizes
+- Verify tender buttons process payments correctly
+- Test menu navigation depth
+
+## Limitations
+
+<Warning>
+**Layout Constraints:**
+
+- Maximum **200 keys** per layout
+- Keys must fit within layout bounds
+- Keys cannot overlap
+- Layout changes sync to terminals (may take up to 30 seconds)
+- Deleted layouts cannot be recovered
+</Warning>
+
+## Related Endpoints
+
+<CardGroup cols={2}>
+  <Card title="GET /resource" icon="image">
+    List background images and assets
+  </Card>
+
+  <Card title="PUT /layout" icon="grip">
+    Create or update layout
+  </Card>
+
+  <Card title="PUT /layout/{id}/detail" icon="square">
+    Add product/menu keys to layout
+  </Card>
+
+  <Card title="PUT /layout/{id}/tenders" icon="credit-card">
+    Add tender (payment) keys
+  </Card>
+
+  <Card title="GET /layout" icon="list">
+    List all layouts
+  </Card>
+
+  <Card title="DELETE /layout/{id}" icon="trash">
+    Delete a layout
+  </Card>
+
+  <Card title="GET /product" icon="box">
+    List products for keys
+  </Card>
+
+  <Card title="GET /menu" icon="bars">
+    List menus for submenu keys
+  </Card>
+
+  <Card title="PUT /outlet/{id}/session/{id}/layout/{id}" icon="link">
+    Assign layout to session
+  </Card>
+</CardGroup>
+
+## Next Steps
+
+- [Ordering Workflow](/api-reference/workflows/ordering) - Place orders through the API
+- [Third-Party Transactions](/api-reference/workflows/third-party-transactions) - Post external POS sales
+- [API Reference](/api-reference/introduction) - Browse all available endpoints

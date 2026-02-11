@@ -53,7 +53,9 @@ When you open the Member page, you'll see a **search box at the top**. Type your
 | **Name** | Member's full name. |
 | **Email** | Email address; must be unique. |
 | **Phone** | Phone number (optional). |
-| **Member Number** | Unique identifier; auto-generated when left blank. |
+| **Member Number** | Unique reference identifier; auto-generated when left blank. |
+| **Token ID** | Unique integer used for member cards and QR codes; auto-generated. |
+| **Token Hex** | Hexadecimal representation of Token ID; used for some card systems. |
 | **Password** | Initial password for member login. |
 | **Photo** | Optional member photo. |
 | **Additional fields** | Any other configured member fields (depends on your setup). |
@@ -190,12 +192,14 @@ Member photos appear:
 Members can have QR codes generated for their accounts:
 
 1. Open the member's details
-2. The system can generate a QR code based on the member's token
+2. The system generates a QR code based on the member's token ID (unique integer identifier)
 3. QR codes can be used for:
-   - Quick member identification
+   - Quick member identification at POS terminals
    - Mobile app login
    - Account access
    - Loyalty program scanning
+
+Each member has a **Token ID** (unique integer) and **Token Hex** (hexadecimal representation) that can be encoded in QR codes for member identification.
 
 <Info>
 Contact your administrator for details about QR code features.

@@ -1,0 +1,243 @@
+---
+title: "Quick Serve"
+description: "Customer-facing self-ordering terminal for quick-service environments: browsing products, placing orders, and completing payments"
+---
+
+## Overview
+
+The **Quick Serve** terminal is a customer-facing self-ordering terminal designed for quick-service environments such as canteens, cafeterias, and food courts. Customers browse products, build an order, and pay — without staff taking the order.
+
+The Quick Serve terminal supports three payment methods:
+
+- **EFT** — a QR code is displayed on screen. The customer scans the QR code with their phone to open a secure payment page and completes the payment on their device
+- **Standalone EFT** — card payment processed on a separate PED device (the screen prompts the customer to call for assistance)
+- **Cost Centre** — the customer enters an account number to charge the order to a cost centre
+
+This page documents the full customer journey on the Quick Serve terminal, from the attract screen through to order completion.
+
+## Required Configuration
+
+Before the Quick Serve terminal is operational, configure the following in the Management Portal:
+
+- **Terminal** created as **Quick Serve** type and assigned to an **Outlet** in [Hierarchy](https://admin.kappture.com/Hierarchy)
+- **Preparation Point** assigned to the terminal in [Hierarchy](https://admin.kappture.com/Hierarchy) under the terminal's **Configuration** tab, so orders are sent to the correct preparation point
+- **Layout** assigned to the outlet session in [Hierarchy](https://admin.kappture.com/Hierarchy) under the outlet's **Session** tab, with products and categories configured
+- **Payment Mode** set to **EFT**, **Standalone EFT**, or **Cost Centre** in [Hierarchy](https://admin.kappture.com/Hierarchy) under the terminal's **Configuration** tab
+- **Tender** assigned for the selected payment mode — **EFT Tender** for integrated EFT, or **Other Tender** for standalone EFT
+- **JudoPay credentials** (EFT mode only) — **Username**, **Password**, and **ID** configured in [Hierarchy](https://admin.kappture.com/Hierarchy) under the terminal's **Payment Options** tab. These credentials connect the terminal to the JudoPay payment gateway for QR code payments
+- **Products** configured with prices and images in [Products](https://admin.kappture.com/Product)
+
+### Optional Configuration
+
+- **JudoPay Timeout (Seconds)** (EFT mode only) — seconds before the QR code payment session expires. Range is 120–300 seconds. Default is 300 seconds (5 minutes). Configured in [Hierarchy](https://admin.kappture.com/Hierarchy) under the terminal's **Payment Options** tab
+- **Interval Sequence Terminal** — the KMS terminal to send order notifications to, configured in the **Configuration** tab. When set, the KMS receives alerts when orders are placed
+- **Order Timeout (Seconds)** — seconds before a completed order automatically closes (range 0–60). Configured in the **Configuration** tab
+- **Collection periods** for future order times (for example, "Now", "12:30pm") — configured in [Layouts](https://admin.kappture.com/Layout) under the layout options
+- **FAQ text** — rich text content displayed on the help screen. Configured in the **Outlet** settings under the **Self Service** tab in [Hierarchy](https://admin.kappture.com/Hierarchy), not on the terminal itself
+- **Vision themes** for the attract screen slideshow — configured at outlet level under [Vision](https://admin.kappture.com/Vision)
+
+### Designer Settings
+
+The terminal's **Designer** tab in [Hierarchy](https://admin.kappture.com/Hierarchy) controls the screen appearance:
+
+- **Logo** — a logo resource displayed on the attract screen and order summary. Logo resources are managed in [Resources](https://admin.kappture.com/Resource)
+- **Background Colour** — hex colour code for the screen background
+- **Text Colour Option** — **White Text** or **Black Text**
+- **Transition** — slideshow transition type: **Zoom** or **Scroll**
+- **Home Transition (seconds)** — seconds between slideshow transitions. Default is 300 seconds
+- **Assistance Requested Image** — image displayed when the customer requests assistance
+- **Payment Image** — image displayed during EFT payment screens
+- **Cost Centre Image** — image displayed on the cost centre payment screen
+
+## Getting Started
+
+### Attract Screen
+
+When the terminal is idle and waiting for customers, the attract screen displays:
+
+- A rotating slideshow of promotional images from the configured vision theme
+- The outlet logo (if configured)
+- A **"Touch to order"** prompt
+
+The slideshow transitions between images using the configured transition type (zoom or scroll). Tap anywhere to start ordering.
+
+### Home Screen (Staff Access)
+
+A hidden button in the top-right corner of the screen provides staff access. Press and hold the operator icon to open the authentication dialog. After logging in with operator credentials, the home screen displays:
+
+- **Sales** button — enters the ordering screen
+- **Table: [number]** — tap to set the table number (displays a **"Table number"** entry dialog)
+- **Orders** button — view order history
+- **Server** and **Network** connection LEDs
+- **Alerts** button — view system alerts
+- **Power** button — shut down the terminal
+- **Support** button — open support information
+
+## Ordering
+
+### Collection Time Selection
+
+If collection periods are configured in the layout, the terminal displays **"When would you like to receive your order?"** with time options and a **"Now"** button (when enabled in the layout options).
+
+If no periods are configured, this screen is skipped and items are added to the current order.
+
+### Browsing Products
+
+The ordering screen has three areas:
+
+1. **Header** (top) — the outlet logo on the left, category tabs in the centre (horizontal scrollable list), and a **"?"** help button on the right
+2. **Product grid** (centre) — product cards showing the product image, name, description (first line), and price. An info icon appears on products with allergen or nutritional data
+3. **Order bar** (bottom) — shows **"YOUR BILL"** on the left and the item count with total on the right (for example, **"3 item(s) (£12.50)"**). The bar flashes yellow when an item is added
+
+### Adding Products
+
+Tap a product card to add it to the order. If the product has options configured (sub-products), an options panel slides up from the bottom showing a grid of option tiles with images, names, and prices. A brief **"ADDED TO BASKET"** animation confirms each addition.
+
+### Product Information
+
+Tap the info icon on a product card to view the product description, allergen information, and nutritional data.
+
+### Reviewing the Order
+
+Tap the order bar at the bottom to expand the full order view. This displays:
+
+- **"Have I remembered everything?"** — prompt above the order
+- Each item with its name, quantity, and price
+- **"Start again"** button (left) — clears the order. A confirmation dialog asks **"Clear all selections and start again?"** with the hint **"Hint: if you need assistance tap the Info button"**
+- **"Review & send order"** button (right) — proceeds to payment
+
+### Collection Time Upsell
+
+If collection periods are configured and the customer has not added items for all available periods, a prompt asks **"Add items for?"** with period buttons. Tap a period to return to the product grid for that period, or tap **"No thanks"** to continue to payment.
+
+### Help Screen
+
+Tap the **"?"** button on the ordering screen to open the help screen. This displays:
+
+- **"FAQ's"** heading with the FAQ content configured on the outlet
+- **"Call for assistance"** button — sends a notification to the linked KMS terminal
+- **"Request receipt"** button — opens the receipt request form for previous orders
+- **"CLOSE"** button — returns to the ordering screen
+
+## Payment Processing
+
+The payment screen shown depends on the **Payment Mode** configured on the terminal.
+
+<Tabs>
+<Tab title="EFT (QR Code Payment)">
+
+The terminal displays a QR code with the text **"SCAN TO SECURELY PAY"** alongside the configured payment image. The customer scans the QR code with their phone, which opens a JudoPay secure payment page. The payment page supports Apple Pay, Google Pay, and card payment.
+
+The terminal polls for the payment result automatically. If the customer does not complete payment before the **Timeout (Seconds)** threshold (default 300 seconds), the payment session expires. On success, the order is placed.
+
+On failure, the screen shows **"Your payment was not successful"** with a **"BACK"** button to return to the order review.
+
+</Tab>
+<Tab title="Standalone EFT">
+
+The screen displays **"READY TO PAY?"** with the payment image and a **"Call for assistance"** button. The customer waits for a staff member to process the payment on the separate PED device.
+
+A **"BACK"** button returns to the order review.
+
+</Tab>
+<Tab title="Cost Centre">
+
+The screen displays **"ENTER YOUR ACCOUNT NUMBER"** with a text input field (placeholder: **"Touch here"**) and a **"PLACE ORDER"** button.
+
+If the account number is not found, the screen displays **"Cost centre not found"**. A **"BACK"** button returns to the order review.
+
+</Tab>
+</Tabs>
+
+### Order Confirmation
+
+After successful payment, the screen displays:
+
+- **"Thank you, your order has been placed"**
+- **"Your order number is"** followed by the order number(s)
+
+The terminal automatically returns to the attract screen after the configured timeout.
+
+## Assistance Requests
+
+When a customer taps **"Call for assistance"** (from the help screen or the standalone EFT payment screen), the terminal sends a notification to the KMS terminal configured as the **Interval Sequence Terminal**. The screen displays **"Your request has been received, someone will be with you shortly"** with a **"CLOSE"** button.
+
+## Receipt Requests
+
+From the help screen, customers can tap **"Request receipt"** to request an email receipt for a previous order. The screen displays:
+
+- **"Select an order then enter your email address"** — instructions
+- A list of recent orders (or **"No orders"** if none are available)
+- An email input field (placeholder: **"Touch here to enter email"**)
+- **"OK"** button to send the receipt and **"BACK"** button to return
+
+## Idle Timeout
+
+If no interaction occurs during ordering, the terminal displays a warning: **"Do you need more time? Touch screen to continue"**.
+
+If the customer does not respond within the idle close timeout period, the terminal cancels the order and returns to the attract screen. The idle timeout and idle close timeout are configured in the terminal settings in [Hierarchy](https://admin.kappture.com/Hierarchy).
+
+## Offline Handling
+
+If the terminal loses its network connection, a full-screen overlay displays **"Checking network"** and **"We're connecting to the network. This will only take a few seconds..."**. The terminal automatically reconnects when the network is restored.
+
+## Discounts
+
+If a discount is applied to the order (for example, through a member account or promotion), a discount confirmation screen displays:
+
+- **"Order Total:"** — the original total
+- **"Discount:"** — the discount amount
+- **"Total to Pay:"** — the final total after discount
+- **"BACK"** button to return to the order and **"CHECKOUT"** button to proceed to payment
+
+## Troubleshooting
+
+### Terminal Shows Attract Screen but Orders Cannot Be Placed
+
+- **No layout assigned** — check that a layout is assigned to the outlet session in [Hierarchy](https://admin.kappture.com/Hierarchy) under the outlet's **Session** tab
+- **No products on layout** — add products and categories to the layout in [Layouts](https://admin.kappture.com/Layout)
+- **No payment mode configured** — set the **Payment Mode** in the terminal's **Configuration** tab
+
+### Payment Not Working
+
+- **EFT tender not set** — if using EFT or Standalone EFT, ensure the correct tender is assigned in the terminal's **Configuration** tab
+- **JudoPay credentials not configured** — if using EFT (QR code) payment, ensure the **Username**, **Password**, and **ID** fields are set in the terminal's **Payment Options** tab
+- **QR code payment expired** — the customer did not complete payment within the **Timeout (Seconds)** threshold. The default is 300 seconds (5 minutes). Adjust the timeout in the **Payment Options** tab if needed (range 120–300 seconds)
+- **Cost centre not found** — the account number entered by the customer does not match any configured cost centre
+- **Network offline** — EFT payments require a network connection. Check the network status LEDs on the home screen
+
+### No FAQ Content on Help Screen
+
+- **FAQ text not configured** — FAQ content is configured on the **Outlet** (not the terminal) under the **Self Service** tab in [Hierarchy](https://admin.kappture.com/Hierarchy)
+
+### Assistance Requests Not Received
+
+- **Interval Sequence Terminal not set** — configure the **Interval Sequence Terminal** field in the terminal's **Configuration** tab to point to the KMS terminal that should receive notifications
+
+## Related Documentation
+
+<CardGroup cols={2}>
+<Card title="Terminal Overview" icon="desktop" href="/terminal/overview">
+  Terminal architecture and types.
+</Card>
+
+<Card title="Terminal Configuration" icon="cog" href="/enterprise/pages/terminal/configuration">
+  Quick Serve tab fields and designer settings.
+</Card>
+
+<Card title="Kitchen Management Screen (KMS)" icon="kitchen-set" href="/terminal/types/kms">
+  The KMS terminal that receives and manages Quick Serve orders.
+</Card>
+
+<Card title="Layouts" icon="table-layout" href="/enterprise/pages/management/layouts">
+  Create and manage product layouts for the ordering screen.
+</Card>
+
+<Card title="Products" icon="box" href="/enterprise/pages/management/products">
+  Product configuration including images and allergens.
+</Card>
+
+<Card title="Pay at Table" icon="credit-card" href="/enterprise/pages/management/pay-at-table">
+  Pay at Table configuration using QR codes with this terminal type.
+</Card>
+</CardGroup>

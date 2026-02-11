@@ -1,22 +1,337 @@
 ---
 title: 'Introduction'
-description: 'Kappture Integrate API documentation'
+description: 'Kappture Integrate API v2 - Complete REST API for POS integration, ordering, stock management, and more'
 ---
 
 ## Welcome
 
-This is the API reference documentation for the **Kappture Integrate API v2.0.0**.
+The **Kappture Integrate API v2.0.0** is a comprehensive REST API that enables third-party integrations with the Kappture hospitality and retail platform. Use this API to:
 
-The API documentation is automatically generated from our OpenAPI specification. All endpoints are listed in the sidebar, organized by tags.
+- **Place orders** programmatically from your own ordering channels
+- **Manage products**, menus, layouts, and pricing
+- **Post third-party transactions** from external POS systems
+- **Manage stock** - adjustments, deliveries, orders, and inventory
+- **Access customer data** - members, loyalty, vouchers
+- **Configure terminals** - outlets, preparation points, sessions
+
+All endpoints are listed in the sidebar, organized by category.
+
+## Quick Start
+
+### 1. Get API Credentials
+
+Generate your API credentials in the [Kappture Management Portal](https://admin.kappture.com):
+
+1. Log in to the Management Portal
+2. Navigate to your **Profile Page**
+3. Create a new **API Key** and **API Secret**
+4. Save these credentials securely
+
+### 2. Generate a JWT Token
+
+All API requests require a JWT token. Generate one using your credentials:
+
+```bash
+POST https://api.eu-west-1.prod.kappture.com/auth
+Content-Type: application/json
+x-api-key: YOUR_API_KEY
+
+{
+  "api_key": "YOUR_API_KEY",
+  "api_secret": "YOUR_API_SECRET"
+}
+```
+
+**Response:**
+```json
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "expiresAt": "2025-02-12T12:00:00Z"
+}
+```
+
+### 3. Make API Requests
+
+Include both the JWT token and API key in every request:
+
+```bash
+GET https://api.eu-west-1.prod.kappture.com/product?count=100&page=1
+Authorization: Bearer YOUR_JWT_TOKEN
+x-api-key: YOUR_API_KEY
+```
+
+## Base URLs
+
+Choose the environment that matches your account:
+
+| Environment | Base URL |
+|-------------|----------|
+| **Production** | `https://api.eu-west-1.kappture.com` |
+| **Staging** | `https://api.eu-west-1.staging.kappture.com` |
 
 ## Authentication
 
-API endpoints require authentication using JWT tokens and API keys. Generate and manage your API keys in the [Kappture Management Portal](https://admin.dev.kappture.com) on your Profile Page.
+### JWT Token Authentication
 
-<Card
-  title="Kappture Integrate API"
-  icon="key"
-  href="/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
+The Kappture API uses **JWT (JSON Web Token)** authentication with API keys.
+
+**Security Requirements:**
+- All requests require an `Authorization: Bearer <token>` header
+- All requests require an `x-api-key: <your_api_key>` header
+- Tokens are valid for up to 24 hours
+- Tokens remain valid even if API credentials are deleted
+- Authorization is cached with a 300-second TTL
+
+**Token Lifecycle:**
+1. Generate token using `/auth` endpoint
+2. Use token for all API requests
+3. Token expires after 24 hours
+4. Generate a new token when expired
+
+## Key Concepts
+
+Understanding these core entities will help you work with the API effectively:
+
+### Organizational Hierarchy
+
+- **Group** - Top-level organization (your company)
+- **Brand** - Brand within a group (e.g., restaurant chain brands)
+- **Region** - Geographic grouping of sites
+- **Site** - Ordering area (hospitality venue, retail location, stadium)
+- **Outlet** - Physical ordering location (bar, restaurant, concession stand)
+- **Terminal** - POS device or kiosk at an outlet
+
+### Products & Pricing
+
+- **Product** - Items customers can order (food, drink, merchandise)
+- **Product Group** - Category grouping (Starters, Mains, Desserts, Beverages)
+- **Menu** - Collection of products available for ordering
+- **Price Band** - Pricing tier (Standard, Happy Hour, VIP, Event Pricing)
+- **Session** - Trading period with associated price band (Breakfast, Lunch, Dinner)
+
+### Ordering
+
+- **Preparation Point** - Kitchen or collection point where orders are prepared
+- **Order Authorization** - Stage 1: Validate order, apply vouchers, check stock
+- **Order Commit** - Stage 2: Finalize order after payment
+- **Transaction** - Completed order with payment
+
+### Layouts & Display
+
+- **Layout** - POS screen configuration with product buttons
+- **Resource** - Background images and visual assets
+- **Menu** - Self-service ordering menu structure
+
+### Members & Loyalty
+
+- **Member** - Customer loyalty account
+- **Member Group** - Customer segmentation
+- **Voucher** - Discount vouchers and gift cards
+- **Account** - Member balance for cashless payments
+
+### Payments
+
+- **Tender** - Payment method (Cash, Card, Mobile Wallet, Account, Voucher)
+
+### Stock Management
+
+- **Stock Adjustment** - Stock level corrections
+- **Stock Order** - Orders placed to suppliers
+- **Stock Delivery** - Received stock from suppliers
+- **Supplier** - Stock vendor
+- **Unit of Measure** - Units for stock tracking (kg, liters, cases)
+
+## Common Workflows
+
+The API supports several common integration patterns. Click through for detailed step-by-step guides:
+
+<CardGroup cols={3}>
+  <Card title="Ordering Workflow" icon="shopping-cart" href="/api-reference/workflows/ordering">
+    Place orders from mobile apps, web, kiosks, or delivery platforms. Two-stage authorization and commit process with vouchers, stock checks, and payment handling.
+  </Card>
+
+  <Card title="Third-Party Transactions" icon="upload" href="/api-reference/workflows/third-party-transactions">
+    Post sales from external POS systems for consolidated reporting. Bulk upload up to 50 transactions with automatic product creation.
+  </Card>
+
+  <Card title="Layout Creation" icon="grip" href="/api-reference/workflows/layout-creation">
+    Create and manage POS screen layouts programmatically. Position product buttons, menus, and tenders for optimal operator experience.
+  </Card>
+</CardGroup>
+
+## Pagination
+
+Most list endpoints support pagination using `count` and `page` parameters:
+
+```bash
+GET /product?count=100&page=1
+```
+
+- **count** - Records per page (min: 1, max: 100)
+- **page** - Page number (starts at 1)
+
+**Example Response:**
+```json
+{
+  "products": [...],
+  "totalCount": 523,
+  "pageCount": 6,
+  "currentPage": 1
+}
+```
+
+## Error Handling
+
+### HTTP Status Codes
+
+| Code | Meaning | Description |
+|------|---------|-------------|
+| `200` | OK | Request succeeded |
+| `201` | Created | Resource created successfully |
+| `400` | Bad Request | Invalid request parameters |
+| `401` | Unauthorized | Invalid or expired JWT token |
+| `403` | Forbidden | Insufficient permissions |
+| `404` | Not Found | Endpoint or resource not found |
+| `409` | Conflict | Duplicate resource (e.g., product with same PLU) |
+| `422` | Unprocessable Entity | Validation failed |
+| `500` | Internal Server Error | Server error |
+| `503` | Service Unavailable | Service temporarily unavailable |
+
+### Error Response Format
+
+All error responses follow this structure:
+
+```json
+{
+  "code": 0,
+  "message": "Descriptive error message",
+  "fields": "Comma-separated list of invalid fields"
+}
+```
+
+**Example:**
+```json
+{
+  "code": 400,
+  "message": "Invalid product ID",
+  "fields": "productId"
+}
+```
+
+## Create vs Update Pattern
+
+Most PUT endpoints use an **upsert pattern**:
+
+- **Create:** `PUT /resource` with `id: 0`
+- **Update:** `PUT /resource` with existing `id > 0`
+
+**Example:**
+```json
+// Create new product
+{
+  "id": 0,
+  "name": "New Product",
+  "groupId": 5
+}
+
+// Update existing product
+{
+  "id": 123,
+  "name": "Updated Product",
+  "groupId": 5
+}
+```
+
+## Date & Time Format
+
+All date/time values use **RFC3339 format**:
+
+```
+2025-02-11T14:30:00Z        // UTC
+2025-02-11T14:30:00+00:00   // UTC with offset
+2025-02-11T09:30:00-05:00   // EST
+```
+
+## Best Practices
+
+### Token Management
+
+- Generate tokens at application startup
+- Reuse tokens for multiple requests (valid 24 hours)
+- Implement token refresh logic before expiration
+- Store tokens securely (never in client-side code)
+
+### API Keys
+
+- Store API keys as environment variables
+- Never commit API keys to source control
+- Rotate keys regularly
+- Use different keys for dev/staging/production
+
+### Error Handling
+
+- Implement retry logic for `500` and `503` errors
+- Log all API errors for debugging
+- Validate data before sending to reduce `400` errors
+- Handle `401` errors by refreshing JWT token
+
+### Performance
+
+- Use pagination for large datasets
+- Cache frequently accessed data (products, menus)
+- Batch operations where possible (e.g., bulk transaction upload)
+- Filter responses using query parameters
+
+### Data Integrity
+
+- Validate product IDs exist before ordering
+- Check session availability before placing orders
+- Verify tender availability at the outlet
+- Handle stock depletion gracefully
+
+## Rate Limiting
+
+API requests are rate-limited to ensure platform stability. If you exceed rate limits, you'll receive a `429 Too Many Requests` response.
+
+**Best Practices:**
+- Implement exponential backoff for retries
+- Batch operations when possible
+- Cache responses to reduce API calls
+- Contact support if you need higher limits
+
+## Support & Resources
+
+<CardGroup cols={2}>
+  <Card title="API Specification" icon="file-code" href="/api-reference/openapi.json">
+    View the complete OpenAPI specification
+  </Card>
+
+  <Card title="Need Help?" icon="life-ring" href="/contact">
+    Contact our support team
+  </Card>
+
+  <Card title="Management Portal" icon="browser" href="https://admin.kappture.com">
+    Generate API credentials and manage your account
+  </Card>
+
+  <Card title="Release Notes" icon="megaphone" href="/release-notes/api">
+    View API changelog and updates
+  </Card>
+</CardGroup>
+
+## API Endpoints
+
+All available endpoints are listed in the sidebar, organized by category:
+
+- **Authentication** - Generate JWT tokens
+- **Products** - Product catalog management
+- **Menus & Layouts** - Menu and POS layout configuration
+- **Ordering** - Place and manage orders
+- **Transactions** - Query and post transactions
+- **Members** - Customer loyalty and accounts
+- **Stock** - Inventory management
+- **Configuration** - Outlets, terminals, preparation points
+- **Pricing** - Price bands, sessions, tenders
+- **Resources** - Images and visual assets
+
+Select an endpoint from the sidebar to view detailed documentation, including request/response schemas and examples.

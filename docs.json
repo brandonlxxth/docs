@@ -259,7 +259,9 @@
                   "terminal/types/terminal",
                   "terminal/types/kiosk",
                   "terminal/types/kms",
-                  "terminal/types/css"
+                  "terminal/types/css",
+                  "terminal/types/quick-serve",
+                  "terminal/types/sco"
                 ]
               }
             ]
@@ -282,9 +284,17 @@
         "openapi": "api-reference/api-bundled.yaml",
         "groups": [
           {
-            "group": "API documentation",
+            "group": "Getting Started",
             "pages": [
               "api-reference/introduction"
+            ]
+          },
+          {
+            "group": "Workflows",
+            "pages": [
+              "api-reference/workflows/ordering",
+              "api-reference/workflows/third-party-transactions",
+              "api-reference/workflows/layout-creation"
             ]
           }
         ]
