@@ -37,6 +37,7 @@ Pay at Table lets you **generate QR codes** that customers scan at the table to 
    - **Account** — **Stripe Checkout** or **JudoPay**; required for card payment.
    - **Logo** (optional) — Resource type Logo; **Color** (optional).
    - **Gratuity Option 1, 2, 3** (optional) — 0–100% tip presets.
+   - **Default Gratuity Option** (optional) — Select which gratuity option (1, 2, or 3) is pre-selected for customers. Only available gratuity options appear in the dropdown.
    - Save.
 
 3. **Generate QR codes per table** — After saving, click **View** on the config.
@@ -73,6 +74,7 @@ List of configs → click **+**. In the form:
 - **Logo** — Optional; resource type **Logo** from **Configuration > Management > Resources**.
 - **Color** — Optional; payment screen colour.
 - **Gratuity Option 1, 2, 3** — Optional; 0–100% (e.g. 10, 15, 20).
+- **Default Gratuity Option** — Optional; select which gratuity option (1, 2, or 3) is pre-selected for customers. Only configured gratuity options appear in the dropdown.
 
 Save. Base URL is generated; table number is added when you generate individual QR codes.
 
@@ -97,6 +99,7 @@ Select a config → **View**. Modal with two tabs:
 | **Logo** | Optional; resource type **Logo** (Resources); payment screen. |
 | **Color** | Optional; payment screen colour. |
 | **Gratuity Option 1, 2, 3** | Optional; tip % (0–100%) when paying. |
+| **Default Gratuity Option** | Optional; which gratuity option (1, 2, or 3) is pre-selected for customers. Only configured options appear. |
 | **Table number** (in View) | When viewing: enter 1–9999 to generate QR for that table. URL: `…/order/{orgId}/{codeId}/{tableNumber}`. |
 | **Bulk: Start / End** | View > Bulk: range (max 100); downloads as ZIP. |
 
